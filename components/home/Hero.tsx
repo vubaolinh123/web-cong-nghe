@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { Container, Button } from "../common";
@@ -72,10 +73,12 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" className="min-w-[200px]">
-              Bắt Đầu Ngay
-              <ArrowRight size={20} />
-            </Button>
+            <Link href="/lien-he">
+              <Button size="lg" className="min-w-[200px]">
+                Bắt Đầu Ngay
+                <ArrowRight size={20} />
+              </Button>
+            </Link>
             <Button variant="outline" size="lg" className="min-w-[200px]">
               <Play size={20} />
               Xem Video Giới Thiệu

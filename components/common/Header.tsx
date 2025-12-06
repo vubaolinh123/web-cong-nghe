@@ -1,17 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Container from "./Container";
 import Button from "./Button";
 
 const navItems = [
-  { name: "Trang Chủ", href: "#" },
-  { name: "Dịch Vụ", href: "#services" },
-  { name: "Về Chúng Tôi", href: "#about" },
-  { name: "Dự Án", href: "#projects" },
-  { name: "Liên Hệ", href: "#contact" },
+  { name: "Trang Chủ", href: "/" },
+  { name: "Dịch Vụ", href: "/#services" },
+  { name: "Về Chúng Tôi", href: "/#about" },
+  { name: "Quy Trình", href: "/#process" },
+  { name: "Liên Hệ", href: "/lien-he" },
 ];
 
 export default function Header() {
@@ -56,20 +58,22 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-slate-300 hover:text-white transition-colors font-medium"
-                whileHover={{ y: -2 }}
-              >
-                {item.name}
-              </motion.a>
+              <motion.div key={item.name} whileHover={{ y: -2 }}>
+                <Link
+                  href={item.href}
+                  className="text-slate-300 hover:text-white transition-colors font-medium"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button size="sm">Tư Vấn Miễn Phí</Button>
+            <Link href="/lien-he">
+              <Button size="sm">Tư Vấn Miễn Phí</Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,16 +98,18 @@ export default function Header() {
             <Container>
               <div className="py-6 space-y-4">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="block text-slate-300 hover:text-white py-2 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
-                <Button className="w-full mt-4">Tư Vấn Miễn Phí</Button>
+                <Link href="/lien-he" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full mt-4">Tư Vấn Miễn Phí</Button>
+                </Link>
               </div>
             </Container>
           </motion.div>

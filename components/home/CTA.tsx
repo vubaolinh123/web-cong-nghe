@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { Container, AnimatedSection, Button } from "../common";
@@ -41,15 +42,19 @@ export default function CTA() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" className="min-w-[200px]">
-                  <MessageCircle size={20} />
-                  Tư Vấn Ngay
-                  <ArrowRight size={20} />
-                </Button>
-                <Button variant="outline" size="lg" className="min-w-[200px]">
-                  <Phone size={20} />
-                  Gọi Hotline
-                </Button>
+                <Link href="/lien-he">
+                  <Button size="lg" className="min-w-[200px]">
+                    <MessageCircle size={20} />
+                    Tư Vấn Ngay
+                    <ArrowRight size={20} />
+                  </Button>
+                </Link>
+                <a href="tel:+84123456789">
+                  <Button variant="outline" size="lg" className="min-w-[200px]">
+                    <Phone size={20} />
+                    Gọi Hotline
+                  </Button>
+                </a>
               </div>
 
               {/* Contact Info */}

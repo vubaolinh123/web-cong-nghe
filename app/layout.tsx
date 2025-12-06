@@ -26,8 +26,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: defaultSEO.title,
-    template: `%s | ${siteConfig.name}`,
+    default: defaultSEO.title.default,
+    template: defaultSEO.title.template,
   },
   description: defaultSEO.description,
   keywords: defaultSEO.keywords,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "vi_VN",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: defaultSEO.title,
+    title: defaultSEO.title.default,
     description: defaultSEO.description,
     images: [
       {
@@ -63,11 +63,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultSEO.title,
+    title: defaultSEO.title.default,
     description: defaultSEO.description,
     images: [defaultSEO.openGraph.images[0].url],
-    creator: defaultSEO.twitter.handle,
-    site: defaultSEO.twitter.site,
+    creator: defaultSEO.twitter.creator,
   },
   alternates: {
     canonical: siteConfig.url,
