@@ -116,7 +116,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Địa Chỉ</h3>
-                <p className="text-slate-400">123 Nguyễn Huệ, Q.1, TP.HCM</p>
+                <p className="text-slate-400">Việt Nam</p>
               </div>
             </div>
           </div>
