@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter, Github } from "lucide-react";
 import Container from "./Container";
 
@@ -39,24 +40,25 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-slate-800">
       <Container>
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T</span>
-              </div>
-              <span className="text-xl font-bold text-white">
-                Tech<span className="text-cyan-400">Vision</span>
-              </span>
-            </div>
+	        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+	          {/* Brand Section */}
+	          <div className="lg:col-span-2">
+	            <div className="flex items-center gap-3 mb-6">
+	              <Image
+	                src="/image/logo.png"
+	                alt="ASI EVEREST logo"
+	                width={180}
+	                height={64}
+	                className="h-12 w-auto object-contain"
+	              />
+	            </div>
             <p className="text-slate-400 mb-6 max-w-sm">
               Đối tác công nghệ tin cậy cho doanh nghiệp. Chúng tôi biến ý tưởng thành giải pháp số xuất sắc.
             </p>
             <div className="space-y-3">
-              <a href="mailto:contact@techvision.vn" className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors">
+              <a href="mailto:contact@asieverest.vn" className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors">
                 <Mail size={18} />
-                <span>contact@techvision.vn</span>
+                <span>contact@asieverest.vn</span>
               </a>
               <a href="tel:+84123456789" className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors">
                 <Phone size={18} />
@@ -108,11 +110,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm">
-            © 2025 TechVision Pro. Tất cả quyền được bảo lưu.
-          </p>
+	        {/* Bottom Section */}
+	        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+	          <p className="text-slate-500 text-sm">
+	            © 2025 ASI EVEREST. Tất cả quyền được bảo lưu.
+	          </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
               <motion.a

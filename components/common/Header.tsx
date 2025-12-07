@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
@@ -40,19 +40,32 @@ export default function Header() {
       }`}
     >
       <Container>
-        <nav className="flex items-center justify-between h-20">
-          {/* Logo */}
+        <nav className="flex items-center justify-between h-24">
+          {/* Logo + Brand Name */}
           <motion.a
-            href="#"
-            className="flex items-center gap-2"
+            href="/"
+            aria-label="ASI EVEREST - Trang chủ"
+            className="flex items-center gap-4"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">T</span>
+            {/* Logo Image - Large and Prominent */}
+            <Image
+              src="/image/logo.png"
+              alt="ASI EVEREST logo"
+              width={220}
+              height={80}
+              priority
+              className="h-16 sm:h-18 lg:h-20 w-auto object-contain drop-shadow-[0_0_10px_rgba(34,211,238,0.3)]"
+            />
+            {/* Brand Name Text */}
+            <div className="hidden sm:flex flex-col">
+              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent tracking-wide">
+                ASI EVEREST
+              </span>
+              <span className="text-[10px] lg:text-xs text-slate-400 tracking-[0.2em] uppercase">
+                Technology Solutions
+              </span>
             </div>
-            <span className="text-xl font-bold text-white">
-              Tech<span className="text-cyan-400">Vision</span>
-            </span>
           </motion.a>
 
           {/* Desktop Navigation */}

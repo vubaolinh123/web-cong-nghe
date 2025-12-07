@@ -20,7 +20,7 @@ const ContactForm = dynamic(() => import("@/components/contact/ContactForm"), {
 export const metadata: Metadata = {
   title: "Liên Hệ - Tư Vấn Dịch Vụ Công Nghệ Miễn Phí",
   description:
-    "Liên hệ TechVision Pro để được tư vấn miễn phí về các giải pháp công nghệ. Đội ngũ chuyên gia sẵn sàng hỗ trợ 24/7 cho mọi nhu cầu phát triển phần mềm, ứng dụng di động, Cloud và AI.",
+	    "Liên hệ ASI EVEREST để được tư vấn miễn phí về các giải pháp công nghệ. Đội ngũ chuyên gia sẵn sàng hỗ trợ 24/7 cho mọi nhu cầu phát triển phần mềm, ứng dụng di động, Cloud và AI.",
   keywords: [
     "liên hệ",
     "tư vấn công nghệ",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "hỗ trợ kỹ thuật",
   ],
   openGraph: {
-    title: "Liên Hệ - Tư Vấn Dịch Vụ Công Nghệ Miễn Phí | TechVision Pro",
+	    title: "Liên Hệ - Tư Vấn Dịch Vụ Công Nghệ Miễn Phí | ASI EVEREST",
     description:
       "Liên hệ để được tư vấn miễn phí về các giải pháp công nghệ. Hỗ trợ 24/7.",
     url: `${siteConfig.url}/lien-he`,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Liên Hệ - TechVision Pro",
+	    title: "Liên Hệ - ASI EVEREST",
     description: "Tư vấn giải pháp công nghệ miễn phí. Hỗ trợ 24/7.",
   },
   alternates: {
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
 // JSON-LD Structured Data for Contact Page
 const contactPageSchema = {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  name: "Liên Hệ TechVision Pro",
+	  "@type": "ContactPage",
+	  name: "Liên Hệ ASI EVEREST",
   description: "Trang liên hệ và đăng ký tư vấn dịch vụ công nghệ",
   url: `${siteConfig.url}/lien-he`,
   mainEntity: {
@@ -93,8 +93,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Email</h3>
-                <a href="mailto:contact@techvision.vn" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  contact@techvision.vn
+                <a href="mailto:contact@asieverest.vn" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                  contact@asieverest.vn
                 </a>
               </div>
               <div className="p-6">

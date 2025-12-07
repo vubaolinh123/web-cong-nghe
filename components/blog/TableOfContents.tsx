@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { List } from "lucide-react";
 import { HeadingItem } from "@/lib/blog/types";
@@ -10,27 +10,25 @@ interface TableOfContentsProps {
 }
 
 export default function TableOfContents({ content }: TableOfContentsProps) {
-  const [headings, setHeadings] = useState<HeadingItem[]>([]);
-  const [activeId, setActiveId] = useState<string>("");
+	const headings = useMemo<HeadingItem[]>(() => {
+	  	// Parse headings from markdown content in a pure way
+	  	const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+	  	const matches: HeadingItem[] = [];
+	  	let match: RegExpExecArray | null;
 
-  useEffect(() => {
-    // Parse headings from markdown content
-    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-    const matches: HeadingItem[] = [];
-    let match;
+	  	while ((match = headingRegex.exec(content)) !== null) {
+	  	  const level = match[1].length;
+	  	  const text = match[2];
+	  	  const id = text
+	  	    .toLowerCase()
+	  	    .replace(/[^\w\s-]/g, "")
+	  	    .replace(/\s+/g, "-");
+	  	  matches.push({ id, text, level });
+	  	}
 
-    while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length;
-      const text = match[2];
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-");
-      matches.push({ id, text, level });
-    }
-
-    setHeadings(matches);
-  }, [content]);
+	  	return matches;
+	}, [content]);
+	  const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(

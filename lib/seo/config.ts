@@ -1,9 +1,10 @@
 // SEO Configuration for TechServices Website
 
 export const siteConfig = {
-  name: "TechVision Pro",
-  description: "Giải pháp công nghệ toàn diện cho doanh nghiệp. Chúng tôi cung cấp dịch vụ phát triển phần mềm, tư vấn IT, và chuyển đổi số hàng đầu Việt Nam.",
-  url: "https://techvisionpro.vn",
+	name: "ASI EVEREST",
+	description:
+		"ASI EVEREST - Giải pháp công nghệ toàn diện cho doanh nghiệp. Chúng tôi cung cấp dịch vụ phát triển phần mềm, tư vấn IT và chuyển đổi số hàng đầu tại Việt Nam.",
+	url: "https://techvisionpro.vn",
   ogImage: "/og-image.jpg",
   keywords: [
     "dịch vụ công nghệ",
@@ -18,9 +19,9 @@ export const siteConfig = {
     "mobile app development",
     "cloud services",
     "AI solutions"
-  ],
-  author: "TechVision Pro",
-  twitterHandle: "@techvisionpro",
+	  ],
+	  author: "ASI EVEREST",
+	  twitterHandle: "@techvisionpro",
   locale: "vi_VN",
   themeColor: "#0066FF",
 };
@@ -82,7 +83,8 @@ export const defaultSEO = {
 export const pageSEO = {
   home: {
     title: "Trang Chủ | Dịch Vụ Công Nghệ Số 1 Việt Nam",
-    description: "TechVision Pro - Đối tác công nghệ tin cậy của bạn. Chúng tôi cung cấp giải pháp phần mềm, tư vấn IT, và dịch vụ chuyển đổi số cho doanh nghiệp.",
+	  description:
+			"ASI EVEREST - Đối tác công nghệ tin cậy của bạn. Chúng tôi cung cấp giải pháp phần mềm, tư vấn IT và dịch vụ chuyển đổi số cho doanh nghiệp.",
   },
   services: {
     title: "Dịch Vụ | Giải Pháp Công Nghệ Toàn Diện",
@@ -90,7 +92,8 @@ export const pageSEO = {
   },
   about: {
     title: "Về Chúng Tôi | Đội Ngũ Chuyên Gia Công Nghệ",
-    description: "Tìm hiểu về TechVision Pro - đội ngũ chuyên gia công nghệ với hơn 10 năm kinh nghiệm trong ngành IT.",
+	  description:
+			"Tìm hiểu về ASI EVEREST - đội ngũ chuyên gia công nghệ với hơn 10 năm kinh nghiệm trong ngành IT.",
   },
   contact: {
     title: "Liên Hệ | Tư Vấn Miễn Phí",

@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { Header, Footer } from "@/components/common";
+import IntroOverlay from "@/components/common/IntroOverlay";
 
 // Loading component for lazy-loaded sections
 const SectionLoader = () => (
@@ -49,6 +50,8 @@ const CTA = dynamic(() => import("@/components/home/CTA"), {
 export default function Home() {
   return (
     <>
+      {/* Full-screen intro animation shown on first homepage visit */}
+      <IntroOverlay />
       <Header />
       <main>
         <Suspense fallback={<SectionLoader />}>

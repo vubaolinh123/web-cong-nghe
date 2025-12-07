@@ -8,8 +8,8 @@ export const organizationSchema = {
   "@type": "Organization",
   name: siteConfig.name,
   description: siteConfig.description,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/logo.png`,
+	url: siteConfig.url,
+	logo: `${siteConfig.url}/image/logo.png`,
   sameAs: [
     "https://facebook.com/techvisionpro",
     "https://linkedin.com/company/techvisionpro",

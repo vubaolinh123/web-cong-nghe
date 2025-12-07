@@ -59,8 +59,8 @@ export default function CTA() {
 
               {/* Contact Info */}
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 text-slate-400">
-                <a href="mailto:contact@techvision.vn" className="hover:text-cyan-400 transition-colors">
-                  contact@techvision.vn
+                <a href="mailto:contact@asieverest.vn" className="hover:text-cyan-400 transition-colors">
+                contact@asieverest.vn
                 </a>
                 <span className="hidden sm:block">•</span>
                 <a href="tel:+84123456789" className="hover:text-cyan-400 transition-colors">

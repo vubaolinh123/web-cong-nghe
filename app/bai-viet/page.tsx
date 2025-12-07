@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "tech articles",
   ],
   openGraph: {
-    title: "Bài Viết | Blog Công Nghệ - TechVision Pro",
+	    title: "Bài Viết | Blog Công Nghệ - ASI EVEREST",
     description:
       "Khám phá các bài viết về công nghệ, phát triển phần mềm, AI, cloud computing và các xu hướng công nghệ mới nhất.",
     url: `${siteConfig.url}/bai-viet`,
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "TechVision Pro Blog",
+	        alt: "ASI EVEREST Blog",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Bài Viết | Blog Công Nghệ - TechVision Pro",
+	  twitter: {
+	    card: "summary_large_image",
+	    title: "Bài Viết | Blog Công Nghệ - ASI EVEREST",
     description:
       "Khám phá các bài viết về công nghệ, phát triển phần mềm, AI, cloud computing.",
     images: [siteConfig.ogImage],
@@ -44,18 +44,18 @@ export const metadata: Metadata = {
 // JSON-LD Structured Data for Blog
 const blogJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "TechVision Pro Blog",
+	  "@type": "Blog",
+	  name: "ASI EVEREST Blog",
   description:
     "Blog về công nghệ, phát triển phần mềm và các xu hướng công nghệ mới nhất",
   url: `${siteConfig.url}/bai-viet`,
   publisher: {
     "@type": "Organization",
     name: siteConfig.name,
-    logo: {
-      "@type": "ImageObject",
-      url: `${siteConfig.url}/logo.png`,
-    },
+	    logo: {
+	      "@type": "ImageObject",
+	      url: `${siteConfig.url}/image/logo.png`,
+	    },
   },
   inLanguage: "vi-VN",
 };

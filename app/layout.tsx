@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { defaultSEO, siteConfig } from "@/lib/seo/config";
-import { generateJsonLd, organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
+import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,9 +72,11 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/image/logo.png", type: "image/png" },
+    ],
+    shortcut: "/image/logo.png",
+    apple: "/image/logo.png",
   },
   manifest: "/site.webmanifest",
 };

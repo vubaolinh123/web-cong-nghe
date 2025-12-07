@@ -6,31 +6,34 @@ import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Container, AnimatedSection } from "../common";
 
 const testimonials = [
-  {
-    id: 1,
-    content: "TechVision Pro đã giúp chúng tôi xây dựng hệ thống ERP hoàn chỉnh trong thời gian kỷ lục. Đội ngũ chuyên nghiệp, giao tiếp tốt và luôn đáp ứng mọi yêu cầu.",
-    author: "Nguyễn Văn A",
-    role: "CEO",
-    company: "ABC Corporation",
-    rating: 5,
-  },
-  {
-    id: 2,
-    content: "Ứng dụng di động họ phát triển cho chúng tôi đạt hơn 100k lượt tải trong tháng đầu tiên. Chất lượng vượt xa kỳ vọng!",
-    author: "Trần Thị B",
-    role: "Marketing Director",
-    company: "XYZ Retail",
-    rating: 5,
-  },
-  {
-    id: 3,
-    content: "Đối tác công nghệ đáng tin cậy nhất mà chúng tôi từng hợp tác. Họ không chỉ code, họ thực sự hiểu business của chúng tôi.",
-    author: "Lê Văn C",
-    role: "CTO",
-    company: "Tech Startup VN",
-    rating: 5,
-  },
-];
+	  {
+	    id: 1,
+	    content:
+			"ASI EVEREST đã giúp chúng tôi xây dựng hệ thống ERP hoàn chỉnh trong thời gian kỷ lục. Đội ngũ chuyên nghiệp, giao tiếp tốt và luôn đáp ứng mọi yêu cầu.",
+	    author: "Nguyễn Văn A",
+	    role: "CEO",
+	    company: "ABC Corporation",
+	    rating: 5,
+	  },
+	  {
+	    id: 2,
+	    content:
+			"Ứng dụng di động họ phát triển cho chúng tôi đạt hơn 100k lượt tải trong tháng đầu tiên. Chất lượng vượt xa kỳ vọng!",
+	    author: "Trần Thị B",
+	    role: "Marketing Director",
+	    company: "XYZ Retail",
+	    rating: 5,
+	  },
+	  {
+	    id: 3,
+	    content:
+			"Đối tác công nghệ đáng tin cậy nhất mà chúng tôi từng hợp tác. Họ không chỉ code, họ thực sự hiểu business của chúng tôi.",
+	    author: "Lê Văn C",
+	    role: "CTO",
+	    company: "Tech Startup VN",
+	    rating: 5,
+	  },
+	];
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
