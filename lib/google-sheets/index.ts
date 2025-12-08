@@ -6,7 +6,7 @@ import { ContactFormData } from "@/lib/validations/contact";
 const getGoogleSheetsClient = async () => {
   const credentials = {
     client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\n/g, "\n"),
   };
 
   if (!credentials.client_email || !credentials.private_key) {
@@ -67,10 +67,12 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
     [
       timestamp,
       data.name,
-      data.email,
+      data.jobTitle,
+      data.currentJob,
       data.phone,
-      data.company || "N/A",
-      data.service,
+      data.fanpageOrWebsite || "N/A",
+      data.serviceCategory,
+      data.specificServices.join(", "),
       data.message,
       "Pending", // Status column
     ],
@@ -79,7 +81,7 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `'${sheetName}'!A:H`, // Use actual sheet name with quotes
+      range: `'${sheetName}'!A:J`, // Use actual sheet name with quotes (10 columns now)
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -104,21 +106,21 @@ export const initializeSheet = async (): Promise<void> => {
   const sheetName = await getFirstSheetName(sheets, spreadsheetId);
 
   const headers = [
-    ["Timestamp", "Name", "Email", "Phone", "Company", "Service", "Message", "Status"],
+    ["Timestamp", "Name", "Job Title", "Current Job", "Phone", "Fanpage/Website", "Service Category", "Specific Services", "Message", "Status"],
   ];
 
   try {
     // Check if headers exist
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `'${sheetName}'!A1:H1`,
+      range: `'${sheetName}'!A1:J1`,
     });
 
     if (!response.data.values || response.data.values.length === 0) {
       // Add headers if they don't exist
       await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `'${sheetName}'!A1:H1`,
+        range: `'${sheetName}'!A1:J1`,
         valueInputOption: "USER_ENTERED",
         requestBody: {
           values: headers,
@@ -129,4 +131,3 @@ export const initializeSheet = async (): Promise<void> => {
     console.error("Error initializing sheet:", error);
   }
 };
-

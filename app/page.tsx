@@ -19,13 +19,15 @@ const Partners = dynamic(() => import("@/components/home/Partners"), {
   loading: () => <SectionLoader />,
 });
 
+const MarketingServices = dynamic(() => import("@/components/home/MarketingServices"), {
+  loading: () => <SectionLoader />,
+});
+
 const Services = dynamic(() => import("@/components/home/Services"), {
   loading: () => <SectionLoader />,
 });
 
-const About = dynamic(() => import("@/components/home/About"), {
-  loading: () => <SectionLoader />,
-});
+// About section removed - replaced by Partners section
 
 const Features = dynamic(() => import("@/components/home/Features"), {
   loading: () => <SectionLoader />,
@@ -61,10 +63,10 @@ export default function Home() {
           <Partners />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
-          <Services />
+          <MarketingServices />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
-          <About />
+          <Services />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <Features />

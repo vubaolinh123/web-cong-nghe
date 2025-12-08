@@ -8,7 +8,7 @@ export const authors: Author[] = [
     name: "Nguyễn Văn An",
     avatar: "/images/avatars/author-1.jpg",
     role: "Senior Developer",
-    bio: "Chuyên gia phát triển phần mềm với hơn 10 năm kinh nghiệm.",
+    bio: "Chuyên gia phát triển phần mềm với hơn 7 năm kinh nghiệm.",
   },
   {
     id: "2",

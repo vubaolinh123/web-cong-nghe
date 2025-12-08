@@ -2,19 +2,23 @@
 
 export interface ContactFormData {
   name: string;
-  email: string;
+  jobTitle: string;
+  currentJob: string;
   phone: string;
-  company: string;
-  service: string;
+  fanpageOrWebsite: string;
+  serviceCategory: string;
+  specificServices: string[];
   message: string;
 }
 
 export interface ContactFormErrors {
   name?: string;
-  email?: string;
+  jobTitle?: string;
+  currentJob?: string;
   phone?: string;
-  company?: string;
-  service?: string;
+  fanpageOrWebsite?: string;
+  serviceCategory?: string;
+  specificServices?: string;
   message?: string;
 }
 
@@ -32,10 +36,13 @@ export const validateName = (name: string): string | undefined => {
   return undefined;
 };
 
-export const validateEmail = (email: string): string | undefined => {
-  if (!email.trim()) return "Vui lòng nhập email";
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) return "Email không hợp lệ";
+export const validateJobTitle = (jobTitle: string): string | undefined => {
+  if (!jobTitle.trim()) return "Vui lòng nhập chức danh";
+  return undefined;
+};
+
+export const validateCurrentJob = (currentJob: string): string | undefined => {
+  if (!currentJob.trim()) return "Vui lòng nhập công việc hiện tại";
   return undefined;
 };
 
@@ -48,8 +55,13 @@ export const validatePhone = (phone: string): string | undefined => {
   return undefined;
 };
 
-export const validateService = (service: string): string | undefined => {
-  if (!service) return "Vui lòng chọn dịch vụ quan tâm";
+export const validateServiceCategory = (serviceCategory: string): string | undefined => {
+  if (!serviceCategory) return "Vui lòng chọn loại dịch vụ";
+  return undefined;
+};
+
+export const validateSpecificServices = (specificServices: string[]): string | undefined => {
+  if (specificServices.length === 0) return "Vui lòng chọn ít nhất một dịch vụ cụ thể";
   return undefined;
 };
 
@@ -66,14 +78,20 @@ export const validateContactForm = (data: ContactFormData): ContactFormErrors =>
   const nameError = validateName(data.name);
   if (nameError) errors.name = nameError;
 
-  const emailError = validateEmail(data.email);
-  if (emailError) errors.email = emailError;
+  const jobTitleError = validateJobTitle(data.jobTitle);
+  if (jobTitleError) errors.jobTitle = jobTitleError;
+
+  const currentJobError = validateCurrentJob(data.currentJob);
+  if (currentJobError) errors.currentJob = currentJobError;
 
   const phoneError = validatePhone(data.phone);
   if (phoneError) errors.phone = phoneError;
 
-  const serviceError = validateService(data.service);
-  if (serviceError) errors.service = serviceError;
+  const serviceCategoryError = validateServiceCategory(data.serviceCategory);
+  if (serviceCategoryError) errors.serviceCategory = serviceCategoryError;
+
+  const specificServicesError = validateSpecificServices(data.specificServices);
+  if (specificServicesError) errors.specificServices = specificServicesError;
 
   const messageError = validateMessage(data.message);
   if (messageError) errors.message = messageError;
@@ -85,14 +103,28 @@ export const hasErrors = (errors: ContactFormErrors): boolean => {
   return Object.keys(errors).length > 0;
 };
 
-// Service options
-export const serviceOptions = [
+// Service category options
+export const serviceCategoryOptions = [
+  { value: "technology", label: "Gia Công Công Nghệ" },
+  { value: "marketing", label: "Dịch Vụ Marketing" },
+];
+
+// Technology services (from Services.tsx)
+export const technologyServiceOptions = [
   { value: "web-development", label: "Phát Triển Web" },
   { value: "mobile-app", label: "Ứng Dụng Di Động" },
   { value: "cloud-solutions", label: "Cloud Solutions" },
   { value: "ai-ml", label: "AI & Machine Learning" },
   { value: "cybersecurity", label: "An Ninh Mạng" },
   { value: "it-consulting", label: "Tư Vấn IT" },
-  { value: "other", label: "Khác" },
+];
+
+// Marketing services
+export const marketingServiceOptions = [
+  { value: "facebook-services", label: "Dịch Vụ Facebook" },
+  { value: "seeding-services", label: "Dịch Vụ Seeding" },
+  { value: "tiktok-services", label: "Dịch Vụ TikTok" },
+  { value: "agency-comprehensive", label: "Dịch Vụ Agency Tổng Thể" },
+  { value: "ads-comprehensive", label: "Dịch Vụ Ads Tổng Thể" },
 ];
 

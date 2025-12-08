@@ -93,7 +93,7 @@ export const pageSEO = {
   about: {
     title: "Về Chúng Tôi | Đội Ngũ Chuyên Gia Công Nghệ",
 	  description:
-			"Tìm hiểu về ASI EVEREST - đội ngũ chuyên gia công nghệ với hơn 10 năm kinh nghiệm trong ngành IT.",
+			"Tìm hiểu về ASI EVEREST - đội ngũ chuyên gia công nghệ với hơn 7 năm kinh nghiệm trong ngành IT.",
   },
   contact: {
     title: "Liên Hệ | Tư Vấn Miễn Phí",

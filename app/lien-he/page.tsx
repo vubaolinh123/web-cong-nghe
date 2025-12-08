@@ -93,8 +93,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Email</h3>
-                <a href="mailto:contact@asieverest.vn" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  contact@asieverest.vn
+                <a href="mailto:vtscademy9999@gmail.com" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                  vtscademy9999@gmail.com
                 </a>
               </div>
               <div className="p-6">
@@ -104,8 +104,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Hotline</h3>
-                <a href="tel:+84123456789" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  +84 123 456 789
+                <a href="tel:0584503333" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                  058.450.3333
                 </a>
               </div>
               <div className="p-6">
@@ -116,7 +116,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="text-white font-semibold mb-2">Địa Chỉ</h3>
-                <p className="text-slate-400">Việt Nam</p>
+                <p className="text-slate-400">21 Đường số 7 Cityland, P.10, Q.Gò Vấp, TP.HCM</p>
               </div>
             </div>
           </div>

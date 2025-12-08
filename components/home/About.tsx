@@ -51,7 +51,7 @@ export default function About() {
               </span>
             </h2>
 	            <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-	              Với hơn 10 năm kinh nghiệm trong ngành công nghệ, ASI EVEREST đã 
+	              Với hơn 7 năm kinh nghiệm trong ngành công nghệ, ASI EVEREST đã 
 	              giúp hàng trăm doanh nghiệp chuyển đổi số thành công. Chúng tôi không 
 	              chỉ là nhà cung cấp dịch vụ — chúng tôi là đối tác đồng hành cùng bạn 
 	              trên hành trình phát triển.

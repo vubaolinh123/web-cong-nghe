@@ -4,8 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { Container, AnimatedSection, Button } from "../common";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function CTA() {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -28,43 +31,42 @@ export default function CTA() {
               transition={{ duration: 0.5 }}
             >
               <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4 block">
-                Sẵn Sàng Bắt Đầu?
+                {t("cta.subtitle")}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Hãy Biến Ý Tưởng Thành{" "}
+                {t("cta.title1")}{" "}
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  Hiện Thực
+                  {t("cta.title2")}
                 </span>
               </h2>
               <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
-                Liên hệ ngay để được tư vấn miễn phí và nhận báo giá chi tiết 
-                cho dự án của bạn. Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ 24/7.
+                {t("cta.description")}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/lien-he">
                   <Button size="lg" className="min-w-[200px]">
                     <MessageCircle size={20} />
-                    Tư Vấn Ngay
+                    {t("cta.ctaPrimary")}
                     <ArrowRight size={20} />
                   </Button>
                 </Link>
                 <a href="tel:+84123456789">
                   <Button variant="outline" size="lg" className="min-w-[200px]">
                     <Phone size={20} />
-                    Gọi Hotline
+                    {t("cta.ctaSecondary")}
                   </Button>
                 </a>
               </div>
 
               {/* Contact Info */}
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 text-slate-400">
-                <a href="mailto:contact@asieverest.vn" className="hover:text-cyan-400 transition-colors">
-                contact@asieverest.vn
+                <a href="mailto:vtscademy9999@gmail.com" className="hover:text-cyan-400 transition-colors">
+                  vtscademy9999@gmail.com
                 </a>
                 <span className="hidden sm:block">•</span>
-                <a href="tel:+84123456789" className="hover:text-cyan-400 transition-colors">
-                  +84 123 456 789
+                <a href="tel:0584503333" className="hover:text-cyan-400 transition-colors">
+                  058.450.3333
                 </a>
               </div>
             </motion.div>

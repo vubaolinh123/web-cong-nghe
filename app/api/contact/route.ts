@@ -32,8 +32,8 @@ function checkRateLimit(ip: string): boolean {
 export async function POST(request: NextRequest): Promise<NextResponse<ContactApiResponse>> {
   try {
     // Get client IP for rate limiting
-    const ip = request.headers.get("x-forwarded-for") || 
-               request.headers.get("x-real-ip") || 
+    const ip = request.headers.get("x-forwarded-for") ||
+               request.headers.get("x-real-ip") ||
                "unknown";
 
     // Check rate limit
@@ -51,10 +51,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
     const body = await request.json();
     const formData: ContactFormData = {
       name: body.name || "",
-      email: body.email || "",
+      jobTitle: body.jobTitle || "",
+      currentJob: body.currentJob || "",
       phone: body.phone || "",
-      company: body.company || "",
-      service: body.service || "",
+      fanpageOrWebsite: body.fanpageOrWebsite || "",
+      serviceCategory: body.serviceCategory || "",
+      specificServices: body.specificServices || [],
       message: body.message || "",
     };
 
@@ -118,4 +120,3 @@ export async function GET(): Promise<NextResponse> {
     { status: 405 }
   );
 }
-

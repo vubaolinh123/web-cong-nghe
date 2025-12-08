@@ -4,54 +4,43 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Container, AnimatedSection } from "../common";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const testimonials = [
-	  {
-	    id: 1,
-	    content:
-			"ASI EVEREST đã giúp chúng tôi xây dựng hệ thống ERP hoàn chỉnh trong thời gian kỷ lục. Đội ngũ chuyên nghiệp, giao tiếp tốt và luôn đáp ứng mọi yêu cầu.",
-	    author: "Nguyễn Văn A",
-	    role: "CEO",
-	    company: "ABC Corporation",
-	    rating: 5,
-	  },
-	  {
-	    id: 2,
-	    content:
-			"Ứng dụng di động họ phát triển cho chúng tôi đạt hơn 100k lượt tải trong tháng đầu tiên. Chất lượng vượt xa kỳ vọng!",
-	    author: "Trần Thị B",
-	    role: "Marketing Director",
-	    company: "XYZ Retail",
-	    rating: 5,
-	  },
-	  {
-	    id: 3,
-	    content:
-			"Đối tác công nghệ đáng tin cậy nhất mà chúng tôi từng hợp tác. Họ không chỉ code, họ thực sự hiểu business của chúng tôi.",
-	    author: "Lê Văn C",
-	    role: "CTO",
-	    company: "Tech Startup VN",
-	    rating: 5,
-	  },
-	];
+type TestimonialKey = 'testimonial1' | 'testimonial2' | 'testimonial3';
+
+interface TestimonialConfig {
+  id: number;
+  key: TestimonialKey;
+  rating: number;
+}
+
+const testimonialConfigs: TestimonialConfig[] = [
+  { id: 1, key: 'testimonial1', rating: 5 },
+  { id: 2, key: 'testimonial2', rating: 5 },
+  { id: 3, key: 'testimonial3', rating: 5 },
+];
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
+  const { dictionary } = useLanguage();
 
-  const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const next = () => setCurrent((prev) => (prev + 1) % testimonialConfigs.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + testimonialConfigs.length) % testimonialConfigs.length);
+
+  const currentTestimonial = testimonialConfigs[current];
+  const testimonialData = dictionary.testimonials.items[currentTestimonial.key];
 
   return (
     <section className="py-24 bg-slate-950">
       <Container>
         <AnimatedSection className="text-center mb-16">
           <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4 block">
-            Khách Hàng Nói Gì
+            {dictionary.testimonials.subtitle}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Câu Chuyện{" "}
+            {dictionary.testimonials.title1}{" "}
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Thành Công
+              {dictionary.testimonials.title2}
             </span>
           </h2>
         </AnimatedSection>
@@ -74,27 +63,27 @@ export default function Testimonials() {
 
               {/* Stars */}
               <div className="flex gap-1 mb-6">
-                {[...Array(testimonials[current].rating)].map((_, i) => (
+                {[...Array(currentTestimonial.rating)].map((_, i) => (
                   <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
 
               {/* Content */}
               <p className="text-xl sm:text-2xl text-slate-300 leading-relaxed mb-8 relative z-10">
-                &ldquo;{testimonials[current].content}&rdquo;
+                &ldquo;{testimonialData.content}&rdquo;
               </p>
 
               {/* Author */}
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-xl">
-                  {testimonials[current].author.charAt(0)}
+                  {testimonialData.author.charAt(0)}
                 </div>
                 <div>
                   <div className="text-white font-semibold text-lg">
-                    {testimonials[current].author}
+                    {testimonialData.author}
                   </div>
                   <div className="text-slate-400">
-                    {testimonials[current].role}, {testimonials[current].company}
+                    {testimonialData.role}, {testimonialData.company}
                   </div>
                 </div>
               </div>
@@ -110,7 +99,7 @@ export default function Testimonials() {
               <ChevronLeft size={20} />
             </button>
             <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+              {testimonialConfigs.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrent(index)}
