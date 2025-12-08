@@ -7,18 +7,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
 import Button from "./Button";
-
-const navItems = [
-  { name: "Trang Chủ", href: "/" },
-  { name: "Dịch Vụ", href: "/#services" },
-  { name: "Bài Viết", href: "/bai-viet" },
-  { name: "Về Chúng Tôi", href: "/#about" },
-  { name: "Liên Hệ", href: "/lien-he" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.services'), href: "/#services" },
+    { name: t('nav.blog'), href: "/bai-viet" },
+    { name: t('nav.about'), href: "/#about" },
+    { name: t('nav.contact'), href: "/lien-he" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,10 +85,11 @@ export default function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Button & Language Switcher */}
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <Link href="/lien-he">
-              <Button size="sm">Tư Vấn Miễn Phí</Button>
+              <Button size="sm">{t('nav.cta')}</Button>
             </Link>
           </div>
 
@@ -120,8 +124,11 @@ export default function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <div className="py-2">
+                  <LanguageSwitcher />
+                </div>
                 <Link href="/lien-he" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full mt-4">Tư Vấn Miễn Phí</Button>
+                  <Button className="w-full mt-4">{t('nav.cta')}</Button>
                 </Link>
               </div>
             </Container>
