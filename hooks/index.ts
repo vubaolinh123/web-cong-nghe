@@ -1,0 +1,1 @@
+export { useFullPageScroll } from "./useFullPageScroll";

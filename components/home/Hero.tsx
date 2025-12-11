@@ -112,23 +112,44 @@ export default function Hero() {
           }}
         />
 
-        {/* Floating Particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Floating Particles - Fixed positions to avoid hydration mismatch */}
+        {[
+          { left: 5, top: 10, duration: 3.2, delay: 0.1 },
+          { left: 15, top: 80, duration: 4.1, delay: 1.2 },
+          { left: 25, top: 30, duration: 3.5, delay: 0.5 },
+          { left: 35, top: 60, duration: 4.8, delay: 1.8 },
+          { left: 45, top: 20, duration: 3.3, delay: 0.3 },
+          { left: 55, top: 90, duration: 4.5, delay: 1.5 },
+          { left: 65, top: 40, duration: 3.8, delay: 0.8 },
+          { left: 75, top: 70, duration: 4.2, delay: 1.1 },
+          { left: 85, top: 15, duration: 3.1, delay: 0.2 },
+          { left: 95, top: 55, duration: 4.9, delay: 1.9 },
+          { left: 10, top: 45, duration: 3.6, delay: 0.6 },
+          { left: 20, top: 85, duration: 4.3, delay: 1.3 },
+          { left: 30, top: 25, duration: 3.4, delay: 0.4 },
+          { left: 40, top: 75, duration: 4.6, delay: 1.6 },
+          { left: 50, top: 35, duration: 3.7, delay: 0.7 },
+          { left: 60, top: 65, duration: 4.4, delay: 1.4 },
+          { left: 70, top: 5, duration: 3.9, delay: 0.9 },
+          { left: 80, top: 50, duration: 4.0, delay: 1.0 },
+          { left: 90, top: 95, duration: 3.0, delay: 0.0 },
+          { left: 3, top: 72, duration: 4.7, delay: 1.7 },
+        ].map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-cyan-400/50 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -30, 0],
               opacity: [0.2, 0.8, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: particle.delay,
             }}
           />
         ))}
@@ -317,26 +338,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </Container>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-slate-600 flex items-start justify-center p-2 hover:border-cyan-400 transition-colors cursor-pointer"
-        >
-          <motion.div
-            className="w-1.5 h-3 bg-cyan-400 rounded-full"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
