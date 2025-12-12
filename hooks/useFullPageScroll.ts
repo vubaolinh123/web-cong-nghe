@@ -13,7 +13,7 @@ interface UseFullPageScrollOptions {
 
 const SCROLL_CONFIG = {
   wheelThreshold: 50,
-  debounceTime: 800,
+  debounceTime: 400,  // Reduced from 800ms for faster consecutive scrolls
   touchThreshold: 50,
 };
 

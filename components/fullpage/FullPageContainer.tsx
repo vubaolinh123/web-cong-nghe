@@ -9,11 +9,11 @@ import { SectionNavigation } from "./SectionNavigation";
 // Spring config for buttery smooth 60fps animations
 // Using spring physics instead of duration-based easing for more natural feel
 const SPRING_CONFIG = {
-  stiffness: 100,    // Lower = more gradual acceleration
-  damping: 20,       // Higher = less oscillation
+  stiffness: 150,    // Increased for faster animation
+  damping: 25,       // Increased to reduce oscillation
   mass: 0.5,         // Lower = faster response
-  restSpeed: 0.01,   // Precision for animation completion
-  restDelta: 0.01,
+  restSpeed: 0.5,    // Increased 50x - animation ends when velocity < 0.5px/s
+  restDelta: 0.5,    // Increased 50x - animation ends when < 0.5px from target
 };
 
 interface FullPageContainerProps {
