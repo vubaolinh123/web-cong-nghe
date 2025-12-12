@@ -138,6 +138,15 @@ body {
 .fullpage-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  /* GPU acceleration optimization */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  /* Prevent content from causing repaints */
+  contain: layout style paint;
 }
 
 .fullpage-container::-webkit-scrollbar {
@@ -149,6 +158,13 @@ body {
   width: 100%;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  /* GPU layer for each section */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Isolate paint to this element */
+  contain: layout style paint;
 }
 
 .fullpage-section::-webkit-scrollbar {
@@ -247,4 +263,37 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
+}
+
+/* Spotlight Animation */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* Custom Cursor - Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea,
+  select,
+  [data-cursor-hover] {
+    cursor: none;
+  }
 }

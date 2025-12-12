@@ -4,6 +4,7 @@ import "./globals.css";
 import { defaultSEO, siteConfig } from "@/lib/seo/config";
 import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,6 +101,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-100`}
       >
+        <CustomCursor />
         <LanguageProvider>
           {children}
         </LanguageProvider>

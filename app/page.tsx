@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { Header, Footer } from "@/components/common";
+import { Header } from "@/components/common";
 import IntroOverlay from "@/components/common/IntroOverlay";
 import {
   FullPageContainer,
@@ -22,49 +22,34 @@ const Hero = dynamic(() => import("@/components/home/Hero"), {
   loading: () => <SectionLoader />,
 });
 
-const Partners = dynamic(() => import("@/components/home/Partners"), {
+const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"), {
   loading: () => <SectionLoader />,
 });
 
-const MarketingServices = dynamic(() => import("@/components/home/MarketingServices"), {
+const WhyUsSection = dynamic(() => import("@/components/home/WhyUsSection"), {
   loading: () => <SectionLoader />,
 });
 
-const Services = dynamic(() => import("@/components/home/Services"), {
+const ApproachSection = dynamic(() => import("@/components/home/ApproachSection"), {
   loading: () => <SectionLoader />,
 });
 
-const Features = dynamic(() => import("@/components/home/Features"), {
+const ContactSection = dynamic(() => import("@/components/home/ContactSection"), {
   loading: () => <SectionLoader />,
 });
 
-const Stats = dynamic(() => import("@/components/home/Stats"), {
-  loading: () => <SectionLoader />,
-});
-
-const Process = dynamic(() => import("@/components/home/Process"), {
-  loading: () => <SectionLoader />,
-});
-
-const Testimonials = dynamic(() => import("@/components/home/Testimonials"), {
-  loading: () => <SectionLoader />,
-});
-
-const CTA = dynamic(() => import("@/components/home/CTA"), {
+const FooterSection = dynamic(() => import("@/components/home/FooterSection"), {
   loading: () => <SectionLoader />,
 });
 
 // Section configuration
 const sections: SectionConfig[] = [
   { id: "hero", label: "Trang chủ" },
-  { id: "partners", label: "Đối tác" },
-  { id: "marketing", label: "Marketing" },
-  { id: "services", label: "Công nghệ" },
-  { id: "features", label: "Tính năng" },
-  { id: "stats", label: "Thành tựu" },
-  { id: "process", label: "Quy trình" },
-  { id: "testimonials", label: "Đánh giá" },
+  { id: "services", label: "Dịch vụ" },
+  { id: "why-us", label: "Vì sao chọn chúng tôi" },
+  { id: "approach", label: "Quy trình" },
   { id: "contact", label: "Liên hệ" },
+  { id: "footer", label: "Thông tin" },
 ];
 
 export default function Home() {
@@ -86,65 +71,39 @@ export default function Home() {
             </Suspense>
           </FullPageSection>
 
-          {/* Section 2: Partners */}
-          <FullPageSection id="partners">
-            <Suspense fallback={<SectionLoader />}>
-              <Partners />
-            </Suspense>
-          </FullPageSection>
-
-          {/* Section 3: Marketing Services */}
-          <FullPageSection id="marketing">
-            <Suspense fallback={<SectionLoader />}>
-              <MarketingServices />
-            </Suspense>
-          </FullPageSection>
-
-          {/* Section 4: Technology Services */}
+          {/* Section 2: Services */}
           <FullPageSection id="services">
             <Suspense fallback={<SectionLoader />}>
-              <Services />
+              <ServicesSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 5: Features */}
-          <FullPageSection id="features">
+          {/* Section 3: Why Us */}
+          <FullPageSection id="why-us">
             <Suspense fallback={<SectionLoader />}>
-              <Features />
+              <WhyUsSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 6: Stats */}
-          <FullPageSection id="stats">
+          {/* Section 4: Approach */}
+          <FullPageSection id="approach">
             <Suspense fallback={<SectionLoader />}>
-              <Stats />
+              <ApproachSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 7: Process */}
-          <FullPageSection id="process">
-            <Suspense fallback={<SectionLoader />}>
-              <Process />
-            </Suspense>
-          </FullPageSection>
-
-          {/* Section 8: Testimonials */}
-          <FullPageSection id="testimonials">
-            <Suspense fallback={<SectionLoader />}>
-              <Testimonials />
-            </Suspense>
-          </FullPageSection>
-
-          {/* Section 9: CTA + Footer */}
+          {/* Section 5: Contact */}
           <FullPageSection id="contact">
-            <div className="h-full flex flex-col">
-              <div className="flex-1">
-                <Suspense fallback={<SectionLoader />}>
-                  <CTA />
-                </Suspense>
-              </div>
-              <Footer />
-            </div>
+            <Suspense fallback={<SectionLoader />}>
+              <ContactSection />
+            </Suspense>
+          </FullPageSection>
+
+          {/* Section 6: Footer */}
+          <FullPageSection id="footer">
+            <Suspense fallback={<SectionLoader />}>
+              <FooterSection />
+            </Suspense>
           </FullPageSection>
         </FullPageContainer>
       </main>

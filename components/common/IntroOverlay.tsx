@@ -28,7 +28,7 @@ export default function IntroOverlay() {
             showLogoAtEnd={true}
             logoSrc="/image/logo.png"
             onComplete={handleComplete}
-            autoAdvanceInterval={180}
+            autoAdvanceInterval={150}
           />
         </motion.div>
       )}

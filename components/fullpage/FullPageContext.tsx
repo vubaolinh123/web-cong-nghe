@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import React, { createContext, useContext, useState, useCallback, useRef, useEffect, ReactNode } from "react";
 
 export interface SectionConfig {
   id: string;
@@ -31,24 +31,45 @@ export function FullPageProvider({ children, initialSections = [] }: FullPagePro
   const [sections, setSections] = useState<SectionConfig[]>(initialSections);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Use ref to avoid recreating callbacks when isAnimating changes
+  const isAnimatingRef = useRef(false);
+  const sectionsRef = useRef(initialSections);
+
+  // Sync refs with state
+  useEffect(() => {
+    isAnimatingRef.current = isAnimating;
+  }, [isAnimating]);
+
+  useEffect(() => {
+    sectionsRef.current = sections;
+  }, [sections]);
+
   const totalSections = sections.length;
 
   const scrollToSection = useCallback((index: number) => {
-    if (index < 0 || index >= totalSections || isAnimating) return;
+    const total = sectionsRef.current.length;
+    if (index < 0 || index >= total || isAnimatingRef.current) return;
     setCurrentSection(index);
-  }, [totalSections, isAnimating]);
+  }, []); // Stable - no dependencies that change
 
   const scrollToNext = useCallback(() => {
-    if (currentSection < totalSections - 1 && !isAnimating) {
-      setCurrentSection(prev => prev + 1);
-    }
-  }, [currentSection, totalSections, isAnimating]);
+    setCurrentSection(prev => {
+      const total = sectionsRef.current.length;
+      if (prev < total - 1 && !isAnimatingRef.current) {
+        return prev + 1;
+      }
+      return prev;
+    });
+  }, []); // Stable - no dependencies that change
 
   const scrollToPrevious = useCallback(() => {
-    if (currentSection > 0 && !isAnimating) {
-      setCurrentSection(prev => prev - 1);
-    }
-  }, [currentSection, isAnimating]);
+    setCurrentSection(prev => {
+      if (prev > 0 && !isAnimatingRef.current) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  }, []); // Stable - no dependencies that change
 
   const value: FullPageContextType = {
     currentSection,

@@ -1,14 +1,19 @@
 "use client";
 
-import React, { ReactNode, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { ReactNode, useEffect, useCallback, useState, useRef } from "react";
+import { motion, useMotionValue, animate } from "framer-motion";
 import { useFullPage, SectionConfig, FullPageProvider } from "./FullPageContext";
 import { useFullPageScroll } from "@/hooks/useFullPageScroll";
 import { SectionNavigation } from "./SectionNavigation";
 
-const ANIMATION_CONFIG = {
-  duration: 0.8,
-  ease: [0.25, 0.1, 0.25, 1.0] as const,
+// Spring config for buttery smooth 60fps animations
+// Using spring physics instead of duration-based easing for more natural feel
+const SPRING_CONFIG = {
+  stiffness: 100,    // Lower = more gradual acceleration
+  damping: 20,       // Higher = less oscillation
+  mass: 0.5,         // Lower = faster response
+  restSpeed: 0.01,   // Precision for animation completion
+  restDelta: 0.01,
 };
 
 interface FullPageContainerProps {
@@ -29,34 +34,54 @@ function FullPageContainerInner({ children, className = "", showNavigation = tru
     setIsAnimating,
   } = useFullPage();
 
-  // Handle scroll events
+  // Use refs for stable values
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [viewportHeight, setViewportHeight] = useState(0);
+
+  // Get viewport height on mount and resize
+  useEffect(() => {
+    const updateHeight = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
+
+  // Use motion value for GPU-accelerated transform
+  // Using pixels instead of vh for better performance (no recalculation)
+  const yOffset = useMotionValue(0);
+
+  // Animate to new section when currentSection changes
+  useEffect(() => {
+    if (viewportHeight === 0) return;
+
+    const targetY = -currentSection * viewportHeight;
+
+    // Use animate for precise control and GPU optimization
+    const controls = animate(yOffset, targetY, {
+      type: "spring",
+      ...SPRING_CONFIG,
+      onPlay: () => setIsAnimating(true),
+      onComplete: () => setIsAnimating(false),
+    });
+
+    return () => controls.stop();
+  }, [currentSection, viewportHeight, yOffset, setIsAnimating]);
+
+  // Create stable callbacks for Home/End
+  const scrollToFirst = useCallback(() => scrollToSection(0), [scrollToSection]);
+  const scrollToLast = useCallback(() => scrollToSection(totalSections - 1), [scrollToSection, totalSections]);
+
+  // Handle scroll events - now includes Home/End handling
   useFullPageScroll({
     onScrollUp: scrollToPrevious,
     onScrollDown: scrollToNext,
+    onScrollToFirst: scrollToFirst,
+    onScrollToLast: scrollToLast,
     isAnimating,
     enabled: true,
   });
-
-  // Handle Home and End keys
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (isAnimating) return;
-
-      if (e.key === "Home") {
-        e.preventDefault();
-        scrollToSection(0);
-      } else if (e.key === "End") {
-        e.preventDefault();
-        scrollToSection(totalSections - 1);
-      }
-    },
-    [isAnimating, scrollToSection, totalSections]
-  );
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
 
   // Update URL hash on section change
   useEffect(() => {
@@ -98,24 +123,40 @@ function FullPageContainerInner({ children, className = "", showNavigation = tru
 
   return (
     <>
-      <div className={`fullpage-container relative w-full h-screen overflow-hidden ${className}`}>
-        <AnimatePresence mode="wait" onExitComplete={() => setIsAnimating(false)}>
-          <motion.div
-            key={currentSection}
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "-100%", opacity: 0 }}
-            transition={{
-              duration: ANIMATION_CONFIG.duration,
-              ease: ANIMATION_CONFIG.ease,
-            }}
-            onAnimationStart={() => setIsAnimating(true)}
-            onAnimationComplete={() => setIsAnimating(false)}
-            className="absolute inset-0 w-full h-full"
-          >
-            {childrenArray[currentSection]}
-          </motion.div>
-        </AnimatePresence>
+      <div
+        ref={containerRef}
+        className={`fullpage-container relative w-full h-screen overflow-hidden ${className}`}
+      >
+        {/*
+          Performance optimizations applied:
+          1. Using motion value + spring for GPU-accelerated transforms
+          2. Using pixels instead of vh units (no layout recalculation)
+          3. Framer Motion automatically uses translate3d for GPU compositing
+          4. will-change: transform hints browser to prepare optimization
+          5. backface-visibility: hidden prevents paint flicker
+        */}
+        <motion.div
+          style={{
+            y: yOffset,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+          }}
+          className="will-change-transform"
+        >
+          {childrenArray.map((child, index) => (
+            <div
+              key={index}
+              className="h-screen w-full"
+              style={{
+                // Each section also gets GPU optimization
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden',
+              }}
+            >
+              {child}
+            </div>
+          ))}
+        </motion.div>
       </div>
       {showNavigation && <SectionNavigation />}
     </>

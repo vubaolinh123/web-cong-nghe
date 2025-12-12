@@ -20,7 +20,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   ({ label, error, options, placeholder = "Chọn một tùy chọn", className = "", ...props }, ref) => {
     return (
       <div className="w-full">
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-xs font-medium text-slate-300 mb-1">
           {label}
           {props.required && <span className="text-red-400 ml-1">*</span>}
         </label>
@@ -28,7 +28,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
           <select
             ref={ref}
             className={`
-              w-full px-4 py-3 rounded-xl appearance-none
+              w-full px-3 py-2 rounded-lg appearance-none text-sm
               bg-slate-800/50 border border-slate-700
               text-white
               focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500
@@ -52,8 +52,8 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
               </option>
             ))}
           </select>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-            <ChevronDown size={20} />
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+            <ChevronDown size={16} />
           </div>
         </div>
         <AnimatePresence>
@@ -62,7 +62,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mt-2 text-sm text-red-400"
+              className="mt-1 text-xs text-red-400"
             >
               {error}
             </motion.p>

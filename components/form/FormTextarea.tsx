@@ -12,19 +12,19 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
   ({ label, error, className = "", ...props }, ref) => {
     return (
       <div className="w-full">
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-xs font-medium text-slate-300 mb-1">
           {label}
           {props.required && <span className="text-red-400 ml-1">*</span>}
         </label>
         <textarea
           ref={ref}
           className={`
-            w-full px-4 py-3 rounded-xl
+            w-full px-3 py-2 rounded-lg text-sm
             bg-slate-800/50 border border-slate-700
             text-white placeholder-slate-500
             focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500
             transition-all duration-300 resize-none
-            min-h-[120px]
+            min-h-[60px]
             ${error ? "border-red-500 focus:ring-red-500/50 focus:border-red-500" : ""}
             ${className}
           `}
@@ -36,7 +36,7 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mt-2 text-sm text-red-400"
+              className="mt-1 text-xs text-red-400"
             >
               {error}
             </motion.p>

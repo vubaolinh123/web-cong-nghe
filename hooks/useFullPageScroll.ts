@@ -5,6 +5,8 @@ import { useCallback, useRef, useEffect } from "react";
 interface UseFullPageScrollOptions {
   onScrollUp: () => void;
   onScrollDown: () => void;
+  onScrollToFirst?: () => void;
+  onScrollToLast?: () => void;
   isAnimating: boolean;
   enabled?: boolean;
 }
@@ -18,6 +20,8 @@ const SCROLL_CONFIG = {
 export function useFullPageScroll({
   onScrollUp,
   onScrollDown,
+  onScrollToFirst,
+  onScrollToLast,
   isAnimating,
   enabled = true,
 }: UseFullPageScrollOptions) {
@@ -26,113 +30,121 @@ export function useFullPageScroll({
   const touchEndY = useRef<number>(0);
   const accumulatedDelta = useRef<number>(0);
 
-  // Handle wheel events
-  const handleWheel = useCallback(
-    (e: WheelEvent) => {
-      if (!enabled || isAnimating) return;
+  // Use refs for callbacks to avoid recreating event handlers
+  const onScrollUpRef = useRef(onScrollUp);
+  const onScrollDownRef = useRef(onScrollDown);
+  const onScrollToFirstRef = useRef(onScrollToFirst);
+  const onScrollToLastRef = useRef(onScrollToLast);
+  const isAnimatingRef = useRef(isAnimating);
+  const enabledRef = useRef(enabled);
 
-      e.preventDefault();
+  // Sync refs with latest values
+  useEffect(() => {
+    onScrollUpRef.current = onScrollUp;
+    onScrollDownRef.current = onScrollDown;
+    onScrollToFirstRef.current = onScrollToFirst;
+    onScrollToLastRef.current = onScrollToLast;
+    isAnimatingRef.current = isAnimating;
+    enabledRef.current = enabled;
+  });
 
-      const now = Date.now();
-      const timeSinceLastScroll = now - lastScrollTime.current;
+  // Stable wheel handler - no dependencies that change
+  const handleWheel = useCallback((e: WheelEvent) => {
+    if (!enabledRef.current || isAnimatingRef.current) return;
 
-      // Accumulate delta for smoother detection
-      accumulatedDelta.current += e.deltaY;
+    e.preventDefault();
 
-      // Check if enough time has passed and delta threshold is met
-      if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
-        return;
+    const now = Date.now();
+    const timeSinceLastScroll = now - lastScrollTime.current;
+
+    // Accumulate delta for smoother detection
+    accumulatedDelta.current += e.deltaY;
+
+    // Check if enough time has passed and delta threshold is met
+    if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
+      return;
+    }
+
+    if (Math.abs(accumulatedDelta.current) >= SCROLL_CONFIG.wheelThreshold) {
+      if (accumulatedDelta.current > 0) {
+        onScrollDownRef.current();
+      } else {
+        onScrollUpRef.current();
       }
+      lastScrollTime.current = now;
+      accumulatedDelta.current = 0;
+    }
+  }, []); // Stable - uses refs
 
-      if (Math.abs(accumulatedDelta.current) >= SCROLL_CONFIG.wheelThreshold) {
-        if (accumulatedDelta.current > 0) {
-          onScrollDown();
-        } else {
-          onScrollUp();
-        }
+  // Stable touch start handler
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    if (!enabledRef.current) return;
+    touchStartY.current = e.touches[0].clientY;
+  }, []); // Stable - uses refs
+
+  // Stable touch end handler
+  const handleTouchEnd = useCallback((e: TouchEvent) => {
+    if (!enabledRef.current || isAnimatingRef.current) return;
+
+    touchEndY.current = e.changedTouches[0].clientY;
+    const deltaY = touchStartY.current - touchEndY.current;
+
+    const now = Date.now();
+    const timeSinceLastScroll = now - lastScrollTime.current;
+
+    if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
+      return;
+    }
+
+    if (Math.abs(deltaY) >= SCROLL_CONFIG.touchThreshold) {
+      if (deltaY > 0) {
+        onScrollDownRef.current();
+      } else {
+        onScrollUpRef.current();
+      }
+      lastScrollTime.current = now;
+    }
+  }, []); // Stable - uses refs
+
+  // Stable keyboard handler with Home/End support
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!enabledRef.current || isAnimatingRef.current) return;
+
+    const now = Date.now();
+    const timeSinceLastScroll = now - lastScrollTime.current;
+
+    if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
+      return;
+    }
+
+    switch (e.key) {
+      case "ArrowDown":
+      case "PageDown":
+      case " ": // Space bar
+        e.preventDefault();
+        onScrollDownRef.current();
         lastScrollTime.current = now;
-        accumulatedDelta.current = 0;
-      }
-    },
-    [enabled, isAnimating, onScrollDown, onScrollUp]
-  );
-
-  // Handle touch start
-  const handleTouchStart = useCallback(
-    (e: TouchEvent) => {
-      if (!enabled) return;
-      touchStartY.current = e.touches[0].clientY;
-    },
-    [enabled]
-  );
-
-  // Handle touch end
-  const handleTouchEnd = useCallback(
-    (e: TouchEvent) => {
-      if (!enabled || isAnimating) return;
-
-      touchEndY.current = e.changedTouches[0].clientY;
-      const deltaY = touchStartY.current - touchEndY.current;
-
-      const now = Date.now();
-      const timeSinceLastScroll = now - lastScrollTime.current;
-
-      if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
-        return;
-      }
-
-      if (Math.abs(deltaY) >= SCROLL_CONFIG.touchThreshold) {
-        if (deltaY > 0) {
-          onScrollDown();
-        } else {
-          onScrollUp();
-        }
+        break;
+      case "ArrowUp":
+      case "PageUp":
+        e.preventDefault();
+        onScrollUpRef.current();
         lastScrollTime.current = now;
-      }
-    },
-    [enabled, isAnimating, onScrollDown, onScrollUp]
-  );
+        break;
+      case "Home":
+        e.preventDefault();
+        onScrollToFirstRef.current?.();
+        lastScrollTime.current = now;
+        break;
+      case "End":
+        e.preventDefault();
+        onScrollToLastRef.current?.();
+        lastScrollTime.current = now;
+        break;
+    }
+  }, []); // Stable - uses refs
 
-  // Handle keyboard events
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (!enabled || isAnimating) return;
-
-      const now = Date.now();
-      const timeSinceLastScroll = now - lastScrollTime.current;
-
-      if (timeSinceLastScroll < SCROLL_CONFIG.debounceTime) {
-        return;
-      }
-
-      switch (e.key) {
-        case "ArrowDown":
-        case "PageDown":
-        case " ": // Space bar
-          e.preventDefault();
-          onScrollDown();
-          lastScrollTime.current = now;
-          break;
-        case "ArrowUp":
-        case "PageUp":
-          e.preventDefault();
-          onScrollUp();
-          lastScrollTime.current = now;
-          break;
-        case "Home":
-          e.preventDefault();
-          // Will be handled by parent component
-          break;
-        case "End":
-          e.preventDefault();
-          // Will be handled by parent component
-          break;
-      }
-    },
-    [enabled, isAnimating, onScrollDown, onScrollUp]
-  );
-
-  // Setup event listeners
+  // Setup event listeners - only runs once since handlers are stable
   useEffect(() => {
     if (!enabled) return;
 
