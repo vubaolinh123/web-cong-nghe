@@ -112,19 +112,19 @@ export default function ContactSection() {
   const specificServiceOptions = formData.serviceCategory === "technology"
     ? technologyServiceOptions
     : formData.serviceCategory === "marketing"
-    ? marketingServiceOptions
-    : [];
+      ? marketingServiceOptions
+      : [];
 
   return (
-    <section className="relative h-full flex items-center justify-center bg-slate-950 overflow-hidden">
-      {/* Background Effects */}
+    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
+      {/* Background Effects - Smaller on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/3 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-green-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-8 items-start lg:items-center">
           {/* Left Column - Benefits */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -132,7 +132,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-2 block">
+            <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 block">
               Liên Hệ Với Chúng Tôi
             </span>
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
@@ -141,7 +141,7 @@ export default function ContactSection() {
                 Tư Vấn Miễn Phí
               </span>
             </h2>
-            <p className="text-slate-400 text-sm mb-4 leading-relaxed">
+            <p className="text-slate-400 text-xs sm:text-sm mb-4 leading-relaxed">
               Để lại thông tin của bạn, đội ngũ chuyên gia của chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất.
             </p>
 
@@ -154,12 +154,12 @@ export default function ContactSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="flex items-center gap-2 p-2 rounded-lg bg-slate-900/50 border border-slate-800"
+                  className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-slate-900/50 border border-slate-800"
                 >
-                  <div className="w-7 h-7 rounded-md bg-cyan-500/20 flex items-center justify-center">
-                    <benefit.icon size={14} className="text-cyan-400" />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-cyan-500/20 flex items-center justify-center shrink-0">
+                    <benefit.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cyan-400" />
                   </div>
-                  <span className="text-slate-300 text-xs font-medium">{benefit.text}</span>
+                  <span className="text-slate-300 text-[10px] sm:text-xs font-medium">{benefit.text}</span>
                 </motion.div>
               ))}
             </div>
@@ -171,7 +171,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="max-h-[85vh] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
+            className="max-h-[75vh] sm:max-h-[85vh] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
           >
             <AnimatePresence mode="wait">
               {submitStatus === "success" ? (
@@ -184,7 +184,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit}
-                  className="relative rounded-2xl p-4 space-y-2.5 bg-slate-900/70 border border-transparent"
+                  className="relative rounded-2xl p-3 sm:p-4 space-y-2 sm:space-y-2.5 bg-slate-900/70 border border-transparent"
                   style={{
                     backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(34, 197, 94, 0.5), rgba(168, 85, 247, 0.5))`,
                     backgroundOrigin: 'border-box',
@@ -232,17 +232,15 @@ export default function ContactSection() {
                             key={option.value}
                             type="button"
                             onClick={() => handleServiceToggle(option.value)}
-                            className={`flex items-center gap-1 px-2 py-1 rounded-full border text-[11px] transition-all ${
-                              formData.specificServices.includes(option.value)
-                                ? "bg-cyan-500/20 border-cyan-500 text-white"
-                                : "bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600"
-                            }`}
+                            className={`flex items-center gap-1 px-2 py-1 rounded-full border text-[11px] transition-all ${formData.specificServices.includes(option.value)
+                              ? "bg-cyan-500/20 border-cyan-500 text-white"
+                              : "bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600"
+                              }`}
                           >
-                            <div className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${
-                              formData.specificServices.includes(option.value)
-                                ? "bg-cyan-500"
-                                : "border border-slate-500"
-                            }`}>
+                            <div className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${formData.specificServices.includes(option.value)
+                              ? "bg-cyan-500"
+                              : "border border-slate-500"
+                              }`}>
                               {formData.specificServices.includes(option.value) && (
                                 <Check size={8} className="text-white" />
                               )}

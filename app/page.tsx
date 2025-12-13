@@ -26,6 +26,10 @@ const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"
   loading: () => <SectionLoader />,
 });
 
+const CaseStudiesSection = dynamic(() => import("@/components/home/CaseStudiesSection"), {
+  loading: () => <SectionLoader />,
+});
+
 const WhyUsSection = dynamic(() => import("@/components/home/WhyUsSection"), {
   loading: () => <SectionLoader />,
 });
@@ -46,6 +50,7 @@ const FooterSection = dynamic(() => import("@/components/home/FooterSection"), {
 const sections: SectionConfig[] = [
   { id: "hero", label: "Trang chủ" },
   { id: "services", label: "Dịch vụ" },
+  { id: "case-studies", label: "Case Studies" },
   { id: "why-us", label: "Vì sao chọn chúng tôi" },
   { id: "approach", label: "Quy trình" },
   { id: "contact", label: "Liên hệ" },
@@ -78,28 +83,35 @@ export default function Home() {
             </Suspense>
           </FullPageSection>
 
-          {/* Section 3: Why Us */}
+          {/* Section 3: Case Studies */}
+          <FullPageSection id="case-studies">
+            <Suspense fallback={<SectionLoader />}>
+              <CaseStudiesSection />
+            </Suspense>
+          </FullPageSection>
+
+          {/* Section 4: Why Us */}
           <FullPageSection id="why-us">
             <Suspense fallback={<SectionLoader />}>
               <WhyUsSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 4: Approach */}
+          {/* Section 5: Approach */}
           <FullPageSection id="approach">
             <Suspense fallback={<SectionLoader />}>
               <ApproachSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 5: Contact */}
+          {/* Section 6: Contact */}
           <FullPageSection id="contact">
             <Suspense fallback={<SectionLoader />}>
               <ContactSection />
             </Suspense>
           </FullPageSection>
 
-          {/* Section 6: Footer */}
+          {/* Section 7: Footer */}
           <FullPageSection id="footer">
             <Suspense fallback={<SectionLoader />}>
               <FooterSection />

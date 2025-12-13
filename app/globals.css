@@ -91,6 +91,45 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* Hero Orb Animations - GPU accelerated */
+@keyframes orb-pulse {
+  0%, 100% { 
+    transform: scale(1) translateZ(0); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: scale(1.2) translateZ(0); 
+    opacity: 0.5; 
+  }
+}
+
+@keyframes orb-pulse-delayed {
+  0%, 100% { 
+    transform: scale(1.2) translateZ(0); 
+    opacity: 0.2; 
+  }
+  50% { 
+    transform: scale(1) translateZ(0); 
+    opacity: 0.4; 
+  }
+}
+
+@keyframes slow-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg) translateZ(0); }
+  to { transform: translate(-50%, -50%) rotate(360deg) translateZ(0); }
+}
+
+@keyframes particle-float {
+  0%, 100% { 
+    transform: translateY(0) translateZ(0); 
+    opacity: 0.2; 
+  }
+  50% { 
+    transform: translateY(-30px) translateZ(0); 
+    opacity: 0.8; 
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -102,6 +141,27 @@ body {
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
+}
+
+.animate-orb-pulse {
+  animation: orb-pulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-orb-pulse-delayed {
+  animation: orb-pulse-delayed 8s ease-in-out infinite;
+  animation-delay: 1s;
+  will-change: transform, opacity;
+}
+
+.animate-slow-rotate {
+  animation: slow-rotate 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-particle-float {
+  animation: particle-float 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 /* Text Gradient Utility */
@@ -180,6 +240,38 @@ body {
 
   .fullpage-section {
     scroll-snap-align: start;
+  }
+}
+
+/* Mobile/Tablet Fullpage Styles */
+@media (max-width: 1023px) {
+  .fullpage-section {
+    height: auto !important;
+    min-height: auto;
+  }
+
+  .mobile-fullpage-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .mobile-section {
+    min-height: auto;
+  }
+
+  /* Hero section should be full viewport on mobile */
+  .mobile-section:first-child .fullpage-section,
+  [data-section-id="hero"] {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  }
+}
+
+/* iPhone SE and small mobile optimizations */
+@media (max-width: 375px) {
+  .fullpage-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 

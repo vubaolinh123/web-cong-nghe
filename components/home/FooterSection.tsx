@@ -38,17 +38,17 @@ export default function FooterSection() {
   };
 
   return (
-    <section className="relative h-full flex flex-col justify-between bg-slate-950 overflow-hidden">
-      {/* Background Effects */}
+    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex flex-col justify-between bg-slate-950 overflow-hidden">
+      {/* Background Effects - Smaller on mobile */}
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-slate-900/50 to-transparent" />
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-green-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-cyan-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-green-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
             {/* Brand Section - Left */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -57,23 +57,23 @@ export default function FooterSection() {
               transition={{ duration: 0.5 }}
               className="lg:col-span-5"
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
                 <Image
                   src="/image/logo.png"
                   alt="ASI EVEREST logo"
                   width={200}
                   height={72}
-                  className="h-14 w-auto object-contain"
+                  className="h-10 sm:h-14 w-auto object-contain"
                 />
               </div>
-              <p className="text-slate-400 mb-6 max-w-md leading-relaxed">
+              <p className="text-slate-400 text-sm sm:text-base mb-4 sm:mb-6 max-w-md leading-relaxed">
                 {t("footer.description")}
               </p>
 
               {/* Contact Info */}
-              <div className="space-y-3 mb-6">
-                <a href={`mailto:${t("footer.contact.email")}`} className="flex items-center gap-3 text-slate-400 hover:text-cyan-400 transition-colors">
-                  <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center">
+              <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                <a href={`mailto:${t("footer.contact.email")}`} className="flex items-center gap-2 sm:gap-3 text-slate-400 hover:text-cyan-400 transition-colors">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800 flex items-center justify-center">
                     <Mail size={16} />
                   </div>
                   <span className="text-sm">{t("footer.contact.email")}</span>
@@ -119,7 +119,7 @@ export default function FooterSection() {
 
             {/* Links Section - Right */}
             <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {/* Marketing Services */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -127,13 +127,13 @@ export default function FooterSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                  <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
                     {t("footer.marketingServicesTitle")}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5 sm:space-y-2">
                     {footerLinks.marketingServices.map((link) => (
                       <li key={link.name}>
-                        <Link href={link.href} className="text-slate-400 hover:text-green-400 transition-colors text-sm flex items-center gap-1 group">
+                        <Link href={link.href} className="text-slate-400 hover:text-green-400 transition-colors text-xs sm:text-sm flex items-center gap-1 group">
                           <span>{link.name}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
@@ -149,13 +149,13 @@ export default function FooterSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                  <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
                     {t("footer.techServicesTitle")}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5 sm:space-y-2">
                     {footerLinks.techServices.map((link) => (
                       <li key={link.name}>
-                        <Link href={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm flex items-center gap-1 group">
+                        <Link href={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-xs sm:text-sm flex items-center gap-1 group">
                           <span>{link.name}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
@@ -171,13 +171,13 @@ export default function FooterSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                  <h4 className="text-white font-semibold mb-2 sm:mb-4 text-xs sm:text-sm uppercase tracking-wider">
                     {t("footer.companyTitle")}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5 sm:space-y-2">
                     {footerLinks.company.map((link) => (
                       <li key={link.name}>
-                        <Link href={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm flex items-center gap-1 group">
+                        <Link href={link.href} className="text-slate-400 hover:text-cyan-400 transition-colors text-xs sm:text-sm flex items-center gap-1 group">
                           <span>{link.name}</span>
                           <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
@@ -193,10 +193,10 @@ export default function FooterSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-8 p-5 rounded-xl bg-gradient-to-r from-cyan-500/10 to-green-500/10 border border-slate-800"
+                className="mt-6 sm:mt-8 p-4 sm:p-5 rounded-xl bg-gradient-to-r from-cyan-500/10 to-green-500/10 border border-slate-800"
               >
-                <h4 className="text-white font-semibold mb-2">Bạn cần tư vấn?</h4>
-                <p className="text-slate-400 text-sm mb-4">Liên hệ ngay để được hỗ trợ miễn phí từ chuyên gia.</p>
+                <h4 className="text-white font-semibold text-sm sm:text-base mb-2">Bạn cần tư vấn?</h4>
+                <p className="text-slate-400 text-xs sm:text-sm mb-3 sm:mb-4">Liên hệ ngay để được hỗ trợ miễn phí từ chuyên gia.</p>
                 <Link
                   href="/lien-he"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-green-500 text-white text-sm font-medium hover:opacity-90 transition-opacity"

@@ -47,11 +47,11 @@ export default function WhyUsSection() {
   ];
 
   return (
-    <section className="relative h-full flex items-center justify-center bg-slate-950 overflow-hidden">
-      {/* Static Background Effects - No animation for better performance */}
+    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
+      {/* Static Background Effects - Smaller on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,12 +61,12 @@ export default function WhyUsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
-          className="text-center mb-8 lg:mb-10"
+          className="text-center mb-6 sm:mb-8 lg:mb-10"
         >
-          <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-3 block">
+          <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">
             {dictionary.features.subtitle}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             {dictionary.features.title1}{" "}
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
               {dictionary.features.title2}
@@ -75,7 +75,7 @@ export default function WhyUsSection() {
         </motion.div>
 
         {/* Reasons Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
@@ -85,25 +85,25 @@ export default function WhyUsSection() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className="group"
             >
-              <div className="relative p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-600 transition-all duration-300 h-full overflow-hidden">
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-600 transition-all duration-300 h-full overflow-hidden">
                 {/* Hover Glow Effect */}
                 <div className={`absolute inset-0 ${reason.glowBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl`} />
 
                 <div className="relative z-10">
                   {/* Icon with gradient background */}
-                  <div className="relative mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${reason.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <reason.icon size={24} className="text-white" />
+                  <div className="relative mb-3 sm:mb-4">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${reason.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <reason.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
                     {reason.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-slate-400 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-3">
                     {reason.description}
                   </p>
 

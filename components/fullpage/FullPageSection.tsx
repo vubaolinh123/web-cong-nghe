@@ -18,7 +18,7 @@ export function FullPageSection({
   return (
     <section
       data-section-id={id}
-      className={`fullpage-section w-full h-screen overflow-y-auto overflow-x-hidden ${className}`}
+      className={`fullpage-section w-full overflow-y-auto overflow-x-hidden ${className}`}
       style={{ backgroundColor }}
     >
       {children}
@@ -27,3 +27,4 @@ export function FullPageSection({
 }
 
 export default FullPageSection;
+

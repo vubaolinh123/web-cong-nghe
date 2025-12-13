@@ -32,11 +32,11 @@ export default function ApproachSection() {
   ];
 
   return (
-    <section className="relative h-full flex items-center justify-center bg-slate-950 overflow-hidden">
-      {/* Background Effects */}
+    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
+      {/* Background Effects - Smaller on mobile */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/3 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-green-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,12 +46,12 @@ export default function ApproachSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-center mb-10 lg:mb-12"
+          className="text-center mb-6 sm:mb-8 lg:mb-12"
         >
-          <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-3 block">
+          <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">
             Quy Trình Làm Việc
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Our{" "}
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
               Approach
@@ -60,7 +60,7 @@ export default function ApproachSection() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -75,27 +75,27 @@ export default function ApproachSection() {
                 <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-slate-700 to-transparent" />
               )}
 
-              <div className="relative p-6 lg:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all duration-500 h-full">
+              <div className="relative p-4 sm:p-5 lg:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all duration-500 h-full">
                 {/* Step Number */}
-                <div className="flex items-start justify-between mb-6">
-                  <span className={`text-5xl lg:text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent opacity-50 group-hover:opacity-100 transition-opacity`}>
+                <div className="flex items-start justify-between mb-4 sm:mb-6">
+                  <span className={`text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent opacity-50 group-hover:opacity-100 transition-opacity`}>
                     {step.number}
                   </span>
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon size={24} className="text-white" />
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl lg:text-2xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
                   {step.title}
                 </h3>
-                <p className={`text-sm font-medium bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-3`}>
+                <p className={`text-xs sm:text-sm font-medium bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-2 sm:mb-3`}>
                   {step.subtitle}
                 </p>
 
                 {/* Description */}
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
