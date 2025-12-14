@@ -15,7 +15,7 @@ export default function ServicesSection() {
       description: "Giải pháp Marketing toàn diện với AI hỗ trợ tối ưu chiến dịch, tăng ROI và tiết kiệm chi phí quảng cáo",
       color: "from-green-400 to-emerald-500",
       bgGlow: "bg-green-500/20",
-      href: "/dich-vu/marketing",
+      href: "/dich-vu-marketing",
       badge: "Hot",
       stats: { projects: "200+", satisfaction: "98%" },
       features: [
@@ -32,7 +32,7 @@ export default function ServicesSection() {
       description: "Tự động hóa quy trình, tăng hiệu suất làm việc, giảm thiểu chi phí vận hành với các giải pháp AI thông minh",
       color: "from-blue-400 to-cyan-500",
       bgGlow: "bg-blue-500/20",
-      href: "/dich-vu/cong-nghe",
+      href: "/dich-vu-cong-nghe",
       badge: "AI-Powered",
       stats: { projects: "50+", satisfaction: "99%" },
       features: [

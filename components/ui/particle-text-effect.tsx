@@ -14,9 +14,9 @@ class Particle {
   acc: Vector2D = { x: 0, y: 0 }
   target: Vector2D = { x: 0, y: 0 }
 
-  closeEnoughTarget = 100
-  maxSpeed = 1.0
-  maxForce = 0.1
+  closeEnoughTarget = 80
+  maxSpeed = 0.8
+  maxForce = 0.08
   particleSize = 10
   isKilled = false
 
@@ -174,7 +174,7 @@ export function ParticleTextEffect({
     }
   }, [showLogoAtEnd, logoSrc])
 
-  const pixelSteps = 6
+  const pixelSteps = 10 // Increased from 6 to reduce particle count
   const drawAsPoints = true
 
   const generateRandomPos = (x: number, y: number, mag: number): Vector2D => {
@@ -232,7 +232,7 @@ export function ParticleTextEffect({
     // Shuffle for fluid motion
     for (let i = coordsIndexes.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
-      ;[coordsIndexes[i], coordsIndexes[j]] = [coordsIndexes[j], coordsIndexes[i]]
+        ;[coordsIndexes[i], coordsIndexes[j]] = [coordsIndexes[j], coordsIndexes[i]]
     }
 
     for (const coordIndex of coordsIndexes) {
@@ -256,10 +256,10 @@ export function ParticleTextEffect({
           particle.pos.x = randomPos.x
           particle.pos.y = randomPos.y
 
-          particle.maxSpeed = Math.random() * 6 + 4
-          particle.maxForce = particle.maxSpeed * 0.05
-          particle.particleSize = Math.random() * 6 + 6
-          particle.colorBlendRate = Math.random() * 0.0275 + 0.0025
+          particle.maxSpeed = Math.random() * 4 + 3 // Reduced from 6+4 for smoother motion
+          particle.maxForce = particle.maxSpeed * 0.04 // Reduced force for less jitter
+          particle.particleSize = Math.random() * 4 + 4 // Slightly smaller particles
+          particle.colorBlendRate = Math.random() * 0.03 + 0.005 // Slightly faster color blend
 
           particles.push(particle)
         }
@@ -313,8 +313,8 @@ export function ParticleTextEffect({
       const ctx = canvas.getContext("2d")!
       const particles = particlesRef.current
 
-      // Background with motion blur
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)"
+      // Background with motion blur - slightly higher opacity for better performance
+      ctx.fillStyle = "rgba(0, 0, 0, 0.15)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw particles
@@ -432,20 +432,18 @@ export function ParticleTextEffect({
         {words.map((_, index) => (
           <div
             key={index}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index <= wordIndexRef.current
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${index <= wordIndexRef.current
                 ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
                 : 'bg-slate-700'
-            }`}
+              }`}
           />
         ))}
         {showLogoAtEnd && (
           <div
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              showLogo
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${showLogo
                 ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
                 : 'bg-slate-700'
-            }`}
+              }`}
           />
         )}
       </div>

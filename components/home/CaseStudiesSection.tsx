@@ -80,7 +80,7 @@ export default function CaseStudiesSection() {
     ];
 
     return (
-        <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
+        <section className="relative py-8 sm:py-10 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
             {/* Background Effects - Smaller on mobile */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -94,24 +94,21 @@ export default function CaseStudiesSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3 }}
-                    className="text-center mb-6 sm:mb-8"
+                    className="text-center mb-4 sm:mb-5"
                 >
-                    <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 block">
-                        Case Studies
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">
                         Dự Án{" "}
                         <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
                             Thành Công
                         </span>
                     </h2>
-                    <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto px-2 sm:px-0">
+                    <p className="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto px-2 sm:px-0">
                         Khám phá cách chúng tôi giúp doanh nghiệp tận dụng sức mạnh AI để tối ưu vận hành
                     </p>
                 </motion.div>
 
                 {/* Case Studies Grid - 1 col mobile, 2 col tablet, 3 col desktop */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-3">
                     {caseStudies.map((caseStudy, index) => (
                         <motion.div
                             key={index}
@@ -121,38 +118,38 @@ export default function CaseStudiesSection() {
                             transition={{ duration: 0.3, delay: index * 0.05 }}
                             className="group"
                         >
-                            <div className="relative p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-600 transition-all duration-300 h-full overflow-hidden">
+                            <div className="relative p-3 sm:p-4 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-slate-600 transition-all duration-300 h-full overflow-hidden">
                                 {/* Glow Effect */}
                                 <div className={`absolute inset-0 ${caseStudy.bgGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl`} />
 
                                 <div className="relative z-10">
                                     {/* Header */}
-                                    <div className="flex items-start justify-between mb-2 sm:mb-3">
-                                        <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br ${caseStudy.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                            <caseStudy.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                    <div className="flex items-start justify-between mb-1.5 sm:mb-2">
+                                        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br ${caseStudy.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                            <caseStudy.icon className="w-4 h-4 text-white" />
                                         </div>
                                         <span className="text-xs text-slate-500 font-medium">{caseStudy.client}</span>
                                     </div>
 
                                     {/* Title */}
-                                    <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                                    <h3 className="text-sm sm:text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
                                         {caseStudy.title}
                                     </h3>
 
                                     {/* Challenge & Solution */}
-                                    <div className="space-y-1.5 sm:space-y-2 mb-2 sm:mb-3">
+                                    <div className="space-y-1 mb-1.5 sm:mb-2">
                                         <div>
                                             <span className="text-xs text-slate-500 font-medium">Thách thức:</span>
-                                            <p className="text-slate-400 text-xs sm:text-sm">{caseStudy.challenge}</p>
+                                            <p className="text-slate-400 text-xs leading-tight">{caseStudy.challenge}</p>
                                         </div>
                                         <div>
                                             <span className="text-xs text-slate-500 font-medium">Giải pháp:</span>
-                                            <p className="text-slate-400 text-xs sm:text-sm">{caseStudy.solution}</p>
+                                            <p className="text-slate-400 text-xs leading-tight">{caseStudy.solution}</p>
                                         </div>
                                     </div>
 
                                     {/* Result */}
-                                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${caseStudy.color} bg-opacity-10 border border-slate-700`}>
+                                    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${caseStudy.color} bg-opacity-10 border border-slate-700`}>
                                         <span className="text-xs font-semibold text-white">{caseStudy.result}</span>
                                     </div>
                                 </div>
@@ -167,11 +164,11 @@ export default function CaseStudiesSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: 0.3 }}
-                    className="text-center mt-6 sm:mt-8"
+                    className="text-center mt-4 sm:mt-5"
                 >
-                    <Link href="/lien-he" className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm sm:text-base font-semibold hover:opacity-90 transition-opacity group">
+                    <Link href="/lien-he" className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity group">
                         <span>Bắt đầu dự án của bạn</span>
-                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </motion.div>
             </div>

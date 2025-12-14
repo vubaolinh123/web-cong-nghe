@@ -21,14 +21,14 @@ export default function Header() {
   const servicesSubMenu = [
     {
       name: "Marketing Online",
-      href: "/#marketing-services",
+      href: "/dich-vu-marketing",
       icon: Megaphone,
       description: "Facebook Ads, TikTok, Fanpage",
       color: "text-green-400",
     },
     {
       name: "Gia Công Công Nghệ",
-      href: "/#services",
+      href: "/dich-vu-cong-nghe",
       icon: Code2,
       description: "Web, Mobile App, AI & Cloud",
       color: "text-cyan-400",
@@ -66,11 +66,10 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg shadow-black/10"
-          : "bg-slate-900/70 backdrop-blur-sm"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-slate-900/95 backdrop-blur-md shadow-lg shadow-black/10"
+        : "bg-slate-900/70 backdrop-blur-sm"
+        }`}
     >
       <Container>
         <nav className="flex items-center justify-between h-24">
@@ -127,9 +126,8 @@ export default function Header() {
                 {t('nav.services')}
                 <ChevronDown
                   size={16}
-                  className={`transition-transform duration-200 ${
-                    isServicesDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform duration-200 ${isServicesDropdownOpen ? "rotate-180" : ""
+                    }`}
                 />
               </motion.button>
 
@@ -228,9 +226,8 @@ export default function Header() {
                     <span>{t('nav.services')}</span>
                     <ChevronDown
                       size={18}
-                      className={`transition-transform duration-200 ${
-                        isMobileServicesOpen ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-200 ${isMobileServicesOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                   <AnimatePresence>
