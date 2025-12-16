@@ -26,7 +26,7 @@ const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"
   loading: () => <SectionLoader />,
 });
 
-const CaseStudiesSection = dynamic(() => import("@/components/home/CaseStudiesSection"), {
+const PartnerCarousel = dynamic(() => import("@/components/home/PartnerCarousel"), {
   loading: () => <SectionLoader />,
 });
 
@@ -50,7 +50,7 @@ const FooterSection = dynamic(() => import("@/components/home/FooterSection"), {
 const sections: SectionConfig[] = [
   { id: "hero", label: "Trang chủ" },
   { id: "services", label: "Dịch vụ" },
-  { id: "case-studies", label: "Case Studies" },
+  { id: "partners", label: "Đối tác" },
   { id: "why-us", label: "Vì sao chọn chúng tôi" },
   { id: "approach", label: "Quy trình" },
   { id: "contact", label: "Liên hệ" },
@@ -83,10 +83,10 @@ export default function Home() {
             </Suspense>
           </FullPageSection>
 
-          {/* Section 3: Case Studies */}
-          <FullPageSection id="case-studies">
+          {/* Section 3: Partners */}
+          <FullPageSection id="partners">
             <Suspense fallback={<SectionLoader />}>
-              <CaseStudiesSection />
+              <PartnerCarousel />
             </Suspense>
           </FullPageSection>
 
