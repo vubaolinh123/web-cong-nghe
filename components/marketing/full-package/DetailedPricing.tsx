@@ -120,8 +120,7 @@ export default function DetailedPricing() {
                             </div>
 
                             <a
-                                href="https://zalo.me/0923451469"
-                                target="_blank"
+                                href="/lien-he"
                                 rel="noreferrer"
                                 className={`w-full py-4 rounded-xl text-white font-bold text-center transition-all flex items-center justify-center gap-2 shadow-lg ${plan.btnColor} transform group-hover:-translate-y-1`}
                             >

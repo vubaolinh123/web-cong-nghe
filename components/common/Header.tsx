@@ -107,6 +107,7 @@ export default function Header() {
               <Link
                 href="/"
                 className="text-slate-300 hover:text-white transition-colors font-medium"
+                suppressHydrationWarning
               >
                 {t('nav.home')}
               </Link>

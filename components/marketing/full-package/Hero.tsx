@@ -43,12 +43,12 @@ export default function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link
-                            href="#pricing"
-                            className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1"
+                        <a
+                            href="/lien-he"
+                            className="px-8 py-4 rounded-full bg-white text-blue-900 font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                         >
-                            Xem Bảng Giá
-                        </Link>
+                            Tư Vấn Miễn Phí
+                        </a>
                         <Link
                             href="/lien-he"
                             className="px-8 py-4 rounded-full bg-slate-800 border border-slate-700 text-white font-bold text-lg hover:bg-slate-700 transition-all flex items-center gap-2"

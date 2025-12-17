@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, MessageSquare, Share2, Monitor, CheckCircle } from "lucide-react";
+import { Rocket, MessageSquare, Share2, Monitor, CheckCircle, ShieldCheck, Zap, Users } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import Image from "next/image";
 
 export default function WhyUsSection() {
   const { dictionary } = useLanguage();
@@ -14,8 +15,8 @@ export default function WhyUsSection() {
       description: dictionary.features.items.exclusiveAgency.description,
       color: "from-green-400 to-emerald-500",
       iconBg: "bg-gradient-to-br from-green-400 to-emerald-500",
-      glowBg: "bg-green-500/20",
-      highlights: ["Độc quyền tại Việt Nam", "Công nghệ mới nhất"],
+      stat: "No.1",
+      statLabel: "Tại Việt Nam"
     },
     {
       icon: MessageSquare,
@@ -23,8 +24,8 @@ export default function WhyUsSection() {
       description: dictionary.features.items.uniqueIdeas.description,
       color: "from-blue-400 to-cyan-500",
       iconBg: "bg-gradient-to-br from-blue-400 to-cyan-500",
-      glowBg: "bg-blue-500/20",
-      highlights: ["Sáng tạo đột phá", "Chiến lược riêng biệt"],
+      stat: "24/7",
+      statLabel: "Hỗ trợ"
     },
     {
       icon: Share2,
@@ -32,8 +33,8 @@ export default function WhyUsSection() {
       description: dictionary.features.items.qualityPromotion.description,
       color: "from-purple-400 to-pink-500",
       iconBg: "bg-gradient-to-br from-purple-400 to-pink-500",
-      glowBg: "bg-purple-500/20",
-      highlights: ["Hiệu quả cao", "Tối ưu chi phí"],
+      stat: "200%",
+      statLabel: "Hiệu quả"
     },
     {
       icon: Monitor,
@@ -41,32 +42,38 @@ export default function WhyUsSection() {
       description: dictionary.features.items.experience.description,
       color: "from-orange-400 to-red-500",
       iconBg: "bg-gradient-to-br from-orange-400 to-red-500",
-      glowBg: "bg-orange-500/20",
-      highlights: ["10+ năm kinh nghiệm", "500+ dự án"],
+      stat: "10+",
+      statLabel: "Năm KN"
     },
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
-      {/* Static Background Effects - Smaller on mobile */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+    <section className="relative w-full h-screen flex items-center justify-center bg-slate-950 overflow-hidden">
+      {/* Full Screen Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/images/why_us_bg_3d.png"
+          alt="Background"
+          fill
+          className="object-cover opacity-30"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/80 to-slate-950" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
-          className="text-center mb-6 sm:mb-8 lg:mb-10"
+          className="text-center mb-10"
         >
-          <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">
+          <span className="text-cyan-400 text-sm font-bold uppercase tracking-widest mb-2 block">
             {dictionary.features.subtitle}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
             {dictionary.features.title1}{" "}
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
               {dictionary.features.title2}
@@ -74,52 +81,44 @@ export default function WhyUsSection() {
           </h2>
         </motion.div>
 
-        {/* Reasons Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+        {/* Bento Grid Layout - Optimized for height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-h-[60vh]">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="group"
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className={`group relative p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 flex flex-col
+                ${index === 0 || index === 3 ? "lg:translate-y-8" : ""}
+              `} // Staggered grid effect
             >
-              <div className="relative p-4 sm:p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-600 transition-all duration-300 h-full overflow-hidden">
-                {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 ${reason.glowBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl`} />
-
-                <div className="relative z-10">
-                  {/* Icon with gradient background */}
-                  <div className="relative mb-3 sm:mb-4">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${reason.iconBg} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <reason.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
-                    {reason.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-3">
-                    {reason.description}
-                  </p>
-
-                  {/* Highlights - No animation */}
-                  <div className="space-y-1.5">
-                    {reason.highlights.map((highlight, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2 text-xs text-slate-300"
-                      >
-                        <CheckCircle size={12} className="text-cyan-400 shrink-0" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="flex justify-between items-start mb-4">
+                <div className={`p-3 rounded-xl bg-gradient-to-br ${reason.color} shadow-lg group-hover:scale-110 transition-transform`}>
+                  <reason.icon className="w-6 h-6 text-white" />
                 </div>
+                <div className="text-right">
+                  <div className={`text-2xl font-bold bg-gradient-to-r ${reason.color} bg-clip-text text-transparent`}>{reason.stat}</div>
+                  <div className="text-xs text-slate-400 uppercase">{reason.statLabel}</div>
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                {reason.title}
+              </h3>
+
+              <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">
+                {reason.description}
+              </p>
+
+              <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
+                  className={`h-full bg-gradient-to-r ${reason.color}`}
+                />
               </div>
             </motion.div>
           ))}

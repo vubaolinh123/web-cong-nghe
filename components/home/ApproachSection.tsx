@@ -1,101 +1,102 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Lightbulb, Rocket } from "lucide-react";
+import Image from "next/image";
 
 export default function ApproachSection() {
   const steps = [
     {
       number: "01",
-      icon: Search,
       title: "Discovery",
-      subtitle: "Khám Phá & Phân Tích",
-      description: "Lắng nghe yêu cầu, phân tích nhu cầu kinh doanh và nghiên cứu thị trường để đề xuất giải pháp tối ưu nhất.",
+      subtitle: "Khám Phá",
+      description: "Phân tích nhu cầu & thị trường",
       color: "from-cyan-400 to-blue-500",
+      image: "/images/approach_discovery_3d.png"
     },
     {
       number: "02",
-      icon: Lightbulb,
       title: "Strategy",
-      subtitle: "Chiến Lược & Thiết Kế",
-      description: "Xây dựng chiến lược toàn diện, thiết kế UI/UX trực quan và lập kế hoạch triển khai chi tiết.",
+      subtitle: "Chiến Lược",
+      description: "Xây dựng kế hoạch & thiết kế UI/UX",
       color: "from-green-400 to-emerald-500",
+      image: "/images/approach_strategy_3d.png"
     },
     {
       number: "03",
-      icon: Rocket,
       title: "Development",
-      subtitle: "Phát Triển & Triển Khai",
-      description: "Phát triển sản phẩm với công nghệ tiên tiến, kiểm thử kỹ lưỡng và triển khai lên production.",
+      subtitle: "Phát Triển",
+      description: "Lập trình & Triển khai production",
       color: "from-purple-400 to-pink-500",
+      image: "/images/approach_dev_3d.png"
     },
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:h-full flex items-center justify-center bg-slate-950 overflow-hidden">
-      {/* Background Effects - Smaller on mobile */}
+    <section className="relative w-full h-screen flex items-center justify-center bg-slate-950 overflow-hidden">
+      {/* Dynamic Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/3 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent dashed-line" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-6 sm:mb-8 lg:mb-12"
+          transition={{ duration: 0.3 }}
+          className="text-center mb-12"
         >
-          <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 sm:mb-3 block">
+          <span className="text-cyan-400 text-sm font-bold uppercase tracking-widest mb-2 block">
             Quy Trình Làm Việc
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Our{" "}
-            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
-              Approach
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Our <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">Approach</span>
           </h2>
         </motion.div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-8">
+        {/* 3D Visual Timeline */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-[40%] left-0 w-full h-1 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 -z-10 rounded-full" />
+
           {steps.map((step, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group relative"
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              className="relative flex flex-col items-center text-center group"
             >
-              {/* Connecting Line (hidden on mobile) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-slate-700 to-transparent" />
-              )}
+              {/* Floating 3D Icon */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56 mb-6 transition-transform duration-500 transform group-hover:-translate-y-4">
+                {/* Glow effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-20 blur-3xl rounded-full group-hover:opacity-40 transition-opacity duration-500`} />
 
-              <div className="relative p-4 sm:p-5 lg:p-8 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition-all duration-500 h-full">
-                {/* Step Number */}
-                <div className="flex items-start justify-between mb-4 sm:mb-6">
-                  <span className={`text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent opacity-50 group-hover:opacity-100 transition-opacity`}>
-                    {step.number}
-                  </span>
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  fill
+                  className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                  quality={90}
+                />
+
+                {/* Floating Number */}
+                <div className={`absolute -top-2 -right-2 w-12 h-12 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center font-bold text-white shadow-lg z-20`}>
+                  {step.number}
                 </div>
+              </div>
 
-                {/* Title */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
+              {/* Text Card - Glassmorphism */}
+              <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 p-6 rounded-2xl w-full max-w-sm hover:border-cyan-500/50 transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
                   {step.title}
                 </h3>
-                <p className={`text-xs sm:text-sm font-medium bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-2 sm:mb-3`}>
+                <p className={`text-sm font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent uppercase tracking-wider mb-2`}>
                   {step.subtitle}
                 </p>
-
-                {/* Description */}
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                <p className="text-slate-400 text-sm">
                   {step.description}
                 </p>
               </div>

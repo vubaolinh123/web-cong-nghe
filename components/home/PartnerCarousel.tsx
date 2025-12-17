@@ -4,35 +4,32 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 const partners = [
-    // Marketing Agency
-    { name: "LeBros", logo: "https://logo.clearbit.com/lebros.vn" },
-    { name: "Yeah1", logo: "https://logo.clearbit.com/yeah1.com" },
-    { name: "Mix Digital", logo: "https://logo.clearbit.com/mixdigital.vn" },
-    { name: "Vici Agency", logo: "https://logo.clearbit.com/vici.vn" },
-    { name: "Blue Sky", logo: "https://logo.clearbit.com/bluesky.vn" },
-    { name: "Unic", logo: "https://logo.clearbit.com/unic.com.vn" },
+    // Marketing Agency & Media
+    { name: "Yeah1", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Yeah1_Logo_-_New_Brand_-_2023.png" }, // Wiki is usually safe
+    { name: "Mix Digital", logo: "https://ui-avatars.com/api/?name=Mix+Digital&background=0D8ABC&color=fff&size=128" },
+    { name: "Vici Agency", logo: "https://ui-avatars.com/api/?name=Vici+Agency&background=random&size=128" },
+    { name: "Blue Sky", logo: "https://ui-avatars.com/api/?name=Blue+Sky&background=random&size=128" },
+    { name: "Unic", logo: "https://ui-avatars.com/api/?name=Unic&background=random&size=128" },
 
     // Finance & Banking
-    { name: "ACB", logo: "https://logo.clearbit.com/acb.com.vn" },
-    { name: "VPBank", logo: "https://logo.clearbit.com/vpbank.com.vn" },
-    { name: "VIB", logo: "https://logo.clearbit.com/vib.com.vn" },
-    { name: "VietCredit", logo: "https://logo.clearbit.com/vietcredit.vn" },
-    { name: "SCB", logo: "https://logo.clearbit.com/scb.com.vn" },
-    { name: "Sacombank", logo: "https://logo.clearbit.com/sacombank.com.vn" },
+    { name: "ACB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Logo_ACB.svg/1200px-Logo_ACB.svg.png" },
+    { name: "VPBank", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/VPBank_logo.svg/706px-VPBank_logo.svg.png" },
+    { name: "VIB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/VIB_logo.svg/2560px-VIB_logo.svg.png" },
+    { name: "SCB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/SCB_Thailand_logo.svg/1200px-SCB_Thailand_logo.svg.png" },
+    { name: "Sacombank", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logo-Sacombank-new.png/798px-Logo-Sacombank-new.png" },
 
     // F&B
-    { name: "Pizza 4P's", logo: "https://logo.clearbit.com/pizza4ps.com" },
-    { name: "McDonald's", logo: "https://logo.clearbit.com/mcdonalds.vn" },
-    { name: "The Coffee House", logo: "https://logo.clearbit.com/thecoffeehouse.com" },
-    { name: "Ofood", logo: "https://logo.clearbit.com/ofood.vn" },
-    { name: "Royaltea", logo: "https://logo.clearbit.com/royaltea.vn" },
-    { name: "Gemini Coffee", logo: "https://logo.clearbit.com/geminicoffee.vn" },
+    { name: "Pizza 4P's", logo: "https://ui-avatars.com/api/?name=Pizza+4Ps&background=random&size=128" },
+    { name: "McDonald's", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png" },
+    { name: "The Coffee House", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/The_Coffee_House_Logo.png" },
+    { name: "OFood", logo: "https://ui-avatars.com/api/?name=OFood&background=random&size=128" },
+    { name: "Gemini Coffee", logo: "https://ui-avatars.com/api/?name=Gemini+Coffee&background=random&size=128" },
 
     // Travel & Real Estate
-    { name: "Up Travel", logo: "https://logo.clearbit.com/uptravel.vn" },
-    { name: "Justfly", logo: "https://logo.clearbit.com/justfly.vn" },
-    { name: "Cen Land", logo: "https://logo.clearbit.com/cenland.vn" },
-    { name: "JJLand", logo: "https://logo.clearbit.com/jjland.vn" },
+    { name: "Join UP!", logo: "https://ui-avatars.com/api/?name=Join+UP&background=random&size=128" },
+    { name: "Justfly", logo: "https://ui-avatars.com/api/?name=Justfly&background=random&size=128" },
+    { name: "Cen Land", logo: "https://ui-avatars.com/api/?name=Cen+Land&background=random&size=128" },
+    { name: "JJLand", logo: "https://ui-avatars.com/api/?name=JJLand&background=random&size=128" },
 ];
 
 const PartnerCarousel = () => {
