@@ -41,7 +41,7 @@ export default function Benefits() {
                     >
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 blur-3xl rounded-full" />
                         <img
-                            src="/image/growth_success.png"
+                            src="/image/real/growth_success.jpg"
                             alt="Growth Success"
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-blue-500/30"
                         />

@@ -12,7 +12,7 @@ const TiktokBenefits = dynamic(() => import("@/components/marketing/tiktok/Tikto
 const TiktokPricing = dynamic(() => import("@/components/marketing/tiktok/TiktokPricing"));
 const Process = dynamic(() => import("@/components/marketing/tiktok/Process"));
 const FAQ = dynamic(() => import("@/components/marketing/tiktok/FAQ"));
-const FooterSection = dynamic(() => import("@/components/home/FooterSection"));
+const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
 export default function TiktokPage() {
 

@@ -7,17 +7,17 @@ export default function Benefits() {
         {
             title: "XÂY DỰNG CỘNG ĐỒNG",
             desc: "Trở thành admin group facebook đồng nghĩa bạn đang có một cộng đồng người dùng cũng cùng quan tâm đến một chủ đề nào đó.",
-            img: "/image/group_users.png"
+            img: "/image/group/users.jpg"
         },
         {
             title: "HỖ TRỢ BÁN HÀNG",
             desc: "Đăng bán sản phẩm trong group, chia sẻ livestream vào group ... là phương án bán hàng hiệu quả cho người kinh doanh ở thời điểm hiện tại.",
-            img: "/image/group_rocket.png"
+            img: "/image/group/rocket.jpg"
         },
         {
             title: "PHÁT TRIỂN THƯƠNG HIỆU",
             desc: "Doanh nghiệp cũng có thể xây dựng hình ảnh thương hiệu trên group nhiều thành viên, lan truyền thông điệp hiệu quả nhất có thể.",
-            img: "/image/group_shield.png"
+            img: "/image/group/shield.jpg"
         }
     ];
 

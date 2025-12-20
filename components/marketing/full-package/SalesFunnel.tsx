@@ -68,7 +68,7 @@ export default function SalesFunnel() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-green-500/20 to-blue-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity duration-1000" />
                         <img
-                            src="/image/sales_funnel.png"
+                            src="/image/real/sales_funnel.jpg"
                             alt="3D Sales Funnel Visualization"
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-slate-700/50 hover:scale-105 transition-transform duration-700"
                         />

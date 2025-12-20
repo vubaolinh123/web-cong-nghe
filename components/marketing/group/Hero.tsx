@@ -51,7 +51,7 @@ export default function Hero() {
                         className="relative"
                     >
                         <img
-                            src="/image/group_hero.png"
+                            src="/image/group/hero.jpg"
                             alt="Group Community Network"
                             className="w-full h-auto drop-shadow-2xl animate-float"
                         />

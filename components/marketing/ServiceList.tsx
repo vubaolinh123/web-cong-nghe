@@ -18,7 +18,7 @@ const services = [
             "Đội ngũ chuyên gia 1-1"
         ],
         color: "from-green-400 to-emerald-400",
-        image: "/images/marketing_full_package_3d.png",
+        image: "/image/marketing/full_package_real.jpg",
         href: "/dich-vu-marketing/marketing-tong-the"
     },
     {
@@ -32,7 +32,7 @@ const services = [
             "Quản lý và moderation 24/7"
         ],
         color: "from-blue-400 to-cyan-400",
-        image: "/images/marketing_group_3d.png",
+        image: "/image/marketing/group_real.jpg",
         href: "/dich-vu-marketing/xay-dung-group-facebook"
     },
     {
@@ -46,7 +46,7 @@ const services = [
             "Tăng followers thực chất lượng"
         ],
         color: "from-purple-400 to-pink-400",
-        image: "/images/marketing_fanpage_3d.png",
+        image: "/image/marketing/fanpage_real.jpg",
         href: "/dich-vu-marketing/xay-dung-fanpage"
     },
     {
@@ -60,7 +60,7 @@ const services = [
             "Livestream bán hàng chuyên nghiệp"
         ],
         color: "from-pink-400 to-red-400",
-        image: "/images/marketing_tiktok_3d.png",
+        image: "/image/marketing/tiktok_real.jpg",
         href: "/dich-vu-marketing/xay-dung-tiktok-shop"
     }
 ];

@@ -236,6 +236,104 @@ export const vi: TranslationDictionary = {
     ctaPrimary: "Tư Vấn Ngay",
     ctaSecondary: "Gọi Hotline"
   },
+  homepageServices: {
+    badge: "Dịch Vụ Của Chúng Tôi",
+    title: "Giải Pháp",
+    titleHighlight: "AI-First",
+    marketing: {
+      title: "AI Marketing",
+      description: "Giải pháp Marketing toàn diện với AI hỗ trợ tối ưu chiến dịch, tăng ROI và tiết kiệm chi phí quảng cáo",
+      features: {
+        ads: "Facebook & TikTok Ads",
+        fanpage: "Chăm sóc Fanpage chuyên nghiệp",
+        content: "Content AI-Powered",
+        seo: "SEO & SEM tối ưu"
+      }
+    },
+    tech: {
+      title: "Ứng dụng AI cho Doanh Nghiệp",
+      description: "Tự động hóa quy trình, tăng hiệu suất làm việc, giảm thiểu chi phí vận hành với các giải pháp AI thông minh",
+      features: {
+        automation: "Automation (Low-code Platform)",
+        chatbot: "AI Chatbot 24/7 & AI Agent",
+        custom: "Custom Websites & Apps",
+        integration: "Tích hợp AI sẵn có"
+      }
+    },
+    exploreButton: "KHÁM PHÁ NGAY"
+  },
+  whyUs: {
+    stats: {
+      inVietnam: "Tại Việt Nam",
+      support: "Hỗ trợ",
+      efficiency: "Hiệu quả",
+      yearsExp: "Năm KN"
+    }
+  },
+  approach: {
+    badge: "Quy Trình Làm Việc",
+    title: "Our",
+    titleHighlight: "Approach",
+    steps: {
+      discovery: {
+        subtitle: "Khám Phá",
+        description: "Phân tích nhu cầu & thị trường"
+      },
+      strategy: {
+        subtitle: "Chiến Lược",
+        description: "Xây dựng kế hoạch & thiết kế UI/UX"
+      },
+      development: {
+        subtitle: "Phát Triển",
+        description: "Lập trình & Triển khai production"
+      }
+    }
+  },
+  contactSection: {
+    badge: "Liên Hệ Với Chúng Tôi",
+    title: "Nhận",
+    titleHighlight: "Tư Vấn Miễn Phí",
+    description: "Để lại thông tin của bạn, đội ngũ chuyên gia của chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất.",
+    benefits: {
+      response: "Phản hồi trong 24 giờ",
+      free: "Tư vấn miễn phí",
+      security: "Bảo mật thông tin",
+      support: "Hỗ trợ 24/7"
+    },
+    form: {
+      name: "Họ và Tên",
+      namePlaceholder: "Nguyễn Văn A",
+      phone: "Số Điện Thoại",
+      phonePlaceholder: "0912 345 678",
+      jobTitle: "Chức Danh",
+      jobTitlePlaceholder: "Giám đốc, Quản lý, ...",
+      currentJob: "Công Việc Hiện Tại",
+      currentJobPlaceholder: "Mô tả công việc",
+      fanpage: "Link Fanpage/Website (Tùy chọn)",
+      fanpagePlaceholder: "https://facebook.com/yourpage",
+      service: "Dịch Vụ Bạn Cần",
+      servicePlaceholder: "Chọn loại dịch vụ",
+      specificService: "Chọn Dịch Vụ Cụ Thể",
+      message: "Nội Dung Tin Nhắn",
+      messagePlaceholder: "Mô tả ngắn gọn về dự án hoặc nhu cầu của bạn...",
+      submit: "Gửi Yêu Cầu Tư Vấn",
+      submitting: "Đang gửi..."
+    },
+    success: {
+      title: "Gửi Thành Công!",
+      message: "Đội ngũ của chúng tôi sẽ phản hồi trong vòng 24 giờ.",
+      sendAnother: "Gửi Yêu Cầu Khác"
+    },
+    error: {
+      title: "Có Lỗi Xảy Ra",
+      tryAgain: "Thử Lại"
+    }
+  },
+  footerCta: {
+    title: "Bạn cần tư vấn?",
+    description: "Liên hệ ngay để được hỗ trợ miễn phí từ chuyên gia.",
+    button: "Liên Hệ Ngay"
+  },
   marketingServices: {
     badge: "Dịch Vụ Marketing Online",
     title: "Thu Hút Khách Hàng",

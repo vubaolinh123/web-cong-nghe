@@ -75,7 +75,7 @@ export default function TrafficSources() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {sources.map((source, index) => (
-                                <div key={index} className={`p-5 rounded-xl border ${source.bg} hover:bg-opacity-20 transition-all cursor-default`}>
+                                <div key={index} className={`p-5 rounded-xl border ${source.bg} hover:bg-opacity-20 transition-all cursor-none`}>
                                     <div className={`w-10 h-10 rounded-lg ${source.bg} flex items-center justify-center mb-3 ${source.color}`}>
                                         <source.icon size={20} />
                                     </div>
@@ -97,9 +97,9 @@ export default function TrafficSources() {
                     >
                         <div className="absolute inset-0 bg-orange-500/10 blur-[100px] rounded-full" />
                         <img
-                            src="/image/traffic_sources_network.png"
+                            src="/image/real/traffic_sources.jpg"
                             alt="Traffic Sources Network"
-                            className="relative z-10 w-full rounded-2xl shadow-2xl border border-orange-500/20 animate-pulse-slow"
+                            className="relative z-10 w-full rounded-2xl shadow-2xl border border-orange-500/20"
                         />
                     </motion.div>
                 </div>

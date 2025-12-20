@@ -8,9 +8,10 @@ const Spline = lazy(() => import("@splinetool/react-spline"));
 interface SplineSceneProps {
   scene: string;
   className?: string;
+  enableMouseTracking?: boolean;
 }
 
-export function SplineScene({ scene, className }: SplineSceneProps) {
+export function SplineScene({ scene, className, enableMouseTracking = false }: SplineSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const splineRef = useRef<Application | null>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -62,6 +63,83 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     }
   }, [isVisible, hasLoaded]);
 
+  // Optimized mouse tracking for robot eye following - full screen tracking
+  useEffect(() => {
+    if (!enableMouseTracking || !hasLoaded || !splineRef.current || !isVisible) return;
+
+    let animationFrameId: number | null = null;
+    let cachedRect: DOMRect | null = null;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let isTracking = false;
+
+    // Cache the container rect and update on resize
+    const updateRect = () => {
+      if (containerRef.current) {
+        cachedRect = containerRef.current.getBoundingClientRect();
+      }
+    };
+    updateRect();
+
+    // Update Spline variables using requestAnimationFrame for smooth rendering
+    const updateSpline = () => {
+      if (!splineRef.current || !cachedRect) return;
+
+      try {
+        // Calculate position relative to container center
+        // This allows tracking even when mouse is outside the container
+        const centerX = cachedRect.left + cachedRect.width / 2;
+        const centerY = cachedRect.top + cachedRect.height / 2;
+
+        // Calculate direction vector from container center to mouse
+        // Use full window dimensions for normalization to allow extended range
+        const normalizedX = (lastMouseX - centerX) / (window.innerWidth / 2);
+        const normalizedY = -((lastMouseY - centerY) / (window.innerHeight / 2)); // Invert Y
+
+        // Clamp values to prevent extreme rotations but allow extended range
+        const clampedX = Math.max(-2, Math.min(2, normalizedX));
+        const clampedY = Math.max(-2, Math.min(2, normalizedY));
+
+        // Set variables in Spline scene
+        splineRef.current.setVariable?.('mouseX', clampedX);
+        splineRef.current.setVariable?.('mouseY', clampedY);
+      } catch {
+        // Ignore errors from Spline interaction
+      }
+
+      isTracking = false;
+    };
+
+    // Mouse move handler with requestAnimationFrame throttling
+    const handleMouseMove = (e: MouseEvent) => {
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+
+      // Only schedule animation frame if not already pending
+      if (!isTracking) {
+        isTracking = true;
+        animationFrameId = requestAnimationFrame(updateSpline);
+      }
+    };
+
+    // Handle window resize to update cached rect
+    const handleResize = () => {
+      updateRect();
+    };
+
+    // Add event listeners with passive flag for performance
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [enableMouseTracking, hasLoaded, isVisible]);
+
   return (
     <div ref={containerRef} className={`relative h-full w-full ${className || ""}`}>
       <Suspense
@@ -82,3 +160,4 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     </div>
   );
 }
+

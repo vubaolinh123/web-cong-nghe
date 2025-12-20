@@ -8,7 +8,7 @@ export default function ServiceDetails() {
         {
             title: "Content Marketing Đa Kênh",
             desc: "Sáng tạo nội dung chạm đúng insight khách hàng, từ bài viết Facebook, kịch bản TikTok đến bài PR báo chí.",
-            image: "/image/content_creation_ai.png",
+            image: "/image/real/content_creation.jpg",
             items: [
                 "Viết bài chuẩn SEO cho Website",
                 "Sáng tạo slogan, tagline thương hiệu",
@@ -20,7 +20,7 @@ export default function ServiceDetails() {
         {
             title: "Social Media & Quảng Cáo",
             desc: "Phủ sóng thương hiệu trên mọi nền tảng mạng xã hội. Tối ưu chi phí quảng cáo để đạt hiệu suất cao nhất.",
-            image: "/image/social_media_marketing.png",
+            image: "/image/real/social_media.jpg",
             items: [
                 "Chạy quảng cáo Facebook, TikTok, Google Ads",
                 "Tăng like, follow, tương tác thật",

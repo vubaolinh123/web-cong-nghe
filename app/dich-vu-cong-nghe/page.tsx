@@ -5,12 +5,29 @@ import Introduction from "@/components/ai-service/Introduction";
 import ServiceList from "@/components/ai-service/ServiceList";
 import CaseStudies from "@/components/ai-service/CaseStudies";
 import CTASection from "@/components/ai-service/CTASection";
-import ContactSection from "@/components/home/ContactSection";
-import FooterSection from "@/components/home/FooterSection";
+import { ContactSection, FooterSection } from "@/components/home";
+import { siteConfig, pageSEO } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Dịch Vụ AI & Automation | Nâng Tầm Doanh Nghiệp Automation",
-    description: "Giải pháp AI toàn diện cho bộ máy doanh nghiệp của bạn. Từ Automation, Chatbot đến AI Agent thông minh.",
+    title: pageSEO.technologyServices.title,
+    description: pageSEO.technologyServices.description,
+    keywords: pageSEO.technologyServices.keywords,
+    openGraph: {
+        title: `${pageSEO.technologyServices.title} | ${siteConfig.name}`,
+        description: pageSEO.technologyServices.description,
+        url: `${siteConfig.url}/dich-vu-cong-nghe`,
+        siteName: siteConfig.name,
+        locale: siteConfig.locale,
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: pageSEO.technologyServices.title,
+        description: pageSEO.technologyServices.description,
+    },
+    alternates: {
+        canonical: `${siteConfig.url}/dich-vu-cong-nghe`,
+    },
 };
 
 export default function AiServicesPage() {

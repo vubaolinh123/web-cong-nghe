@@ -14,7 +14,7 @@ const StrategyVideo = dynamic(() => import("@/components/marketing/group/Strateg
 const GroupPricing = dynamic(() => import("@/components/marketing/group/GroupPricing"));
 const Process = dynamic(() => import("@/components/marketing/group/Process"));
 const FAQ = dynamic(() => import("@/components/marketing/group/FAQ"));
-const FooterSection = dynamic(() => import("@/components/home/FooterSection"));
+const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
 export default function GroupPage() {
 

@@ -22,7 +22,7 @@ export default function MarketingStrategy() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/10 to-transparent blur-2xl rounded-full" />
                         <img
-                            src="/image/marketing_strategy_growth.png"
+                            src="/image/real/marketing_strategy.jpg"
                             alt="Reverse Sales Funnel Growth"
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-yellow-500/20 hover:shadow-yellow-500/20 transition-shadow duration-500"
                         />
@@ -103,7 +103,7 @@ export default function MarketingStrategy() {
                             transition={{ duration: 0.8 }}
                         >
                             <img
-                                src="/image/target_audience_persona.png"
+                                src="/image/real/target_audience.jpg"
                                 alt="Target Audience Persona AI"
                                 className="w-full rounded-2xl shadow-2xl border border-slate-600/50 hover:border-cyan-500/50 transition-colors duration-500"
                             />

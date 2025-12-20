@@ -27,7 +27,7 @@ export default function WhySetup() {
                         transition={{ duration: 0.6 }}
                     >
                         <img
-                            src="/image/fanpage_growth.png"
+                            src="/image/fanpage_growth_real.jpg"
                             alt="Growth Chart"
                             className="w-full h-full object-cover"
                         />

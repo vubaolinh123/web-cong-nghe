@@ -236,6 +236,104 @@ export const en: TranslationDictionary = {
     ctaPrimary: "Consult Now",
     ctaSecondary: "Call Hotline"
   },
+  homepageServices: {
+    badge: "Our Services",
+    title: "Solutions",
+    titleHighlight: "AI-First",
+    marketing: {
+      title: "AI Marketing",
+      description: "Comprehensive Marketing solutions with AI to optimize campaigns, increase ROI and reduce advertising costs",
+      features: {
+        ads: "Facebook & TikTok Ads",
+        fanpage: "Professional Fanpage Management",
+        content: "AI-Powered Content",
+        seo: "SEO & SEM Optimization"
+      }
+    },
+    tech: {
+      title: "AI Applications for Business",
+      description: "Automate processes, increase work efficiency, minimize operating costs with smart AI solutions",
+      features: {
+        automation: "Automation (Low-code Platform)",
+        chatbot: "AI Chatbot 24/7 & AI Agent",
+        custom: "Custom Websites & Apps",
+        integration: "Built-in AI Integration"
+      }
+    },
+    exploreButton: "EXPLORE NOW"
+  },
+  whyUs: {
+    stats: {
+      inVietnam: "In Vietnam",
+      support: "Support",
+      efficiency: "Efficiency",
+      yearsExp: "Years Exp"
+    }
+  },
+  approach: {
+    badge: "Work Process",
+    title: "Our",
+    titleHighlight: "Approach",
+    steps: {
+      discovery: {
+        subtitle: "Discovery",
+        description: "Analyze needs & market"
+      },
+      strategy: {
+        subtitle: "Strategy",
+        description: "Build plan & UI/UX design"
+      },
+      development: {
+        subtitle: "Development",
+        description: "Coding & Deploy to production"
+      }
+    }
+  },
+  contactSection: {
+    badge: "Contact Us",
+    title: "Get",
+    titleHighlight: "Free Consultation",
+    description: "Leave your information, our expert team will contact you with the most suitable solution.",
+    benefits: {
+      response: "Response within 24 hours",
+      free: "Free consultation",
+      security: "Information security",
+      support: "24/7 support"
+    },
+    form: {
+      name: "Full Name",
+      namePlaceholder: "John Doe",
+      phone: "Phone Number",
+      phonePlaceholder: "0912 345 678",
+      jobTitle: "Job Title",
+      jobTitlePlaceholder: "Director, Manager, ...",
+      currentJob: "Current Job",
+      currentJobPlaceholder: "Describe your work",
+      fanpage: "Fanpage/Website Link (Optional)",
+      fanpagePlaceholder: "https://facebook.com/yourpage",
+      service: "Service You Need",
+      servicePlaceholder: "Select service type",
+      specificService: "Select Specific Services",
+      message: "Message Content",
+      messagePlaceholder: "Briefly describe your project or needs...",
+      submit: "Send Consultation Request",
+      submitting: "Sending..."
+    },
+    success: {
+      title: "Sent Successfully!",
+      message: "Our team will respond within 24 hours.",
+      sendAnother: "Send Another Request"
+    },
+    error: {
+      title: "An Error Occurred",
+      tryAgain: "Try Again"
+    }
+  },
+  footerCta: {
+    title: "Need consultation?",
+    description: "Contact now for free support from experts.",
+    button: "Contact Now"
+  },
   marketingServices: {
     badge: "Online Marketing Services",
     title: "Attract Potential",

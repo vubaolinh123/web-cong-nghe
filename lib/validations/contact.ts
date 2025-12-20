@@ -109,22 +109,19 @@ export const serviceCategoryOptions = [
   { value: "marketing", label: "Dịch Vụ Marketing" },
 ];
 
-// Technology services (from Services.tsx)
+// Technology services - 4 main categories
 export const technologyServiceOptions = [
-  { value: "web-development", label: "Phát Triển Web" },
-  { value: "mobile-app", label: "Ứng Dụng Di Động" },
-  { value: "cloud-solutions", label: "Cloud Solutions" },
-  { value: "ai-ml", label: "AI & Machine Learning" },
-  { value: "cybersecurity", label: "An Ninh Mạng" },
-  { value: "it-consulting", label: "Tư Vấn IT" },
+  { value: "custom-website", label: "Custom Website" },
+  { value: "low-code-automation", label: "Low Code Automation" },
+  { value: "ai-chatbot", label: "AI Chatbot" },
+  { value: "ai-agent", label: "AI Agent" },
 ];
 
-// Marketing services
+// Marketing services - 4 main categories
 export const marketingServiceOptions = [
-  { value: "facebook-services", label: "Dịch Vụ Facebook" },
-  { value: "seeding-services", label: "Dịch Vụ Seeding" },
-  { value: "tiktok-services", label: "Dịch Vụ TikTok" },
-  { value: "agency-comprehensive", label: "Dịch Vụ Agency Tổng Thể" },
-  { value: "ads-comprehensive", label: "Dịch Vụ Ads Tổng Thể" },
+  { value: "marketing-tong-the", label: "Marketing Tổng Thể" },
+  { value: "xay-group", label: "Xây Group" },
+  { value: "xay-kenh", label: "Xây Kênh" },
+  { value: "livestream-tiktok", label: "Livestream TikTok" },
 ];
 

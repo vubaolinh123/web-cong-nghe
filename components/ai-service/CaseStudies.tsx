@@ -24,7 +24,7 @@ const cases = [
         bg: "bg-blue-400/10"
     },
     {
-        title: "Lead Generation cho Caffè Saphie",
+        title: "Lead Generation System cho Caffe Saphie",
         icon: TrendingUp,
         challenge: "Thu thập thông tin khách hàng tiềm năng",
         solution: "Hệ thống automation thu thập data khách phân loại leads tự động",
@@ -33,7 +33,7 @@ const cases = [
         bg: "bg-green-400/10"
     },
     {
-        title: "Read Invoice cho Ngân hàng",
+        title: "Invoice Management System",
         icon: Database,
         challenge: "Xử lý hàng nghìn hóa đơn thủ công",
         solution: "AI tự động đọc, phân loại và nhập dữ liệu từ hóa đơn",
@@ -126,9 +126,9 @@ export default function CaseStudies() {
                         </div>
                         <h3 className="text-xl font-bold text-white mb-4">Các Hệ Thống Khác</h3>
                         <ul className="text-slate-400 text-sm space-y-2 mb-6">
-                            <li>Tự động tạo content</li>
-                            <li>Báo cáo tự động</li>
-                            <li>Nhập liệu tự động</li>
+                            <li>Content Agent</li>
+                            <li>Report Agent</li>
+                            <li>Data Analytics Agent</li>
                             <li>Research Agent</li>
                         </ul>
                         <p className="text-cyan-400 text-sm font-medium">Và nhiều hơn nữa...</p>

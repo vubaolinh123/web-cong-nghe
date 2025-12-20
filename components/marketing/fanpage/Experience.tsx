@@ -73,7 +73,7 @@ export default function Experience() {
                     >
                         <div className="absolute inset-0 bg-green-500/10 rounded-full blur-[80px]" />
                         <img
-                            src="/image/fanpage_audit.png"
+                            src="/image/fanpage_audit_real.jpg"
                             alt="Fanpage Audit Secure"
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-green-500/20"
                         />

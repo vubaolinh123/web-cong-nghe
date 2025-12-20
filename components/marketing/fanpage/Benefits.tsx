@@ -54,7 +54,7 @@ export default function Benefits() {
                     viewport={{ once: true }}
                 >
                     <img
-                        src="/image/fanpage_viral.png"
+                        src="/image/fanpage_viral_real.jpg"
                         alt="Viral Marketing Banner"
                         className="w-full object-cover max-h-[500px]"
                     />

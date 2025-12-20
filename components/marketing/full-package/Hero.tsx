@@ -10,7 +10,7 @@ export default function Hero() {
             {/* Background Image/Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/image/marketing_hero.png"
+                    src="/image/real/marketing_hero.jpg"
                     alt="Marketing Hero"
                     className="w-full h-full object-cover opacity-30"
                 />

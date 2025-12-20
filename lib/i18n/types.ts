@@ -141,6 +141,95 @@ export type TranslationDictionary = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  homepageServices: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    marketing: {
+      title: string;
+      description: string;
+      features: {
+        ads: string;
+        fanpage: string;
+        content: string;
+        seo: string;
+      };
+    };
+    tech: {
+      title: string;
+      description: string;
+      features: {
+        automation: string;
+        chatbot: string;
+        custom: string;
+        integration: string;
+      };
+    };
+    exploreButton: string;
+  };
+  whyUs: {
+    stats: {
+      inVietnam: string;
+      support: string;
+      efficiency: string;
+      yearsExp: string;
+    };
+  };
+  approach: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    steps: {
+      discovery: { subtitle: string; description: string };
+      strategy: { subtitle: string; description: string };
+      development: { subtitle: string; description: string };
+    };
+  };
+  contactSection: {
+    badge: string;
+    title: string;
+    titleHighlight: string;
+    description: string;
+    benefits: {
+      response: string;
+      free: string;
+      security: string;
+      support: string;
+    };
+    form: {
+      name: string;
+      namePlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      jobTitle: string;
+      jobTitlePlaceholder: string;
+      currentJob: string;
+      currentJobPlaceholder: string;
+      fanpage: string;
+      fanpagePlaceholder: string;
+      service: string;
+      servicePlaceholder: string;
+      specificService: string;
+      message: string;
+      messagePlaceholder: string;
+      submit: string;
+      submitting: string;
+    };
+    success: {
+      title: string;
+      message: string;
+      sendAnother: string;
+    };
+    error: {
+      title: string;
+      tryAgain: string;
+    };
+  };
+  footerCta: {
+    title: string;
+    description: string;
+    button: string;
+  };
   marketingServices: {
     badge: string;
     title: string;

@@ -8,21 +8,21 @@ export default function TiktokBenefits() {
             title: "CHIẾN DỊCH HÀNG THÁNG",
             subtitle: "TĂNG DOANH SỐ LÊN 20 LẦN",
             desc: "Bạn có kênh lên ý tưởng chiến dịch hàng tháng nâng cao uy tín doanh số lên gấp 20 lần bình thường từ sản phẩm và dịch vụ của bạn.",
-            img: "/image/tiktok_growth.png",
+            img: "/image/tiktok_growth_real.jpg",
             color: "from-pink-500 to-rose-500"
         },
         {
             title: "KIẾM THÊM THU NHẬP",
             subtitle: "TỪ CÁC SẢN PHẨM NHÃN HÀNG",
             desc: "Hợp tác các nhãn hàng sản phẩm để làm tiếp thị liên kết phát triển doanh thu ngày càng bến vững viral sản phẩm của bạn lên tầm cao mới.",
-            img: "/image/tiktok_shop.png",
+            img: "/image/tiktok_shop_real.jpg",
             color: "from-cyan-500 to-blue-500"
         },
         {
             title: "TIẾT KIỆM THỜI GIAN",
             subtitle: "TĂNG 100 TRIỆU / THÁNG",
             desc: "Có kênh tiktok hàng 100.000 follow nhanh để phát triển video bán hàng và live bán hàng hiệu quả doanh thu đem về thu nhập hàng 100 triệu / tháng với sản phẩm mình có trong tay.",
-            img: "/image/tiktok_live.png",
+            img: "/image/tiktok_live_real.jpg",
             color: "from-purple-500 to-violet-500"
         }
     ];

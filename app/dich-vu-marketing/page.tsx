@@ -4,12 +4,29 @@ import Hero from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import ServiceList from "@/components/marketing/ServiceList";
 import CTASection from "@/components/marketing/CTASection";
-import ContactSection from "@/components/home/ContactSection";
-import FooterSection from "@/components/home/FooterSection";
+import { ContactSection, FooterSection } from "@/components/home";
+import { siteConfig, pageSEO } from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Dịch Vụ Marketing AI | Thu Hút Khách Hàng Tiềm Năng",
-    description: "Giải pháp marketing tự động, xây dựng thương hiệu, có ngay tệp khách hàng tiềm năng với dịch vụ marketing đa kênh Facebook, TikTok, Fanpage.",
+    title: pageSEO.marketingServices.title,
+    description: pageSEO.marketingServices.description,
+    keywords: pageSEO.marketingServices.keywords,
+    openGraph: {
+        title: `${pageSEO.marketingServices.title} | ${siteConfig.name}`,
+        description: pageSEO.marketingServices.description,
+        url: `${siteConfig.url}/dich-vu-marketing`,
+        siteName: siteConfig.name,
+        locale: siteConfig.locale,
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: pageSEO.marketingServices.title,
+        description: pageSEO.marketingServices.description,
+    },
+    alternates: {
+        canonical: `${siteConfig.url}/dich-vu-marketing`,
+    },
 };
 
 export default function MarketingServicesPage() {
