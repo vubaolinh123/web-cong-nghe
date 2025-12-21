@@ -1,0 +1,168 @@
+import { MarketingFullPackageTranslations } from './types';
+
+export const en: MarketingFullPackageTranslations = {
+    pageCta: {
+        title: "Don't Delay Another Day",
+        description: "Every day without marketing means giving customers to your competitors. Contact us now to regain your leading position.",
+        button: 'Get Strategy Consultation Now',
+    },
+    hero: {
+        badge: 'Complete A-Z Marketing Solution',
+        title: 'Elevate Your Brand',
+        titleHighlight: 'Breakthrough Revenue',
+        description: 'A comprehensive marketing system designed specifically for your business. From strategy development, content creation to multi-channel advertising optimization.',
+        ctaPrimary: 'Free Consultation',
+        ctaSecondary: 'Free Consultation',
+        scrollIndicator: 'Explore',
+    },
+    benefits: {
+        title: 'Why Choose',
+        titleHighlight: 'VTS Marketing?',
+        items: [
+            { title: 'Maximize Revenue', desc: 'Focus on high-conversion campaigns that bring real cash flow to your business.' },
+            { title: 'Target Right Audience', desc: 'Use AI to analyze and reach the most potential customer segment accurately.' },
+            { title: 'Committed to Results', desc: 'Work based on clear KPIs, transparent weekly/monthly reports.' },
+            { title: 'Fast Deployment', desc: 'Streamlined workflow, system setup and campaign running in just 3-5 days.' },
+        ],
+    },
+    serviceDetails: {
+        title: 'Service',
+        titleHighlight: 'Details',
+        description: 'Dive deep into each work item we perform to deliver the best results.',
+        content: [
+            {
+                title: 'Multi-Channel Content Marketing',
+                desc: 'Create content that touches customer insights, from Facebook posts, TikTok scripts to press PR articles.',
+                items: [
+                    'SEO-optimized website articles',
+                    'Brand slogan and tagline creation',
+                    'Viral short video scripts',
+                    'High-conversion ad copy',
+                ],
+            },
+            {
+                title: 'Social Media & Advertising',
+                desc: 'Cover your brand across all social media platforms. Optimize advertising costs for maximum performance.',
+                items: [
+                    'Run Facebook, TikTok, Google Ads',
+                    'Increase real likes, follows, engagement',
+                    'Build community groups',
+                    'Crisis communication management',
+                ],
+            },
+        ],
+    },
+    salesFunnel: {
+        title: 'Optimize Conversion With',
+        titleHighlight: 'Multi-Level Sales Funnel',
+        description: 'At VTS Marketing, we completely change traditional advertising. Instead of just burning money on display ads, we "visualize" the buying journey and optimize each touchpoint from strangers to loyal customers.',
+        imageCaption: 'The SALES FUNNEL method helps optimize ad budget & achieve the best conversion rate from the very first moment.',
+        stages: [
+            { title: 'TOP OF FUNNEL (TOFU)', subtitle: 'Build Awareness', desc: 'Reach widely, attract new potential customers through SEO, Social Media, Viral Content.' },
+            { title: 'MIDDLE OF FUNNEL (MOFU)', subtitle: 'Create Interest', desc: 'Provide value, educate customers, retain them with useful content, Email Marketing, Retargeting.' },
+            { title: 'BOTTOM OF FUNNEL (BOFU)', subtitle: 'Drive Action', desc: 'Convert traffic to orders with offers, persuasive sales pages, closing sales.' },
+        ],
+        strategyTitle: 'Funnel Advertising Strategy',
+        strategyDesc: 'Unlike traditional agencies that only focus on the Top of Funnel, we start campaigns from the BOFU (Bottom of Funnel) stage - closest to conversion, helping businesses get immediate revenue to reinvest in expanding the funnel.',
+    },
+    trafficSources: {
+        title: 'Diverse',
+        titleHighlight: 'Traffic Sources',
+        description: 'Once we identify the customer profile, we deploy a multi-channel traffic system into the sales funnel. Each traffic source operates independently but strongly supports each other at every stage.',
+        sources: [
+            { title: 'SEO Traffic', desc: 'Customers from search engines (Google) through natural, sustainable and free keywords.' },
+            { title: 'Social Media', desc: 'Traffic from social networks (Facebook, TikTok, Instagram) - Where most customers gather.' },
+            { title: 'Paid Traffic', desc: 'Paid traffic (Ads). Committed to quick orders, reaching the right target audience immediately.' },
+            { title: 'Email Marketing', desc: 'Nurture and bring customers back to website from collected email lists, high conversion rate.' },
+            { title: 'Direct Traffic', desc: 'Customers directly enter website domain. Shows huge brand awareness power.' },
+            { title: 'Referral Traffic', desc: 'Traffic referred from other reputable websites (Backlinks, Press PR, Partners).' },
+        ],
+    },
+    marketingStrategy: {
+        reverseFunnel: {
+            title: 'The Reverse Side Of',
+            titleHighlight: 'Sales Funnel',
+            steps: [
+                { title: 'Attraction', desc: 'Create attractive content so customers find you instead of disturbing them.' },
+                { title: 'Interaction', desc: 'Build relationships, converse and solve customer problems.' },
+                { title: 'Conversion', desc: 'When trust is strong enough, customers will be ready to pay for products/services.' },
+                { title: 'Transaction', desc: 'Complete the sale and start the after-sales care process (Loyalty).' },
+            ],
+        },
+        targetPersona: {
+            badge: 'Target Persona',
+            title: 'Portrait Of',
+            titleHighlight: 'Target Customer',
+            description: "The business's target customer is designed to represent the desires and needs of a customer segment. Creating personality and detailed information for each customer segment helps you target better in future advertising/content messages.",
+            cta: 'Build strategy now',
+        },
+    },
+    customerJourney: {
+        title: 'Customer Journey',
+        titleHighlight: '5 Stages',
+        description: "We don't just run ads, we build a seamless experience journey that turns strangers into loyal customers. The A-Z model ensures no conversion opportunity is missed.",
+        steps: [
+            { title: 'Awareness', desc: 'Reach potential customers through multi-channel: Facebook, TikTok, Google.' },
+            { title: 'Interest', desc: 'Build attractive content, draw customer engagement and interest.' },
+            { title: 'Consideration', desc: 'Optimize touchpoints, provide valuable information for customers to consider.' },
+            { title: 'Purchase', desc: 'Convert traffic to orders with promotional campaigns and powerful CTAs.' },
+            { title: 'Loyalty', desc: 'After-sales care, retargeting to turn customers into loyal fans.' },
+        ],
+    },
+    detailedPricing: {
+        title: 'Pricing',
+        titleHighlight: 'Full Package Marketing',
+        description: 'Committed to effective execution with professional, transparent and dedicated processes.',
+        recommendedBadge: 'Recommended',
+        detailsButton: 'DETAILS',
+        plans: [
+            {
+                name: 'Basic',
+                duration: 'Full / Complete / 2 months',
+                price: '48,000,000 VND',
+                desc: 'Basic package suitable for Startups needing to build a solid brand foundation.',
+                features: [
+                    'Marketing system setup',
+                    'Brand identity building',
+                    'Fanpage & Website care',
+                    '1-1 strategy consulting coach',
+                    'KPI commitment on execution efficiency',
+                ],
+            },
+            {
+                name: 'Premium',
+                duration: 'Full / Complete / 3 months',
+                price: '70,000,000 VND',
+                desc: 'Standard package for businesses wanting to accelerate and expand market share.',
+                features: [
+                    'All Basic package benefits',
+                    'Longer execution time (3 months)',
+                    'Deep conversion optimization',
+                    'Multi-channel advertising expansion',
+                    'KPI commitment on revenue/leads',
+                ],
+            },
+            {
+                name: 'Diamond',
+                duration: 'Full / Complete / 3 months',
+                price: '100,000,000 VND',
+                desc: 'VIP comprehensive solution, dominate the market with optimal budget.',
+                features: [
+                    'All Premium package benefits',
+                    'Priority execution team',
+                    'KOLs & Press booking',
+                    'Viral marketing strategy',
+                    'Highest ROI commitment',
+                ],
+            },
+        ],
+        monthlyPackage: {
+            title: 'Monthly Care / Full Service',
+            description: 'Own a marketing team caring monthly on project with local reporting.',
+            savings: '* Save',
+            savingsAmount: '10,000,000 VND',
+            price: '12,000,000 VND',
+            perMonth: '/month',
+        },
+    },
+};

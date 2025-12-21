@@ -8,40 +8,17 @@ import {
     BadgeDollarSign,
     RefreshCcw
 } from "lucide-react";
+import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
+
+const stepIcons = [MessageCircle, FileSignature, FileText, BadgeDollarSign, RefreshCcw];
 
 export default function Process() {
-    const steps = [
-        {
-            num: "B1",
-            icon: MessageCircle,
-            title: "ĐĂNG KÝ",
-            desc: "Khách hàng lựa chọn gói Follow, View, Shop mong muốn."
-        },
-        {
-            num: "B2",
-            icon: FileSignature,
-            title: "TƯ VẤN",
-            desc: "ASI Everest tư vấn chiến lược xây kênh phù hợp với sản phẩm/dịch vụ."
-        },
-        {
-            num: "B3",
-            icon: FileText,
-            title: "KÝ HỢP ĐỒNG",
-            desc: "Thống nhất các điều khoản cam kết và ký hợp đồng triển khai."
-        },
-        {
-            num: "B4",
-            icon: BadgeDollarSign,
-            title: "THANH TOÁN",
-            desc: "Thanh toán chi phí theo hợp đồng để bắt đầu setup."
-        },
-        {
-            num: "B5",
-            icon: RefreshCcw,
-            title: "BÀN GIAO",
-            desc: "Bàn giao kênh, shop đã tối ưu, hướng dẫn vận hành và bảo hành."
-        }
-    ];
+    const t = useTiktokShopTranslations();
+
+    const steps = t.process.steps.map((step, index) => ({
+        ...step,
+        icon: stepIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-950 relative overflow-hidden">
@@ -53,7 +30,7 @@ export default function Process() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase">
-                        Quy Trình <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">Triển Khai</span>
+                        {t.process.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">{t.process.titleHighlight}</span>
                     </h2>
                 </div>
 

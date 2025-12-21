@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
 export default function Hero() {
+    const t = useMarketingFullPackageTranslations();
+
     return (
         <section className="relative min-h-[90vh] flex items-center justify-center bg-slate-950 overflow-hidden pt-20">
             {/* Background Image/Overlay */}
@@ -27,19 +30,18 @@ export default function Hero() {
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-6">
                         <Sparkles size={16} />
-                        <span>Giải pháp Marketing toàn diện A-Z2</span>
+                        <span>{t.hero.badge}</span>
                     </div>
 
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                        Nâng Tầm Thương Hiệu <br />
+                        {t.hero.title} <br />
                         <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                            Đột Phá Doanh Thu
+                            {t.hero.titleHighlight}
                         </span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                        Hệ thống Marketing tổng thể được thiết kế riêng cho doanh nghiệp của bạn.
-                        Từ xây dựng chiến lược, sáng tạo nội dung đến tối ưu hóa quảng cáo đa kênh.
+                        {t.hero.description}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -47,13 +49,13 @@ export default function Hero() {
                             href="/lien-he"
                             className="px-8 py-4 rounded-full bg-white text-blue-900 font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                         >
-                            Tư Vấn Miễn Phí
+                            {t.hero.ctaPrimary}
                         </a>
                         <Link
                             href="/lien-he"
                             className="px-8 py-4 rounded-full bg-slate-800 border border-slate-700 text-white font-bold text-lg hover:bg-slate-700 transition-all flex items-center gap-2"
                         >
-                            Tư Vấn Miễn Phí <ArrowRight size={20} />
+                            {t.hero.ctaSecondary} <ArrowRight size={20} />
                         </Link>
                     </div>
                 </motion.div>
@@ -65,7 +67,7 @@ export default function Hero() {
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
             >
-                <span className="text-xs uppercase tracking-widest">Khám phá</span>
+                <span className="text-xs uppercase tracking-widest">{t.hero.scrollIndicator}</span>
                 <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-1">
                     <div className="w-1 h-3 bg-cyan-500 rounded-full" />
                 </div>

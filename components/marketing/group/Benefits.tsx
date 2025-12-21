@@ -1,25 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
+
+const benefitImages = ["/image/group/users.jpg", "/image/group/rocket.jpg", "/image/group/shield.jpg"];
 
 export default function Benefits() {
-    const items = [
-        {
-            title: "XÂY DỰNG CỘNG ĐỒNG",
-            desc: "Trở thành admin group facebook đồng nghĩa bạn đang có một cộng đồng người dùng cũng cùng quan tâm đến một chủ đề nào đó.",
-            img: "/image/group/users.jpg"
-        },
-        {
-            title: "HỖ TRỢ BÁN HÀNG",
-            desc: "Đăng bán sản phẩm trong group, chia sẻ livestream vào group ... là phương án bán hàng hiệu quả cho người kinh doanh ở thời điểm hiện tại.",
-            img: "/image/group/rocket.jpg"
-        },
-        {
-            title: "PHÁT TRIỂN THƯƠNG HIỆU",
-            desc: "Doanh nghiệp cũng có thể xây dựng hình ảnh thương hiệu trên group nhiều thành viên, lan truyền thông điệp hiệu quả nhất có thể.",
-            img: "/image/group/shield.jpg"
-        }
-    ];
+    const t = useFacebookGroupTranslations();
+
+    const items = t.benefits.items.map((item, index) => ({
+        ...item,
+        img: benefitImages[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-950">

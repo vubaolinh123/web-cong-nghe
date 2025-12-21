@@ -1,45 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, TrendingUp, Users, Smartphone, PenTool, Database } from "lucide-react";
+import { CheckCircle2, PenTool, Smartphone } from "lucide-react";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
+
+const contentIcons = [PenTool, Smartphone];
+const contentImages = ["/image/real/content_creation.jpg", "/image/real/social_media.jpg"];
 
 export default function ServiceDetails() {
-    const content = [
-        {
-            title: "Content Marketing Đa Kênh",
-            desc: "Sáng tạo nội dung chạm đúng insight khách hàng, từ bài viết Facebook, kịch bản TikTok đến bài PR báo chí.",
-            image: "/image/real/content_creation.jpg",
-            items: [
-                "Viết bài chuẩn SEO cho Website",
-                "Sáng tạo slogan, tagline thương hiệu",
-                "Kịch bản Video ngắn viral",
-                "Bài viết quảng cáo tỷ lệ chuyển đổi cao"
-            ],
-            icon: PenTool
-        },
-        {
-            title: "Social Media & Quảng Cáo",
-            desc: "Phủ sóng thương hiệu trên mọi nền tảng mạng xã hội. Tối ưu chi phí quảng cáo để đạt hiệu suất cao nhất.",
-            image: "/image/real/social_media.jpg",
-            items: [
-                "Chạy quảng cáo Facebook, TikTok, Google Ads",
-                "Tăng like, follow, tương tác thật",
-                "Xây dựng Group cộng đồng",
-                "Quản lý khủng hoảng truyền thông"
-            ],
-            icon: Smartphone
-        }
-    ];
+    const t = useMarketingFullPackageTranslations();
+
+    const content = t.serviceDetails.content.map((item, index) => ({
+        title: item.title,
+        desc: item.desc,
+        image: contentImages[index],
+        items: item.items,
+        icon: contentIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-900 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                        Chi Tiết <span className="text-cyan-400">Dịch Vụ</span>
+                        {t.serviceDetails.title} <span className="text-cyan-400">{t.serviceDetails.titleHighlight}</span>
                     </h2>
                     <p className="text-slate-400 max-w-2xl mx-auto">
-                        Đi sâu vào từng hạng mục công việc chúng tôi thực hiện để mang lại kết quả tốt nhất.
+                        {t.serviceDetails.description}
                     </p>
                 </div>
 

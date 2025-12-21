@@ -8,40 +8,17 @@ import {
     BadgeDollarSign,
     RefreshCcw
 } from "lucide-react";
+import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
+
+const stepIcons = [MessageCircle, FileSignature, FileText, BadgeDollarSign, RefreshCcw];
 
 export default function Process() {
-    const steps = [
-        {
-            num: "B1",
-            icon: MessageCircle,
-            title: "ĐĂNG KÝ",
-            desc: "Khách hàng lựa chọn và quyết định kiểu group tên group tệp khách hàng mình mong muốn."
-        },
-        {
-            num: "B2",
-            icon: FileSignature,
-            title: "TƯ VẤN",
-            desc: "Khách hàng liên hệ yêu cầu tư vấn đặt mua nhóm facebook phù hợp nhu cầu sử dụng."
-        },
-        {
-            num: "B3",
-            icon: FileText,
-            title: "LÊN HỢP ĐỒNG",
-            desc: "ASI Everest đề xuất gói dịch vụ khách chọn gói hợp lý lên hợp đồng gửi khách xem qua duyệt."
-        },
-        {
-            num: "B4",
-            icon: BadgeDollarSign,
-            title: "THANH TOÁN",
-            desc: "Thanh toán phí đặt mua nhóm cho ASI Everest xác nhận và triển khai."
-        },
-        {
-            num: "B5",
-            icon: RefreshCcw,
-            title: "BÀN GIAO",
-            desc: "Đổi tên nhóm theo yêu cầu & cấp quyền quản trị viên và bàn giao nhóm group đúng hẹn hợp đồng."
-        }
-    ];
+    const t = useFacebookGroupTranslations();
+
+    const steps = t.process.steps.map((step, index) => ({
+        ...step,
+        icon: stepIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-900 relative">
@@ -49,7 +26,7 @@ export default function Process() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 uppercase">
-                        Quy Trình Triển Khai Dịch Vụ Mua Bán <span className="text-blue-500 bg-white/10 px-2 rounded">Group Facebook</span>
+                        {t.process.title} <span className="text-blue-500 bg-white/10 px-2 rounded">{t.process.titleHighlight}</span>
                     </h2>
                 </div>
 

@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
 import { useEffect } from "react";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
 // Dynamic imports with specific loading states
 const Hero = dynamic(() => import("@/components/marketing/full-package/Hero"), {
@@ -19,6 +20,7 @@ const DetailedPricing = dynamic(() => import("@/components/marketing/full-packag
 const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
 export default function MarketingFullPackagePage() {
+    const t = useMarketingFullPackageTranslations();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -48,11 +50,10 @@ export default function MarketingFullPackagePage() {
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
                 <div className="relative z-10 max-w-4xl mx-auto px-4">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        Đừng Để Trì Trệ Thêm 1 Ngày Nào Nữa
+                        {t.pageCta.title}
                     </h2>
                     <p className="text-xl text-slate-300 mb-8">
-                        Mỗi ngày trôi qua không làm Marketing là bạn đang nhường khách hàng cho đối thủ.
-                        Liên hệ ngay với chúng tôi để lấy lại vị thế dẫn đầu.
+                        {t.pageCta.description}
                     </p>
                     <a
                         href="https://zalo.me/0923451469"
@@ -60,7 +61,7 @@ export default function MarketingFullPackagePage() {
                         rel="noreferrer"
                         className="inline-block px-10 py-4 bg-white text-blue-900 font-bold text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.3)]"
                     >
-                        Tư Vấn Chiến Lược Ngay
+                        {t.pageCta.button}
                     </a>
                 </div>
             </section>

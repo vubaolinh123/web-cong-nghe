@@ -2,40 +2,18 @@
 
 import { motion } from "framer-motion";
 import { FileSignature, MessagesSquare, BadgeDollarSign, Wallet, RefreshCw } from "lucide-react";
+import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
+
+const stepIcons = [FileSignature, MessagesSquare, BadgeDollarSign, Wallet, RefreshCw];
 
 export default function Process() {
-    const steps = [
-        {
-            num: "01",
-            icon: FileSignature,
-            title: "B1 ĐĂNG KÝ",
-            desc: "Khách hàng lựa chọn và quyết định kiểu Fanpage & tệp từ khóa dính khách hàng mình mong muốn."
-        },
-        {
-            num: "02",
-            icon: MessagesSquare,
-            title: "B2 TƯ VẤN",
-            desc: "Khách hàng liên hệ yêu cầu tư vấn đặt mua Fanpage phù hợp nhu cầu sử dụng."
-        },
-        {
-            num: "03",
-            icon: BadgeDollarSign,
-            title: "B3 BÁO GIÁ",
-            desc: "ASI Everest đề xuất nhóm phù hợp và báo giá chi tiết cho từng chủ đề từng nhóm."
-        },
-        {
-            num: "04",
-            icon: Wallet,
-            title: "B4 THANH TOÁN",
-            desc: "Thanh toán phí đặt mua nhóm cho ASI Everest trước khi bàn giao."
-        },
-        {
-            num: "05",
-            icon: RefreshCw,
-            title: "B5 BÀN GIAO",
-            desc: "Đổi tên nhóm theo yêu cầu & cấp quyền quản trị viên và bàn giao Fanpage."
-        }
-    ];
+    const t = useFanpageTranslations();
+
+    const steps = t.process.steps.map((step, index) => ({
+        ...step,
+        num: `0${index + 1}`,
+        icon: stepIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-950 overflow-hidden relative">
@@ -43,7 +21,7 @@ export default function Process() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 uppercase">
-                        Quy Trình Triển Khai <span className="text-cyan-400">Dịch Vụ Setup</span> Fanpage
+                        {t.process.title} <span className="text-cyan-400">{t.process.titleHighlight}</span> Fanpage
                     </h2>
                 </div>
 

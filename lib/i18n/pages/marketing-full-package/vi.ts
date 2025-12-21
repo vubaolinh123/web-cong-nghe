@@ -1,0 +1,168 @@
+import { MarketingFullPackageTranslations } from './types';
+
+export const vi: MarketingFullPackageTranslations = {
+    pageCta: {
+        title: 'Đừng Để Trì Trệ Thêm 1 Ngày Nào Nữa',
+        description: 'Mỗi ngày trôi qua không làm Marketing là bạn đang nhường khách hàng cho đối thủ. Liên hệ ngay với chúng tôi để lấy lại vị thế dẫn đầu.',
+        button: 'Tư Vấn Chiến Lược Ngay',
+    },
+    hero: {
+        badge: 'Giải pháp Marketing toàn diện A-Z',
+        title: 'Nâng Tầm Thương Hiệu',
+        titleHighlight: 'Đột Phá Doanh Thu',
+        description: 'Hệ thống Marketing tổng thể được thiết kế riêng cho doanh nghiệp của bạn. Từ xây dựng chiến lược, sáng tạo nội dung đến tối ưu hóa quảng cáo đa kênh.',
+        ctaPrimary: 'Tư Vấn Miễn Phí',
+        ctaSecondary: 'Tư Vấn Miễn Phí',
+        scrollIndicator: 'Khám phá',
+    },
+    benefits: {
+        title: 'Tại Sao Chọn',
+        titleHighlight: 'VTS Marketing?',
+        items: [
+            { title: 'Tối Đa Hóa Doanh Thu', desc: 'Tập trung vào các chiến dịch chuyển đổi cao, mang lại dòng tiền thực tế cho doanh nghiệp.' },
+            { title: 'Target Đúng Đối Tượng', desc: 'Sử dụng AI để phân tích và tiếp cận chính xác tệp khách hàng tiềm năng nhất.' },
+            { title: 'Cam Kết Hiệu Quả', desc: 'Làm việc dựa trên KPI rõ ràng, báo cáo minh bạch hàng tuần/tháng.' },
+            { title: 'Triển Khai Nhanh Chóng', desc: 'Quy trình làm việc tinh gọn, setup hệ thống và chạy chiến dịch chỉ trong 3-5 ngày.' },
+        ],
+    },
+    serviceDetails: {
+        title: 'Chi Tiết',
+        titleHighlight: 'Dịch Vụ',
+        description: 'Đi sâu vào từng hạng mục công việc chúng tôi thực hiện để mang lại kết quả tốt nhất.',
+        content: [
+            {
+                title: 'Content Marketing Đa Kênh',
+                desc: 'Sáng tạo nội dung chạm đúng insight khách hàng, từ bài viết Facebook, kịch bản TikTok đến bài PR báo chí.',
+                items: [
+                    'Viết bài chuẩn SEO cho Website',
+                    'Sáng tạo slogan, tagline thương hiệu',
+                    'Kịch bản Video ngắn viral',
+                    'Bài viết quảng cáo tỷ lệ chuyển đổi cao',
+                ],
+            },
+            {
+                title: 'Social Media & Quảng Cáo',
+                desc: 'Phủ sóng thương hiệu trên mọi nền tảng mạng xã hội. Tối ưu chi phí quảng cáo để đạt hiệu suất cao nhất.',
+                items: [
+                    'Chạy quảng cáo Facebook, TikTok, Google Ads',
+                    'Tăng like, follow, tương tác thật',
+                    'Xây dựng Group cộng đồng',
+                    'Quản lý khủng hoảng truyền thông',
+                ],
+            },
+        ],
+    },
+    salesFunnel: {
+        title: 'Tối Ưu Chuyển Đổi Với',
+        titleHighlight: 'Sales Funnel Đa Tầng',
+        description: 'Tại VTS Marketing, chúng tôi thay đổi hoàn toàn cách quảng cáo truyền thống. Thay vì chỉ tập trung đốt tiền vào quảng cáo hiển thị, chúng tôi "hình tượng hoá" hành trình mua hàng và tối ưu từng điểm chạm từ người lạ thành khách hàng trung thành.',
+        imageCaption: 'Phương pháp SALE FUNNEL giúp tối ưu ngân sách quảng cáo & đạt tỷ lệ chuyển đổi tốt nhất ngay từ giây phút đầu tiên.',
+        stages: [
+            { title: 'ĐẦU PHỄU (TOFU)', subtitle: 'Xây dựng nhận thức', desc: 'Tiếp cận rộng rãi, thu hút khách hàng tiềm năng mới thông qua SEO, Social Media, Content Viral.' },
+            { title: 'GIỮA PHỄU (MOFU)', subtitle: 'Tạo sự quan tâm', desc: 'Cung cấp giá trị, giáo dục khách hàng, giữ chân họ bằng nội dung hữu ích, Email Marketing, Retargeting.' },
+            { title: 'CUỐI PHỄU (BOFU)', subtitle: 'Thúc đẩy hành động', desc: 'Chuyển đổi traffic thành đơn hàng với ưu đãi, bài bán hàng thuyết phục (Sales Page), chốt sale.' },
+        ],
+        strategyTitle: 'Chiến Lược Funnel Advertising',
+        strategyDesc: 'Khác với Agency truyền thống thường chỉ tập trung vào Đầu phễu, chúng tôi bắt đầu chiến dịch từ giai đoạn BOFU (Cuối phễu) - nơi gần chuyển đổi nhất, giúp doanh nghiệp có doanh thu ngay lập tức để tái đầu tư mở rộng phễu.',
+    },
+    trafficSources: {
+        title: 'Đa Dạng Nguồn',
+        titleHighlight: 'Truy Cập (Traffic)',
+        description: 'Khi đã xác định được chân dung khách hàng, chúng tôi triển khai hệ thống "đổ" traffic từ đa kênh vào phễu bán hàng. Mỗi nguồn traffic hoạt động độc lập nhưng bổ trợ mạnh mẽ cho nhau trong từng giai đoạn.',
+        sources: [
+            { title: 'SEO Traffic', desc: 'Khách hàng đến từ công cụ tìm kiếm (Google) thông qua từ khoá tự nhiên, bền vững và miễn phí.' },
+            { title: 'Social Media', desc: 'Lượng truy cập từ các mạng xã hội (Facebook, TikTok, Instagram) - Nơi tập trung đông đảo khách hàng nhất.' },
+            { title: 'Paid Traffic', desc: 'Lưu lượng truy cập trả phí (Ads). Cam kết ra đơn nhanh chóng, tiếp cận đúng đối tượng mục tiêu ngay lập tức.' },
+            { title: 'Email Marketing', desc: 'Chăm sóc và kéo khách hàng quay lại website từ danh sách email đã thu thập, tỷ lệ chuyển đổi cao.' },
+            { title: 'Direct Traffic', desc: 'Khách hàng nhập trực tiếp tên miền website. Thể hiện sức mạnh thương hiệu (Brand Awareness) cực lớn.' },
+            { title: 'Referral Traffic', desc: 'Lượng truy cập được giới thiệu từ các trang web uy tín khác (Backlink, PR báo chí, Partner).' },
+        ],
+    },
+    marketingStrategy: {
+        reverseFunnel: {
+            title: 'Chiều Ngược Lại Của',
+            titleHighlight: 'Phễu Bán Hàng',
+            steps: [
+                { title: 'Thu Hút (Attraction)', desc: 'Tạo nội dung hấp dẫn để khách hàng tự tìm đến thay vì làm phiền họ.' },
+                { title: 'Tương Tác (Interaction)', desc: 'Xây dựng mối quan hệ, trò chuyện và giải quyết vấn đề của khách hàng.' },
+                { title: 'Chuyển Đổi (Conversion)', desc: 'Khi niềm tin đủ lớn, khách hàng sẽ sẵn sàng chi trả cho sản phẩm/dịch vụ.' },
+                { title: 'Giao Dịch (Transaction)', desc: 'Hoàn tất bán hàng và bắt đầu quy trình chăm sóc sau bán (Loyalty).' },
+            ],
+        },
+        targetPersona: {
+            badge: 'Target Persona',
+            title: 'Chân Dung',
+            titleHighlight: 'Khách Hàng Mục Tiêu',
+            description: 'Khách hàng mục tiêu của doanh nghiệp được thiết kế để đại diện cho những mong muốn và nhu cầu của 1 tệp khách hàng. Tạo cá tính cùng thông tin chi tiết cho từng phân khúc khách hàng giúp bạn nhắm mục tiêu tốt hơn trong các thông điệp quảng cáo/nội dung sau này.',
+            cta: 'Xây dựng chiến lược ngay',
+        },
+    },
+    customerJourney: {
+        title: 'Hành Trình Khách Hàng',
+        titleHighlight: '5 Giai Đoạn',
+        description: 'Chúng tôi không chỉ chạy quảng cáo, chúng tôi xây dựng một hành trình trải nghiệm liền mạch biến người lạ thành khách hàng trung thành. Mô hình A-Z đảm bảo không bỏ sót bất kỳ cơ hội chuyển đổi nào.',
+        steps: [
+            { title: 'Nhận Biết (Awareness)', desc: 'Tiếp cận khách hàng tiềm năng thông qua đa kênh: Facebook, TikTok, Google.' },
+            { title: 'Quan Tâm (Interest)', desc: 'Xây dựng nội dung hấp dẫn, thu hút sự tương tác và quan tâm của khách hàng.' },
+            { title: 'Cân Nhắc (Consideration)', desc: 'Tối ưu hóa điểm chạm, cung cấp thông tin giá trị để khách hàng cân nhắc.' },
+            { title: 'Mua Hàng (Purchase)', desc: 'Chuyển đổi truy cập thành đơn hàng với các chiến dịch khuyến mãi và CTA mạnh mẽ.' },
+            { title: 'Trung Thành (Loyalty)', desc: 'Chăm sóc sau bán, retargeting để biến khách hàng thành fan trung thành.' },
+        ],
+    },
+    detailedPricing: {
+        title: 'Bảng Giá',
+        titleHighlight: 'Marketing Trọn Gói',
+        description: 'Cam kết hiệu quả thực thi với quy trình chuyên nghiệp, minh bạch và tận tâm.',
+        recommendedBadge: 'Khuyên Dùng',
+        detailsButton: 'CHI TIẾT',
+        plans: [
+            {
+                name: 'Basic',
+                duration: 'Full / Hoàn thành / 2 tháng',
+                price: '48.000.000 vnđ',
+                desc: 'Gói cơ bản phù hợp cho Startup cần xây dựng nền tảng thương hiệu vững chắc.',
+                features: [
+                    'Setup hệ thống Marketing',
+                    'Xây dựng nhận diện Brand',
+                    'Chăm sóc Fanpage & Website',
+                    'Coach tư vấn chiến lược 1-1',
+                    'KPI cam kết chỉ số hiệu quả thực thi',
+                ],
+            },
+            {
+                name: 'Premium',
+                duration: 'Full / Hoàn thành / 3 tháng',
+                price: '70.000.000 vnđ',
+                desc: 'Gói tiêu chuẩn cho doanh nghiệp muốn tăng tốc và mở rộng thị phần.',
+                features: [
+                    'Tất cả quyền lợi gói Basic',
+                    'Thời gian thực thi dài hơn (3 tháng)',
+                    'Tối ưu hoá chuyển đổi sâu',
+                    'Mở rộng đa kênh quảng cáo',
+                    'KPI cam kết doanh thu/leads',
+                ],
+            },
+            {
+                name: 'Diamond',
+                duration: 'Full / Hoàn thành / 3 tháng',
+                price: '100.000.000 vnđ',
+                desc: 'Giải pháp VIP toàn diện, thống lĩnh thị trường với ngân sách tối ưu.',
+                features: [
+                    'Tất cả quyền lợi gói Premium',
+                    'Đội ngũ thực thi ưu tiên (Priority)',
+                    'Booking KOLs & Báo chí',
+                    'Chiến lược viral marketing',
+                    'Cam kết ROI cao nhất',
+                ],
+            },
+        ],
+        monthlyPackage: {
+            title: 'Chăm sóc thuê / tháng / full',
+            description: 'Sở hữu phòng marketing chăm sóc từng tháng trên dự án báo cáo cục bộ.',
+            savings: '* Tiết kiệm',
+            savingsAmount: '10.000.000đ',
+            price: '12.000.000 vnđ',
+            perMonth: '/tháng',
+        },
+    },
+};

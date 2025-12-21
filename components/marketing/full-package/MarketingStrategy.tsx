@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, UserCircle2 } from "lucide-react";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
 export default function MarketingStrategy() {
+    const t = useMarketingFullPackageTranslations();
+
     return (
         <section className="py-24 bg-slate-900 relative overflow-hidden">
             {/* Decorative Elements */}
@@ -35,39 +38,22 @@ export default function MarketingStrategy() {
                         transition={{ duration: 0.8 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
-                            Chiều Ngược Lại Của <br />
-                            <span className="text-yellow-400">Phễu Bán Hàng</span>
+                            {t.marketingStrategy.reverseFunnel.title} <br />
+                            <span className="text-yellow-400">{t.marketingStrategy.reverseFunnel.titleHighlight}</span>
                         </h2>
 
                         <div className="space-y-6">
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-yellow-400 font-bold shrink-0 shadow-lg border border-yellow-500/20">01</div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Thu Hút (Attraction)</h3>
-                                    <p className="text-slate-400">Tạo nội dung hấp dẫn để khách hàng tự tìm đến thay vì làm phiền họ.</p>
+                            {t.marketingStrategy.reverseFunnel.steps.map((step, index) => (
+                                <div key={index} className="flex gap-4 items-start">
+                                    <div className={`w-12 h-12 rounded-full ${index === 3 ? 'bg-yellow-500 text-slate-900 shadow-lg shadow-yellow-500/30' : 'bg-slate-800 text-yellow-400 border border-yellow-500/20'} flex items-center justify-center font-bold shrink-0 shadow-lg`}>
+                                        {String(index + 1).padStart(2, '0')}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                                        <p className="text-slate-400">{step.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-yellow-400 font-bold shrink-0 shadow-lg border border-yellow-500/20">02</div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Tương Tác (Interaction)</h3>
-                                    <p className="text-slate-400">Xây dựng mối quan hệ, trò chuyện và giải quyết vấn đề của khách hàng.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-yellow-400 font-bold shrink-0 shadow-lg border border-yellow-500/20">03</div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Chuyển Đổi (Conversion)</h3>
-                                    <p className="text-slate-400">Khi niềm tin đủ lớn, khách hàng sẽ sẵn sàng chi trả cho sản phẩm/dịch vụ.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 items-start">
-                                <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-slate-900 font-bold shrink-0 shadow-lg shadow-yellow-500/30">04</div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white mb-2">Giao Dịch (Transaction)</h3>
-                                    <p className="text-slate-400">Hoàn tất bán hàng và bắt đầu quy trình chăm sóc sau bán (Loyalty).</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </motion.div>
                 </div>
@@ -80,19 +66,19 @@ export default function MarketingStrategy() {
                         <div>
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-semibold mb-6">
                                 <UserCircle2 size={20} />
-                                <span>Target Persona</span>
+                                <span>{t.marketingStrategy.targetPersona.badge}</span>
                             </div>
                             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                                Chân Dung <br />
-                                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Khách Hàng Mục Tiêu</span>
+                                {t.marketingStrategy.targetPersona.title} <br />
+                                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                    {t.marketingStrategy.targetPersona.titleHighlight}
+                                </span>
                             </h2>
                             <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                                Khách hàng mục tiêu của doanh nghiệp được thiết kế để đại diện cho những mong muốn và nhu cầu của 1 tệp khách hàng.
-                                <br /><br />
-                                Tạo cá tính cùng thông tin chi tiết cho từng phân khúc khách hàng giúp bạn nhắm mục tiêu tốt hơn trong các thông điệp quảng cáo/nội dung sau này.
+                                {t.marketingStrategy.targetPersona.description}
                             </p>
                             <a href="#pricing" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-cyan-500 pb-1 hover:text-cyan-400 transition-colors">
-                                Xây dựng chiến lược ngay <ArrowUpRight size={18} />
+                                {t.marketingStrategy.targetPersona.cta} <ArrowUpRight size={18} />
                             </a>
                         </div>
 

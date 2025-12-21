@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Container } from "../common";
+import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
 
 export default function CTASection() {
+    const t = useTechnologyTranslations();
+
     return (
         <section className="py-20 text-center bg-slate-950 relative overflow-hidden">
             {/* Background gradient/glow */}
@@ -16,7 +19,7 @@ export default function CTASection() {
                     viewport={{ once: true }}
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6"
                 >
-                    BẮT ĐẦU NGAY HÔM NAY
+                    {t.cta.title}
                 </motion.h2>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -25,10 +28,10 @@ export default function CTASection() {
                     transition={{ delay: 0.1 }}
                 >
                     <p className="text-xl sm:text-2xl text-cyan-400 font-medium mb-4">
-                        Sẵn sàng đưa AI vào doanh nghiệp của bạn?
+                        {t.cta.subtitle}
                     </p>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-8">
-                        Đặt lịch tư vấn miễn phí để chúng tôi phân tích nhu cầu và đề xuất giải pháp phù hợp nhất.
+                        {t.cta.description}
                     </p>
                 </motion.div>
 

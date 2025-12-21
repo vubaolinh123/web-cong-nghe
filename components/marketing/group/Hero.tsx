@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
 
 export default function Hero() {
+    const t = useFacebookGroupTranslations();
+
     return (
         <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-slate-950 pt-20">
             {/* Background Ambience */}
@@ -17,15 +20,15 @@ export default function Hero() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-block px-4 py-1.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 font-bold mb-6 backdrop-blur-md">
-                            DỊCH VỤ GROUP VIP #1 VIỆT NAM
+                            {t.hero.badge}
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                            Xây Dựng <span className="text-green-500">Group Facebook</span> <br />
-                            Trọn Gói Cùng <span className="text-yellow-500">ASI Everest</span>
+                            {t.hero.title} <span className="text-green-500">{t.hero.titleHighlight1}</span> <br />
+                            {t.hero.titleLine2} <span className="text-yellow-500">{t.hero.titleHighlight2}</span>
                         </h1>
                         <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                            Sở hữu cộng đồng <strong>100.000+ thành viên thật</strong>.
-                            Kênh bán hàng tự động, uy tín và bền vững nhất trên mạng xã hội Facebook.
+                            {t.hero.description} <strong>{t.hero.descriptionHighlight}</strong>.
+                            {' '}{t.hero.descriptionLine2}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -33,13 +36,13 @@ export default function Hero() {
                                 href="/lien-he"
                                 className="px-8 py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-lg transition-all shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_50px_rgba(34,197,94,0.5)] transform hover:-translate-y-1 text-center"
                             >
-                                Điền Thông Tin Triển Khai
+                                {t.hero.ctaPrimary}
                             </a>
                             <a
                                 href="tel:0923451469"
                                 className="px-8 py-4 rounded-xl border border-slate-700 bg-slate-900/50 hover:bg-slate-800 text-white font-bold text-lg transition-all backdrop-blur-md flex items-center justify-center gap-2"
                             >
-                                Tư Vấn: 0923.451.469
+                                {t.hero.ctaSecondary}
                             </a>
                         </div>
                     </motion.div>

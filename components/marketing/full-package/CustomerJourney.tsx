@@ -1,40 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
+
+const stepColors = [
+    "from-blue-400 to-cyan-500",
+    "from-cyan-400 to-green-400",
+    "from-green-400 to-yellow-400",
+    "from-yellow-400 to-orange-500",
+    "from-orange-500 to-red-500",
+];
 
 export default function CustomerJourney() {
-    const steps = [
-        {
-            id: 1,
-            title: "Nhận Biết (Awareness)",
-            desc: "Tiếp cận khách hàng tiềm năng thông qua đa kênh: Facebook, TikTok, Google.",
-            color: "from-blue-400 to-cyan-500",
-        },
-        {
-            id: 2,
-            title: "Quan Tâm (Interest)",
-            desc: "Xây dựng nội dung hấp dẫn, thu hút sự tương tác và quan tâm của khách hàng.",
-            color: "from-cyan-400 to-green-400",
-        },
-        {
-            id: 3,
-            title: "Cân Nhắc (Consideration)",
-            desc: "Tối ưu hóa điểm chạm, cung cấp thông tin giá trị để khách hàng cân nhắc.",
-            color: "from-green-400 to-yellow-400",
-        },
-        {
-            id: 4,
-            title: "Mua Hàng (Purchase)",
-            desc: "Chuyển đổi truy cập thành đơn hàng với các chiến dịch khuyến mãi và CTA mạnh mẽ.",
-            color: "from-yellow-400 to-orange-500",
-        },
-        {
-            id: 5,
-            title: "Trung Thành (Loyalty)",
-            desc: "Chăm sóc sau bán, retargeting để biến khách hàng thành fan trung thành.",
-            color: "from-orange-500 to-red-500",
-        },
-    ];
+    const t = useMarketingFullPackageTranslations();
+
+    const steps = t.customerJourney.steps.map((step, index) => ({
+        id: index + 1,
+        title: step.title,
+        desc: step.desc,
+        color: stepColors[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-900 relative overflow-hidden">
@@ -47,12 +32,11 @@ export default function CustomerJourney() {
                         transition={{ duration: 0.8 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            Hành Trình Khách Hàng <br />
-                            <span className="text-cyan-400">5 Giai Đoạn</span>
+                            {t.customerJourney.title} <br />
+                            <span className="text-cyan-400">{t.customerJourney.titleHighlight}</span>
                         </h2>
                         <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                            Chúng tôi không chỉ chạy quảng cáo, chúng tôi xây dựng một hành trình trải nghiệm liền mạch
-                            biến người lạ thành khách hàng trung thành. Mô hình A-Z đảm bảo không bỏ sót bất kỳ cơ hội chuyển đổi nào.
+                            {t.customerJourney.description}
                         </p>
 
                         <div className="space-y-6">

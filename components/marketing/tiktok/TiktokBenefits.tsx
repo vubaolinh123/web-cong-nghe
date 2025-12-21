@@ -1,31 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
+
+const benefitColors = [
+    "from-pink-500 to-rose-500",
+    "from-cyan-500 to-blue-500",
+    "from-purple-500 to-violet-500",
+];
+
+const benefitImages = [
+    "/image/tiktok_growth_real.jpg",
+    "/image/tiktok_shop_real.jpg",
+    "/image/tiktok_live_real.jpg",
+];
 
 export default function TiktokBenefits() {
-    const items = [
-        {
-            title: "CHIẾN DỊCH HÀNG THÁNG",
-            subtitle: "TĂNG DOANH SỐ LÊN 20 LẦN",
-            desc: "Bạn có kênh lên ý tưởng chiến dịch hàng tháng nâng cao uy tín doanh số lên gấp 20 lần bình thường từ sản phẩm và dịch vụ của bạn.",
-            img: "/image/tiktok_growth_real.jpg",
-            color: "from-pink-500 to-rose-500"
-        },
-        {
-            title: "KIẾM THÊM THU NHẬP",
-            subtitle: "TỪ CÁC SẢN PHẨM NHÃN HÀNG",
-            desc: "Hợp tác các nhãn hàng sản phẩm để làm tiếp thị liên kết phát triển doanh thu ngày càng bến vững viral sản phẩm của bạn lên tầm cao mới.",
-            img: "/image/tiktok_shop_real.jpg",
-            color: "from-cyan-500 to-blue-500"
-        },
-        {
-            title: "TIẾT KIỆM THỜI GIAN",
-            subtitle: "TĂNG 100 TRIỆU / THÁNG",
-            desc: "Có kênh tiktok hàng 100.000 follow nhanh để phát triển video bán hàng và live bán hàng hiệu quả doanh thu đem về thu nhập hàng 100 triệu / tháng với sản phẩm mình có trong tay.",
-            img: "/image/tiktok_live_real.jpg",
-            color: "from-purple-500 to-violet-500"
-        }
-    ];
+    const t = useTiktokShopTranslations();
+
+    const items = t.benefits.items.map((item, index) => ({
+        ...item,
+        img: benefitImages[index],
+        color: benefitColors[index],
+    }));
 
     return (
         <section className="py-20 bg-black text-white relative overflow-hidden">

@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
 export default function Hero() {
+    const t = useFanpageTranslations();
+
     return (
         <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-950">
             {/* Background Image */}
@@ -22,15 +25,14 @@ export default function Hero() {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="inline-block px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-bold mb-6 backdrop-blur-md">
-                        GIẢI PHÁP TĂNG TRƯỞNG 1000+ ĐƠN
+                        {t.hero.badge}
                     </div>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                        Xây Dựng <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">Fanpage/Group</span> <br />
-                        Chuẩn SEO Top #1
+                        {t.hero.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">{t.hero.titleHighlight}</span> <br />
+                        {t.hero.titleLine2}
                     </h1>
                     <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                        Sở hữu hệ thống Fanpage/Group hàng chục nghìn thành viên thật.
-                        Tiếp cận đúng khách hàng mục tiêu, bùng nổ doanh số cùng <strong>ASI Everest</strong>.
+                        {t.hero.description} <strong>{t.hero.descriptionHighlight}</strong>.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -38,7 +40,7 @@ export default function Hero() {
                             href="/lien-he"
                             className="px-8 py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-lg transition-all shadow-[0_0_30px_rgba(34,197,94,0.3)] hover:shadow-[0_0_50px_rgba(34,197,94,0.5)] transform hover:-translate-y-1 text-center"
                         >
-                            Điền Thông Tin Triển Khai
+                            {t.hero.ctaPrimary}
                         </a>
                         <a
                             href="https://zalo.me/0923451469"
@@ -46,7 +48,7 @@ export default function Hero() {
                             rel="noreferrer"
                             className="px-8 py-4 rounded-full border border-slate-600 bg-slate-900/50 hover:bg-slate-800 text-white font-bold text-lg transition-all backdrop-blur-md flex items-center justify-center gap-2"
                         >
-                            Tư Vấn Miễn Phí
+                            {t.hero.ctaSecondary}
                         </a>
                     </div>
                 </motion.div>

@@ -1,19 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
 export default function WhySetup() {
+    const t = useFanpageTranslations();
+
     return (
         <section className="py-20 bg-slate-950 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        Tại Sao Cần <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Setup Fanpage/Group?</span>
+                        {t.whySetup.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">{t.whySetup.titleHighlight}</span>
                     </h2>
                     <p className="text-slate-400 max-w-4xl mx-auto text-lg leading-relaxed">
-                        Mua và Setup <strong className="text-white">Fanpage Facebook</strong> là phương án đầu tiên của nhiều người khi họ bắt đầu kinh doanh.
-                        Bởi vì hiện nay các hoạt động trên Facebook hết sức sôi nổi.
-                        Nếu khách hàng cần mua và sở hữu 1 group nhiều thành viên, hãy liên hệ với ASI Everest để được tư vấn chốt đơn phù hợp.
+                        {t.whySetup.description}
                     </p>
                 </div>
 
@@ -33,8 +34,8 @@ export default function WhySetup() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent" />
                         <div className="absolute bottom-6 left-6 right-6">
-                            <h3 className="text-2xl font-bold text-white mb-2">Tăng Trưởng Thần Tốc</h3>
-                            <p className="text-slate-300">Sở hữu ngay tệp khách hàng có sẵn, bỏ qua giai đoạn "build" từ con số 0 cực khổ.</p>
+                            <h3 className="text-2xl font-bold text-white mb-2">{t.whySetup.visualTitle}</h3>
+                            <p className="text-slate-300">{t.whySetup.visualDesc}</p>
                         </div>
                     </motion.div>
 

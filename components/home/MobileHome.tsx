@@ -2,6 +2,7 @@
 
 import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
+import { Header } from "@/components/common";
 
 // Loading component
 const SectionLoader = () => (
@@ -22,6 +23,9 @@ const MobileFooter = dynamic(() => import("./desktop/FooterSection"), { loading:
 export default function MobileHome() {
     return (
         <div className="flex flex-col w-full overflow-x-hidden bg-slate-950">
+            {/* Header Navigation */}
+            <Header />
+
             <Suspense fallback={<SectionLoader />}>
                 <MobileHero />
             </Suspense>

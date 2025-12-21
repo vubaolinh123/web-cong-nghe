@@ -2,25 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Users, Rocket, Target } from "lucide-react";
+import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
+
+const benefitIcons = [Users, Rocket, Target];
 
 export default function Benefits() {
-    const items = [
-        {
-            icon: Users,
-            title: "TIẾP CẬN KHÁCH HÀNG",
-            desc: "Việc mua và sở hữu trang fanpage nhiều like, nhiều follow hỗ trợ tiếp xúc được nhiều đối tượng trên Facebook tăng tương tác dễ dàng."
-        },
-        {
-            icon: Rocket,
-            title: "PHÁT TRIỂN THƯƠNG HIỆU",
-            desc: "Càng nhiều người biết đến và quan tâm thì giá trị thương hiệu sẽ tăng. Trên Facebook, fanpage nhiều like sẽ khẳng định cho giá trị của thương hiệu, sản phẩm."
-        },
-        {
-            icon: Target,
-            title: "BÁN HÀNG HIỆU QUẢ",
-            desc: "Fanpage nhiều like hỗ trợ bán hàng hiệu quả thông qua việc giúp đến gần nhiều thành viên, tăng cường uy tín thương hiệu để đi đến chuyển đổi."
-        }
-    ];
+    const t = useFanpageTranslations();
+
+    const items = t.benefits.items.map((item, index) => ({
+        ...item,
+        icon: benefitIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-900">
@@ -61,13 +53,13 @@ export default function Benefits() {
 
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/50 to-transparent flex items-center p-8 md:p-16">
                         <div className="max-w-xl">
-                            <span className="text-green-400 font-bold tracking-widest uppercase mb-2 block">Viral Marketing</span>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Biến Mọi Nội Dung Trở Nên <span className="text-white">VIRAL</span></h2>
+                            <span className="text-green-400 font-bold tracking-widest uppercase mb-2 block">{t.benefits.banner.label}</span>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">{t.benefits.banner.title} <span className="text-white">{t.benefits.banner.titleHighlight}</span></h2>
                             <p className="text-slate-200 text-lg mb-8">
-                                Tiếp cận TRIỆU khách hàng không tốn 1 đồng chạy Ads nhờ sở hữu hệ thống Page vệ tinh chất lượng.
+                                {t.benefits.banner.description}
                             </p>
                             <button className="px-8 py-3 bg-white text-slate-900 font-bold rounded-full hover:scale-105 transition-transform">
-                                Tìm Hiểu Ngay
+                                {t.benefits.banner.button}
                             </button>
                         </div>
                     </div>

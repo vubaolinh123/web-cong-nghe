@@ -33,8 +33,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
   try {
     // Get client IP for rate limiting
     const ip = request.headers.get("x-forwarded-for") ||
-               request.headers.get("x-real-ip") ||
-               "unknown";
+      request.headers.get("x-real-ip") ||
+      "unknown";
 
     // Check rate limit
     if (!checkRateLimit(ip)) {
@@ -86,7 +86,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
       } catch (sheetError) {
         console.error("Google Sheets error:", sheetError);
         // Continue anyway - don't fail the request if sheets fails
-        // In production, you might want to queue this for retry
       }
     } else {
       // Log form data for development

@@ -2,30 +2,17 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, UserCheck, Settings, Users2 } from "lucide-react";
+import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
+
+const pointIcons = [Users2, ShieldCheck, Settings, UserCheck];
 
 export default function Experience() {
-    const points = [
-        {
-            icon: Users2,
-            title: "Chọn đối tác uy tín",
-            desc: "Tìm kiếm và đánh giá tổng quan về uy tín thương hiệu và chất lượng dịch vụ trước khi liên hệ đặt mua fanpage từ Agency."
-        },
-        {
-            icon: ShieldCheck,
-            title: "Kiểm tra chất lượng",
-            desc: "Được phép yêu cầu bên bán cung cấp thông tin Insight để đánh giá về chất lượng, tương tác, giới tính, độ tuổi xem có phù hợp sản phẩm không."
-        },
-        {
-            icon: Settings,
-            title: "Chính sách bảo hành",
-            desc: "Để tránh rủi ro trong quá trình sử dụng, ASI Everest cam kết chính sách bảo hành rõ ràng, hỗ trợ đổi tên và back lại tiền nếu lỗi."
-        },
-        {
-            icon: UserCheck,
-            title: "Bàn giao toàn quyền",
-            desc: "Yêu cầu bên bán chuyển giao toàn bộ quyền sở hữu fanpage (Admin) để khách hàng tự mình quản lý, bảo mật tuyệt đối."
-        }
-    ];
+    const t = useFanpageTranslations();
+
+    const points = t.experience.points.map((point, index) => ({
+        ...point,
+        icon: pointIcons[index],
+    }));
 
     return (
         <section className="py-20 bg-slate-900 overflow-hidden">
@@ -41,11 +28,11 @@ export default function Experience() {
                     >
                         <div>
                             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                                Kinh Nghiệm <br />
-                                <span className="text-green-500">Mua Page Facebook</span>
+                                {t.experience.title} <br />
+                                <span className="text-green-500">{t.experience.titleHighlight}</span>
                             </h2>
                             <p className="text-slate-400 text-lg">
-                                Thị trường mua bán Page hiện nay "thượng vàng hạ cám". Dưới đây là những tiêu chí quan trọng bạn cần nằm lòng trước khi xuống tiền.
+                                {t.experience.description}
                             </p>
                         </div>
 

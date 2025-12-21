@@ -2,30 +2,18 @@
 
 import { motion } from "framer-motion";
 import { TrendingUp, ShieldCheck, Target, Zap } from "lucide-react";
+import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
+
+const benefitIcons = [TrendingUp, Target, ShieldCheck, Zap];
 
 export default function Benefits() {
-    const benefits = [
-        {
-            icon: TrendingUp,
-            title: "Tối Đa Hóa Doanh Thu",
-            desc: "Tập trung vào các chiến dịch chuyển đổi cao, mang lại dòng tiền thực tế cho doanh nghiệp."
-        },
-        {
-            icon: Target,
-            title: "Target Đúng Đối Tượng",
-            desc: "Sử dụng AI để phân tích và tiếp cận chính xác tệp khách hàng tiềm năng nhất."
-        },
-        {
-            icon: ShieldCheck,
-            title: "Cam Kết Hiệu Quả",
-            desc: "Làm việc dựa trên KPI rõ ràng, báo cáo minh bạch hàng tuần/tháng."
-        },
-        {
-            icon: Zap,
-            title: "Triển Khai Nhanh Chóng",
-            desc: "Quy trình làm việc tinh gọn, setup hệ thống và chạy chiến dịch chỉ trong 3-5 ngày."
-        }
-    ];
+    const t = useMarketingFullPackageTranslations();
+
+    const benefits = t.benefits.items.map((item, index) => ({
+        icon: benefitIcons[index],
+        title: item.title,
+        desc: item.desc,
+    }));
 
     return (
         <section className="py-20 bg-slate-950 relative">
@@ -54,9 +42,9 @@ export default function Benefits() {
                         transition={{ duration: 0.8 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
-                            Tại Sao Chọn <br />
+                            {t.benefits.title} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                                VTS Marketing?
+                                {t.benefits.titleHighlight}
                             </span>
                         </h2>
 
