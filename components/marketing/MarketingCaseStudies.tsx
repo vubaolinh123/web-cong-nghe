@@ -1,60 +1,97 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "../common";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectCreative } from 'swiper/modules';
 import Image from "next/image";
-import { TrendingUp, Eye, Users, Award } from "lucide-react";
+import { TrendingUp, Eye, Users, Award, TrendingUpIcon, UsersIcon, ThumbsUp, Video, X } from "lucide-react";
+import { useState, useEffect } from "react";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-creative';
 
-const caseStudies = [
+// Category types
+type CategoryKey = 'marketing' | 'group' | 'fanpage' | 'tiktok';
+
+interface CaseStudy {
+    id: number;
+    image: string;
+    alt: string;
+    type: "landscape" | "portrait";
+    description?: string;
+}
+
+interface Category {
+    key: CategoryKey;
+    name: string;
+    icon: any;
+    description: string;
+    caseStudies: CaseStudy[];
+    color: string;
+}
+
+// Case studies organized by category
+const categories: Category[] = [
     {
-        id: 1,
-        image: "/image/casestudies/marketing_1.jpg",
-        alt: "Marketing Case Study 1",
-        type: "landscape",
-        span: "col-span-2 row-span-2"
+        key: 'marketing',
+        name: 'Marketing tổng thể',
+        icon: TrendingUpIcon,
+        description: 'Các chiến dịch marketing đa kênh tổng thể',
+        color: 'from-green-500 to-emerald-500',
+        caseStudies: [
+            { id: 1, image: "/image/casestudies/marketing_1.jpg", alt: "Marketing Case Study 1", type: "landscape" },
+            { id: 2, image: "/image/casestudies/marketing_2.jpg", alt: "Marketing Case Study 2", type: "portrait" },
+            { id: 3, image: "/image/casestudies/marketing_3.jpg", alt: "Marketing Case Study 3", type: "landscape" },
+            { id: 4, image: "/image/casestudies/marketing_4.jpg", alt: "Marketing Case Study 4", type: "portrait" },
+            { id: 5, image: "/image/casestudies/marketing_5.jpg", alt: "Marketing Case Study 5", type: "portrait" },
+            { id: 6, image: "/image/casestudies/marketing_6.jpg", alt: "Marketing Case Study 6", type: "portrait" },
+        ]
     },
     {
-        id: 2,
-        image: "/image/casestudies/marketing_2.jpg",
-        alt: "Marketing Case Study 2",
-        type: "portrait",
-        span: "col-span-1 row-span-2"
+        key: 'group',
+        name: 'Xây Group Facebook',
+        icon: UsersIcon,
+        description: 'Xây dựng và phát triển cộng đồng Facebook Group',
+        color: 'from-blue-500 to-cyan-500',
+        caseStudies: [
+            { id: 7, image: "/image/casestudies/group_1.jpg", alt: "Facebook Group Case Study 1", type: "portrait" },
+            { id: 8, image: "/image/casestudies/group_2.jpg", alt: "Facebook Group Case Study 2", type: "portrait" },
+            { id: 9, image: "/image/casestudies/group_3.jpg", alt: "Facebook Group Case Study 3", type: "portrait" },
+            { id: 100, image: "/image/casestudies/group_4.jpg", alt: "Facebook Group Case Study 4", type: "portrait" },
+            { id: 101, image: "/image/casestudies/group_5.jpg", alt: "Facebook Group Case Study 5", type: "portrait" },
+        ]
     },
     {
-        id: 3,
-        image: "/image/casestudies/marketing_3.jpg",
-        alt: "Marketing Case Study 3",
-        type: "landscape",
-        span: "col-span-2 row-span-2"
+        key: 'fanpage',
+        name: 'Fanpage',
+        icon: ThumbsUp,
+        description: 'Quản lý và phát triển Facebook Fanpage chuyên nghiệp',
+        color: 'from-purple-500 to-pink-500',
+        caseStudies: [
+            { id: 10, image: "/image/casestudies/fanpage_1.jpg", alt: "Fanpage Case Study 1", type: "portrait" },
+            { id: 11, image: "/image/casestudies/fanpage_2.jpg", alt: "Fanpage Case Study 2", type: "portrait" },
+            { id: 12, image: "/image/casestudies/fanpage_3.jpg", alt: "Fanpage Case Study 3", type: "portrait" },
+            { id: 13, image: "/image/casestudies/fanpage_4.jpg", alt: "Fanpage Case Study 4", type: "portrait" },
+            { id: 14, image: "/image/casestudies/fanpage_5.jpg", alt: "Fanpage Case Study 5", type: "portrait" },
+        ]
     },
     {
-        id: 4,
-        image: "/image/casestudies/marketing_4.jpg",
-        alt: "Marketing Case Study 4",
-        type: "portrait",
-        span: "col-span-1 row-span-2"
-    },
-    {
-        id: 5,
-        image: "/image/casestudies/marketing_5.jpg",
-        alt: "Marketing Case Study 5",
-        type: "portrait",
-        span: "col-span-2 row-span-1"
-    },
-    {
-        id: 6,
-        image: "/image/casestudies/marketing_6.jpg",
-        alt: "Marketing Case Study 6",
-        type: "portrait",
-        span: "col-span-1 row-span-1"
+        key: 'tiktok',
+        name: 'TikTok',
+        icon: Video,
+        description: 'Chiến lược marketing và viral content trên TikTok',
+        color: 'from-orange-500 to-red-500',
+        caseStudies: [
+            { id: 15, image: "/image/casestudies/tiktok_1.jpg", alt: "TikTok Case Study 1", type: "portrait" },
+            { id: 16, image: "/image/casestudies/tiktok_2.jpg", alt: "TikTok Case Study 2", type: "portrait" },
+            { id: 17, image: "/image/casestudies/tiktok_3.jpg", alt: "TikTok Case Study 3", type: "portrait" },
+            { id: 18, image: "/image/casestudies/tiktok_4.jpg", alt: "TikTok Case Study 4", type: "portrait" },
+            { id: 19, image: "/image/casestudies/tiktok_5.jpg", alt: "TikTok Case Study 5", type: "portrait" },
+        ]
     },
 ];
 
@@ -66,6 +103,33 @@ const stats = [
 ];
 
 export default function MarketingCaseStudies() {
+    const [activeCategory, setActiveCategory] = useState<CategoryKey>('marketing');
+    const [selectedImage, setSelectedImage] = useState<CaseStudy | null>(null);
+    const activeCategoryData = categories.find(cat => cat.key === activeCategory)!;
+
+    // Close modal on ESC key
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && selectedImage) {
+                setSelectedImage(null);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImage]);
+
+    // Prevent body scroll when modal is open
+    useEffect(() => {
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedImage]);
+
     return (
         <section className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
             {/* Ultra Advanced Background Effects */}
@@ -239,92 +303,270 @@ export default function MarketingCaseStudies() {
                     ))}
                 </div>
 
-                {/* DESKTOP: Masonry Grid Layout - Hidden on Mobile */}
-                <div className="hidden lg:grid grid-cols-3 auto-rows-[200px] gap-4 mb-12">
-                    {caseStudies.map((study, index) => (
-                        <motion.div
-                            key={study.id}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02, zIndex: 10 }}
-                            className={`${study.span} group relative rounded-2xl overflow-hidden`}
-                        >
-                            <div className="relative w-full h-full bg-slate-900">
-                                <Image
-                                    src={study.image}
-                                    alt={study.alt}
-                                    fill
-                                    className={`${study.type === "portrait"
-                                        ? "object-contain"
-                                        : "object-cover"
-                                        } transition-transform duration-500 group-hover:scale-105`}
-                                    quality={75}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
-                            </div>
-                            <div className="absolute inset-0 border-2 border-slate-700/50 group-hover:border-green-500/50 rounded-2xl transition-colors duration-300 pointer-events-none" />
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* MOBILE & TABLET: Swiper Slider - Hidden on Desktop */}
+                {/* Category Selection - Mobile Dropdown */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="lg:hidden relative mb-12"
+                    className="mb-8 sm:mb-12 lg:hidden"
                 >
-                    <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-green-500/10">
-                        <Swiper
-                            modules={[Autoplay, Pagination, Navigation, EffectCoverflow]}
-                            spaceBetween={0}
-                            slidesPerView={1}
-                            effect="coverflow"
-                            coverflowEffect={{
-                                rotate: 20,
-                                stretch: 0,
-                                depth: 100,
-                                modifier: 1,
-                                slideShadows: true,
+                    <div className="relative">
+                        <select
+                            value={activeCategory}
+                            onChange={(e) => setActiveCategory(e.target.value as CategoryKey)}
+                            className="w-full px-6 py-4 rounded-2xl bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-white font-bold text-base appearance-none cursor-pointer focus:outline-none focus:border-green-500/50 transition-all duration-300"
+                            style={{
+                                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2322c55e'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'right 1rem center',
+                                backgroundSize: '1.5rem',
+                                paddingRight: '3rem'
                             }}
-                            navigation
-                            pagination={{
-                                clickable: true,
-                                bulletActiveClass: 'swiper-pagination-bullet-active !bg-green-500',
-                            }}
-                            autoplay={{
-                                delay: 4000,
-                                disableOnInteraction: false,
-                                pauseOnMouseEnter: true,
-                            }}
-                            loop={true}
-                            speed={800}
-                            className="marketing-mobile-swiper"
                         >
-                            {caseStudies.map((study) => (
-                                <SwiperSlide key={study.id}>
-                                    <div className={`relative w-full bg-slate-900 ${study.type === "portrait"
-                                        ? "aspect-[9/16]"
-                                        : "aspect-[16/9]"
+                            {categories.map((category) => (
+                                <option key={category.key} value={category.key}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* Category Description */}
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={activeCategory}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-center text-slate-400 text-sm mt-4"
+                        >
+                            {activeCategoryData.description}
+                        </motion.p>
+                    </AnimatePresence>
+                </motion.div>
+
+                {/* Category Tabs - Desktop Only */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-8 sm:mb-12 hidden lg:block"
+                >
+                    <div className="flex justify-center">
+                        <div className="inline-flex gap-2 sm:gap-3 p-2 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50">
+                            {categories.map((category) => {
+                                const Icon = category.icon;
+                                const isActive = activeCategory === category.key;
+
+                                return (
+                                    <motion.button
+                                        key={category.key}
+                                        onClick={() => setActiveCategory(category.key)}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className={`
+                                            relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base
+                                            transition-all duration-300 whitespace-nowrap flex items-center gap-2
+                                            ${isActive
+                                                ? 'text-white shadow-lg'
+                                                : 'text-slate-400 hover:text-slate-200'
+                                            }
+                                        `}
+                                    >
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="activeTab"
+                                                className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-xl`}
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" />
+                                        <span className="relative z-10">{category.name}</span>
+                                    </motion.button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Category Description */}
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={activeCategory}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-center text-slate-400 text-sm sm:text-base mt-4"
+                        >
+                            {activeCategoryData.description}
+                        </motion.p>
+                    </AnimatePresence>
+                </motion.div>
+
+                {/* Case Studies Slider */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeCategory}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4 }}
+                        className="mb-12"
+                    >
+                        <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-green-500/10">
+                            <Swiper
+                                modules={[Autoplay, Pagination, Navigation, EffectCreative]}
+                                spaceBetween={20}
+                                slidesPerView={1.2}
+                                centeredSlides={false}
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 1.5,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 24,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 30,
+                                    },
+                                    1280: {
+                                        slidesPerView: 3.5,
+                                        spaceBetween: 30,
+                                    },
+                                }}
+                                navigation
+                                pagination={{
+                                    clickable: true,
+                                    dynamicBullets: true,
+                                }}
+                                autoplay={{
+                                    delay: 4000,
+                                    disableOnInteraction: false,
+                                    pauseOnMouseEnter: true,
+                                }}
+                                loop={activeCategoryData.caseStudies.length > 3}
+                                speed={600}
+                                className="case-studies-swiper"
+                            >
+                                {activeCategoryData.caseStudies.map((study) => (
+                                    <SwiperSlide key={study.id}>
+                                        <motion.div
+                                            whileHover={{ y: -8 }}
+                                            onClick={() => setSelectedImage(study)}
+                                            className="group relative rounded-xl overflow-hidden bg-slate-900 h-full cursor-pointer"
+                                        >
+                                            <div className={`relative w-full ${study.type === "portrait"
+                                                ? "aspect-[9/16]"
+                                                : "aspect-[16/9]"
+                                                }`}>
+                                                <Image
+                                                    src={study.image}
+                                                    alt={study.alt}
+                                                    fill
+                                                    className={`${study.type === "portrait"
+                                                        ? "object-cover"
+                                                        : "object-cover"
+                                                        } transition-transform duration-500 group-hover:scale-110`}
+                                                    quality={85}
+                                                    sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 28vw"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+
+                                                {/* Hover overlay with view icon */}
+                                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${activeCategoryData.color} flex items-center justify-center shadow-lg`}>
+                                                        <Eye className="w-6 h-6 text-white" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Border effect */}
+                                            <div className={`absolute inset-0 border-2 border-slate-700/50 group-hover:border-transparent rounded-xl transition-colors duration-300 pointer-events-none`} />
+                                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${activeCategoryData.color} rounded-xl transition-opacity duration-300 pointer-events-none`} style={{ padding: '2px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
+                                        </motion.div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Image Modal */}
+                <AnimatePresence>
+                    {selectedImage && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            {/* Backdrop */}
+                            <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" />
+
+                            {/* Close button */}
+                            <motion.button
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0 }}
+                                transition={{ delay: 0.1 }}
+                                onClick={() => setSelectedImage(null)}
+                                className="absolute top-4 right-4 z-10 w-12 h-12 rounded-full bg-slate-900/80 backdrop-blur-sm border border-slate-700/50 hover:border-green-500/50 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 group"
+                            >
+                                <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+                            </motion.button>
+
+                            {/* Image container */}
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.8, opacity: 0 }}
+                                transition={{ duration: 0.3, delay: 0.1 }}
+                                className="relative max-w-7xl max-h-[60vh] w-full"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <div className={`relative w-full h-full flex items-center justify-center`}>
+                                    <div className={`relative ${selectedImage.type === "portrait"
+                                        ? "w-auto h-[60vh] max-w-full"
+                                        : "w-full h-auto max-h-[60vh]"
                                         }`}>
                                         <Image
-                                            src={study.image}
-                                            alt={study.alt}
-                                            fill
-                                            className={study.type === "portrait" ? "object-contain" : "object-cover object-center"}
-                                            priority={study.id === 1}
-                                            quality={75}
+                                            src={selectedImage.image}
+                                            alt={selectedImage.alt}
+                                            width={selectedImage.type === "portrait" ? 1080 : 1920}
+                                            height={selectedImage.type === "portrait" ? 1920 : 1080}
+                                            className={`${selectedImage.type === "portrait"
+                                                ? "w-auto h-full max-h-[60vh]"
+                                                : "w-full h-auto max-h-[60vh]"
+                                                } rounded-2xl shadow-2xl`}
+                                            quality={95}
+                                            priority
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-slate-950/30 pointer-events-none" />
                                     </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-                </motion.div>
+                                </div>
+
+                                {/* Image info badge */}
+                                <motion.div
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="absolute -bottom-16 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-slate-300 text-sm whitespace-nowrap"
+                                >
+                                    <span className={`font-bold bg-gradient-to-r ${activeCategoryData.color} bg-clip-text text-transparent`}>
+                                        {activeCategoryData.name}
+                                    </span>
+                                    <span className="mx-2">•</span>
+                                    <span>Click bên ngoài hoặc ESC để đóng</span>
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Bottom CTA */}
                 <motion.div
@@ -351,40 +593,42 @@ export default function MarketingCaseStudies() {
 
                 {/* Custom Swiper Styles */}
                 <style jsx global>{`
-                    .marketing-mobile-swiper {
-                        padding-bottom: 50px;
+                    .case-studies-swiper {
+                        padding: 20px 20px 60px 20px;
                     }
 
-                    .marketing-mobile-swiper .swiper-button-next,
-                    .marketing-mobile-swiper .swiper-button-prev {
+                    .case-studies-swiper .swiper-button-next,
+                    .case-studies-swiper .swiper-button-prev {
                         color: #22c55e;
-                        background: rgba(15, 23, 42, 0.8);
+                        background: rgba(15, 23, 42, 0.9);
                         backdrop-filter: blur(8px);
-                        width: 40px;
-                        height: 40px;
+                        width: 48px;
+                        height: 48px;
                         border-radius: 50%;
-                        border: 1px solid rgba(34, 197, 94, 0.3);
+                        border: 2px solid rgba(34, 197, 94, 0.3);
                         transition: all 0.3s ease;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
                     }
 
-                    .marketing-mobile-swiper .swiper-button-next:hover,
-                    .marketing-mobile-swiper .swiper-button-prev:hover {
+                    .case-studies-swiper .swiper-button-next:hover,
+                    .case-studies-swiper .swiper-button-prev:hover {
                         background: rgba(34, 197, 94, 0.2);
-                        border-color: rgba(34, 197, 94, 0.6);
+                        border-color: rgba(34, 197, 94, 0.8);
                         transform: scale(1.1);
+                        box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
                     }
 
-                    .marketing-mobile-swiper .swiper-button-next::after,
-                    .marketing-mobile-swiper .swiper-button-prev::after {
-                        font-size: 16px;
+                    .case-studies-swiper .swiper-button-next::after,
+                    .case-studies-swiper .swiper-button-prev::after {
+                        font-size: 18px;
                         font-weight: bold;
                     }
 
-                    .marketing-mobile-swiper .swiper-pagination {
-                        bottom: 10px;
+                    .case-studies-swiper .swiper-pagination {
+                        bottom: 20px;
                     }
 
-                    .marketing-mobile-swiper .swiper-pagination-bullet {
+                    .case-studies-swiper .swiper-pagination-bullet {
                         width: 10px;
                         height: 10px;
                         background: rgba(148, 163, 184, 0.5);
@@ -392,22 +636,33 @@ export default function MarketingCaseStudies() {
                         transition: all 0.3s ease;
                     }
 
-                    .marketing-mobile-swiper .swiper-pagination-bullet-active {
-                        background: #22c55e !important;
-                        width: 28px;
+                    .case-studies-swiper .swiper-pagination-bullet-active {
+                        background: #22c55e;
+                        width: 32px;
                         border-radius: 5px;
+                        box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
                     }
 
                     @media (max-width: 640px) {
-                        .marketing-mobile-swiper .swiper-button-next,
-                        .marketing-mobile-swiper .swiper-button-prev {
-                            width: 32px;
-                            height: 32px;
+                        .case-studies-swiper {
+                            padding: 15px 10px 50px 10px;
                         }
 
-                        .marketing-mobile-swiper .swiper-button-next::after,
-                        .marketing-mobile-swiper .swiper-button-prev::after {
+                        .case-studies-swiper .swiper-button-next,
+                        .case-studies-swiper .swiper-button-prev {
+                            width: 36px;
+                            height: 36px;
+                        }
+
+                        .case-studies-swiper .swiper-button-next::after,
+                        .case-studies-swiper .swiper-button-prev::after {
                             font-size: 14px;
+                        }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        .case-studies-swiper .swiper-slide {
+                            transition: none;
                         }
                     }
                 `}</style>
