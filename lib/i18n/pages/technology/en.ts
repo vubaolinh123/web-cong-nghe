@@ -343,4 +343,12 @@ export const en: TechnologyPageTranslations = {
             },
         ],
     },
+    blogSection: {
+        title: 'Technology',
+        titleHighlight: 'Articles',
+        subtitle: 'Stay updated with the latest technology insights and trends from experts',
+        viewAll: 'View All Articles',
+        readMore: 'Read more',
+        minuteRead: 'min read',
+    },
 };

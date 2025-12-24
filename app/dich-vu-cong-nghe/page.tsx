@@ -7,6 +7,7 @@ import PricingPackages from "@/components/ai-service/PricingPackages";
 import Commitments from "@/components/ai-service/Commitments";
 import CaseStudies from "@/components/ai-service/CaseStudies";
 import CTASection from "@/components/ai-service/CTASection";
+import TechnologyBlogSection from "@/components/ai-service/TechnologyBlogSection";
 import { ContactSection, FooterSection } from "@/components/home";
 import { siteConfig, pageSEO } from "@/lib/seo";
 
@@ -62,6 +63,9 @@ export default function AiServicesPage() {
             <div id="tu-van">
                 <ContactSection />
             </div>
+
+            {/* Blog Section */}
+            <TechnologyBlogSection />
 
             {/* Footer */}
             <FooterSection />

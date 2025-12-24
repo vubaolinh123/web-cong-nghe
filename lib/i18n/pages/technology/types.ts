@@ -117,4 +117,12 @@ export type TechnologyPageTranslations = {
             description: string;
         }>;
     };
+    blogSection: {
+        title: string;
+        titleHighlight: string;
+        subtitle: string;
+        viewAll: string;
+        readMore: string;
+        minuteRead: string;
+    };
 };

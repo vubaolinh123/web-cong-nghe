@@ -343,4 +343,12 @@ export const vi: TechnologyPageTranslations = {
             },
         ],
     },
+    blogSection: {
+        title: 'Bài Viết Công Nghệ',
+        titleHighlight: 'Mới Nhất',
+        subtitle: 'Cập nhật kiến thức và xu hướng công nghệ mới nhất từ chuyên gia',
+        viewAll: 'Xem Tất Cả Bài Viết',
+        readMore: 'Đọc thêm',
+        minuteRead: 'phút đọc',
+    },
 };
