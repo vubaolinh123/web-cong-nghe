@@ -480,6 +480,58 @@ export const vi: TranslationDictionary = {
       consulting: "Tư Vấn IT",
       other: "Khác"
     }
+  },
+  caseStudies: {
+    badge: "Case Studies",
+    title: {
+      prefix: "Dự Án",
+      highlight: "Thành Công"
+    },
+    description: "Khám phá các dự án thành công của chúng tôi trong Marketing, Công nghệ và Quản lý cộng đồng với {roi} và {growth}",
+    descriptionValues: {
+      roi: "kết quả vượt trội",
+      growth: "tăng trưởng bền vững"
+    },
+    categories: {
+      marketing: {
+        name: "Marketing tổng thể",
+        description: "Các chiến dịch marketing đa kênh tổng thể"
+      },
+      group: {
+        name: "Xây Group Facebook",
+        description: "Xây dựng và phát triển cộng đồng Facebook Group"
+      },
+      fanpage: {
+        name: "Fanpage",
+        description: "Quản lý và phát triển Facebook Fanpage chuyên nghiệp"
+      },
+      tiktok: {
+        name: "TikTok",
+        description: "Chiến lược marketing và viral content trên TikTok"
+      }
+    },
+    stats: [
+      {
+        value: "500+",
+        label: "Dự án hoàn thành"
+      },
+      {
+        value: "98%",
+        label: "Khách hàng hài lòng"
+      },
+      {
+        value: "300M+",
+        label: "Tổng tiếp cận"
+      },
+      {
+        value: "24/7",
+        label: "Hỗ trợ khách hàng"
+      }
+    ],
+    cta: {
+      description: "Nhìn thấy kết quả tương tự này cho doanh nghiệp của bạn",
+      button: "Tư Vấn Miễn Phí Ngay"
+    }
   }
 };
 

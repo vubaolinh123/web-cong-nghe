@@ -353,4 +353,30 @@ export type TranslationDictionary = {
       other: string;
     };
   };
+  caseStudies: {
+    badge: string;
+    title: {
+      prefix: string;
+      highlight: string;
+    };
+    description: string;
+    descriptionValues: {
+      roi: string;
+      growth: string;
+    };
+    categories: {
+      marketing: { name: string; description: string };
+      group: { name: string; description: string };
+      fanpage: { name: string; description: string };
+      tiktok: { name: string; description: string };
+    };
+    stats: Array<{
+      value: string;
+      label: string;
+    }>;
+    cta: {
+      description: string;
+      button: string;
+    };
+  };
 };

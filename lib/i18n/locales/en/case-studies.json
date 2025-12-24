@@ -1,0 +1,52 @@
+{
+    "badge": "Case Studies",
+    "title": {
+        "prefix": "Success",
+        "highlight": "Stories"
+    },
+    "description": "Explore our successful projects in Marketing, Technology, and Community Management with {roi} and {growth}",
+    "descriptionValues": {
+        "roi": "exceptional results",
+        "growth": "sustainable growth"
+    },
+    "categories": {
+        "marketing": {
+            "name": "Comprehensive Marketing",
+            "description": "Multi-channel comprehensive marketing campaigns"
+        },
+        "group": {
+            "name": "Facebook Group Building",
+            "description": "Building and growing Facebook Group communities"
+        },
+        "fanpage": {
+            "name": "Fanpage Management",
+            "description": "Professional Facebook Fanpage management and growth"
+        },
+        "tiktok": {
+            "name": "TikTok Marketing",
+            "description": "TikTok marketing strategy and viral content creation"
+        }
+    },
+    "stats": [
+        {
+            "value": "500+",
+            "label": "Projects Completed"
+        },
+        {
+            "value": "98%",
+            "label": "Client Satisfaction"
+        },
+        {
+            "value": "300M+",
+            "label": "Total Reach"
+        },
+        {
+            "value": "24/7",
+            "label": "Customer Support"
+        }
+    ],
+    "cta": {
+        "description": "See similar results for your business",
+        "button": "Get Free Consultation Now"
+    }
+}

@@ -5,8 +5,10 @@ import { Container } from "../common";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectCreative } from 'swiper/modules';
 import Image from "next/image";
-import { TrendingUp, Eye, Users, Award, TrendingUpIcon, UsersIcon, ThumbsUp, Video, X } from "lucide-react";
+import { TrendingUp, Eye, Users, Award, TrendingUpIcon, UsersIcon, ThumbsUp, Video, X, CheckCircle, Target, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { createPortal } from "react-dom";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -34,78 +36,83 @@ interface Category {
     color: string;
 }
 
-// Case studies organized by category
-const categories: Category[] = [
-    {
-        key: 'marketing',
-        name: 'Marketing tổng thể',
-        icon: TrendingUpIcon,
-        description: 'Các chiến dịch marketing đa kênh tổng thể',
-        color: 'from-green-500 to-emerald-500',
-        caseStudies: [
-            { id: 1, image: "/image/casestudies/marketing_1.jpg", alt: "Marketing Case Study 1", type: "landscape" },
-            { id: 2, image: "/image/casestudies/marketing_2.jpg", alt: "Marketing Case Study 2", type: "portrait" },
-            { id: 3, image: "/image/casestudies/marketing_3.jpg", alt: "Marketing Case Study 3", type: "landscape" },
-            { id: 4, image: "/image/casestudies/marketing_4.jpg", alt: "Marketing Case Study 4", type: "portrait" },
-            { id: 5, image: "/image/casestudies/marketing_5.jpg", alt: "Marketing Case Study 5", type: "portrait" },
-            { id: 6, image: "/image/casestudies/marketing_6.jpg", alt: "Marketing Case Study 6", type: "portrait" },
-        ]
-    },
-    {
-        key: 'group',
-        name: 'Xây Group Facebook',
-        icon: UsersIcon,
-        description: 'Xây dựng và phát triển cộng đồng Facebook Group',
-        color: 'from-blue-500 to-cyan-500',
-        caseStudies: [
-            { id: 7, image: "/image/casestudies/group_1.jpg", alt: "Facebook Group Case Study 1", type: "portrait" },
-            { id: 8, image: "/image/casestudies/group_2.jpg", alt: "Facebook Group Case Study 2", type: "portrait" },
-            { id: 9, image: "/image/casestudies/group_3.jpg", alt: "Facebook Group Case Study 3", type: "portrait" },
-            { id: 100, image: "/image/casestudies/group_4.jpg", alt: "Facebook Group Case Study 4", type: "portrait" },
-            { id: 101, image: "/image/casestudies/group_5.jpg", alt: "Facebook Group Case Study 5", type: "portrait" },
-        ]
-    },
-    {
-        key: 'fanpage',
-        name: 'Fanpage',
-        icon: ThumbsUp,
-        description: 'Quản lý và phát triển Facebook Fanpage chuyên nghiệp',
-        color: 'from-purple-500 to-pink-500',
-        caseStudies: [
-            { id: 10, image: "/image/casestudies/fanpage_1.jpg", alt: "Fanpage Case Study 1", type: "portrait" },
-            { id: 11, image: "/image/casestudies/fanpage_2.jpg", alt: "Fanpage Case Study 2", type: "portrait" },
-            { id: 12, image: "/image/casestudies/fanpage_3.jpg", alt: "Fanpage Case Study 3", type: "portrait" },
-            { id: 13, image: "/image/casestudies/fanpage_4.jpg", alt: "Fanpage Case Study 4", type: "portrait" },
-            { id: 14, image: "/image/casestudies/fanpage_5.jpg", alt: "Fanpage Case Study 5", type: "portrait" },
-        ]
-    },
-    {
-        key: 'tiktok',
-        name: 'TikTok',
-        icon: Video,
-        description: 'Chiến lược marketing và viral content trên TikTok',
-        color: 'from-orange-500 to-red-500',
-        caseStudies: [
-            { id: 15, image: "/image/casestudies/tiktok_1.jpg", alt: "TikTok Case Study 1", type: "portrait" },
-            { id: 16, image: "/image/casestudies/tiktok_2.jpg", alt: "TikTok Case Study 2", type: "portrait" },
-            { id: 17, image: "/image/casestudies/tiktok_3.jpg", alt: "TikTok Case Study 3", type: "portrait" },
-            { id: 18, image: "/image/casestudies/tiktok_4.jpg", alt: "TikTok Case Study 4", type: "portrait" },
-            { id: 19, image: "/image/casestudies/tiktok_5.jpg", alt: "TikTok Case Study 5", type: "portrait" },
-        ]
-    },
-];
-
-const stats = [
-    { icon: Eye, value: "272M+", label: "Lượt xem", color: "from-green-500 to-emerald-500" },
-    { icon: Users, value: "84.2M+", label: "Reach", color: "from-cyan-500 to-blue-500" },
-    { icon: TrendingUp, value: "494%", label: "Tăng trưởng", color: "from-purple-500 to-pink-500" },
-    { icon: Award, value: "100%", label: "Organic", color: "from-orange-500 to-red-500" },
-];
+// Icon mapping for stats
+const statIcons = [CheckCircle, Users, Target, Clock];
 
 export default function MarketingCaseStudies() {
+    const { t } = useLanguage();
     const [activeCategory, setActiveCategory] = useState<CategoryKey>('marketing');
     const [selectedImage, setSelectedImage] = useState<CaseStudy | null>(null);
+
+    // Build categories with translations
+    const categories: Category[] = [
+        {
+            key: 'marketing',
+            name: t('caseStudies.categories.marketing.name') || 'Marketing tổng thể',
+            icon: TrendingUpIcon,
+            description: t('caseStudies.categories.marketing.description') || 'Các chiến dịch marketing đa kênh tổng thể',
+            color: 'from-green-500 to-emerald-500',
+            caseStudies: [
+                { id: 2, image: "/image/casestudies/marketing_2.jpg", alt: "Marketing Case Study 2", type: "portrait" },
+                { id: 4, image: "/image/casestudies/marketing_4.jpg", alt: "Marketing Case Study 4", type: "portrait" },
+                { id: 5, image: "/image/casestudies/marketing_5.jpg", alt: "Marketing Case Study 5", type: "portrait" },
+                { id: 6, image: "/image/casestudies/marketing_6.jpg", alt: "Marketing Case Study 6", type: "portrait" },
+            ]
+        },
+        {
+            key: 'group',
+            name: t('caseStudies.categories.group.name') || 'Xây Group Facebook',
+            icon: UsersIcon,
+            description: t('caseStudies.categories.group.description') || 'Xây dựng và phát triển cộng đồng Facebook Group',
+            color: 'from-blue-500 to-cyan-500',
+            caseStudies: [
+                { id: 7, image: "/image/casestudies/group_1.jpg", alt: "Facebook Group Case Study 1", type: "portrait" },
+                { id: 8, image: "/image/casestudies/group_2.jpg", alt: "Facebook Group Case Study 2", type: "portrait" },
+                { id: 9, image: "/image/casestudies/group_3.jpg", alt: "Facebook Group Case Study 3", type: "portrait" },
+                { id: 100, image: "/image/casestudies/group_4.jpg", alt: "Facebook Group Case Study 4", type: "portrait" },
+                { id: 101, image: "/image/casestudies/group_5.jpg", alt: "Facebook Group Case Study 5", type: "portrait" },
+            ]
+        },
+        {
+            key: 'fanpage',
+            name: t('caseStudies.categories.fanpage.name') || 'Fanpage',
+            icon: ThumbsUp,
+            description: t('caseStudies.categories.fanpage.description') || 'Quản lý và phát triển Facebook Fanpage chuyên nghiệp',
+            color: 'from-purple-500 to-pink-500',
+            caseStudies: [
+                { id: 10, image: "/image/casestudies/fanpage_1.jpg", alt: "Fanpage Case Study 1", type: "portrait" },
+                { id: 11, image: "/image/casestudies/fanpage_2.jpg", alt: "Fanpage Case Study 2", type: "portrait" },
+                { id: 12, image: "/image/casestudies/fanpage_3.jpg", alt: "Fanpage Case Study 3", type: "portrait" },
+                { id: 13, image: "/image/casestudies/fanpage_4.jpg", alt: "Fanpage Case Study 4", type: "portrait" },
+                { id: 14, image: "/image/casestudies/fanpage_5.jpg", alt: "Fanpage Case Study 5", type: "portrait" },
+            ]
+        },
+        {
+            key: 'tiktok',
+            name: t('caseStudies.categories.tiktok.name') || 'TikTok',
+            icon: Video,
+            description: t('caseStudies.categories.tiktok.description') || 'Chiến lược marketing và viral content trên TikTok',
+            color: 'from-orange-500 to-red-500',
+            caseStudies: [
+                { id: 15, image: "/image/casestudies/tiktok_1.jpg", alt: "TikTok Case Study 1", type: "portrait" },
+                { id: 16, image: "/image/casestudies/tiktok_2.jpg", alt: "TikTok Case Study 2", type: "portrait" },
+                { id: 17, image: "/image/casestudies/tiktok_3.jpg", alt: "TikTok Case Study 3", type: "portrait" },
+                { id: 18, image: "/image/casestudies/tiktok_4.jpg", alt: "TikTok Case Study 4", type: "portrait" },
+                { id: 19, image: "/image/casestudies/tiktok_5.jpg", alt: "TikTok Case Study 5", type: "portrait" },
+            ]
+        },
+    ];
+
     const activeCategoryData = categories.find(cat => cat.key === activeCategory)!;
+
+    // Get translated stats
+    const statsData = t('caseStudies.stats');
+    const stats = Array.isArray(statsData) ? statsData.map((stat: any, index: number) => ({
+        icon: statIcons[index] || Award,
+        value: stat.value,
+        label: stat.label,
+        color: ['from-green-500 to-emerald-500', 'from-cyan-500 to-blue-500', 'from-purple-500 to-pink-500', 'from-orange-500 to-red-500'][index]
+    })) : [];
 
     // Close modal on ESC key
     useEffect(() => {
@@ -236,7 +243,7 @@ export default function MarketingCaseStudies() {
                             }}
                         />
                         <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 uppercase tracking-widest">
-                            Case Studies
+                            {t('caseStudies.badge') || 'Case Studies'}
                         </span>
                     </motion.div>
 
@@ -247,7 +254,7 @@ export default function MarketingCaseStudies() {
                         transition={{ delay: 0.2 }}
                         className="text-3xl sm:text-4xl md:text-6xl font-black mb-6"
                     >
-                        <span className="text-white">Kết Quả </span>
+                        <span className="text-white">{t('caseStudies.title.prefix') || 'Dự Án'} </span>
                         <motion.span
                             className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-purple-400"
                             animate={{
@@ -262,46 +269,46 @@ export default function MarketingCaseStudies() {
                                 backgroundSize: "200% 200%"
                             }}
                         >
-                            Thực Tế
+                            {t('caseStudies.title.highlight') || 'Thành Công'}
                         </motion.span>
                     </motion.h2>
 
                     <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-                        Những chiến dịch marketing đột phá đã mang lại{" "}
-                        <span className="font-bold text-green-400">ROI vượt trội</span> và{" "}
-                        <span className="font-bold text-cyan-400">tăng trưởng mạnh mẽ</span> cho khách hàng
+                        {t('caseStudies.description').replace('{roi}', t('caseStudies.descriptionValues.roi')).replace('{growth}', t('caseStudies.descriptionValues.growth')) || 'Khám phá các dự án thành công của chúng tôi'}
                     </p>
                 </motion.div>
 
                 {/* Stats Section */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -5, scale: 1.02 }}
-                            className="relative group"
-                        >
-                            <div className="relative p-4 sm:p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:border-green-500/50 transition-all duration-300 overflow-hidden">
-                                <motion.div
-                                    className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                                />
-                                <div className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10" />
+                {stats.length > 0 && (
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                        {stats.map((stat: any, index: number) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                whileHover={{ y: -5, scale: 1.02 }}
+                                className="relative group"
+                            >
+                                <div className="relative p-4 sm:p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:border-green-500/50 transition-all duration-300 overflow-hidden">
+                                    <motion.div
+                                        className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                                    />
+                                    <div className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                                        <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10" />
+                                    </div>
+                                    <div className={`text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-xs sm:text-sm text-slate-400 font-medium">
+                                        {stat.label}
+                                    </div>
                                 </div>
-                                <div className={`text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
-                                    {stat.value}
-                                </div>
-                                <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                                    {stat.label}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
 
                 {/* Category Selection - Mobile Dropdown */}
                 <motion.div
@@ -329,6 +336,14 @@ export default function MarketingCaseStudies() {
                                 </option>
                             ))}
                         </select>
+
+                        {/* Selected category icon indicator */}
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                            {(() => {
+                                const Icon = activeCategoryData.icon;
+                                return <Icon className="w-5 h-5 text-green-400" />;
+                            })()}
+                        </div>
                     </div>
 
                     {/* Category Description */}
@@ -495,15 +510,20 @@ export default function MarketingCaseStudies() {
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Image Modal */}
-                <AnimatePresence>
-                    {selectedImage && (
+                {/* Image Modal - Using Portal for Maximum Z-Index */}
+                {selectedImage && typeof window !== 'undefined' && createPortal(
+                    <AnimatePresence>
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
+                            className="fixed inset-0 flex items-center justify-center p-4 sm:p-6"
+                            style={{
+                                zIndex: 2147483647,
+                                isolation: 'isolate',
+                                position: 'fixed'
+                            }}
                             onClick={() => setSelectedImage(null)}
                         >
                             {/* Backdrop */}
@@ -527,7 +547,7 @@ export default function MarketingCaseStudies() {
                                 animate={{ scale: 1, opacity: 1 }}
                                 exit={{ scale: 0.8, opacity: 0 }}
                                 transition={{ duration: 0.3, delay: 0.1 }}
-                                className="relative max-w-7xl max-h-[60vh] w-full"
+                                className="relative max-w-3xl max-h-[60vh] w-full"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className={`relative w-full h-full flex items-center justify-center`}>
@@ -549,24 +569,11 @@ export default function MarketingCaseStudies() {
                                         />
                                     </div>
                                 </div>
-
-                                {/* Image info badge */}
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="absolute -bottom-16 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-slate-300 text-sm whitespace-nowrap"
-                                >
-                                    <span className={`font-bold bg-gradient-to-r ${activeCategoryData.color} bg-clip-text text-transparent`}>
-                                        {activeCategoryData.name}
-                                    </span>
-                                    <span className="mx-2">•</span>
-                                    <span>Click bên ngoài hoặc ESC để đóng</span>
-                                </motion.div>
                             </motion.div>
                         </motion.div>
-                    )}
-                </AnimatePresence>
+                    </AnimatePresence>,
+                    document.body
+                )}
 
                 {/* Bottom CTA */}
                 <motion.div
@@ -577,7 +584,7 @@ export default function MarketingCaseStudies() {
                     className="text-center"
                 >
                     <p className="text-slate-400 text-sm mb-4">
-                        Nhìn thấy kết quả tương tự này cho doanh nghiệp của bạn
+                        {t('caseStudies.cta.description') || 'Nhìn thấy kết quả tương tự này cho doanh nghiệp của bạn'}
                     </p>
                     <motion.a
                         href="https://zalo.me/0584503333"
@@ -587,7 +594,7 @@ export default function MarketingCaseStudies() {
                         whileTap={{ scale: 0.95 }}
                         className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/50 transition-all duration-300"
                     >
-                        Tư Vấn Miễn Phí Ngay
+                        {t('caseStudies.cta.button') || 'Tư Vấn Miễn Phí Ngay'}
                     </motion.a>
                 </motion.div>
 
