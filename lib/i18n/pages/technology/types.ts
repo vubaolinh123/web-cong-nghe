@@ -74,4 +74,47 @@ export type TechnologyPageTranslations = {
         subtitle: string;
         description: string;
     };
+    itServicesIntro: {
+        badge: string;
+        title: string;
+        titleHighlight1: string;
+        titleHighlight2: string;
+        description: string;
+        services: Array<{
+            title: string;
+            description: string;
+        }>;
+    };
+    pricingPackages: {
+        title: string;
+        titleHighlight: string;
+        description: string;
+        packages: Array<{
+            badge: string;
+            name: string;
+            price: string;
+            originalPrice: string;
+            target: string;
+            featuredBadge?: string;
+            visibleFeatures: string[];
+            expandButton: string;
+            collapseButton: string;
+            ctaButton: string;
+            features: Array<{
+                title: string;
+                items: string[];
+            }>;
+        }>;
+    };
+    commitments: {
+        badge: string;
+        title: string;
+        titleHighlight: string;
+        description: string;
+        warrantyBadge: string;
+        items: Array<{
+            title: string;
+            description: string;
+        }>;
+    };
 };

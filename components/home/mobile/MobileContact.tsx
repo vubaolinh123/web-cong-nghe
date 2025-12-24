@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check, Zap, Clock, Shield, Headphones } from "lucide-react";
+import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check, Zap, Clock, Shield, Headphones, DollarSign } from "lucide-react";
 import { FormInput, FormTextarea, FormSelect, SubmitButton } from "../../form";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import {
@@ -22,6 +22,7 @@ const initialFormData: ContactFormData = {
     currentJob: "",
     phone: "",
     fanpageOrWebsite: "",
+    budget: "",
     serviceCategory: "",
     specificServices: [],
     message: "",
@@ -41,6 +42,9 @@ export default function MobileContact() {
             const { name, value } = e.target;
             if (name === "serviceCategory") {
                 setFormData((prev) => ({ ...prev, [name]: value, specificServices: [] }));
+            } else if (name === "budget") {
+                const numericValue = value.replace(/\D/g, "");
+                setFormData((prev) => ({ ...prev, budget: numericValue }));
             } else {
                 setFormData((prev) => ({ ...prev, [name]: value }));
             }
@@ -63,6 +67,11 @@ export default function MobileContact() {
             setErrors((prev) => ({ ...prev, specificServices: undefined }));
         }
     }, [errors]);
+
+    const formatBudget = (value: string): string => {
+        if (!value) return "";
+        return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -254,6 +263,14 @@ export default function MobileContact() {
                                 placeholder={t("contactSection.form.fanpagePlaceholder")}
                                 icon={<Globe size={16} />}
                             />
+                            <FormInput
+                                label="Ngân sách (Tùy chọn)"
+                                name="budget"
+                                value={formatBudget(formData.budget)}
+                                onChange={handleChange}
+                                placeholder="VD: 20.000.000"
+                                icon={<DollarSign size={16} />}
+                            />
                             <FormSelect
                                 label={t("contactSection.form.service")}
                                 name="serviceCategory"
@@ -283,14 +300,14 @@ export default function MobileContact() {
                                                 type="button"
                                                 onClick={() => handleServiceToggle(option.value)}
                                                 className={`flex items-center gap-1 px-2 py-1 rounded-full border text-[11px] transition-all ${formData.specificServices.includes(option.value)
-                                                        ? "bg-cyan-500/20 border-cyan-500 text-white"
-                                                        : "bg-slate-800/50 border-slate-700 text-slate-300"
+                                                    ? "bg-cyan-500/20 border-cyan-500 text-white"
+                                                    : "bg-slate-800/50 border-slate-700 text-slate-300"
                                                     }`}
                                             >
                                                 <div
                                                     className={`w-3 h-3 rounded-full flex items-center justify-center shrink-0 ${formData.specificServices.includes(option.value)
-                                                            ? "bg-cyan-500"
-                                                            : "border border-slate-500"
+                                                        ? "bg-cyan-500"
+                                                        : "border border-slate-500"
                                                         }`}
                                                 >
                                                     {formData.specificServices.includes(option.value) && (

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check, Zap, Clock, Shield, Headphones } from "lucide-react";
+import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check, Zap, Clock, Shield, Headphones, DollarSign } from "lucide-react";
 import { FormInput, FormTextarea, FormSelect, SubmitButton } from "../../form";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import {
@@ -22,6 +22,7 @@ const initialFormData: ContactFormData = {
   currentJob: "",
   phone: "",
   fanpageOrWebsite: "",
+  budget: "",
   serviceCategory: "",
   specificServices: [],
   message: "",
@@ -41,6 +42,9 @@ export default function ContactSection() {
       const { name, value } = e.target;
       if (name === "serviceCategory") {
         setFormData((prev) => ({ ...prev, [name]: value, specificServices: [] }));
+      } else if (name === "budget") {
+        const numericValue = value.replace(/\D/g, "");
+        setFormData((prev) => ({ ...prev, budget: numericValue }));
       } else {
         setFormData((prev) => ({ ...prev, [name]: value }));
       }
@@ -63,6 +67,11 @@ export default function ContactSection() {
       setErrors((prev) => ({ ...prev, specificServices: undefined }));
     }
   }, [errors]);
+
+  const formatBudget = (value: string): string => {
+    if (!value) return "";
+    return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -211,6 +220,15 @@ export default function ContactSection() {
                   <FormInput label={t("contactSection.form.fanpage")} name="fanpageOrWebsite"
                     value={formData.fanpageOrWebsite} onChange={handleChange}
                     placeholder={t("contactSection.form.fanpagePlaceholder")} icon={<Globe size={16} />} />
+
+                  <FormInput
+                    label="Ngân sách (Tùy chọn)"
+                    name="budget"
+                    value={formatBudget(formData.budget)}
+                    onChange={handleChange}
+                    placeholder="VD: 20.000.000"
+                    icon={<DollarSign size={16} />}
+                  />
 
                   <FormSelect label={t("contactSection.form.service")} name="serviceCategory" value={formData.serviceCategory}
                     onChange={handleChange} error={errors.serviceCategory} options={serviceCategoryOptions}

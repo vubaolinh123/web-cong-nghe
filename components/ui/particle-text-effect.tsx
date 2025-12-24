@@ -174,7 +174,7 @@ export function ParticleTextEffect({
     }
   }, [showLogoAtEnd, logoSrc])
 
-  const pixelSteps = 10 // Increased from 6 to reduce particle count
+  const pixelSteps = 15 // Optimized from 10 to further reduce particle count for better performance
   const drawAsPoints = true
 
   const generateRandomPos = (x: number, y: number, mag: number): Vector2D => {
@@ -256,9 +256,9 @@ export function ParticleTextEffect({
           particle.pos.x = randomPos.x
           particle.pos.y = randomPos.y
 
-          particle.maxSpeed = Math.random() * 4 + 3 // Reduced from 6+4 for smoother motion
-          particle.maxForce = particle.maxSpeed * 0.04 // Reduced force for less jitter
-          particle.particleSize = Math.random() * 4 + 4 // Slightly smaller particles
+          particle.maxSpeed = Math.random() * 3 + 2 // Further reduced for performance
+          particle.maxForce = particle.maxSpeed * 0.03 // Further reduced force
+          particle.particleSize = Math.random() * 3 + 3 // Smaller particles for performance
           particle.colorBlendRate = Math.random() * 0.03 + 0.005 // Slightly faster color blend
 
           particles.push(particle)
@@ -313,8 +313,8 @@ export function ParticleTextEffect({
       const ctx = canvas.getContext("2d")!
       const particles = particlesRef.current
 
-      // Background with motion blur - slightly higher opacity for better performance
-      ctx.fillStyle = "rgba(0, 0, 0, 0.15)"
+      // Background with motion blur - higher opacity for better performance and cleaner trails
+      ctx.fillStyle = "rgba(0, 0, 0, 0.3)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw particles
@@ -396,13 +396,11 @@ export function ParticleTextEffect({
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-900/95 to-slate-950/90" />
 
           <div className="relative">
-            {/* Outer glow - cyan */}
-            <div className="absolute -inset-16 rounded-full bg-cyan-500/30 blur-3xl" />
-            {/* Inner glow - blue */}
-            <div className="absolute -inset-8 rounded-full bg-blue-500/40 blur-2xl" />
+            {/* Simplified glow for better performance */}
+            <div className="absolute -inset-12 rounded-full bg-cyan-500/20 blur-2xl" />
 
             {/* Logo container with gradient background */}
-            <div className="relative bg-gradient-to-br from-slate-800/90 via-slate-900/95 to-slate-950/90 border-2 border-cyan-400/60 rounded-3xl p-10 sm:p-12 shadow-[0_0_80px_rgba(34,211,238,0.5),0_0_120px_rgba(59,130,246,0.3)]">
+            <div className="relative bg-gradient-to-br from-slate-800/90 via-slate-900/95 to-slate-950/90 border-2 border-cyan-400/60 rounded-3xl p-10 sm:p-12 shadow-[0_0_60px_rgba(34,211,238,0.4)]">
               {/* Inner border glow effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-500/10" />
 
@@ -433,16 +431,16 @@ export function ParticleTextEffect({
           <div
             key={index}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${index <= wordIndexRef.current
-                ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
-                : 'bg-slate-700'
+              ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
+              : 'bg-slate-700'
               }`}
           />
         ))}
         {showLogoAtEnd && (
           <div
             className={`w-2 h-2 rounded-full transition-all duration-300 ${showLogo
-                ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
-                : 'bg-slate-700'
+              ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]'
+              : 'bg-slate-700'
               }`}
           />
         )}

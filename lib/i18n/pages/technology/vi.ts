@@ -163,4 +163,184 @@ export const vi: TechnologyPageTranslations = {
         subtitle: 'Sẵn sàng đưa AI vào doanh nghiệp của bạn?',
         description: 'Đặt lịch tư vấn miễn phí để chúng tôi phân tích nhu cầu và đề xuất giải pháp phù hợp nhất.',
     },
+    itServicesIntro: {
+        badge: 'Dịch vụ IT chuyên nghiệp',
+        title: 'Giải pháp công nghệ toàn diện từ',
+        titleHighlight1: 'Website, App Mobile, AI',
+        titleHighlight2: 'Low Code',
+        description: 'Đội ngũ chuyên gia 5+ năm kinh nghiệm, giao hàng đúng hẹn, hỗ trợ tận tình',
+        services: [
+            {
+                title: 'Thiết kế Website',
+                description: 'Website doanh nghiệp, bán hàng, landing page với thiết kế hiện đại, responsive và tối ưu SEO. Bàn giao trong 3-7 ngày',
+            },
+            {
+                title: 'App Mobile',
+                description: 'Phát triển ứng dụng Android & iOS với React Native, Flutter. Cross-platform, hiệu suất cao, tích hợp đầy đủ tính năng',
+            },
+            {
+                title: 'Chatbot AI',
+                description: 'Chatbot AI thông minh với OpenAI, Claude. Tích hợp vào website, Zalo, Facebook Messenger. Tự động hóa chăm sóc khách hàng',
+            },
+            {
+                title: 'Low Code',
+                description: 'Phát triển ứng dụng nhanh với nền tảng Low Code. Tiết kiệm 70% thời gian, dễ dàng tùy chỉnh, MVP và landing page chỉ trong 1-3 tuần',
+            },
+        ],
+    },
+    pricingPackages: {
+        title: 'Bảng Giá',
+        titleHighlight: 'Dịch Vụ',
+        description: 'Lựa chọn gói phù hợp với quy mô và nhu cầu của doanh nghiệp bạn',
+        packages: [
+            {
+                badge: 'Cơ Bản',
+                name: 'GÓI STARTER',
+                price: '20.000.000',
+                originalPrice: '25.000.000',
+                target: 'Phù hợp cho: Startup, doanh nghiệp nhỏ mới bắt đầu số hóa',
+                visibleFeatures: [
+                    'Landing Page/Website giới thiệu hoàn chỉnh',
+                    'App di động đơn giản 1 nền tảng',
+                    'AI Chatbot cơ bản tích hợp',
+                ],
+                expandButton: 'Xem thêm',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Xem chi tiết',
+                features: [
+                    {
+                        title: 'Website/Landing Page',
+                        items: [
+                            '5-7 trang responsive, tối ưu SEO',
+                            'Tên miền + Hosting 1 năm',
+                            'Bàn giao: 5-7 ngày',
+                        ],
+                    },
+                    {
+                        title: 'App Di Động',
+                        items: [
+                            '1 nền tảng (iOS/Android)',
+                            '5-8 màn hình, React Native/Flutter',
+                            'Bàn giao: 1-2 tháng',
+                        ],
+                    },
+                    {
+                        title: 'AI Chatbot',
+                        items: [
+                            'OpenAI/Claude, 20-30 kịch bản',
+                            'Tích hợp Website/Facebook',
+                            'Bàn giao: 5-7 ngày',
+                        ],
+                    },
+                ],
+            },
+            {
+                badge: 'Phổ biến',
+                name: 'GÓI PROFESSIONAL',
+                price: '50.000.000',
+                originalPrice: '70.000.000',
+                target: 'Phù hợp cho: Doanh nghiệp vừa cần giải pháp toàn diện',
+                featuredBadge: 'Phổ biến nhất',
+                visibleFeatures: [
+                    'Website thương mại điện tử hoàn chỉnh',
+                    'App di động cross-platform nâng cao',
+                    'Hệ thống CRM quản lý khách hàng',
+                ],
+                expandButton: 'Xem thêm',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Xem chi tiết',
+                features: [
+                    {
+                        title: 'Website TMĐT',
+                        items: [
+                            '15-20 trang, thanh toán online',
+                            'CMS quản trị, SEO nâng cao',
+                            'Tặng 5 bài SEO, bảo trì 1 năm',
+                            'Bàn giao: 1-2 tuần',
+                        ],
+                    },
+                    {
+                        title: 'App Cross-platform',
+                        items: [
+                            'iOS + Android, 15-20 màn hình',
+                            'Backend API, Firebase',
+                            'Upload App Store & Play Store',
+                            'Bàn giao: 1-2 tháng',
+                        ],
+                    },
+                    {
+                        title: 'CRM + AI',
+                        items: [
+                            'Quản lý khách hàng, leads, pipeline',
+                            'AI Agent đa kênh, học dữ liệu',
+                            'Chatbot đa ngôn ngữ, 50-100 kịch bản',
+                        ],
+                    },
+                ],
+            },
+            {
+                badge: 'Cao Cấp',
+                name: 'GÓI ENTERPRISE',
+                price: '100.000.000',
+                originalPrice: '150.000.000',
+                target: 'Phù hợp cho: Doanh nghiệp lớn, giải pháp phức tạp toàn diện',
+                visibleFeatures: [
+                    'Nền tảng Web + App + Admin đồng bộ',
+                    'CRM toàn diện Sales + Marketing',
+                    'Giải pháp AI End-to-end hoàn chỉnh',
+                ],
+                expandButton: 'Xem thêm',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Xem chi tiết',
+                features: [
+                    {
+                        title: 'Nền Tảng Enterprise',
+                        items: [
+                            'Web + App + Admin đồng bộ real-time',
+                            'Microservices, Cloud (AWS/GCP)',
+                            '99.9% uptime, auto-scaling',
+                        ],
+                    },
+                    {
+                        title: 'CRM + AI Toàn Diện',
+                        items: [
+                            'Sales + Marketing + Service',
+                            'AI lead scoring, predictive analytics',
+                            'Multi-branch, Data warehouse, BI tools',
+                        ],
+                    },
+                    {
+                        title: 'AI & Development',
+                        items: [
+                            'AI Agent, Chatbot đa kênh, ML models',
+                            'Dedicated team, PM chuyên trách',
+                            'CI/CD, Security audit, 24/7 support',
+                            'Bàn giao: 2-4 tháng',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    commitments: {
+        badge: 'Cam kết chất lượng',
+        title: '3 Cam Kết Khi',
+        titleHighlight: 'Build Code',
+        description: 'Đảm bảo quyền lợi tối đa cho khách hàng với cam kết rõ ràng, minh bạch',
+        warrantyBadge: 'Bảo hành 3 tháng miễn phí cho mọi gói dịch vụ',
+        items: [
+            {
+                title: 'Ship Đúng Hẹn',
+                description: 'Cam kết bàn giao dự án đúng timeline đã thỏa thuận. Nếu trễ hạn vì lỗi từ phía chúng tôi, bạn sẽ được bồi thường 10% giá trị hợp đồng.',
+            },
+            {
+                title: 'Hỗ Trợ Fix Bug',
+                description: 'Fix mọi bug phát sinh trong quá trình sử dụng. Đội ngũ kỹ thuật sẵn sàng hỗ trợ qua Zalo, email, hoặc điện thoại trong giờ hành chính (8h-18h, T2-T6).',
+            },
+            {
+                title: 'Bảo Hành Toàn Diện',
+                description: 'Bảo hành miễn phí 3 tháng đầu tiên. Sau đó, sửa chữa và bảo trì tính phí hợp lý tùy theo tính năng và mức độ lỗi cần fix. Xem bảng giá bảo trì chi tiết.',
+            },
+        ],
+    },
 };

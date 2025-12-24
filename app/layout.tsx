@@ -5,6 +5,7 @@ import { defaultSEO, siteConfig } from "@/lib/seo/config";
 import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import CustomCursor from "@/components/ui/CustomCursor";
+import FloatingContactButton from "@/components/common/FloatingContactButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -105,6 +106,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <FloatingContactButton />
       </body>
     </html>
   );

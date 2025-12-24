@@ -3,6 +3,7 @@ import { Header } from "@/components/common";
 import Hero from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import ServiceList from "@/components/marketing/ServiceList";
+import MarketingCaseStudies from "@/components/marketing/MarketingCaseStudies";
 import CTASection from "@/components/marketing/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
 import { siteConfig, pageSEO } from "@/lib/seo";
@@ -42,6 +43,9 @@ export default function MarketingServicesPage() {
 
             {/* Services List */}
             <ServiceList />
+
+            {/* Case Studies - NEW */}
+            <MarketingCaseStudies />
 
             {/* CTA Text */}
             <CTASection />

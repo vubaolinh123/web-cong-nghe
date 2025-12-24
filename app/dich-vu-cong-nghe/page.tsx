@@ -2,7 +2,9 @@ import { Metadata } from "next";
 import { Header } from "@/components/common";
 import Hero from "@/components/ai-service/Hero";
 import Introduction from "@/components/ai-service/Introduction";
-import ServiceList from "@/components/ai-service/ServiceList";
+import ITServicesIntro from "@/components/ai-service/ITServicesIntro";
+import PricingPackages from "@/components/ai-service/PricingPackages";
+import Commitments from "@/components/ai-service/Commitments";
 import CaseStudies from "@/components/ai-service/CaseStudies";
 import CTASection from "@/components/ai-service/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
@@ -41,8 +43,14 @@ export default function AiServicesPage() {
             {/* Introduction */}
             <Introduction />
 
-            {/* Services List */}
-            <ServiceList />
+            {/* IT Services Introduction */}
+            <ITServicesIntro />
+
+            {/* Pricing Packages */}
+            <PricingPackages />
+
+            {/* Commitments */}
+            <Commitments />
 
             {/* Case Studies */}
             <CaseStudies />
@@ -60,3 +68,4 @@ export default function AiServicesPage() {
         </main>
     );
 }
+

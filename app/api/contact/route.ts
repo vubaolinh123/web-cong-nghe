@@ -55,6 +55,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
       currentJob: body.currentJob || "",
       phone: body.phone || "",
       fanpageOrWebsite: body.fanpageOrWebsite || "",
+      budget: body.budget || "",
       serviceCategory: body.serviceCategory || "",
       specificServices: body.specificServices || [],
       message: body.message || "",
