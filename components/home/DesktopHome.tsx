@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { Header } from "@/components/common";
-import IntroOverlay from "@/components/common/IntroOverlay";
 import {
     FullPageContainer,
     FullPageSection,
@@ -39,7 +38,6 @@ const sections: SectionConfig[] = [
 export default function DesktopHome() {
     return (
         <>
-            <IntroOverlay />
             <Header />
             <main>
                 <FullPageContainer sections={sections}>
