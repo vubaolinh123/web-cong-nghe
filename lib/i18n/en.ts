@@ -532,6 +532,13 @@ export const en: TranslationDictionary = {
       description: "See similar results for your business",
       button: "Get Free Consultation Now"
     }
-  }
+  },
+  blogSection: {
+    title: 'Latest',
+    titleHighlight: 'Articles',
+    subtitle: 'Stay updated with the latest insights and trends from experts',
+    viewAll: 'View All Articles',
+    readMore: 'Read more',
+    minuteRead: ' min read',
+  },
 };
-

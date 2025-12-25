@@ -2,12 +2,13 @@
 
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { Header } from "@/components/common";
+import { Header, BlogSection } from "@/components/common";
 import {
     FullPageContainer,
     FullPageSection,
     SectionConfig,
 } from "@/components/fullpage";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 // Loading component
 const SectionLoader = () => (
@@ -32,10 +33,13 @@ const sections: SectionConfig[] = [
     { id: "why-us", label: "Vì sao chọn chúng tôi" },
     { id: "approach", label: "Quy trình" },
     { id: "contact", label: "Liên hệ" },
+    { id: "blog", label: "Bài viết" },
     { id: "footer", label: "Thông tin" },
 ];
 
 export default function DesktopHome() {
+    const { dictionary } = useLanguage();
+
     return (
         <>
             <Header />
@@ -75,6 +79,18 @@ export default function DesktopHome() {
                         <Suspense fallback={<SectionLoader />}>
                             <ContactSection />
                         </Suspense>
+                    </FullPageSection>
+
+                    <FullPageSection id="blog">
+                        <BlogSection
+                            title={dictionary.blogSection.title}
+                            titleHighlight={dictionary.blogSection.titleHighlight}
+                            subtitle={dictionary.blogSection.subtitle}
+                            viewAllText={dictionary.blogSection.viewAll}
+                            minuteReadText={dictionary.blogSection.minuteRead}
+                            accentColor="cyan"
+                            compact={true}
+                        />
                     </FullPageSection>
 
                     <FullPageSection id="footer">

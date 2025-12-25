@@ -2,7 +2,8 @@
 
 import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
-import { Header } from "@/components/common";
+import { Header, BlogSection } from "@/components/common";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 // Loading component
 const SectionLoader = () => (
@@ -21,6 +22,8 @@ const MobileContact = dynamic(() => import("./mobile/MobileContact"), { loading:
 const MobileFooter = dynamic(() => import("./desktop/FooterSection"), { loading: () => <SectionLoader /> }); // Reusing desktop footer for now or create mobile specific if needed
 
 export default function MobileHome() {
+    const { dictionary } = useLanguage();
+
     return (
         <div className="flex flex-col w-full overflow-x-hidden bg-slate-950">
             {/* Header Navigation */}
@@ -49,6 +52,16 @@ export default function MobileHome() {
             <Suspense fallback={<SectionLoader />}>
                 <MobileContact />
             </Suspense>
+
+            {/* Blog Section - New */}
+            <BlogSection
+                title={dictionary.blogSection.title}
+                titleHighlight={dictionary.blogSection.titleHighlight}
+                subtitle={dictionary.blogSection.subtitle}
+                viewAllText={dictionary.blogSection.viewAll}
+                minuteReadText={dictionary.blogSection.minuteRead}
+                accentColor="cyan"
+            />
 
             <Suspense fallback={<SectionLoader />}>
                 <MobileFooter />

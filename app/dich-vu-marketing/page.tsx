@@ -1,36 +1,17 @@
-import { Metadata } from "next";
-import { Header } from "@/components/common";
+"use client";
+
+import { Header, BlogSection } from "@/components/common";
 import Hero from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import ServiceList from "@/components/marketing/ServiceList";
 import MarketingCaseStudies from "@/components/marketing/MarketingCaseStudies";
 import CTASection from "@/components/marketing/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
-import { siteConfig, pageSEO } from "@/lib/seo";
-
-export const metadata: Metadata = {
-    title: pageSEO.marketingServices.title,
-    description: pageSEO.marketingServices.description,
-    keywords: pageSEO.marketingServices.keywords,
-    openGraph: {
-        title: `${pageSEO.marketingServices.title} | ${siteConfig.name}`,
-        description: pageSEO.marketingServices.description,
-        url: `${siteConfig.url}/dich-vu-marketing`,
-        siteName: siteConfig.name,
-        locale: siteConfig.locale,
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: pageSEO.marketingServices.title,
-        description: pageSEO.marketingServices.description,
-    },
-    alternates: {
-        canonical: `${siteConfig.url}/dich-vu-marketing`,
-    },
-};
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MarketingServicesPage() {
+    const { dictionary } = useLanguage();
+
     return (
         <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-green-500/30">
             <Header />
@@ -54,6 +35,16 @@ export default function MarketingServicesPage() {
             <div id="tu-van">
                 <ContactSection />
             </div>
+
+            {/* Blog Section */}
+            <BlogSection
+                title={dictionary.blogSection.title}
+                titleHighlight={dictionary.blogSection.titleHighlight}
+                subtitle={dictionary.blogSection.subtitle}
+                viewAllText={dictionary.blogSection.viewAll}
+                minuteReadText={dictionary.blogSection.minuteRead}
+                accentColor="green"
+            />
 
             {/* Footer */}
             <FooterSection />

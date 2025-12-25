@@ -1,5 +1,6 @@
-import { Metadata } from "next";
-import { Header } from "@/components/common";
+"use client";
+
+import { Header, BlogSection } from "@/components/common";
 import Hero from "@/components/ai-service/Hero";
 import Introduction from "@/components/ai-service/Introduction";
 import ITServicesIntro from "@/components/ai-service/ITServicesIntro";
@@ -7,33 +8,12 @@ import PricingPackages from "@/components/ai-service/PricingPackages";
 import Commitments from "@/components/ai-service/Commitments";
 import CaseStudies from "@/components/ai-service/CaseStudies";
 import CTASection from "@/components/ai-service/CTASection";
-import TechnologyBlogSection from "@/components/ai-service/TechnologyBlogSection";
 import { ContactSection, FooterSection } from "@/components/home";
-import { siteConfig, pageSEO } from "@/lib/seo";
-
-export const metadata: Metadata = {
-    title: pageSEO.technologyServices.title,
-    description: pageSEO.technologyServices.description,
-    keywords: pageSEO.technologyServices.keywords,
-    openGraph: {
-        title: `${pageSEO.technologyServices.title} | ${siteConfig.name}`,
-        description: pageSEO.technologyServices.description,
-        url: `${siteConfig.url}/dich-vu-cong-nghe`,
-        siteName: siteConfig.name,
-        locale: siteConfig.locale,
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: pageSEO.technologyServices.title,
-        description: pageSEO.technologyServices.description,
-    },
-    alternates: {
-        canonical: `${siteConfig.url}/dich-vu-cong-nghe`,
-    },
-};
+import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
 
 export default function AiServicesPage() {
+    const t = useTechnologyTranslations();
+
     return (
         <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
             <Header />
@@ -65,11 +45,17 @@ export default function AiServicesPage() {
             </div>
 
             {/* Blog Section */}
-            <TechnologyBlogSection />
+            <BlogSection
+                title={t.blogSection.title}
+                titleHighlight={t.blogSection.titleHighlight}
+                subtitle={t.blogSection.subtitle}
+                viewAllText={t.blogSection.viewAll}
+                minuteReadText={t.blogSection.minuteRead}
+                accentColor="cyan"
+            />
 
             {/* Footer */}
             <FooterSection />
         </main>
     );
 }
-

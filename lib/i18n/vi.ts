@@ -532,6 +532,13 @@ export const vi: TranslationDictionary = {
       description: "Nhìn thấy kết quả tương tự này cho doanh nghiệp của bạn",
       button: "Tư Vấn Miễn Phí Ngay"
     }
-  }
+  },
+  blogSection: {
+    title: 'Bài Viết',
+    titleHighlight: 'Mới Nhất',
+    subtitle: 'Cập nhật kiến thức và xu hướng mới nhất từ chuyên gia',
+    viewAll: 'Xem Tất Cả Bài Viết',
+    readMore: 'Đọc thêm',
+    minuteRead: ' phút đọc',
+  },
 };
-

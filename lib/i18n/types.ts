@@ -379,4 +379,12 @@ export type TranslationDictionary = {
       button: string;
     };
   };
+  blogSection: {
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    viewAll: string;
+    readMore: string;
+    minuteRead: string;
+  };
 };
