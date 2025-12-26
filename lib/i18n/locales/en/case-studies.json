@@ -9,6 +9,80 @@
         "roi": "exceptional results",
         "growth": "sustainable growth"
     },
+    "featuredProjects": {
+        "sectionTitle": "Featured Projects",
+        "moreStories": "More Success Stories",
+        "marketing": [
+            {
+                "id": "featured-marketing-1",
+                "image": "/image/casestudies/marketing_1.jpg",
+                "title": "Comprehensive Marketing Campaign for F&B Brand",
+                "description": "Implemented multi-channel marketing strategy, achieving breakthrough sales growth for premium restaurant chain with 10+ branches nationwide",
+                "stats": [
+                    {
+                        "label": "Revenue Growth",
+                        "value": "+250%",
+                        "icon": "TrendingUp"
+                    },
+                    {
+                        "label": "New Customers",
+                        "value": "15,000+",
+                        "icon": "Users"
+                    },
+                    {
+                        "label": "Implementation Time",
+                        "value": "6 months",
+                        "icon": "Clock"
+                    },
+                    {
+                        "label": "ROI",
+                        "value": "380%",
+                        "icon": "DollarSign"
+                    }
+                ],
+                "highlights": [
+                    "Built automated CRM system for entire workflow",
+                    "Optimized advertising costs, reduced by 40%",
+                    "500% increase in social media engagement",
+                    "Developed loyalty program app with 8,000+ members"
+                ]
+            },
+            {
+                "id": "featured-marketing-2",
+                "image": "/image/casestudies/marketing_3.jpg",
+                "title": "Building TikTok Shop Ecosystem for Fashion",
+                "description": "Developed and operated TikTok Shop from scratch, reached top 10 seller in fashion industry within just 3 months",
+                "stats": [
+                    {
+                        "label": "Monthly Revenue",
+                        "value": "500M+",
+                        "icon": "TrendingUp"
+                    },
+                    {
+                        "label": "Daily Orders",
+                        "value": "300+",
+                        "icon": "ShoppingCart"
+                    },
+                    {
+                        "label": "Followers",
+                        "value": "50K+",
+                        "icon": "Users"
+                    },
+                    {
+                        "label": "Growth Rate",
+                        "value": "+400%",
+                        "icon": "Target"
+                    }
+                ],
+                "highlights": [
+                    "2-3 professional livestreams daily with expert MCs",
+                    "Optimized viral videos reaching 2M+ views each",
+                    "Built loyal community of 50K+ followers",
+                    "Conversion rate of 8.5%, 3x industry average"
+                ]
+            }
+        ]
+    },
     "categories": {
         "marketing": {
             "name": "Comprehensive Marketing",

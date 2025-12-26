@@ -16,6 +16,7 @@ const SalesFunnel = dynamic(() => import("@/components/marketing/full-package/Sa
 const TrafficSources = dynamic(() => import("@/components/marketing/full-package/TrafficSources"));
 const MarketingStrategy = dynamic(() => import("@/components/marketing/full-package/MarketingStrategy"));
 const CustomerJourney = dynamic(() => import("@/components/marketing/full-package/CustomerJourney"));
+const CaseStudies = dynamic(() => import("@/components/marketing/full-package/CaseStudies"));
 const DetailedPricing = dynamic(() => import("@/components/marketing/full-package/DetailedPricing"));
 const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
@@ -43,6 +44,8 @@ export default function MarketingFullPackagePage() {
             <ServiceDetails />
 
             <CustomerJourney />
+
+            <CaseStudies />
 
             <DetailedPricing />
 

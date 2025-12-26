@@ -27,6 +27,80 @@
             "description": "Chiến lược marketing và viral content trên TikTok"
         }
     },
+    "featuredProjects": {
+        "sectionTitle": "Dự Án Nổi Bật",
+        "moreStories": "Các Câu Chuyện Thành Công Khác",
+        "marketing": [
+            {
+                "id": "featured-marketing-1",
+                "image": "/image/casestudies/marketing_1.jpg",
+                "title": "Chiến Dịch Marketing Tổng Thể cho Thương Hiệu F&B",
+                "description": "Triển khai chiến lược marketing đa kênh, tăng trưởng doanh số đột phá cho chuỗi nhà hàng cao cấp với 10+ chi nhánh trên toàn quốc",
+                "stats": [
+                    {
+                        "label": "Tăng trưởng doanh thu",
+                        "value": "+250%",
+                        "icon": "TrendingUp"
+                    },
+                    {
+                        "label": "Khách hàng mới",
+                        "value": "15,000+",
+                        "icon": "Users"
+                    },
+                    {
+                        "label": "Thời gian triển khai",
+                        "value": "6 tháng",
+                        "icon": "Clock"
+                    },
+                    {
+                        "label": "ROI",
+                        "value": "380%",
+                        "icon": "DollarSign"
+                    }
+                ],
+                "highlights": [
+                    "Xây dựng hệ thống CRM tự động hóa toàn bộ quy trình",
+                    "Tối ưu chi phí quảng cáo giảm 40% so với ban đầu",
+                    "Tăng 500% lượng tương tác trên các kênh social media",
+                    "Phát triển ứng dụng loyalty program thu hút 8,000+ thành viên"
+                ]
+            },
+            {
+                "id": "featured-marketing-2",
+                "image": "/image/casestudies/marketing_3.jpg",
+                "title": "Xây Dựng Hệ Sinh Thái TikTok Shop Thời Trang",
+                "description": "Phát triển và vận hành TikTok Shop từ con số 0, đạt top 10 seller trong ngành thời trang chỉ sau 3 tháng triển khai",
+                "stats": [
+                    {
+                        "label": "Doanh thu/tháng",
+                        "value": "500M+",
+                        "icon": "TrendingUp"
+                    },
+                    {
+                        "label": "Đơn hàng/ngày",
+                        "value": "300+",
+                        "icon": "ShoppingCart"
+                    },
+                    {
+                        "label": "Followers",
+                        "value": "50K+",
+                        "icon": "Users"
+                    },
+                    {
+                        "label": "Tăng trưởng",
+                        "value": "+400%",
+                        "icon": "Target"
+                    }
+                ],
+                "highlights": [
+                    "Livestream 2-3 buổi/ngày với đội ngũ MC chuyên nghiệp",
+                    "Tối ưu video viral đạt 2M+ views mỗi video",
+                    "Xây dựng cộng đồng 50K+ followers trung thành",
+                    "Conversion rate đạt 8.5%, cao gấp 3 lần trung bình ngành"
+                ]
+            }
+        ]
+    },
     "stats": [
         {
             "value": "500+",

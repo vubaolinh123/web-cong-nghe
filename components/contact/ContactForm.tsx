@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check, DollarSign } from "lucide-react";
+import { Send, CheckCircle, XCircle, User, Phone, Briefcase, Globe, Check } from "lucide-react";
 import { FormInput, FormTextarea, FormSelect, SubmitButton } from "../form";
 import { Container, AnimatedSection } from "../common";
 import {
@@ -15,6 +15,13 @@ import {
   technologyServiceOptions,
   marketingServiceOptions,
 } from "@/lib/validations/contact";
+
+const budgetOptions = [
+  { value: "under-20m", label: "Dưới 20 triệu" },
+  { value: "20m-50m", label: "20 - 50 triệu" },
+  { value: "50m-100m", label: "50 - 100 triệu" },
+  { value: "over-100m", label: "Trên 100 triệu" },
+];
 
 const initialFormData: ContactFormData = {
   name: "",
@@ -43,10 +50,6 @@ export default function ContactForm() {
       // Reset specific services when service category changes
       if (name === "serviceCategory") {
         setFormData((prev) => ({ ...prev, [name]: value, specificServices: [] }));
-      } else if (name === "budget") {
-        // Remove non-numeric characters
-        const numericValue = value.replace(/\D/g, "");
-        setFormData((prev) => ({ ...prev, budget: numericValue }));
       } else {
         setFormData((prev) => ({ ...prev, [name]: value }));
       }
@@ -71,11 +74,7 @@ export default function ContactForm() {
     }
   }, [errors]);
 
-  // Format budget for display
-  const formatBudget = (value: string): string => {
-    if (!value) return "";
-    return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -153,7 +152,6 @@ export default function ContactForm() {
                 onChange={handleChange}
                 onServiceToggle={handleServiceToggle}
                 onSubmit={handleSubmit}
-                formatBudget={formatBudget}
               />
             )}
           </AnimatePresence>
@@ -170,10 +168,9 @@ interface FormContentProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onServiceToggle: (serviceValue: string) => void;
   onSubmit: (e: React.FormEvent) => void;
-  formatBudget: (value: string) => string;
 }
 
-function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, onSubmit, formatBudget }: FormContentProps) {
+function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, onSubmit }: FormContentProps) {
   const specificServiceOptions = formData.serviceCategory === "technology"
     ? technologyServiceOptions
     : formData.serviceCategory === "marketing"
@@ -209,19 +206,14 @@ function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, o
 
       {/* Optional Budget */}
       <div className="mb-6">
-        <FormInput
+        <FormSelect
           label="Ngân sách của bạn (Tùy chọn)"
           name="budget"
-          value={formatBudget(formData.budget)}
+          value={formData.budget}
           onChange={onChange}
-          placeholder="Ví dụ: 20.000.000"
-          icon={<DollarSign size={20} />}
+          options={budgetOptions}
+          placeholder="Chọn ngân sách"
         />
-        {formData.budget && (
-          <p className="mt-2 text-xs text-slate-400">
-            Ngân sách: {formatBudget(formData.budget)} VNĐ
-          </p>
-        )}
       </div>
 
       {/* Service Category Selection */}
@@ -249,15 +241,15 @@ function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, o
                 type="button"
                 onClick={() => onServiceToggle(option.value)}
                 className={`flex items-center gap-3 p-4 rounded-xl border transition-all text-left ${formData.specificServices.includes(option.value)
-                    ? "bg-cyan-500/20 border-cyan-500 text-white"
-                    : "bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600"
+                  ? "bg-cyan-500/20 border-cyan-500 text-white"
+                  : "bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-600"
                   }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 ${formData.specificServices.includes(option.value)
-                    ? "bg-cyan-500"
-                    : "border border-slate-500"
+                  ? "bg-cyan-500"
+                  : "border border-slate-500"
                   }`}>
                   {formData.specificServices.includes(option.value) && (
                     <Check size={14} className="text-white" />

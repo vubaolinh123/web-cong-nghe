@@ -101,4 +101,30 @@ export type MarketingFullPackageTranslations = {
             perMonth: string;
         };
     };
+    caseStudies: {
+        sectionTitle: string;
+        sectionTitleHighlight: string;
+        featuredBadge: string;
+        organicBadge: string;
+        watchTimeLabel: string;
+        separator: string;
+        stats: {
+            views: string;
+            reach: string;
+            threeSecViews: string;
+            interactions: string;
+        };
+        projects: Array<{
+            title: string;
+            description: string;
+            views: string;
+            reach: string;
+            reachGrowth: string;
+            threeSecViews: string;
+            threeSecGrowth: string;
+            interactions: string;
+            interactionsGrowth: string;
+            watchTime?: string;
+        }>;
+    };
 };
