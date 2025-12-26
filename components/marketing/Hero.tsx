@@ -2,54 +2,16 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Rocket, TrendingUp, Target, Megaphone, BarChart3 } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import { Container, Button } from "../common";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import { Spotlight } from "@/components/ui/spotlight";
 import { useMarketingTranslations } from "@/lib/i18n/pages/marketing";
 
-// Floating marketing icons for decoration
-const floatingIcons = [
-    { Icon: TrendingUp, delay: 0, x: 8, y: 20 },
-    { Icon: Target, delay: 0.5, x: 88, y: 18 },
-    { Icon: Megaphone, delay: 1, x: 6, y: 72 },
-    { Icon: BarChart3, delay: 1.5, x: 92, y: 70 },
-];
 
 export default function Hero() {
     const t = useMarketingTranslations();
-    const [particles, setParticles] = useState<Array<{ x: number, y: number, size: number, duration: number, delay: number }>>([]);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const heroRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        // Generate particles on client side
-        setParticles(
-            [...Array(35)].map(() => ({
-                x: Math.random() * 100,
-                y: Math.random() * 100,
-                size: Math.random() * 3 + 1,
-                duration: Math.random() * 10 + 10,
-                delay: Math.random() * 5
-            }))
-        );
-    }, []);
-
-    // Mouse tracking for interactive glow
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (heroRef.current) {
-                const rect = heroRef.current.getBoundingClientRect();
-                setMousePosition({
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                });
-            }
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
 
     const stats = [
         { value: t.hero.stats.campaigns.value, label: t.hero.stats.campaigns.label },
@@ -88,7 +50,7 @@ export default function Hero() {
                     </video>
                 </div>
 
-                {/* Animated Grid with Marketing nodes */}
+                {/* Static Grid */}
                 <div className="absolute inset-0">
                     <div
                         className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e20_1px,transparent_1px),linear-gradient(to_bottom,#22c55e20_1px,transparent_1px)] bg-[size:60px_60px]"
@@ -97,130 +59,15 @@ export default function Hero() {
                             WebkitMaskImage: 'radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%)'
                         }}
                     />
-                    {/* Animated growth line */}
-                    <motion.div
-                        className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent"
-                        animate={{
-                            top: ['0%', '100%'],
-                        }}
-                        transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
-                        style={{ opacity: 0.5 }}
-                    />
                 </div>
 
-                {/* Floating Particles with Marketing Colors */}
-                {particles.map((p, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute rounded-full"
-                        initial={{
-                            left: `${p.x}%`,
-                            top: `${p.y}%`,
-                            opacity: 0,
-                            scale: 0
-                        }}
-                        animate={{
-                            y: [0, -150, 0],
-                            x: [0, Math.sin(i) * 30, 0],
-                            opacity: [0, 0.8, 0],
-                            scale: [0.5, 1, 0.5]
-                        }}
-                        transition={{
-                            duration: p.duration,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: p.delay
-                        }}
-                        style={{
-                            width: p.size,
-                            height: p.size,
-                            background: i % 3 === 0 ? '#22c55e' : i % 3 === 1 ? '#10b981' : '#34d399',
-                            boxShadow: `0 0 ${p.size * 4}px ${i % 3 === 0 ? '#22c55e' : i % 3 === 1 ? '#10b981' : '#34d399'}`
-                        }}
-                    />
-                ))}
 
-                {/* Central Glowing Orbs - Green theme */}
+                {/* Static Central Glow - Pure CSS */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <motion.div
-                        className="absolute w-[800px] h-[800px] bg-emerald-600/20 rounded-full blur-[120px]"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{ transform: 'translate(-50%, -50%)' }}
-                    />
-                    <motion.div
-                        className="absolute w-[500px] h-[500px] bg-green-500/30 rounded-full blur-[100px]"
-                        animate={{
-                            scale: [1.2, 1, 1.2],
-                            opacity: [0.4, 0.6, 0.4]
-                        }}
-                        transition={{
-                            duration: 5,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{ transform: 'translate(-50%, -50%)' }}
-                    />
-                    <motion.div
-                        className="absolute w-[300px] h-[300px] bg-teal-500/20 rounded-full blur-[80px]"
-                        animate={{
-                            scale: [1, 1.3, 1],
-                            opacity: [0.3, 0.5, 0.3]
-                        }}
-                        transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{ transform: 'translate(-50%, -50%)' }}
-                    />
+                    <div className="absolute w-[600px] h-[600px] bg-emerald-600/15 rounded-full blur-[100px]" style={{ transform: 'translate(-50%, -50%)' }} />
+                    <div className="absolute w-[400px] h-[400px] bg-green-500/20 rounded-full blur-[80px]" style={{ transform: 'translate(-50%, -50%)' }} />
                 </div>
 
-                {/* Floating Marketing Icons */}
-                {floatingIcons.map(({ Icon, delay, x, y }, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute hidden sm:block"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{
-                            opacity: [0.3, 0.6, 0.3],
-                            scale: [0.8, 1, 0.8],
-                            y: [0, -20, 0]
-                        }}
-                        transition={{
-                            duration: 5,
-                            delay: delay,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        style={{ left: `${x}%`, top: `${y}%` }}
-                    >
-                        <div className="p-3 rounded-xl bg-slate-900/50 backdrop-blur-sm border border-emerald-500/20">
-                            <Icon className="w-6 h-6 text-emerald-400" />
-                        </div>
-                    </motion.div>
-                ))}
-
-                {/* Interactive Mouse Glow */}
-                <div
-                    className="absolute w-[400px] h-[400px] rounded-full pointer-events-none transition-all duration-300 ease-out"
-                    style={{
-                        left: mousePosition.x - 200,
-                        top: mousePosition.y - 200,
-                        background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)',
-                    }}
-                />
 
                 {/* Digital Noise Overlay */}
                 <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />

@@ -13,6 +13,7 @@ const Experience = dynamic(() => import("@/components/marketing/fanpage/Experien
 const WhySetup = dynamic(() => import("@/components/marketing/fanpage/WhySetup"));
 const Process = dynamic(() => import("@/components/marketing/fanpage/Process"));
 const Benefits = dynamic(() => import("@/components/marketing/fanpage/Benefits"));
+const CaseStudies = dynamic(() => import("@/components/marketing/fanpage/CaseStudies"));
 const FanpagePricing = dynamic(() => import("@/components/marketing/fanpage/FanpagePricing"));
 const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
@@ -36,6 +37,8 @@ export default function FanpageBuildingPage() {
             <Process />
 
             <Benefits />
+
+            <CaseStudies />
 
             <FanpagePricing />
 

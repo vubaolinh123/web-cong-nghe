@@ -22,72 +22,12 @@ export default function PricingPackages() {
 
     return (
         <section className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
-            {/* Advanced Background Effects */}
+            {/* Simple Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Animated Gradient Orbs */}
-                {[...Array(3)].map((_, i) => (
-                    <motion.div
-                        key={`orb-${i}`}
-                        className={`absolute w-96 h-96 rounded-full blur-3xl ${i === 0 ? 'bg-cyan-500/20 -left-48 top-1/4' :
-                            i === 1 ? 'bg-purple-500/20 -right-48 top-1/2' :
-                                'bg-blue-500/20 left-1/2 bottom-1/4'
-                            }`}
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3],
-                            x: i === 0 ? [0, 30, 0] : i === 1 ? [0, -30, 0] : [0, 20, 0],
-                            y: i === 2 ? [0, -20, 0] : 0,
-                        }}
-                        transition={{
-                            duration: 8 + i * 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                ))}
-
-                {/* Rotating Gradient Mesh */}
-                <motion.div
-                    className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent blur-3xl" />
-                </motion.div>
-
-                {/* Animated Grid Pattern */}
-                <motion.div className="absolute inset-0 opacity-[0.03]">
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="pricing-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-cyan-500" />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#pricing-grid)" />
-                    </svg>
-                </motion.div>
-
-                {/* Floating Price Tags */}
-                {[...Array(6)].map((_, i) => (
-                    <motion.div
-                        key={`price-tag-${i}`}
-                        className="absolute w-20 h-12 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-cyan-500/20"
-                        style={{
-                            left: `${15 + i * 14}%`,
-                            top: `${20 + (i % 3) * 25}%`,
-                        }}
-                        animate={{
-                            y: [0, -20, 0],
-                            rotate: [0, 3, 0, -3, 0],
-                            opacity: [0.3, 0.6, 0.3],
-                        }}
-                        transition={{
-                            duration: 4 + i * 0.5,
-                            repeat: Infinity,
-                            delay: i * 0.3,
-                        }}
-                    />
-                ))}
+                {/* Static Gradient Orbs */}
+                <div className="absolute w-96 h-96 rounded-full blur-3xl bg-cyan-500/15 -left-48 top-1/4" />
+                <div className="absolute w-96 h-96 rounded-full blur-3xl bg-purple-500/15 -right-48 top-1/2" />
+                <div className="absolute w-96 h-96 rounded-full blur-3xl bg-blue-500/15 left-1/2 bottom-1/4" />
 
                 {/* Light Rays */}
                 <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-purple-500/5" />
@@ -112,22 +52,9 @@ export default function PricingPackages() {
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
                     >
                         <span className="text-white">{t.pricingPackages.title} </span>
-                        <motion.span
-                            className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400"
-                            animate={{
-                                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                            }}
-                            transition={{
-                                duration: 5,
-                                repeat: Infinity,
-                                ease: "linear"
-                            }}
-                            style={{
-                                backgroundSize: "200% 200%"
-                            }}
-                        >
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
                             {t.pricingPackages.titleHighlight}
-                        </motion.span>
+                        </span>
                     </motion.h2>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
                         {t.pricingPackages.description}
@@ -156,24 +83,10 @@ export default function PricingPackages() {
 
                                 {/* Featured Badge */}
                                 {pkg.featuredBadge && (
-                                    <motion.div
-                                        className="absolute top-0 right-0 px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold rounded-bl-lg rounded-tr-xl flex items-center gap-1"
-                                        animate={{
-                                            boxShadow: [
-                                                "0 0 20px rgba(139,92,246,0.5)",
-                                                "0 0 30px rgba(139,92,246,0.8)",
-                                                "0 0 20px rgba(139,92,246,0.5)",
-                                            ],
-                                        }}
-                                        transition={{
-                                            duration: 2,
-                                            repeat: Infinity,
-                                            ease: "easeInOut"
-                                        }}
-                                    >
+                                    <div className="absolute top-0 right-0 px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold rounded-bl-lg rounded-tr-xl flex items-center gap-1 shadow-lg shadow-purple-500/50">
                                         <Sparkles size={12} />
                                         {pkg.featuredBadge}
-                                    </motion.div>
+                                    </div>
                                 )}
 
                                 {/* Package Badge */}

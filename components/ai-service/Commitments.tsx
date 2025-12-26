@@ -12,83 +12,10 @@ export default function Commitments() {
 
     return (
         <section className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
-            {/* Advanced Background Effects */}
+            {/* Simple Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Massive Rotating Gradient Orb */}
-                <motion.div
-                    className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-                    animate={{
-                        rotate: 360,
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                        rotate: { duration: 30, repeat: Infinity, ease: "linear" },
-                        scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                />
-
-                {/* Shield Pattern Background */}
-                <motion.div className="absolute inset-0 opacity-[0.03]">
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="shield-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                                <path d="M40,10 L60,25 L60,45 L40,60 L20,45 L20,25 Z" fill="none" stroke="currentColor" strokeWidth="1" className="text-cyan-500" />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#shield-pattern)" />
-                    </svg>
-                </motion.div>
-
-                {/* Floating Particles */}
-                {[...Array(12)].map((_, i) => (
-                    <motion.div
-                        key={`particle-${i}`}
-                        className={`absolute w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-cyan-400' : i % 3 === 1 ? 'bg-purple-400' : 'bg-pink-400'
-                            }`}
-                        style={{
-                            left: `${10 + i * 8}%`,
-                            top: `${15 + (i % 4) * 20}%`,
-                        }}
-                        animate={{
-                            y: [0, -40, 0],
-                            opacity: [0, 0.8, 0],
-                            scale: [0.5, 1, 0.5],
-                        }}
-                        transition={{
-                            duration: 4 + i * 0.3,
-                            repeat: Infinity,
-                            delay: i * 0.2,
-                            ease: "easeInOut"
-                        }}
-                    />
-                ))}
-
-                {/* Animated Commitment Lines */}
-                <svg className="absolute inset-0 w-full h-full opacity-10">
-                    {[...Array(3)].map((_, i) => (
-                        <motion.line
-                            key={`line-${i}`}
-                            x1="10%"
-                            y1={`${30 + i * 20}%`}
-                            x2="90%"
-                            y2={`${30 + i * 20}%`}
-                            stroke="url(#commitmentGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="10,5"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 2, delay: i * 0.3 }}
-                        />
-                    ))}
-                    <defs>
-                        <linearGradient id="commitmentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#06b6d4" />
-                            <stop offset="50%" stopColor="#a855f7" />
-                            <stop offset="100%" stopColor="#ec4899" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+                {/* Static Gradient Orb */}
+                <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-500/15 via-purple-500/15 to-pink-500/15 rounded-full blur-3xl" />
 
                 {/* Radial Gradient Mesh */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.1)_0%,transparent_50%)]" />
@@ -113,18 +40,7 @@ export default function Commitments() {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6 backdrop-blur-sm"
                     >
-                        <motion.span
-                            className="w-2 h-2 rounded-full bg-cyan-500"
-                            animate={{
-                                scale: [1, 1.5, 1],
-                                opacity: [1, 0.5, 1],
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                        />
+                        <span className="w-2 h-2 rounded-full bg-cyan-500" />
                         <span className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
                             {t.commitments.badge}
                         </span>
@@ -138,22 +54,9 @@ export default function Commitments() {
                         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
                     >
                         <span className="text-white">{t.commitments.title} </span>
-                        <motion.span
-                            className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
-                            animate={{
-                                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                            }}
-                            transition={{
-                                duration: 5,
-                                repeat: Infinity,
-                                ease: "linear"
-                            }}
-                            style={{
-                                backgroundSize: "200% 200%"
-                            }}
-                        >
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
                             {t.commitments.titleHighlight}
-                        </motion.span>
+                        </span>
                     </motion.h2>
 
                     <p className="text-slate-400 text-lg max-w-3xl mx-auto">

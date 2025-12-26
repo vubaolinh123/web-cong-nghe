@@ -137,4 +137,28 @@ export const vi: TiktokShopTranslations = {
             { q: 'TÔI CHƯA BIẾT GÌ VỀ TIKTOK SHOP THÌ SAO?', a: 'Đừng lo, ASI Everest có đội ngũ support 1:1 hướng dẫn bạn từ A-Z: cách đăng sản phẩm, cách vận hành shop, cách xử lý đơn hàng và tối ưu doanh thu.' },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Dự Án',
+        sectionTitleHighlight: 'Thành Công',
+        featuredTitle: 'Dự Án Nổi Bật',
+        separator: 'Các Dự Án Khác',
+        featuredProjects: [
+            {
+                name: 'Tina Nguyen',
+                followers: '263,2K followers',
+                likes: '1,2Tr likes',
+                verified: true,
+            },
+            {
+                name: 'Tama',
+                followers: '1,1Tr followers',
+                likes: '63,8Tr likes',
+            },
+            {
+                name: 'Chiêu Tài Mẫn Mẫn',
+                followers: '57,1K followers',
+                likes: '1,2Tr likes',
+            },
+        ],
+    },
 };

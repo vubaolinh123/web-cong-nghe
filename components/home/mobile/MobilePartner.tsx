@@ -65,24 +65,7 @@ export default function MobilePartner() {
         <section className="py-16 bg-slate-950 overflow-hidden relative">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute top-0 left-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -translate-x-1/2"
-                    animate={{ y: [0, 20, 0], scale: [1, 1.1, 1] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                />
-
-                {/* Floating stars */}
-                {[...Array(6)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute"
-                        style={{ left: `${15 + i * 15}%`, top: `${10 + (i % 3) * 30}%` }}
-                        animate={{ y: [0, -10, 0], opacity: [0.2, 0.4, 0.2] }}
-                        transition={{ duration: 4 + i, repeat: Infinity, delay: i * 0.5 }}
-                    >
-                        <Star className="w-2 h-2 text-yellow-400/30" fill="currentColor" />
-                    </motion.div>
-                ))}
+                <div className="absolute top-0 left-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -translate-x-1/2" />
             </div>
 
             <div className="px-4 relative z-10">

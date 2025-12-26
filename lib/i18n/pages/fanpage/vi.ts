@@ -134,4 +134,16 @@ export const vi: FanpageTranslations = {
             },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Dự Án',
+        sectionTitleHighlight: 'Thành Công',
+        featuredTitle: 'Dự Án Nổi Bật',
+        separator: 'Các Dự Án Khác',
+        featuredProject: {
+            name: 'Ú OÀ - Mẹ Bầu Và Em Bé',
+            followers: '511K người theo dõi',
+            badge: 'Fanpage',
+            verified: 'Đã xác minh',
+        },
+    },
 };

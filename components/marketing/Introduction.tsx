@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Container } from "../common";
 import { useRef } from "react";
 import { TrendingUp, Users, Zap } from "lucide-react";
@@ -17,15 +17,6 @@ const valueColors = [
 export default function Introduction() {
     const t = useMarketingTranslations();
     const containerRef = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    // Parallax transforms
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
     // Build values array from translations
     const values = t.introduction.values.map((value, index) => ({
@@ -46,100 +37,9 @@ export default function Introduction() {
             ref={containerRef}
             className="pt-16 pb-16 sm:py-24 lg:py-32 bg-slate-950 relative overflow-hidden"
         >
-            {/* === UNIQUE MARKETING BACKGROUND - NETWORK/GROWTH STYLE === */}
+            {/* === SIMPLE CSS BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-
-                {/* Growth Chart Pattern */}
-                <motion.div
-                    className="absolute inset-0 opacity-10"
-                    style={{ y: backgroundY }}
-                >
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="growthLines" width="100" height="100" patternUnits="userSpaceOnUse">
-                                {/* Upward trending lines */}
-                                <line x1="0" y1="100" x2="25" y2="70" stroke="rgba(34,197,94,0.3)" strokeWidth="0.5" />
-                                <line x1="25" y1="70" x2="50" y2="80" stroke="rgba(34,197,94,0.3)" strokeWidth="0.5" />
-                                <line x1="50" y1="80" x2="75" y2="40" stroke="rgba(34,197,94,0.3)" strokeWidth="0.5" />
-                                <line x1="75" y1="40" x2="100" y2="20" stroke="rgba(34,197,94,0.3)" strokeWidth="0.5" />
-                                <circle cx="25" cy="70" r="2" fill="rgba(34,197,94,0.4)" />
-                                <circle cx="50" cy="80" r="2" fill="rgba(34,197,94,0.4)" />
-                                <circle cx="75" cy="40" r="2" fill="rgba(34,197,94,0.4)" />
-                                <circle cx="100" cy="20" r="2" fill="rgba(34,197,94,0.4)" />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#growthLines)" />
-                    </svg>
-                </motion.div>
-
-                {/* Animated Connection Lines */}
-                <svg className="absolute inset-0 w-full h-full opacity-20">
-                    <defs>
-                        <linearGradient id="marketingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="transparent" />
-                            <stop offset="50%" stopColor="#22c55e" />
-                            <stop offset="100%" stopColor="transparent" />
-                        </linearGradient>
-                    </defs>
-                    {/* Diagonal growth lines */}
-                    {[...Array(5)].map((_, i) => (
-                        <motion.line
-                            key={`d-${i}`}
-                            x1={`${i * 20}%`}
-                            y1="100%"
-                            x2={`${i * 20 + 30}%`}
-                            y2="0%"
-                            stroke="url(#marketingGradient)"
-                            strokeWidth="1"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: i * 0.2 }}
-                        />
-                    ))}
-                    {/* Network nodes */}
-                    {[...Array(10)].map((_, i) => (
-                        <motion.circle
-                            key={`node-${i}`}
-                            cx={`${10 + i * 10}%`}
-                            cy={`${20 + (i % 4) * 20}%`}
-                            r="3"
-                            fill="#22c55e"
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 0.5, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                        />
-                    ))}
-                </svg>
-
-                {/* Floating Growth Arrows */}
-                <div className="absolute inset-0">
-                    {[...Array(8)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute"
-                            style={{
-                                left: `${10 + i * 12}%`,
-                                bottom: `${20 + (i % 3) * 15}%`,
-                            }}
-                            animate={{
-                                y: [0, -30, 0],
-                                opacity: [0.2, 0.6, 0.2]
-                            }}
-                            transition={{
-                                duration: 3 + i * 0.5,
-                                repeat: Infinity,
-                                delay: i * 0.3,
-                                ease: "easeInOut"
-                            }}
-                        >
-                            <TrendingUp className="w-4 h-4 text-emerald-500/30" />
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Corner Accent Glows */}
+                {/* Corner Accent Glows - Static */}
                 <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
 
@@ -149,10 +49,7 @@ export default function Introduction() {
 
             {/* === CONTENT === */}
             <Container className="relative z-10">
-                <motion.div
-                    className="max-w-4xl mx-auto"
-                    style={{ opacity: textOpacity, scale }}
-                >
+                <div className="max-w-4xl mx-auto">
                     {/* Section Label with Animated Line */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -305,7 +202,7 @@ export default function Introduction() {
                             </div>
                         ))}
                     </motion.div>
-                </motion.div>
+                </div>
             </Container>
         </section>
     );

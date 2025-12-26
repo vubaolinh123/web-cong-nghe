@@ -55,16 +55,8 @@ export default function MobileServices() {
         <section className="py-16 bg-slate-950 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute top-0 left-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px]"
-                    animate={{ x: [0, 20, 0], y: [0, 20, 0] }}
-                    transition={{ duration: 12, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/10 rounded-full blur-[70px]"
-                    animate={{ x: [0, -20, 0], y: [0, -20, 0] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                />
+                <div className="absolute top-0 left-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px]" />
+                <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/10 rounded-full blur-[70px]" />
             </div>
 
             <div className="px-4 relative z-10">

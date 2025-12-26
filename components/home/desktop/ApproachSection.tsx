@@ -1,20 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { useRef } from "react";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function ApproachSection() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const steps = [
     {
@@ -48,12 +40,11 @@ export default function ApproachSection() {
 
   return (
     <section
-      ref={containerRef}
       className="relative w-full min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden py-20 sm:py-24 lg:py-0 lg:h-screen"
     >
-      {/* === ENHANCED BACKGROUND EFFECTS === */}
+      {/* === SIMPLE BACKGROUND === */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Animated Grid */}
+        {/* Static Grid */}
         <div
           className="absolute inset-0 bg-[linear-gradient(to_right,#06b6d410_1px,transparent_1px),linear-gradient(to_bottom,#06b6d410_1px,transparent_1px)] bg-[size:60px_60px] opacity-30"
           style={{
@@ -61,20 +52,11 @@ export default function ApproachSection() {
           }}
         />
 
-        {/* Floating Orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px]"
-          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          style={{ y: backgroundY }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px]"
-          animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Static Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px]" />
 
-        {/* Animated Connection Line */}
+        {/* Static Connection Line */}
         <div className="hidden lg:block absolute top-1/2 left-0 w-full">
           <svg className="w-full h-4" viewBox="0 0 1200 16" fill="none">
             <motion.path
@@ -96,27 +78,6 @@ export default function ApproachSection() {
             </defs>
           </svg>
         </div>
-
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-cyan-400/50"
-            style={{
-              left: `${10 + i * 6}%`,
-              top: `${20 + (i % 5) * 15}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 0.7, 0.3],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">

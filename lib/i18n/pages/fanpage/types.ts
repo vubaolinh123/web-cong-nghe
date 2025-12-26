@@ -62,4 +62,16 @@ export type FanpageTranslations = {
             features: string[];
         }>;
     };
+    caseStudies: {
+        sectionTitle: string;
+        sectionTitleHighlight: string;
+        featuredTitle: string;
+        separator: string;
+        featuredProject: {
+            name: string;
+            followers: string;
+            badge: string;
+            verified: string;
+        };
+    };
 };

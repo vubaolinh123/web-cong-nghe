@@ -62,4 +62,15 @@ export type FacebookGroupTranslations = {
             a: string;
         }>;
     };
+    caseStudies: {
+        sectionTitle: string;
+        sectionTitleHighlight: string;
+        featuredTitle: string;
+        separator: string;
+        featuredProjects: Array<{
+            name: string;
+            members: string;
+            badge: string;
+        }>;
+    };
 };

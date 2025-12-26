@@ -56,9 +56,9 @@ export default function ServicesSection() {
 
   return (
     <section className="relative w-full min-h-screen flex items-center bg-slate-950 overflow-hidden py-20 sm:py-24 lg:py-0 lg:h-screen">
-      {/* === ENHANCED BACKGROUND EFFECTS === */}
+      {/* === SIMPLE BACKGROUND === */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Animated Grid */}
+        {/* Static Grid */}
         <div
           className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e08_1px,transparent_1px),linear-gradient(to_bottom,#22c55e08_1px,transparent_1px)] bg-[size:60px_60px]"
           style={{
@@ -66,40 +66,9 @@ export default function ServicesSection() {
           }}
         />
 
-        {/* Animated Gradient Orbs */}
-        <motion.div
-          className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]"
-          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[100px]"
-          animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Floating particles */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1.5 h-1.5 rounded-full"
-            style={{
-              left: `${10 + i * 8}%`,
-              top: `${15 + (i % 4) * 20}%`,
-              background: i % 2 === 0 ? '#22c55e' : '#06b6d4',
-            }}
-            animate={{
-              y: [0, -40, 0],
-              opacity: [0.2, 0.6, 0.2],
-              scale: [0.8, 1.2, 0.8],
-            }}
-            transition={{
-              duration: 5 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-          />
-        ))}
+        {/* Static Gradient Orbs */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
@@ -143,8 +112,8 @@ export default function ServicesSection() {
                 transition={{ delay: index * 0.15 }}
                 onClick={() => setActiveService(index)}
                 className={`group relative p-5 sm:p-6 rounded-2xl border-2 transition-all duration-500 cursor-pointer overflow-hidden ${activeService === index
-                    ? `bg-slate-900/80 ${service.borderColor} shadow-[0_0_40px_rgba(6,182,212,0.2)]`
-                    : "bg-slate-900/40 border-slate-800 hover:bg-slate-900/60 hover:border-slate-700"
+                  ? `bg-slate-900/80 ${service.borderColor} shadow-[0_0_40px_rgba(6,182,212,0.2)]`
+                  : "bg-slate-900/40 border-slate-800 hover:bg-slate-900/60 hover:border-slate-700"
                   }`}
               >
                 {/* Active Glow */}
@@ -167,8 +136,8 @@ export default function ServicesSection() {
 
                       {/* Badge */}
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${activeService === index
-                          ? `bg-gradient-to-r ${service.color} text-white`
-                          : "bg-slate-800 text-slate-400"
+                        ? `bg-gradient-to-r ${service.color} text-white`
+                        : "bg-slate-800 text-slate-400"
                         }`}>
                         <service.badgeIcon className="w-3 h-3" />
                         {service.badge}
@@ -231,12 +200,8 @@ export default function ServicesSection() {
 
           {/* RIGHT: Dynamic Image Display */}
           <div className="relative flex items-center justify-center h-[400px] lg:h-[500px]">
-            {/* Pulsating Background */}
-            <motion.div
-              animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.1, 1] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute inset-0 ${services[activeService].bgGlow} rounded-full blur-[80px]`}
-            />
+            {/* Static Background Glow */}
+            <div className={`absolute inset-0 ${services[activeService].bgGlow} rounded-full blur-[80px] opacity-30`} />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -245,15 +210,13 @@ export default function ServicesSection() {
                 animate={{
                   opacity: 1,
                   scale: 1,
-                  rotate: 0,
-                  y: [0, -15, 0]
+                  rotate: 0
                 }}
                 exit={{ opacity: 0, scale: 0.8, rotate: 5, filter: "blur(10px)" }}
                 transition={{
                   opacity: { duration: 0.4 },
                   scale: { duration: 0.4 },
-                  rotate: { duration: 0.4 },
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                  rotate: { duration: 0.4 }
                 }}
                 className="relative w-full h-full flex items-center justify-center p-4"
               >

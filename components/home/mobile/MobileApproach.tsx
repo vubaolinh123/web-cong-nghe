@@ -43,18 +43,10 @@ export default function MobileApproach() {
         <section className="py-16 bg-slate-950 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute top-1/4 left-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-[60px]"
-                    animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute bottom-1/4 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-[50px]"
-                    animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
+                <div className="absolute top-1/4 left-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-[60px]" />
+                <div className="absolute bottom-1/4 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-[50px]" />
 
-                {/* Animated vertical line */}
+                {/* Static vertical line */}
                 <div className="absolute left-8 top-32 bottom-20 w-0.5 bg-gradient-to-b from-cyan-500/20 via-green-500/20 to-purple-500/20" />
             </div>
 

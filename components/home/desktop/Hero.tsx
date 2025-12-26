@@ -8,45 +8,12 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { SplineScene } from "@/components/ui/spline";
 import { Spotlight } from "@/components/ui/spotlight";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 
 export default function Hero() {
   const { dictionary } = useLanguage();
   const { isDesktop, isMobile } = useIsMobile();
-  const [particles, setParticles] = useState<Array<{ x: number, y: number, size: number, duration: number, delay: number }>>([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // Generate particles on client side
-    setParticles(
-      [...Array(25)].map(() => ({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        duration: Math.random() * 10 + 8,
-        delay: Math.random() * 5
-      }))
-    );
-  }, []);
-
-  // Mouse tracking for interactive glow (desktop only)
-  useEffect(() => {
-    if (isMobile) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [isMobile]);
 
   const stats = [
     { value: "500+", label: "Dự án hoàn thành", icon: TrendingUp },
@@ -59,7 +26,7 @@ export default function Hero() {
       ref={heroRef}
       className="relative h-full min-h-screen flex items-center justify-center overflow-x-clip bg-slate-950"
     >
-      {/* === ENHANCED BACKGROUND EFFECTS === */}
+      {/* === SIMPLE BACKGROUND === */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Spotlights */}
         {isDesktop && (
@@ -69,7 +36,7 @@ export default function Hero() {
           </>
         )}
 
-        {/* Animated Grid */}
+        {/* Static Grid */}
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -80,66 +47,11 @@ export default function Hero() {
           }}
         />
 
-        {/* Animated Gradient Orbs */}
-        <motion.div
-          className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-[500px] h-[500px]'} bg-blue-500/20 rounded-full blur-[100px]`}
-          animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className={`absolute bottom-1/4 right-1/4 ${isMobile ? 'w-48 h-48' : 'w-[400px] h-[400px]'} bg-green-500/20 rounded-full blur-[80px]`}
-          animate={{ x: [0, -20, 0], y: [0, 30, 0], scale: [1.1, 1, 1.1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Static Gradient Orbs */}
+        <div className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-[500px] h-[500px]'} bg-blue-500/15 rounded-full blur-[100px]`} />
+        <div className={`absolute bottom-1/4 right-1/4 ${isMobile ? 'w-48 h-48' : 'w-[400px] h-[400px]'} bg-green-500/15 rounded-full blur-[80px]`} />
         {!isMobile && (
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-green-600/10 rounded-full blur-[120px]"
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          />
-        )}
-
-        {/* Floating Particles */}
-        {particles.map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            initial={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              opacity: 0,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.sin(i) * 20, 0],
-              opacity: [0, 0.6, 0],
-              scale: [0.5, 1, 0.5]
-            }}
-            transition={{
-              duration: p.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: p.delay
-            }}
-            style={{
-              width: p.size,
-              height: p.size,
-              background: i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#22c55e' : '#06b6d4',
-              boxShadow: `0 0 ${p.size * 3}px ${i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#22c55e' : '#06b6d4'}`
-            }}
-          />
-        ))}
-
-        {/* Interactive Mouse Glow (Desktop only) */}
-        {isDesktop && (
-          <div
-            className="absolute w-[400px] h-[400px] rounded-full pointer-events-none transition-all duration-300 ease-out opacity-50"
-            style={{
-              left: mousePosition.x - 200,
-              top: mousePosition.y - 200,
-              background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)',
-            }}
-          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-green-600/10 rounded-full blur-[120px]" />
         )}
 
         {/* Vignette */}
@@ -157,12 +69,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/30 backdrop-blur-sm text-xs sm:text-sm font-medium mb-6"
             >
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles size={isMobile ? 14 : 16} className="text-yellow-400" />
-              </motion.div>
+              <Sparkles size={isMobile ? 14 : 16} className="text-yellow-400" />
               <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold">
                 AI-First Company
               </span>
@@ -177,21 +84,13 @@ export default function Hero() {
             >
               <span className="block">{dictionary.hero.title1}</span>
               <span className="block mt-2">
-                <motion.span
-                  className="inline-block bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent bg-300%"
-                  animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                >
+                <span className="inline-block bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                   {dictionary.hero.title2}
-                </motion.span>
+                </span>
                 {" "} & {" "}
-                <motion.span
-                  className="inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent bg-300%"
-                  animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                >
+                <span className="inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   {dictionary.hero.title3}
-                </motion.span>
+                </span>
               </span>
               <span className="block mt-2">{dictionary.hero.title4}</span>
             </motion.h1>
@@ -271,7 +170,7 @@ export default function Hero() {
         </motion.div>
       )}
 
-      {/* Scroll Indicator */}
+      {/* Static Scroll Indicator */}
       {isDesktop && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -279,17 +178,9 @@ export default function Hero() {
           transition={{ delay: 1.5, duration: 0.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-slate-700 flex items-start justify-center p-2"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-2 rounded-full bg-gradient-to-b from-blue-400 to-cyan-400"
-            />
-          </motion.div>
+          <div className="w-6 h-10 rounded-full border-2 border-slate-700 flex items-start justify-center p-2">
+            <div className="w-1.5 h-2 rounded-full bg-gradient-to-b from-blue-400 to-cyan-400" />
+          </div>
         </motion.div>
       )}
     </section>

@@ -137,4 +137,28 @@ export const en: TiktokShopTranslations = {
             { q: "WHAT IF I DON'T KNOW ANYTHING ABOUT TIKTOK SHOP?", a: "Don't worry, ASI Everest has a 1:1 support team to guide you from A-Z: how to post products, how to operate shop, how to handle orders and optimize revenue." },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Success',
+        sectionTitleHighlight: 'Stories',
+        featuredTitle: 'Featured Projects',
+        separator: 'Other Projects',
+        featuredProjects: [
+            {
+                name: 'Tina Nguyen',
+                followers: '263.2K followers',
+                likes: '1.2M likes',
+                verified: true,
+            },
+            {
+                name: 'Tama',
+                followers: '1.1M followers',
+                likes: '63.8M likes',
+            },
+            {
+                name: 'Chieu Tai Man Man',
+                followers: '57.1K followers',
+                likes: '1.2M likes',
+            },
+        ],
+    },
 };

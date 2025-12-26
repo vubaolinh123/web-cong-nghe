@@ -52,4 +52,16 @@ export type TiktokShopTranslations = {
             a: string;
         }>;
     };
+    caseStudies: {
+        sectionTitle: string;
+        sectionTitleHighlight: string;
+        featuredTitle: string;
+        separator: string;
+        featuredProjects: Array<{
+            name: string;
+            followers: string;
+            likes: string;
+            verified?: boolean;
+        }>;
+    };
 };

@@ -134,4 +134,16 @@ export const en: FanpageTranslations = {
             },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Success',
+        sectionTitleHighlight: 'Stories',
+        featuredTitle: 'Featured Project',
+        separator: 'Other Projects',
+        featuredProject: {
+            name: 'U OA - Mom & Baby',
+            followers: '511K followers',
+            badge: 'Fanpage',
+            verified: 'Verified',
+        },
+    },
 };

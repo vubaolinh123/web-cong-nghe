@@ -38,12 +38,12 @@ const PartnerCarousel = () => {
 
     return (
         <section className="relative w-full min-h-screen flex flex-col justify-center bg-slate-950 overflow-hidden py-20 lg:py-0 lg:h-screen">
-            {/* === ENHANCED BACKGROUND EFFECTS === */}
+            {/* === SIMPLE BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none">
                 {/* Radial gradient background */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/15 via-slate-950 to-slate-950" />
 
-                {/* Animated Grid */}
+                {/* Static Grid */}
                 <div
                     className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:60px_60px] opacity-30"
                     style={{
@@ -51,41 +51,9 @@ const PartnerCarousel = () => {
                     }}
                 />
 
-                {/* Floating Orbs */}
-                <motion.div
-                    className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px]"
-                    animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-                    transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                    className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-cyan-500/10 rounded-full blur-[80px]"
-                    animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {/* Floating Stars */}
-                {[...Array(8)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute"
-                        style={{
-                            left: `${10 + i * 12}%`,
-                            top: `${15 + (i % 4) * 20}%`,
-                        }}
-                        animate={{
-                            y: [0, -20, 0],
-                            opacity: [0.2, 0.5, 0.2],
-                            rotate: [0, 180, 360],
-                        }}
-                        transition={{
-                            duration: 6 + i,
-                            repeat: Infinity,
-                            delay: i * 0.4,
-                        }}
-                    >
-                        <Star className="w-3 h-3 text-yellow-400/30" fill="currentColor" />
-                    </motion.div>
-                ))}
+                {/* Static Orbs */}
+                <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-cyan-500/10 rounded-full blur-[80px]" />
             </div>
 
             {/* Header */}

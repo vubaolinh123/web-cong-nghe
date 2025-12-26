@@ -142,4 +142,22 @@ export const vi: FacebookGroupTranslations = {
             { q: 'TÔI CÓ BÁN ĐƯỢC HÀNG NGAY KHI CÓ GROUP ?', a: 'Điều này chắc chắn là có bởi khi bạn có group bạn đã có thể đăng tải bán sản phẩm dịch vụ đồng thời khếch chương thương hiệu dịch vụ của bạn tới tệp khách hàng trong group cũng như ngoài group giúp tỷ lệ chuyển đổi sẽ tăng rất nhiều lần.' },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Dự Án',
+        sectionTitleHighlight: 'Thành Công',
+        featuredTitle: 'Dự Án Nổi Bật',
+        separator: 'Các Dự Án Khác',
+        featuredProjects: [
+            {
+                name: 'Thiết Kế & Thi Công Nội Thất',
+                members: '510,1K thành viên',
+                badge: 'Nhóm Công khai',
+            },
+            {
+                name: 'Xuất Nhập Khẩu Logistics',
+                members: '369,4K thành viên',
+                badge: 'Nhóm Công khai',
+            },
+        ],
+    },
 };

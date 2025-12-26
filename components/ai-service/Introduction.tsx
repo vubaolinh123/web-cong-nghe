@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Container } from "../common";
 import { useRef } from "react";
 import { Target, Lightbulb, Users } from "lucide-react";
@@ -17,15 +17,6 @@ const valueColors = [
 export default function Introduction() {
     const t = useTechnologyTranslations();
     const containerRef = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    // Parallax transforms
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
     // Build values array from translations
     const values = t.introduction.values.map((value, index) => ({
@@ -46,97 +37,9 @@ export default function Introduction() {
             ref={containerRef}
             className="pt-16 pb-16 sm:py-24 lg:py-32 bg-slate-950 relative overflow-hidden"
         >
-            {/* === UNIQUE BACKGROUND - CIRCUIT BOARD STYLE === */}
+            {/* === SIMPLE CSS BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-
-                {/* Hexagon Grid Pattern */}
-                <motion.div
-                    className="absolute inset-0 opacity-10"
-                    style={{ y: backgroundY }}
-                >
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-                                <polygon
-                                    points="25,0 50,14.4 50,38.6 25,53 0,38.6 0,14.4"
-                                    fill="none"
-                                    stroke="rgba(6,182,212,0.3)"
-                                    strokeWidth="0.5"
-                                    transform="translate(0,-5)"
-                                />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#hexagons)" />
-                    </svg>
-                </motion.div>
-
-                {/* Animated Circuit Lines */}
-                <svg className="absolute inset-0 w-full h-full opacity-20">
-                    <defs>
-                        <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="transparent" />
-                            <stop offset="50%" stopColor="#06b6d4" />
-                            <stop offset="100%" stopColor="transparent" />
-                        </linearGradient>
-                    </defs>
-                    {/* Horizontal lines */}
-                    {[...Array(5)].map((_, i) => (
-                        <motion.line
-                            key={`h-${i}`}
-                            x1="0%"
-                            y1={`${20 + i * 15}%`}
-                            x2="100%"
-                            y2={`${20 + i * 15}%`}
-                            stroke="url(#circuitGradient)"
-                            strokeWidth="1"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: i * 0.2 }}
-                        />
-                    ))}
-                    {/* Circuit nodes */}
-                    {[...Array(8)].map((_, i) => (
-                        <motion.circle
-                            key={`node-${i}`}
-                            cx={`${10 + i * 12}%`}
-                            cy={`${30 + (i % 3) * 20}%`}
-                            r="4"
-                            fill="#06b6d4"
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 0.6, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                        />
-                    ))}
-                </svg>
-
-                {/* Floating Data Streams */}
-                <div className="absolute inset-0">
-                    {[...Array(6)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"
-                            style={{
-                                width: `${100 + i * 50}px`,
-                                left: `${i * 15}%`,
-                                top: `${20 + i * 12}%`,
-                            }}
-                            animate={{
-                                x: ['-100%', '200%'],
-                                opacity: [0, 1, 0]
-                            }}
-                            transition={{
-                                duration: 4 + i,
-                                repeat: Infinity,
-                                delay: i * 0.5,
-                                ease: "linear"
-                            }}
-                        />
-                    ))}
-                </div>
-
-                {/* Corner Accent Glows */}
+                {/* Corner Accent Glows - Static */}
                 <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
 
@@ -146,10 +49,7 @@ export default function Introduction() {
 
             {/* === CONTENT === */}
             <Container className="relative z-10">
-                <motion.div
-                    className="max-w-4xl mx-auto"
-                    style={{ opacity: textOpacity, scale }}
-                >
+                <div className="max-w-4xl mx-auto">
                     {/* Section Label with Animated Line */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -302,7 +202,7 @@ export default function Introduction() {
                             </div>
                         ))}
                     </motion.div>
-                </motion.div>
+                </div>
             </Container>
         </section>
     );

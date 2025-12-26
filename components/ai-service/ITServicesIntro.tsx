@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Globe, Smartphone, MessageSquare, Zap, ArrowRight } from "lucide-react";
 import { Container } from "../common";
 import { useRef } from "react";
@@ -55,134 +55,14 @@ export default function ITServicesIntro() {
         },
     ];
     const containerRef = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
     return (
         <section ref={containerRef} className="py-16 sm:py-24 bg-slate-950 relative overflow-hidden">
-            {/* Advanced Background Effects */}
+            {/* Simple Background Effects */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {/* Animated Gradient Orbs */}
-                <motion.div
-                    style={{ y }}
-                    className="absolute top-1/4 -left-40 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-                <motion.div
-                    style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]) }}
-                    className="absolute bottom-1/4 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-                    animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                        duration: 10,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1
-                    }}
-                />
-
-                {/* Hexagon Grid Pattern */}
-                <motion.div
-                    className="absolute inset-0 opacity-5"
-                    style={{ y }}
-                >
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="hexagons-it" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-                                <polygon
-                                    points="25,0 50,14.4 50,38.6 25,53 0,38.6 0,14.4"
-                                    fill="none"
-                                    stroke="rgba(6,182,212,0.3)"
-                                    strokeWidth="0.5"
-                                />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#hexagons-it)" />
-                    </svg>
-                </motion.div>
-
-                {/* Animated Circuit Lines */}
-                <svg className="absolute inset-0 w-full h-full opacity-10">
-                    <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="transparent" />
-                            <stop offset="50%" stopColor="#06b6d4" />
-                            <stop offset="100%" stopColor="transparent" />
-                        </linearGradient>
-                    </defs>
-                    {[...Array(6)].map((_, i) => (
-                        <motion.line
-                            key={`line-${i}`}
-                            x1="0%"
-                            y1={`${15 + i * 15}%`}
-                            x2="100%"
-                            y2={`${15 + i * 15}%`}
-                            stroke="url(#lineGradient)"
-                            strokeWidth="1"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 2, delay: i * 0.2 }}
-                        />
-                    ))}
-                    {/* Animated nodes */}
-                    {[...Array(10)].map((_, i) => (
-                        <motion.circle
-                            key={`node-${i}`}
-                            cx={`${10 + i * 10}%`}
-                            cy={`${20 + (i % 4) * 20}%`}
-                            r="3"
-                            fill="#06b6d4"
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 0.6, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                            animate={{
-                                opacity: [0.3, 0.8, 0.3],
-                            }}
-                            style={{
-                                transition: `opacity ${2 + i * 0.2}s ease-in-out infinite`
-                            }}
-                        />
-                    ))}
-                </svg>
-
-                {/* Floating Particles */}
-                {[...Array(8)].map((_, i) => (
-                    <motion.div
-                        key={`particle-${i}`}
-                        className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-                        style={{
-                            left: `${10 + i * 12}%`,
-                            top: `${20 + (i % 3) * 25}%`,
-                        }}
-                        animate={{
-                            y: [0, -30, 0],
-                            opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                            duration: 3 + i * 0.5,
-                            repeat: Infinity,
-                            delay: i * 0.3,
-                            ease: "easeInOut"
-                        }}
-                    />
-                ))}
+                {/* Static Gradient Orbs */}
+                <div className="absolute top-1/4 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl" />
+                <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl" />
 
                 {/* Gradient Mesh */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
@@ -196,7 +76,6 @@ export default function ITServicesIntro() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12 sm:mb-16"
-                    style={{ opacity }}
                 >
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
@@ -204,18 +83,7 @@ export default function ITServicesIntro() {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6 backdrop-blur-sm"
                     >
-                        <motion.span
-                            className="w-2 h-2 rounded-full bg-cyan-500"
-                            animate={{
-                                scale: [1, 1.5, 1],
-                                opacity: [1, 0.5, 1],
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                        />
+                        <span className="w-2 h-2 rounded-full bg-cyan-500" />
                         <span className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">
                             {t.itServicesIntro.badge}
                         </span>

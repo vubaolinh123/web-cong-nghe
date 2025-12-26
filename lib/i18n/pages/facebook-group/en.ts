@@ -142,4 +142,22 @@ export const en: FacebookGroupTranslations = {
             { q: 'CAN I SELL PRODUCTS RIGHT AWAY WHEN I HAVE A GROUP?', a: 'This is definitely possible because when you have a group, you can post and sell products/services while promoting your brand to customers inside and outside the group, helping increase conversion rates many times.' },
         ],
     },
+    caseStudies: {
+        sectionTitle: 'Success',
+        sectionTitleHighlight: 'Stories',
+        featuredTitle: 'Featured Projects',
+        separator: 'Other Projects',
+        featuredProjects: [
+            {
+                name: 'Interior Design & Construction',
+                members: '510.1K members',
+                badge: 'Public Group',
+            },
+            {
+                name: 'Import Export Logistics',
+                members: '369.4K members',
+                badge: 'Public Group',
+            },
+        ],
+    },
 };
