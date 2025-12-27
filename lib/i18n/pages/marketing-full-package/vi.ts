@@ -178,6 +178,12 @@ export const vi: MarketingFullPackageTranslations = {
             threeSecViews: '3s Views',
             interactions: 'Tương tác',
         },
+        featuredDescriptions: [
+            'Hợp tác truyền thông chiến lược cùng Đài Truyền Hình Việt Nam - VTV, mở rộng độ phủ thương hiệu trên toàn quốc',
+            'Phát triển thương hiệu thiết bị vệ sinh cao cấp Palado Việt Nam - Xây dựng định vị thương hiệu mạnh mẽ',
+            'Marketing toàn diện cho Công ty Thiết Bị Thẩm Mỹ HPMED Việt Nam - Tiên phong công nghệ làm đẹp',
+            'Chiến dịch ra mắt sản phẩm tạo hình cơ thể Real EMS - Đốt mỡ, săn cơ ngay tại nhà',
+        ],
         projects: [
             {
                 title: 'Chiến Dịch Content Marketing Facebook',

@@ -67,11 +67,11 @@ export type FanpageTranslations = {
         sectionTitleHighlight: string;
         featuredTitle: string;
         separator: string;
-        featuredProject: {
+        featuredProjects: Array<{
             name: string;
             followers: string;
             badge: string;
             verified: string;
-        };
+        }>;
     };
 };

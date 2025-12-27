@@ -158,6 +158,11 @@ export const vi: FacebookGroupTranslations = {
                 members: '369,4K thành viên',
                 badge: 'Nhóm Công khai',
             },
+            {
+                name: 'Vận Chuyển Hàng Trung Quốc Về VN',
+                members: '113,8K thành viên',
+                badge: 'Nhóm Công khai',
+            },
         ],
     },
 };

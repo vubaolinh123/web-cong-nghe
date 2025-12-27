@@ -137,13 +137,27 @@ export const en: FanpageTranslations = {
     caseStudies: {
         sectionTitle: 'Success',
         sectionTitleHighlight: 'Stories',
-        featuredTitle: 'Featured Project',
+        featuredTitle: 'Featured Projects',
         separator: 'Other Projects',
-        featuredProject: {
-            name: 'U OA - Mom & Baby',
-            followers: '511K followers',
-            badge: 'Fanpage',
-            verified: 'Verified',
-        },
+        featuredProjects: [
+            {
+                name: 'U OA - Mom & Baby',
+                followers: '511K followers',
+                badge: 'Fanpage',
+                verified: 'Verified',
+            },
+            {
+                name: 'Korean Cosmetics Online',
+                followers: '141K followers',
+                badge: 'Fanpage',
+                verified: 'Verified',
+            },
+            {
+                name: 'Study in Japan wiki',
+                followers: '211K followers',
+                badge: 'Fanpage',
+                verified: 'Verified',
+            },
+        ],
     },
 };

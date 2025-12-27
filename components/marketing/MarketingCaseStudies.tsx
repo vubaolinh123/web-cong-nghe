@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "../common";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectCreative } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectCreative, FreeMode } from 'swiper/modules';
 import Image from "next/image";
 import { TrendingUp, Eye, Users, Award, TrendingUpIcon, UsersIcon, ThumbsUp, Video, X, CheckCircle, Target, Clock, DollarSign, ShoppingCart, Check } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -464,7 +464,7 @@ export default function MarketingCaseStudies() {
                                                     VTV Partnership
                                                 </h4>
                                                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                                    {t('caseStudies.featuredProjects')?.[0]?.description || 'Hợp tác truyền thông chiến lược cùng Đài Truyền Hình Việt Nam - VTV'}
+                                                    Hợp tác truyền thông chiến lược cùng Đài Truyền Hình Việt Nam - VTV
                                                 </p>
                                             </div>
                                         </div>
@@ -506,7 +506,7 @@ export default function MarketingCaseStudies() {
                                                     Palado Vietnam
                                                 </h4>
                                                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                                    {t('caseStudies.featuredProjects')?.[1]?.description || 'Phát triển thương hiệu thiết bị vệ sinh cao cấp Palado Việt Nam'}
+                                                    Phát triển thương hiệu thiết bị vệ sinh cao cấp Palado Việt Nam
                                                 </p>
                                             </div>
                                         </div>
@@ -548,7 +548,7 @@ export default function MarketingCaseStudies() {
                                                     HPMED Vietnam
                                                 </h4>
                                                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                                    {t('caseStudies.featuredProjects')?.[2]?.description || 'Marketing toàn diện cho Công ty Thiết Bị Thẩm Mỹ HPMED Việt Nam - Tiên phong công nghệ'}
+                                                    Marketing toàn diện cho Công ty Thiết Bị Thẩm Mỹ HPMED Việt Nam - Tiên phong công nghệ
                                                 </p>
                                             </div>
                                         </div>
@@ -590,7 +590,7 @@ export default function MarketingCaseStudies() {
                                                     Real EMS
                                                 </h4>
                                                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                                    {t('caseStudies.featuredProjects')?.[3]?.description || 'Chiến dịch ra mắt sản phẩm tạo hình cơ thể Real EMS - Đốt mỡ, săn cơ ngay tại nhà'}
+                                                    Chiến dịch ra mắt sản phẩm tạo hình cơ thể Real EMS - Đốt mỡ, săn cơ ngay tại nhà
                                                 </p>
                                             </div>
                                         </div>
@@ -666,45 +666,21 @@ export default function MarketingCaseStudies() {
                         {/* Phone Mockup Carousel */}
                         <div className="relative">
                             <Swiper
-                                modules={[Autoplay, Pagination, Navigation]}
+                                modules={[Autoplay, FreeMode]}
                                 spaceBetween={16}
-                                slidesPerView={1.15}
-                                centeredSlides={true}
+                                slidesPerView={1.2}
+                                centeredSlides={false}
                                 breakpoints={{
-                                    480: {
-                                        slidesPerView: 1.3,
-                                        spaceBetween: 20,
-                                        centeredSlides: true,
-                                    },
-                                    640: {
-                                        slidesPerView: 1.5,
-                                        spaceBetween: 24,
-                                        centeredSlides: true,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 32,
-                                        centeredSlides: false,
-                                    },
-                                    1024: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 48,
-                                        centeredSlides: false,
-                                    },
+                                    480: { slidesPerView: 1.5, spaceBetween: 20 },
+                                    640: { slidesPerView: 2, spaceBetween: 24 },
+                                    768: { slidesPerView: 2.5, spaceBetween: 32 },
+                                    1024: { slidesPerView: 3, spaceBetween: 48 },
                                 }}
-                                navigation
-                                pagination={{
-                                    clickable: true,
-                                    dynamicBullets: true,
-                                }}
-                                autoplay={{
-                                    delay: 5000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true,
-                                }}
+                                freeMode={true}
+                                autoplay={{ delay: 1, disableOnInteraction: false }}
                                 loop={true}
-                                speed={600}
-                                className="group-featured-swiper !pb-12"
+                                speed={3000}
+                                className="continuous-swiper !pb-12"
                             >
                                 {/* Group 1: Thiết Kế & Thi Công Nội Thất */}
                                 <SwiperSlide>
@@ -1041,45 +1017,21 @@ export default function MarketingCaseStudies() {
                         {/* Phone Mockup Carousel */}
                         <div className="relative">
                             <Swiper
-                                modules={[Autoplay, Pagination, Navigation]}
+                                modules={[Autoplay, FreeMode]}
                                 spaceBetween={16}
-                                slidesPerView={1.15}
-                                centeredSlides={true}
+                                slidesPerView={1.2}
+                                centeredSlides={false}
                                 breakpoints={{
-                                    480: {
-                                        slidesPerView: 1.3,
-                                        spaceBetween: 20,
-                                        centeredSlides: true,
-                                    },
-                                    640: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 24,
-                                        centeredSlides: false,
-                                    },
-                                    768: {
-                                        slidesPerView: 2.5,
-                                        spaceBetween: 28,
-                                        centeredSlides: false,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 32,
-                                        centeredSlides: false,
-                                    },
+                                    480: { slidesPerView: 1.5, spaceBetween: 20 },
+                                    640: { slidesPerView: 2, spaceBetween: 24 },
+                                    768: { slidesPerView: 2.5, spaceBetween: 28 },
+                                    1024: { slidesPerView: 3, spaceBetween: 32 },
                                 }}
-                                navigation
-                                pagination={{
-                                    clickable: true,
-                                    dynamicBullets: true,
-                                }}
-                                autoplay={{
-                                    delay: 4000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true,
-                                }}
+                                freeMode={true}
+                                autoplay={{ delay: 1, disableOnInteraction: false }}
                                 loop={true}
-                                speed={600}
-                                className="tiktok-featured-swiper !pb-12"
+                                speed={3000}
+                                className="continuous-swiper !pb-12"
                             >
                                 {/* TikTok 1: Tina Nguyen */}
                                 <SwiperSlide>
@@ -1247,78 +1199,60 @@ export default function MarketingCaseStudies() {
                     >
                         <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-green-500/10">
                             <Swiper
-                                modules={[Autoplay, Pagination, Navigation, EffectCreative]}
-                                spaceBetween={20}
+                                modules={[Autoplay, FreeMode]}
+                                spaceBetween={16}
                                 slidesPerView={1.2}
                                 centeredSlides={false}
                                 breakpoints={{
-                                    640: {
-                                        slidesPerView: 1.5,
-                                        spaceBetween: 12,
-                                    },
-                                    768: {
-                                        slidesPerView: 2.2,
-                                        spaceBetween: 16,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3.2,
-                                        spaceBetween: 20,
-                                    },
-                                    1280: {
-                                        slidesPerView: 4,
-                                        spaceBetween: 20,
-                                    },
+                                    480: { slidesPerView: 1.5, spaceBetween: 20 },
+                                    640: { slidesPerView: 2, spaceBetween: 24 },
+                                    768: { slidesPerView: 2.5, spaceBetween: 32 },
+                                    1024: { slidesPerView: 3, spaceBetween: 48 },
                                 }}
-                                navigation
-                                pagination={{
-                                    clickable: true,
-                                    dynamicBullets: true,
-                                }}
-                                autoplay={{
-                                    delay: 4000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true,
-                                }}
-                                loop={activeCategoryData.caseStudies.length > 3}
-                                speed={600}
-                                className="case-studies-swiper"
+                                freeMode={true}
+                                autoplay={{ delay: 1, disableOnInteraction: false }}
+                                loop={true}
+                                speed={3000}
+                                className="continuous-swiper !pb-12"
                             >
                                 {activeCategoryData.caseStudies.map((study) => (
                                     <SwiperSlide key={study.id}>
-                                        <motion.div
-                                            whileHover={{ y: -8 }}
-                                            onClick={() => setSelectedImage(study)}
-                                            className="group relative rounded-xl overflow-hidden bg-slate-900 h-full cursor-pointer"
-                                        >
-                                            <div className={`relative w-full ${study.type === "portrait"
-                                                ? "aspect-[9/16]"
-                                                : "aspect-[16/9]"
-                                                }`}>
-                                                <Image
-                                                    src={study.image}
-                                                    alt={study.alt}
-                                                    fill
-                                                    className={`${study.type === "portrait"
-                                                        ? "object-cover"
-                                                        : "object-cover"
-                                                        } transition-transform duration-500 group-hover:scale-110`}
-                                                    quality={85}
-                                                    sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 28vw"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                                        <div className="flex flex-col items-center">
+                                            {/* Phone Frame */}
+                                            <div
+                                                className="relative group/phone cursor-pointer"
+                                                onClick={() => setSelectedImage(study)}
+                                            >
+                                                {/* Phone Outer Frame with Gradient Border */}
+                                                <div className={`relative p-[3px] rounded-[2.5rem] bg-gradient-to-br ${activeCategoryData.color} shadow-lg lg:shadow-2xl`}>
+                                                    <div className="relative bg-slate-900 rounded-[2.3rem] overflow-hidden">
+                                                        {/* Screen Content */}
+                                                        <div className="relative aspect-[9/19] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
+                                                            <Image
+                                                                src={study.image}
+                                                                alt={study.alt}
+                                                                fill
+                                                                className="object-cover object-top lg:transition-transform lg:duration-500 lg:group-hover/phone:scale-105"
+                                                                sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
+                                                            />
 
-                                                {/* Hover overlay with view icon - Always visible on mobile */}
-                                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
-                                                    <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-gradient-to-r ${activeCategoryData.color} flex items-center justify-center shadow-lg`}>
-                                                        <Eye className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
+                                                            {/* Gradient Overlay */}
+                                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
+
+                                                            {/* Eye Icon Overlay */}
+                                                            <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
+                                                                <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${activeCategoryData.color} flex items-center justify-center shadow-xl backdrop-blur-sm`}>
+                                                                    <Eye className="w-7 h-7 text-white" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            {/* Border effect */}
-                                            <div className={`absolute inset-0 border-2 border-slate-700/50 group-hover:border-transparent rounded-xl transition-colors duration-300 pointer-events-none`} />
-                                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r ${activeCategoryData.color} rounded-xl transition-opacity duration-300 pointer-events-none`} style={{ padding: '2px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }} />
-                                        </motion.div>
+                                                {/* Glow Effect - Desktop only */}
+                                                <div className={`hidden lg:block absolute -inset-4 bg-gradient-to-r ${activeCategoryData.color} rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-20 transition-opacity duration-500 -z-10`} />
+                                            </div>
+                                        </div>
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -1615,6 +1549,11 @@ export default function MarketingCaseStudies() {
                         .tiktok-featured-swiper .swiper-button-prev::after {
                             font-size: 12px;
                         }
+                    }
+
+                    /* Continuous Swiper - Marquee Effect */
+                    .continuous-swiper .swiper-wrapper {
+                        transition-timing-function: linear !important;
                     }
                 `}</style>
             </Container>

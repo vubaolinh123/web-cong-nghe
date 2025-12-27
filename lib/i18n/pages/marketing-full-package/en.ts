@@ -178,6 +178,12 @@ export const en: MarketingFullPackageTranslations = {
             threeSecViews: '3s Views',
             interactions: 'Interactions',
         },
+        featuredDescriptions: [
+            'Strategic media partnership with Vietnam Television - VTV, expanding nationwide brand coverage',
+            'Premium bathroom equipment brand development for Palado Vietnam - Building strong brand positioning',
+            'Comprehensive marketing for HPMED Vietnam Medical Beauty Equipment Company - Leading beauty technology',
+            'Product launch campaign for Real EMS body sculpting device - Burn fat, build muscle at home',
+        ],
         projects: [
             {
                 title: 'Facebook Content Marketing Campaign',

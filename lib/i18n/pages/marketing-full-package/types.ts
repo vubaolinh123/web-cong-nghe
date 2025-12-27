@@ -114,6 +114,7 @@ export type MarketingFullPackageTranslations = {
             threeSecViews: string;
             interactions: string;
         };
+        featuredDescriptions: string[];
         projects: Array<{
             title: string;
             description: string;

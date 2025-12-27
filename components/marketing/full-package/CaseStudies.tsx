@@ -30,6 +30,46 @@ const phoneCaseStudies = [
     { id: 6, image: "/image/casestudies/marketing_6.jpg", alt: "Marketing Case Study 6" },
 ];
 
+// Featured Projects from Marketing page
+const featuredProjects = [
+    {
+        id: 7,
+        image: "/image/casestudies/marketing_7.jpg",
+        alt: "VTV Partnership",
+        badge: "Media Partner",
+        badgeColor: "from-red-500 to-blue-500",
+        title: "VTV Partnership",
+        objectFit: "object-contain bg-white"
+    },
+    {
+        id: 8,
+        image: "/image/casestudies/marketing_8.jpg",
+        alt: "Palado Vietnam",
+        badge: "Brand Development",
+        badgeColor: "from-orange-500 to-yellow-500",
+        title: "Palado Vietnam",
+        objectFit: "object-cover"
+    },
+    {
+        id: 9,
+        image: "/image/casestudies/marketing_9.jpg",
+        alt: "HPMED Vietnam",
+        badge: "Full Marketing",
+        badgeColor: "from-amber-500 to-yellow-400",
+        title: "HPMED Vietnam",
+        objectFit: "object-cover"
+    },
+    {
+        id: 10,
+        image: "/image/casestudies/marketing_10.jpg",
+        alt: "Real EMS",
+        badge: "Product Launch",
+        badgeColor: "from-lime-500 to-green-500",
+        title: "Real EMS",
+        objectFit: "object-contain bg-white"
+    },
+];
+
 export default function CaseStudies() {
     const t = useMarketingFullPackageTranslations();
     const [selectedImage, setSelectedImage] = useState<CaseStudyImage | null>(null);
@@ -114,19 +154,19 @@ export default function CaseStudies() {
                             }}
                             className="featured-projects-swiper"
                         >
-                            {t.caseStudies.projects.map((project, index) => (
-                                <SwiperSlide key={index}>
+                            {featuredProjects.map((project, index) => (
+                                <SwiperSlide key={project.id}>
                                     <div className="relative bg-slate-900">
                                         {/* Large Image */}
                                         <div
                                             className="relative h-[280px] sm:h-[350px] lg:h-[400px] overflow-hidden cursor-pointer group/image"
-                                            onClick={() => setSelectedImage({ id: index, image: projectImages[index], alt: project.title, type: "landscape" })}
+                                            onClick={() => setSelectedImage({ id: project.id, image: project.image, alt: project.alt, type: "landscape" })}
                                         >
                                             <Image
-                                                src={projectImages[index]}
-                                                alt={project.title}
+                                                src={project.image}
+                                                alt={project.alt}
                                                 fill
-                                                className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+                                                className={`${project.objectFit} transition-transform duration-500 group-hover/image:scale-105`}
                                                 sizes="100vw"
                                                 priority={index === 0}
                                             />
@@ -139,86 +179,23 @@ export default function CaseStudies() {
                                                 </div>
                                             </div>
 
-                                            {/* Badges */}
+                                            {/* Badge */}
                                             <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
-                                                <span className="px-3 py-1.5 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold shadow-lg">
-                                                    {t.caseStudies.featuredBadge}
-                                                </span>
-                                                <span className="px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 text-xs font-bold backdrop-blur-sm">
-                                                    {t.caseStudies.organicBadge}
+                                                <span className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${project.badgeColor} text-white text-xs font-bold shadow-lg`}>
+                                                    {project.badge}
                                                 </span>
                                             </div>
                                         </div>
 
                                         {/* Content Below Image */}
                                         <div className="relative p-4 sm:p-6 lg:p-8 bg-slate-900">
-                                            <div className="max-w-5xl mx-auto">
-                                                {/* Title & Description */}
-                                                <div className="mb-4 sm:mb-6">
-                                                    <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">
-                                                        {project.title}
-                                                    </h4>
-                                                    <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                                                        {project.description}
-                                                    </p>
-                                                </div>
-
-                                                {/* Stats Grid */}
-                                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                                                    {/* Views */}
-                                                    <div className="relative p-3 sm:p-4 rounded-xl bg-slate-950/80 backdrop-blur-sm border border-slate-800/50 hover:border-green-500/50 transition-all duration-300 group">
-                                                        <Eye className="w-5 h-5 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
-                                                        <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                                                            {project.views}
-                                                        </div>
-                                                        <div className="text-xs sm:text-sm text-slate-400 font-medium">{t.caseStudies.stats.views}</div>
-                                                    </div>
-
-                                                    {/* Reach */}
-                                                    <div className="relative p-3 sm:p-4 rounded-xl bg-slate-950/80 backdrop-blur-sm border border-slate-800/50 hover:border-green-500/50 transition-all duration-300 group">
-                                                        <Users className="w-5 h-5 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
-                                                        <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                                                            {project.reach}
-                                                        </div>
-                                                        <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                                                            {t.caseStudies.stats.reach} <span className="text-green-400">{project.reachGrowth}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* 3s Views */}
-                                                    <div className="relative p-3 sm:p-4 rounded-xl bg-slate-950/80 backdrop-blur-sm border border-slate-800/50 hover:border-green-500/50 transition-all duration-300 group">
-                                                        <Video className="w-5 h-5 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
-                                                        <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                                                            {project.threeSecViews}
-                                                        </div>
-                                                        <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                                                            {t.caseStudies.stats.threeSecViews} <span className="text-green-400">{project.threeSecGrowth}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Interactions */}
-                                                    <div className="relative p-3 sm:p-4 rounded-xl bg-slate-950/80 backdrop-blur-sm border border-slate-800/50 hover:border-green-500/50 transition-all duration-300 group">
-                                                        <ThumbsUp className="w-5 h-5 text-green-400 mb-2 group-hover:scale-110 transition-transform" />
-                                                        <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                                                            {project.interactions}
-                                                        </div>
-                                                        <div className="text-xs sm:text-sm text-slate-400 font-medium">
-                                                            {t.caseStudies.stats.interactions} <span className="text-green-400">{project.interactionsGrowth}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                {/* Watch Time Badge */}
-                                                {project.watchTime && (
-                                                    <div className="mt-4 flex justify-center">
-                                                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/80 border border-slate-700/50">
-                                                            <Clock className="w-4 h-4 text-green-400" />
-                                                            <span className="text-slate-300 text-sm">
-                                                                {t.caseStudies.watchTimeLabel}: <span className="text-green-400 font-bold">{project.watchTime}</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                )}
+                                            <div className="max-w-5xl mx-auto text-center">
+                                                <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">
+                                                    {project.title}
+                                                </h4>
+                                                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                                    {t.caseStudies.featuredDescriptions?.[index] || t.caseStudies.projects?.[0]?.description || 'Chiến dịch marketing toàn diện'}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -276,13 +253,13 @@ export default function CaseStudies() {
                                         {/* Phone Frame */}
                                         <div className="relative p-[3px] rounded-[2rem] bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 shadow-2xl shadow-green-500/30">
                                             <div className="relative bg-slate-900 rounded-[1.8rem] overflow-hidden">
-                                                <div className="relative aspect-[9/16] w-[180px] sm:w-[200px] lg:w-[220px] overflow-hidden">
+                                                <div className="relative aspect-[9/16] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.alt}
                                                         fill
                                                         className="object-cover transition-transform duration-500 group-hover/phone:scale-105"
-                                                        sizes="(max-width: 640px) 180px, (max-width: 1024px) 200px, 220px"
+                                                        sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                                                     />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 

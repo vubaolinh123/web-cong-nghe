@@ -24,7 +24,8 @@ interface CaseStudyImage {
 // Featured Projects
 const featuredImages = [
     "/image/casestudies/group_1.jpg",
-    "/image/casestudies/group_2.jpg"
+    "/image/casestudies/group_2.jpg",
+    "/image/casestudies/group_6.jpg"
 ];
 
 // Case Studies Slider images
@@ -244,13 +245,13 @@ export default function CaseStudies() {
                                     >
                                         <div className="relative p-[2px] rounded-[1.5rem] bg-gradient-to-br from-blue-500/50 to-cyan-500/50 shadow-lg shadow-blue-500/20">
                                             <div className="relative bg-slate-900 rounded-[1.4rem] overflow-hidden">
-                                                <div className="relative aspect-[9/16] w-[140px] sm:w-[160px] lg:w-[180px] overflow-hidden">
+                                                <div className="relative aspect-[9/16] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.alt}
                                                         fill
                                                         className="object-cover transition-transform duration-500 group-hover/phone:scale-105"
-                                                        sizes="(max-width: 640px) 140px, (max-width: 1024px) 160px, 180px"
+                                                        sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                                                     />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 

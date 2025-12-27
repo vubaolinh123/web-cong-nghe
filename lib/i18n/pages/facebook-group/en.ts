@@ -158,6 +158,11 @@ export const en: FacebookGroupTranslations = {
                 members: '369.4K members',
                 badge: 'Public Group',
             },
+            {
+                name: 'China to Vietnam Shipping',
+                members: '113.8K members',
+                badge: 'Public Group',
+            },
         ],
     },
 };

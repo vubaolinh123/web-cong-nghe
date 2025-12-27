@@ -21,12 +21,20 @@ interface CaseStudyImage {
     type: "portrait";
 }
 
+// Featured Projects images
+const featuredImages = [
+    "/image/casestudies/fanpage_1.jpg",
+    "/image/casestudies/fanpage_6.jpg",
+    "/image/casestudies/fanpage_7.jpg"
+];
+
 // Case Studies Slider images
 const caseStudiesImages = [
     { id: 1, image: "/image/casestudies/fanpage_2.jpg", alt: "Fanpage 2" },
     { id: 2, image: "/image/casestudies/fanpage_3.jpg", alt: "Fanpage 3" },
     { id: 3, image: "/image/casestudies/fanpage_4.jpg", alt: "Fanpage 4" },
     { id: 4, image: "/image/casestudies/fanpage_5.jpg", alt: "Fanpage 5" },
+    { id: 5, image: "/image/casestudies/fanpage_8.jpg", alt: "Fanpage 8" },
 ];
 
 export default function CaseStudies() {
@@ -97,81 +105,105 @@ export default function CaseStudies() {
                     <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full" />
                 </motion.div>
 
-                {/* Featured Phone Mockup - Single */}
+                {/* Featured Phone Mockups Slider */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mb-12 flex justify-center"
+                    className="mb-12"
                 >
-                    <div className="flex flex-col items-center">
-                        <div
-                            className="relative group/phone cursor-pointer"
-                            onClick={() => setSelectedImage({ id: 100, image: "/image/casestudies/fanpage_1.jpg", alt: t.caseStudies.featuredProject.name, type: "portrait" })}
+                    <div className="relative">
+                        <Swiper
+                            modules={[Autoplay, Pagination, Navigation]}
+                            spaceBetween={20}
+                            slidesPerView={1.2}
+                            centeredSlides={true}
+                            breakpoints={{
+                                480: { slidesPerView: 1.5, spaceBetween: 24 },
+                                640: { slidesPerView: 2, spaceBetween: 32, centeredSlides: false },
+                                1024: { slidesPerView: 3, spaceBetween: 48, centeredSlides: false },
+                            }}
+                            navigation
+                            pagination={{ clickable: true, dynamicBullets: true }}
+                            autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                            loop={true}
+                            speed={600}
+                            className="fanpage-featured-swiper !pb-12"
                         >
-                            {/* Phone Frame */}
-                            <div className="relative p-[3px] rounded-[2.5rem] bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 shadow-2xl shadow-purple-500/30">
-                                <div className="relative bg-slate-900 rounded-[2.3rem] overflow-hidden">
-                                    <div className="relative aspect-[9/19] w-[240px] sm:w-[280px] lg:w-[300px] overflow-hidden">
-                                        <Image
-                                            src="/image/casestudies/fanpage_1.jpg"
-                                            alt={t.caseStudies.featuredProject.name}
-                                            fill
-                                            className="object-cover object-top transition-transform duration-500 group-hover/phone:scale-105"
-                                            sizes="(max-width: 640px) 240px, (max-width: 1024px) 280px, 300px"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
+                            {t.caseStudies.featuredProjects.map((project, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="flex flex-col items-center">
+                                        <div
+                                            className="relative group/phone cursor-pointer"
+                                            onClick={() => setSelectedImage({ id: 100 + index, image: featuredImages[index], alt: project.name, type: "portrait" })}
+                                        >
+                                            {/* Phone Frame */}
+                                            <div className="relative p-[3px] rounded-[2.5rem] bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 shadow-2xl shadow-purple-500/30">
+                                                <div className="relative bg-slate-900 rounded-[2.3rem] overflow-hidden">
+                                                    <div className="relative aspect-[9/19] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
+                                                        <Image
+                                                            src={featuredImages[index]}
+                                                            alt={project.name}
+                                                            fill
+                                                            className="object-cover object-top transition-transform duration-500 group-hover/phone:scale-105"
+                                                            sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
 
-                                        {/* Eye Icon */}
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
-                                            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                                <Eye className="w-7 h-7 text-white" />
-                                            </div>
-                                        </div>
+                                                        {/* Eye Icon */}
+                                                        <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
+                                                            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                                                <Eye className="w-7 h-7 text-white" />
+                                                            </div>
+                                                        </div>
 
-                                        {/* Follower Badge */}
-                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                                            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg">
-                                                <div className="flex items-center gap-2">
-                                                    <Users className="w-4 h-4 text-white" />
-                                                    <span className="text-white font-bold text-sm">{t.caseStudies.featuredProject.followers.split(' ')[0]}</span>
+                                                        {/* Follower Badge */}
+                                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+                                                            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg">
+                                                                <div className="flex items-center gap-2">
+                                                                    <Users className="w-4 h-4 text-white" />
+                                                                    <span className="text-white font-bold text-sm">{project.followers.split(' ')[0]}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Verified Badge */}
+                                                        <div className="absolute top-4 right-4 z-10">
+                                                            <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shadow-lg">
+                                                                <CheckCircle className="w-5 h-5 text-white" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            {/* Glow Effect */}
+                                            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
                                         </div>
 
-                                        {/* Verified Badge */}
-                                        <div className="absolute top-4 right-4 z-10">
-                                            <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shadow-lg">
-                                                <CheckCircle className="w-5 h-5 text-white" />
+                                        {/* Fanpage Info */}
+                                        <div className="mt-6 text-center max-w-[280px]">
+                                            <div className="flex items-center justify-center gap-2 mb-1">
+                                                <h4 className="text-base sm:text-lg font-bold text-white line-clamp-1">
+                                                    {project.name}
+                                                </h4>
+                                                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                                            </div>
+                                            <p className="text-slate-400 text-sm">{project.followers}</p>
+                                            <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
+                                                <span className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 text-xs font-medium">
+                                                    {project.badge}
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-medium">
+                                                    ✓ {project.verified}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* Glow Effect */}
-                            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
-                        </div>
-
-                        {/* Fanpage Info */}
-                        <div className="mt-6 text-center max-w-[300px]">
-                            <div className="flex items-center justify-center gap-2 mb-1">
-                                <h4 className="text-lg sm:text-xl font-bold text-white">
-                                    {t.caseStudies.featuredProject.name}
-                                </h4>
-                                <CheckCircle className="w-5 h-5 text-blue-400" />
-                            </div>
-                            <p className="text-slate-400 text-sm">{t.caseStudies.featuredProject.followers}</p>
-                            <div className="mt-2 flex items-center justify-center gap-2">
-                                <span className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 text-xs font-medium">
-                                    {t.caseStudies.featuredProject.badge}
-                                </span>
-                                <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-medium">
-                                    ✓ {t.caseStudies.featuredProject.verified}
-                                </span>
-                            </div>
-                        </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </motion.div>
 
@@ -221,13 +253,13 @@ export default function CaseStudies() {
                                     >
                                         <div className="relative p-[2px] rounded-[1.8rem] bg-gradient-to-br from-purple-500/50 to-pink-500/50 shadow-lg shadow-purple-500/20">
                                             <div className="relative bg-slate-900 rounded-[1.6rem] overflow-hidden">
-                                                <div className="relative aspect-[9/16] w-[160px] sm:w-[180px] lg:w-[200px] overflow-hidden">
+                                                <div className="relative aspect-[9/16] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.alt}
                                                         fill
-                                                        className="object-cover transition-transform duration-500 group-hover/phone:scale-105"
-                                                        sizes="(max-width: 640px) 160px, (max-width: 1024px) 180px, 200px"
+                                                        className="object-cover object-left transition-transform duration-500 group-hover/phone:scale-105"
+                                                        sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                                                     />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 

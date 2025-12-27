@@ -108,7 +108,7 @@ export default function Header() {
         }`}
     >
       <Container>
-        <nav className="flex items-center justify-between h-24">
+        <nav className="flex items-center justify-between h-15">
           {/* Logo + Brand Name */}
           <motion.a
             href="/"

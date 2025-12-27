@@ -139,11 +139,25 @@ export const vi: FanpageTranslations = {
         sectionTitleHighlight: 'Thành Công',
         featuredTitle: 'Dự Án Nổi Bật',
         separator: 'Các Dự Án Khác',
-        featuredProject: {
-            name: 'Ú OÀ - Mẹ Bầu Và Em Bé',
-            followers: '511K người theo dõi',
-            badge: 'Fanpage',
-            verified: 'Đã xác minh',
-        },
+        featuredProjects: [
+            {
+                name: 'Ú OÀ - Mẹ Bầu Và Em Bé',
+                followers: '511K người theo dõi',
+                badge: 'Fanpage',
+                verified: 'Đã xác minh',
+            },
+            {
+                name: 'Korean Cosmetics Online',
+                followers: '141K người theo dõi',
+                badge: 'Fanpage',
+                verified: 'Đã xác minh',
+            },
+            {
+                name: 'Study in Japan wiki',
+                followers: '211K người theo dõi',
+                badge: 'Fanpage',
+                verified: 'Đã xác minh',
+            },
+        ],
     },
 };
