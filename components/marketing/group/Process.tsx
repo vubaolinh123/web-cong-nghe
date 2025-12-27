@@ -6,11 +6,19 @@ import {
     FileSignature,
     FileText,
     BadgeDollarSign,
-    RefreshCcw
+    RefreshCcw,
+    Sparkles
 } from "lucide-react";
 import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
 
 const stepIcons = [MessageCircle, FileSignature, FileText, BadgeDollarSign, RefreshCcw];
+const stepColors = [
+    "from-cyan-500 to-blue-500",
+    "from-blue-500 to-purple-500",
+    "from-purple-500 to-pink-500",
+    "from-pink-500 to-rose-500",
+    "from-rose-500 to-orange-500",
+];
 
 export default function Process() {
     const t = useFacebookGroupTranslations();
@@ -18,40 +26,91 @@ export default function Process() {
     const steps = t.process.steps.map((step, index) => ({
         ...step,
         icon: stepIcons[index],
+        color: stepColors[index],
     }));
 
     return (
-        <section className="py-20 bg-slate-900 relative">
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-yellow-500/5 blur-[100px]" />
+        <section className="py-20 bg-slate-900 relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
+            </div>
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 uppercase">
-                        {t.process.title} <span className="text-blue-500 bg-white/10 px-2 rounded">{t.process.titleHighlight}</span>
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-bold mb-6">
+                        <Sparkles size={16} />
+                        <span>QUY TRÌNH TRIỂN KHAI</span>
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        {t.process.title}{" "}
+                        <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                            {t.process.titleHighlight}
+                        </span>
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-                    {steps.map((step, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`bg-slate-950 rounded-[40px] p-8 border border-yellow-500/50 flex flex-col items-center text-center relative hover:-translate-y-2 transition-transform duration-300 ${index === 4 ? 'lg:col-start-2' : ''}`}
-                        >
-                            <div className="w-20 h-20 rounded-full bg-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-blue-500/50 relative z-10">
-                                <step.icon size={36} />
-                            </div>
+                {/* Roadmap Timeline */}
+                <div className="relative">
+                    {/* Horizontal Line - Desktop */}
+                    <div className="hidden lg:block absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full" />
 
-                            <div className="absolute top-8 left-8 text-4xl font-black text-slate-800 z-0 opacity-50">{step.num}</div>
+                    {/* Vertical Line - Mobile */}
+                    <div className="lg:hidden absolute top-0 bottom-0 left-8 w-1 bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 rounded-full" />
 
-                            <h3 className="text-xl font-bold text-black bg-white px-4 py-1 rounded-full mb-4 shadow-lg">{step.num} {step.title}</h3>
-                            <p className="text-slate-400 leading-relaxed text-sm">
-                                {step.desc}
-                            </p>
-                        </motion.div>
-                    ))}
+                    {/* Steps */}
+                    <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-4">
+                        {steps.map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.15 }}
+                                className="flex lg:flex-col items-start lg:items-center gap-4 lg:gap-0 lg:flex-1"
+                            >
+                                {/* Step Circle */}
+                                <div className="relative z-10">
+                                    <motion.div
+                                        className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg border-4 border-slate-900`}
+                                        whileHover={{ scale: 1.1 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                    >
+                                        <step.icon size={28} className="text-white" />
+                                    </motion.div>
+
+                                    {/* Step Number Badge */}
+                                    <div className={`absolute -top-2 -right-2 w-7 h-7 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center`}>
+                                        <span className="text-xs font-bold text-cyan-400">{index + 1}</span>
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="lg:mt-6 lg:text-center flex-1">
+                                    <h3 className={`text-lg font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-2`}>
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">
+                                        {step.desc}
+                                    </p>
+                                </div>
+
+                                {/* Arrow Connector - Desktop only */}
+                                {index < steps.length - 1 && (
+                                    <div className="hidden lg:block absolute top-16 -translate-y-1/2" style={{ left: `${(index + 1) * 20}%`, transform: 'translateX(-50%)' }}>
+                                        {/* Arrow is part of the gradient line */}
+                                    </div>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

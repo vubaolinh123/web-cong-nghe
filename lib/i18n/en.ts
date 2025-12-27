@@ -512,22 +512,46 @@ export const en: TranslationDictionary = {
     },
     stats: [
       {
-        value: "500+",
-        label: "Projects Completed"
+        value: "780K+",
+        label: "Multi-Channel Coverage (Impressions)"
       },
       {
-        value: "98%",
-        label: "Client Satisfaction"
+        value: "2.5M+",
+        label: "Search Dominance"
       },
       {
-        value: "300M+",
-        label: "Total Reach"
+        value: "230K+",
+        label: "Community Assets"
       },
       {
-        value: "24/7",
-        label: "Customer Support"
+        value: "+150%",
+        label: "Conversion Optimization"
       }
     ],
+    featuredProjects: [
+      {
+        title: "VTV Partnership",
+        description: "Strategic media partnership with Vietnam Television - VTV",
+        badge: "Media Partner"
+      },
+      {
+        title: "Palado Vietnam",
+        description: "Premium bathroom equipment brand development for Palado Vietnam",
+        badge: "Brand Development"
+      },
+      {
+        title: "HPMED Vietnam",
+        description: "Full-service marketing for HPMED Vietnam - High-tech beauty equipment pioneer",
+        badge: "Full Marketing"
+      },
+      {
+        title: "Real EMS",
+        description: "Product launch campaign for Real EMS body sculpting - Burn fat, tone muscles at home",
+        badge: "Product Launch"
+      }
+    ],
+    featuredTitle: "Featured Projects",
+    otherProjectsTitle: "Other Success Stories",
     cta: {
       description: "See similar results for your business",
       button: "Get Free Consultation Now"

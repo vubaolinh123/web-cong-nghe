@@ -512,22 +512,46 @@ export const vi: TranslationDictionary = {
     },
     stats: [
       {
-        value: "500+",
-        label: "Dự án hoàn thành"
+        value: "780K+",
+        label: "Phủ Sóng Đa Kênh (Impressions)"
       },
       {
-        value: "98%",
-        label: "Khách hàng hài lòng"
+        value: "2.5M+",
+        label: "Thống Lĩnh Tìm Kiếm"
       },
       {
-        value: "300M+",
-        label: "Tổng tiếp cận"
+        value: "230K+",
+        label: "Tài Sản Cộng Đồng"
       },
       {
-        value: "24/7",
-        label: "Hỗ trợ khách hàng"
+        value: "+150%",
+        label: "Tối Ưu Chuyển Đổi"
       }
     ],
+    featuredProjects: [
+      {
+        title: "VTV Partnership",
+        description: "Hợp tác truyền thông chiến lược cùng Đài Truyền Hình Việt Nam - VTV",
+        badge: "Media Partner"
+      },
+      {
+        title: "Palado Vietnam",
+        description: "Phát triển thương hiệu thiết bị vệ sinh cao cấp Palado Việt Nam",
+        badge: "Brand Development"
+      },
+      {
+        title: "HPMED Vietnam",
+        description: "Marketing toàn diện cho Công ty Thiết Bị Thẩm Mỹ HPMED Việt Nam - Tiên phong công nghệ",
+        badge: "Full Marketing"
+      },
+      {
+        title: "Real EMS",
+        description: "Chiến dịch ra mắt sản phẩm tạo hình cơ thể Real EMS - Đốt mỡ, săn cơ ngay tại nhà",
+        badge: "Product Launch"
+      }
+    ],
+    featuredTitle: "Dự Án Nổi Bật",
+    otherProjectsTitle: "Các Câu Chuyện Thành Công Khác",
     cta: {
       description: "Nhìn thấy kết quả tương tự này cho doanh nghiệp của bạn",
       button: "Tư Vấn Miễn Phí Ngay"

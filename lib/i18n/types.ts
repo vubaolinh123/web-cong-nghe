@@ -374,6 +374,13 @@ export type TranslationDictionary = {
       value: string;
       label: string;
     }>;
+    featuredProjects: Array<{
+      title: string;
+      description: string;
+      badge?: string;
+    }>;
+    featuredTitle: string;
+    otherProjectsTitle: string;
     cta: {
       description: string;
       button: string;

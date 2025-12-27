@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
 import Image from "next/image";
 import { Eye, Users, X, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -197,21 +197,20 @@ export default function CaseStudies() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                 >
                     <Swiper
-                        modules={[Autoplay, Pagination, Navigation]}
+                        modules={[Autoplay, FreeMode]}
                         spaceBetween={16}
                         slidesPerView={1.5}
-                        centeredSlides={true}
+                        centeredSlides={false}
                         breakpoints={{
-                            480: { slidesPerView: 2, spaceBetween: 20, centeredSlides: false },
-                            640: { slidesPerView: 3, spaceBetween: 24, centeredSlides: false },
-                            1024: { slidesPerView: 4, spaceBetween: 32, centeredSlides: false },
+                            480: { slidesPerView: 2, spaceBetween: 20 },
+                            640: { slidesPerView: 3, spaceBetween: 24 },
+                            1024: { slidesPerView: 4, spaceBetween: 32 },
                         }}
-                        navigation
-                        pagination={{ clickable: true, dynamicBullets: true }}
-                        autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                        freeMode={true}
+                        autoplay={{ delay: 1, disableOnInteraction: false }}
                         loop={true}
-                        speed={600}
-                        className="fanpage-swiper !pb-12"
+                        speed={3000}
+                        className="continuous-swiper !pb-12"
                     >
                         {caseStudiesImages.map((item) => (
                             <SwiperSlide key={item.id}>
@@ -332,6 +331,9 @@ export default function CaseStudies() {
                     .fanpage-swiper .swiper-button-prev::after {
                         font-size: 12px;
                     }
+                /* Continuous Swiper - Marquee Effect */
+                .continuous-swiper .swiper-wrapper {
+                    transition-timing-function: linear !important;
                 }
             `}</style>
         </section>
