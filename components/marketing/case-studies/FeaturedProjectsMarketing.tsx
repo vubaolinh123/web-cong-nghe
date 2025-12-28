@@ -6,6 +6,7 @@ import { Autoplay, Pagination, Navigation, EffectCreative } from 'swiper/modules
 import Image from "next/image";
 import { Eye } from "lucide-react";
 import { CaseStudy, StatItem } from "./types";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -24,13 +25,19 @@ export default function FeaturedProjectsMarketing({
     stats,
     setSelectedImage
 }: FeaturedProjectsMarketingProps) {
+    const { isMobile } = useIsMobile();
+
+    // Wrapper component - no animation on mobile for performance
+    const Wrapper = isMobile ? 'div' : motion.div;
+    const wrapperProps = isMobile ? { className: "mb-16" } : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6 },
+        className: "mb-16"
+    };
+
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-16"
-        >
+        <Wrapper {...wrapperProps}>
             {/* Section Title */}
             <div className="text-center mb-10">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
@@ -40,7 +47,7 @@ export default function FeaturedProjectsMarketing({
             </div>
 
             {/* Featured Projects Slider - LARGE */}
-            <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-green-500/20 mb-12">
+            <div className={`relative rounded-2xl overflow-hidden border border-slate-700/50 mb-12 ${isMobile ? '' : 'shadow-2xl shadow-green-500/20'}`}>
                 <Swiper
                     modules={[Autoplay, Pagination, Navigation, EffectCreative]}
                     spaceBetween={0}
@@ -79,17 +86,20 @@ export default function FeaturedProjectsMarketing({
                                     src="/image/casestudies/marketing_7.jpg"
                                     alt="VTV Partnership"
                                     fill
-                                    className="object-contain bg-white transition-transform duration-500 group-hover/image:scale-105"
+                                    className={`object-cover object-center ${isMobile ? '' : 'transition-transform duration-500 group-hover/image:scale-105'}`}
                                     sizes="100vw"
                                     priority
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
-                                    <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                        <Eye className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
+                                {/* Eye icon - hidden on mobile for performance */}
+                                {!isMobile && (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
+                                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                            <Eye className="w-8 h-8 text-white" />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
                                     <span className="px-3 py-1.5 rounded-full bg-gradient-to-r from-red-500 to-blue-500 text-white text-xs font-bold shadow-lg">
@@ -122,16 +132,19 @@ export default function FeaturedProjectsMarketing({
                                     src="/image/casestudies/marketing_8.jpg"
                                     alt="Palado Vietnam"
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+                                    className={`object-cover ${isMobile ? '' : 'transition-transform duration-500 group-hover/image:scale-105'}`}
                                     sizes="100vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
-                                    <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                        <Eye className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
+                                {/* Eye icon - hidden on mobile for performance */}
+                                {!isMobile && (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
+                                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                            <Eye className="w-8 h-8 text-white" />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
                                     <span className="px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-bold shadow-lg">
@@ -164,16 +177,19 @@ export default function FeaturedProjectsMarketing({
                                     src="/image/casestudies/marketing_11.webp"
                                     alt="HPMED Vietnam"
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+                                    className={`object-cover ${isMobile ? '' : 'transition-transform duration-500 group-hover/image:scale-105'}`}
                                     sizes="100vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
-                                    <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                        <Eye className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
+                                {/* Eye icon - hidden on mobile for performance */}
+                                {!isMobile && (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
+                                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                            <Eye className="w-8 h-8 text-white" />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
                                     <span className="px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-xs font-bold shadow-lg">
@@ -206,16 +222,19 @@ export default function FeaturedProjectsMarketing({
                                     src="/image/casestudies/marketing_10.jpg"
                                     alt="Real EMS"
                                     fill
-                                    className="object-contain bg-white transition-transform duration-500 group-hover/image:scale-105"
+                                    className={`object-cover object-center ${isMobile ? '' : 'transition-transform duration-500 group-hover/image:scale-105'}`}
                                     sizes="100vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
-                                    <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-gradient-to-r from-lime-500 to-green-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                        <Eye className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
+                                {/* Eye icon - hidden on mobile for performance */}
+                                {!isMobile && (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/image:opacity-100 transition-opacity duration-300">
+                                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-lime-500 to-green-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                            <Eye className="w-8 h-8 text-white" />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
                                     <span className="px-3 py-1.5 rounded-full bg-gradient-to-r from-lime-500 to-green-500 text-white text-xs font-bold shadow-lg">
@@ -284,6 +303,6 @@ export default function FeaturedProjectsMarketing({
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </Wrapper>
     );
 }

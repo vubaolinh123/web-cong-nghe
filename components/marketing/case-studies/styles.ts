@@ -248,4 +248,51 @@ export const caseStudiesStyles = `
         border-radius: 4px;
         box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
     }
+
+    /* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+    
+    /* Smaller navigation buttons on mobile */
+    @media (max-width: 640px) {
+        .featured-projects-swiper .swiper-button-next,
+        .featured-projects-swiper .swiper-button-prev {
+            width: 36px;
+            height: 36px;
+        }
+        .featured-projects-swiper .swiper-button-next::after,
+        .featured-projects-swiper .swiper-button-prev::after {
+            font-size: 14px;
+        }
+    }
+
+    /* Remove ALL heavy effects on mobile for performance */
+    @media (max-width: 767px) {
+        /* Use ease-out instead of linear for smoother autoplay */
+        .continuous-swiper .swiper-wrapper {
+            transition-timing-function: ease-out !important;
+        }
+
+        /* Remove all box shadows */
+        .featured-projects-swiper .swiper-slide,
+        .continuous-swiper .swiper-slide,
+        .case-studies-swiper .swiper-slide {
+            box-shadow: none !important;
+        }
+
+        /* Remove all transitions for better performance */
+        .featured-projects-swiper img,
+        .continuous-swiper img,
+        .case-studies-swiper img {
+            transition: none !important;
+            transform: none !important;
+        }
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        .continuous-swiper .swiper-wrapper,
+        .featured-projects-swiper .swiper-wrapper,
+        .case-studies-swiper .swiper-wrapper {
+            transition-duration: 0.01ms !important;
+        }
+    }
 `;

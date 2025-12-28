@@ -6,6 +6,7 @@ import { Autoplay, FreeMode } from 'swiper/modules';
 import Image from "next/image";
 import { Eye, Users } from "lucide-react";
 import { CaseStudy } from "./types";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -46,13 +47,19 @@ const groupProjects = [
 ];
 
 export default function FeaturedProjectsGroup({ setSelectedImage }: FeaturedProjectsGroupProps) {
+    const { isMobile } = useIsMobile();
+
+    // Wrapper component - no animation on mobile for performance
+    const Wrapper = isMobile ? 'div' : motion.div;
+    const wrapperProps = isMobile ? { className: "mb-12" } : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6 },
+        className: "mb-12"
+    };
+
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-        >
+        <Wrapper {...wrapperProps}>
             {/* Section Title */}
             <div className="text-center mb-8">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
@@ -101,12 +108,14 @@ export default function FeaturedProjectsGroup({ setSelectedImage }: FeaturedProj
                                                 {/* Gradient Overlay */}
                                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
 
-                                                {/* Eye Icon - Center */}
-                                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
-                                                    <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${project.gradientColors} flex items-center justify-center shadow-xl backdrop-blur-sm`}>
-                                                        <Eye className="w-7 h-7 text-white" />
+                                                {/* Eye Icon - Center - hidden on mobile */}
+                                                {!isMobile && (
+                                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
+                                                        <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${project.gradientColors} flex items-center justify-center shadow-xl backdrop-blur-sm`}>
+                                                            <Eye className="w-7 h-7 text-white" />
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
 
                                                 {/* Stats Overlay - Bottom */}
                                                 <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
@@ -153,6 +162,6 @@ export default function FeaturedProjectsGroup({ setSelectedImage }: FeaturedProj
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </Wrapper>
     );
 }

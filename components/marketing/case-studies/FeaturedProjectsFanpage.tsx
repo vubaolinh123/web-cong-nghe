@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Eye, Users, CheckCircle } from "lucide-react";
 import { CaseStudy } from "./types";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -26,14 +27,19 @@ const featuredImages = [
 
 export default function FeaturedProjectsFanpage({ setSelectedImage }: FeaturedProjectsFanpageProps) {
     const t = useFanpageTranslations();
+    const { isMobile } = useIsMobile();
+
+    // Wrapper component - no animation on mobile for performance
+    const Wrapper = isMobile ? 'div' : motion.div;
+    const wrapperProps = isMobile ? { className: "mb-12" } : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6 },
+        className: "mb-12"
+    };
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-        >
+        <Wrapper {...wrapperProps}>
             {/* Section Title */}
             <div className="text-center mb-8">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
@@ -76,19 +82,21 @@ export default function FeaturedProjectsFanpage({ setSelectedImage }: FeaturedPr
                                                     src={featuredImages[index]}
                                                     alt={project.name}
                                                     fill
-                                                    className="object-cover object-top transition-transform duration-500 group-hover/phone:scale-105"
+                                                    className={`object-cover object-top ${isMobile ? '' : 'transition-transform duration-500 group-hover/phone:scale-105'}`}
                                                     sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                                                 />
 
                                                 {/* Gradient Overlay */}
                                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
 
-                                                {/* Eye Icon - Center */}
-                                                <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
-                                                    <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                                        <Eye className="w-7 h-7 text-white" />
+                                                {/* Eye Icon - Center - hidden on mobile */}
+                                                {!isMobile && (
+                                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
+                                                        <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
+                                                            <Eye className="w-7 h-7 text-white" />
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                )}
 
                                                 {/* Verified Badge - Top Right */}
                                                 <div className="absolute top-4 right-4 z-10">
@@ -113,8 +121,10 @@ export default function FeaturedProjectsFanpage({ setSelectedImage }: FeaturedPr
                                         </div>
                                     </div>
 
-                                    {/* Glow Effect */}
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
+                                    {/* Glow Effect - Desktop only */}
+                                    {!isMobile && (
+                                        <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
+                                    )}
                                 </div>
 
                                 {/* Project Name Only - Below */}
@@ -143,6 +153,6 @@ export default function FeaturedProjectsFanpage({ setSelectedImage }: FeaturedPr
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </Wrapper>
     );
 }

@@ -37,19 +37,6 @@ export default function Hero() {
                     fill="rgba(16, 185, 129, 0.3)"
                 />
 
-                {/* Video Background */}
-                <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover opacity-25 mix-blend-screen"
-                    >
-                        <source src="/video/marketing-intro.mp4" type="video/mp4" />
-                    </video>
-                </div>
-
                 {/* Static Grid */}
                 <div className="absolute inset-0">
                     <div
