@@ -96,12 +96,14 @@ export default function MarketingCaseStudies() {
                     <FeaturedProjectsTiktok setSelectedImage={setSelectedImage} />
                 )}
 
-                {/* Case Studies Slider - Generic for all categories */}
-                <CaseStudiesSlider
-                    activeCategory={activeCategory}
-                    activeCategoryData={activeCategoryData}
-                    setSelectedImage={setSelectedImage}
-                />
+                {/* Case Studies Slider - Hidden for marketing category */}
+                {activeCategory !== 'marketing' && (
+                    <CaseStudiesSlider
+                        activeCategory={activeCategory}
+                        activeCategoryData={activeCategoryData}
+                        setSelectedImage={setSelectedImage}
+                    />
+                )}
 
                 {/* Image Modal */}
                 <ImageModal

@@ -49,26 +49,6 @@ export default function MarketingFullPackagePage() {
 
             <DetailedPricing />
 
-            <section className="py-20 bg-gradient-to-b from-slate-950 to-blue-900/20 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
-                <div className="relative z-10 max-w-4xl mx-auto px-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        {t.pageCta.title}
-                    </h2>
-                    <p className="text-xl text-slate-300 mb-8">
-                        {t.pageCta.description}
-                    </p>
-                    <a
-                        href="https://zalo.me/0923451469"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-block px-10 py-4 bg-white text-blue-900 font-bold text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.3)]"
-                    >
-                        {t.pageCta.button}
-                    </a>
-                </div>
-            </section>
-
             <FooterSection />
         </main>
     );

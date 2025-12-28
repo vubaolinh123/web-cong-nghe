@@ -158,10 +158,10 @@ export default function FeaturedProjectsMarketing({
                         <div className="relative bg-slate-900">
                             <div
                                 className="relative h-[280px] sm:h-[350px] lg:h-[400px] overflow-hidden cursor-pointer group/image"
-                                onClick={() => setSelectedImage({ id: 9, image: "/image/casestudies/marketing_9.jpg", alt: "HPMED Vietnam", type: "landscape" })}
+                                onClick={() => setSelectedImage({ id: 9, image: "/image/casestudies/marketing_11.webp", alt: "HPMED Vietnam", type: "landscape" })}
                             >
                                 <Image
-                                    src="/image/casestudies/marketing_9.jpg"
+                                    src="/image/casestudies/marketing_11.webp"
                                     alt="HPMED Vietnam"
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover/image:scale-105"

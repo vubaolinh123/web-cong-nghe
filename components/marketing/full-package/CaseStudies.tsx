@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectCreative, FreeMode } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectCreative } from 'swiper/modules';
 import Image from "next/image";
 import { Eye, Users, Video, ThumbsUp, Clock, X } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -22,13 +22,7 @@ interface CaseStudyImage {
     type: "landscape" | "portrait";
 }
 
-// Phone mockup case studies
-const phoneCaseStudies = [
-    { id: 2, image: "/image/casestudies/marketing_2.jpg", alt: "Marketing Case Study 2" },
-    { id: 4, image: "/image/casestudies/marketing_4.jpg", alt: "Marketing Case Study 4" },
-    { id: 5, image: "/image/casestudies/marketing_5.jpg", alt: "Marketing Case Study 5" },
-    { id: 6, image: "/image/casestudies/marketing_6.jpg", alt: "Marketing Case Study 6" },
-];
+
 
 // Featured Projects from Marketing page
 const featuredProjects = [
@@ -52,7 +46,7 @@ const featuredProjects = [
     },
     {
         id: 9,
-        image: "/image/casestudies/marketing_9.jpg",
+        image: "/image/casestudies/marketing_11.webp",
         alt: "HPMED Vietnam",
         badge: "Full Marketing",
         badgeColor: "from-amber-500 to-yellow-400",
@@ -203,83 +197,6 @@ export default function CaseStudies() {
                             ))}
                         </Swiper>
                     </div>
-                </motion.div>
-
-                {/* Separator */}
-                <div className="relative mb-8">
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent"></div>
-                    </div>
-                    <div className="relative flex justify-center">
-                        <div className="px-4 py-2 bg-slate-950 rounded-full border border-slate-800/50">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 text-sm font-semibold">
-                                {t.caseStudies.separator}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Phone Mockup Slider */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                    <Swiper
-                        modules={[Autoplay, FreeMode]}
-                        spaceBetween={16}
-                        slidesPerView={1.3}
-                        centeredSlides={false}
-                        breakpoints={{
-                            480: { slidesPerView: 2, spaceBetween: 20 },
-                            640: { slidesPerView: 2.5, spaceBetween: 24 },
-                            768: { slidesPerView: 3, spaceBetween: 28 },
-                            1024: { slidesPerView: 4, spaceBetween: 32 },
-                        }}
-                        freeMode={true}
-                        autoplay={{ delay: 1, disableOnInteraction: false }}
-                        loop={true}
-                        speed={3000}
-                        className="continuous-swiper !pb-12"
-                    >
-                        {phoneCaseStudies.map((item) => (
-                            <SwiperSlide key={item.id}>
-                                <div className="flex flex-col items-center">
-                                    <div
-                                        className="relative group/phone cursor-pointer"
-                                        onClick={() => setSelectedImage({ id: item.id, image: item.image, alt: item.alt, type: "portrait" })}
-                                    >
-                                        {/* Phone Frame */}
-                                        <div className="relative p-[3px] rounded-[2rem] bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 shadow-2xl shadow-green-500/30">
-                                            <div className="relative bg-slate-900 rounded-[1.8rem] overflow-hidden">
-                                                <div className="relative aspect-[9/16] w-[200px] sm:w-[220px] lg:w-[240px] overflow-hidden">
-                                                    <Image
-                                                        src={item.image}
-                                                        alt={item.alt}
-                                                        fill
-                                                        className="object-cover transition-transform duration-500 group-hover/phone:scale-105"
-                                                        sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-
-                                                    {/* Eye Icon */}
-                                                    <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
-                                                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
-                                                            <Eye className="w-6 h-6 text-white" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Glow Effect */}
-                                        <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-[2.5rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
                 </motion.div>
             </div>
 

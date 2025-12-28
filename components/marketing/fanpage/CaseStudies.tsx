@@ -149,29 +149,34 @@ export default function CaseStudies() {
                                                             className="object-cover object-top transition-transform duration-500 group-hover/phone:scale-105"
                                                             sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                                                         />
-                                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
 
-                                                        {/* Eye Icon */}
+                                                        {/* Gradient Overlay */}
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
+
+                                                        {/* Eye Icon - Center */}
                                                         <div className="absolute inset-0 flex items-center justify-center opacity-60 lg:opacity-0 lg:group-hover/phone:opacity-100 transition-opacity duration-300">
                                                             <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-xl backdrop-blur-sm">
                                                                 <Eye className="w-7 h-7 text-white" />
                                                             </div>
                                                         </div>
 
-                                                        {/* Follower Badge */}
-                                                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                                                            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg">
-                                                                <div className="flex items-center gap-2">
-                                                                    <Users className="w-4 h-4 text-white" />
-                                                                    <span className="text-white font-bold text-sm">{project.followers.split(' ')[0]}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Verified Badge */}
+                                                        {/* Verified Badge - Top Right */}
                                                         <div className="absolute top-4 right-4 z-10">
                                                             <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center shadow-lg">
                                                                 <CheckCircle className="w-5 h-5 text-white" />
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Stats Overlay - Bottom */}
+                                                        <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                                                            <div className="flex items-center justify-center gap-2">
+                                                                <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg flex items-center gap-2">
+                                                                    <Users className="w-4 h-4 text-white" />
+                                                                    <span className="text-white font-bold text-sm">{project.followers.split(' ')[0]}</span>
+                                                                </div>
+                                                                <div className="px-3 py-1.5 rounded-full bg-purple-500/30 border border-purple-500/50 backdrop-blur-sm">
+                                                                    <span className="text-purple-300 text-xs font-medium">{project.badge}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -182,23 +187,12 @@ export default function CaseStudies() {
                                             <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-[3rem] blur-xl opacity-0 group-hover/phone:opacity-100 transition-opacity duration-500 -z-10" />
                                         </div>
 
-                                        {/* Fanpage Info */}
-                                        <div className="mt-6 text-center max-w-[280px]">
-                                            <div className="flex items-center justify-center gap-2 mb-1">
-                                                <h4 className="text-base sm:text-lg font-bold text-white line-clamp-1">
-                                                    {project.name}
-                                                </h4>
-                                                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                                            </div>
-                                            <p className="text-slate-400 text-sm">{project.followers}</p>
-                                            <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
-                                                <span className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 text-xs font-medium">
-                                                    {project.badge}
-                                                </span>
-                                                <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-medium">
-                                                    ✓ {project.verified}
-                                                </span>
-                                            </div>
+                                        {/* Project Name Only - Below */}
+                                        <div className="mt-5 text-center">
+                                            <h4 className="text-base sm:text-lg font-bold text-white flex items-center justify-center gap-2">
+                                                {project.name}
+                                                <CheckCircle className="w-4 h-4 text-blue-400" />
+                                            </h4>
                                         </div>
                                     </div>
                                 </SwiperSlide>
