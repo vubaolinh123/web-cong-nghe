@@ -421,7 +421,7 @@ export const vi: TranslationDictionary = {
     contact: {
       email: "vtscademy9999@gmail.com",
       phone: "058.450.3333",
-      address: "21 Đường số 7 Cityland, P.10, Q.Gò Vấp, TP.HCM",
+      address: "Tòa nhà HB 154 Phạm Văn Chiêu, Phường Thông Tây Hội, TP Hồ Chí Minh, Việt Nam",
       businessHours: "Thứ 2 - Thứ 7: 8:00 - 18:00"
     },
     copyright: "© 2025 ASI EVEREST. Tất cả quyền được bảo lưu.",

@@ -57,9 +57,20 @@ export type FanpageTranslations = {
         description: string;
         registerButton: string;
         plans: Array<{
+            badge: string;
+            featuredBadge?: string;
             price: string;
+            originalPrice?: string;
             sales: string;
-            features: string[];
+            target?: string;
+            visibleFeatures: string[];
+            features: Array<{
+                title: string;
+                items: string[];
+            }>;
+            expandButton: string;
+            collapseButton: string;
+            ctaButton: string;
         }>;
     };
     caseStudies: {

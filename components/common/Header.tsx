@@ -66,7 +66,6 @@ export default function Header() {
   ];
 
   const navItems = [
-    { name: t('nav.home'), href: "/" },
     { name: t('nav.blog'), href: "/bai-viet" },
     { name: t('nav.about'), href: "/#about" },
     { name: t('nav.contact'), href: "/lien-he" },

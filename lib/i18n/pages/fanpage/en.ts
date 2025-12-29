@@ -4,7 +4,7 @@ export const en: FanpageTranslations = {
     pageCta: {
         title: 'Ready to Explode Your Sales?',
         description: 'Own a Fanpage with thousands of orders at the most optimal cost in the market.',
-        button: 'CALL NOW: 0923.451.469',
+        button: 'CALL NOW: 058.450.3333',
     },
     hero: {
         badge: 'GROWTH SOLUTION 1000+ ORDERS',
@@ -66,71 +66,164 @@ export const en: FanpageTranslations = {
         registerButton: 'Register',
         plans: [
             {
-                price: '5 MILLION VND',
+                badge: 'Basic',
+                price: '5,000,000',
+                originalPrice: '7,000,000',
                 sales: 'Sold 375',
-                features: [
-                    'FOLLOW MEMBERS : > 20,000',
-                    'DELIVERY : 9 - 15 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'SUPPORT : FANPAGE SEO TOP >3 FACEBOOK SUGGESTIONS',
-                    'SUPPORT : FANPAGE NAME CHANGE',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE KEYWORDS TO ADD POTENTIAL CUSTOMER FILES 5 KEYWORDS + 5 COMPETITOR PAGES',
-                    'SUPPORT : LIKE & COMMENT BY SCRIPT FOR 3 FIRST POSTS (support writing 3 SEO content)',
+                target: 'For individuals and small shops starting out',
+                visibleFeatures: [
+                    'Follow Members: > 20,000',
+                    'Delivery: 9 - 15 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Support: Fanpage SEO Top >3 Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Basic Support',
+                        items: [
+                            'Fanpage Name Change',
+                            '1:1 Expert Support 24/7',
+                            'Choose keywords to add potential customer files',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            'Like & Comment by script for 3 first posts',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '8 MILLION VND',
+                badge: 'Standard',
+                featuredBadge: 'Most Popular',
+                price: '8,000,000',
+                originalPrice: '12,000,000',
                 sales: 'Sold 165',
-                features: [
-                    'FOLLOW MEMBERS : > 40,000',
-                    'DELIVERY : 15 - 30 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'SUPPORT : FANPAGE SEO TOP >3 FACEBOOK SUGGESTIONS',
-                    'SUPPORT : FANPAGE NAME CHANGE + SEO STANDARD SETUP',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE TO ADD POTENTIAL CUSTOMER FILES 5 KEYWORDS',
-                    'SUPPORT : 200-300 LIKES/ 5 POSTS',
-                    'SUPPORT : LIKE & COMMENT BY SCRIPT FOR 5 FIRST POSTS',
-                    'SUPPORT : CARE + 1 month page content with industry-similar images',
-                    'FREE : 1 month seeding like comment to increase traffic & SEO',
+                target: 'For online shops and freelance businesses',
+                visibleFeatures: [
+                    'Follow Members: > 40,000',
+                    'Delivery: 15 - 30 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Support: Fanpage SEO Top >3 Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Advanced Support',
+                        items: [
+                            'Fanpage Name Change + SEO Standard Setup',
+                            '1:1 Expert Support 24/7',
+                            'Choose to add potential customer files (5 keywords)',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '200-300 likes / 5 posts',
+                            'Like & Comment by script for 5 first posts',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Care + 1 month page content',
+                            'Free: 1 month seeding like comment script',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '20 MILLION VND',
+                badge: 'Advanced',
+                price: '20,000,000',
+                originalPrice: '28,000,000',
                 sales: 'Sold 95',
-                features: [
-                    'FOLLOW MEMBERS : > 80,000',
-                    'DELIVERY : 30 - 40 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'SUPPORT : FANPAGE SEO TOP >1-3 FACEBOOK SUGGESTIONS',
-                    'SUPPORT : FANPAGE NAME CHANGE + SEO STANDARD SETUP',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE TO ADD POTENTIAL CUSTOMER FILES 5 KEYWORDS + 5 COMPETITOR PAGES',
-                    'SUPPORT : 350-700 LIKES/ 10 POSTS',
-                    'SUPPORT : LIKE & COMMENT BY SCRIPT FOR 10 FIRST POSTS',
-                    'SUPPORT : CARE + 1 month page content + brand banner design',
-                    'FREE : 1 month seeding like comment to increase traffic & SEO',
+                target: 'For businesses and SME brands',
+                visibleFeatures: [
+                    'Follow Members: > 80,000',
+                    'Delivery: 30 - 40 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Support: Fanpage SEO Top >1-3 Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Advanced Support',
+                        items: [
+                            'Fanpage Name Change + SEO Standard Setup',
+                            '1:1 Expert Support 24/7',
+                            'Choose to add potential customer files (5 keywords + 5 competitor pages)',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '350-700 likes / 10 posts',
+                            'Like & Comment by script for 10 first posts',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Care + 1 month page content + brand banner design',
+                            'Free: 1 month seeding like comment script',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '50 MILLION VND',
-                sales: '',
-                features: [
-                    'FOLLOW MEMBERS : > 100,000',
-                    'DELIVERY : 60 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'SUPPORT : FANPAGE SEO TOP >1 FACEBOOK SUGGESTIONS',
-                    'SUPPORT : FANPAGE NAME CHANGE + SEO STANDARD SETUP',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : BLUE VERIFICATION BADGE',
-                    'SUPPORT : 1000 LIKES/ 20 POSTS',
-                    'SUPPORT : SHARE VIRAL POST LINKS ON SUGGESTED PAGE',
-                    'SUPPORT : LIKE & COMMENT SCRIPT FOR 20 VIRAL POSTS (INDUSTRY SEO STANDARD)',
-                    'SUPPORT : CARE + 2 months content (60 posts + videos)',
-                    'FREE : 2 months seeding like comment script',
-                    'ADS SUPPORT ONLY 5% : RUN ADS FOR VIETNAM TRAFFIC',
+                badge: 'VIP',
+                price: '50,000,000',
+                originalPrice: '70,000,000',
+                sales: 'Hot',
+                target: 'For large enterprises and national brands',
+                visibleFeatures: [
+                    'Follow Members: > 100,000',
+                    'Delivery: 60 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Support: Blue Verification Badge',
                 ],
+                features: [
+                    {
+                        title: 'VIP Support',
+                        items: [
+                            'Fanpage SEO Top >1 Facebook Suggestions',
+                            'Fanpage Name Change + SEO Standard Setup',
+                            '1:1 Expert Support 24/7',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '~1000 likes / 20 posts',
+                            'Share viral post links on suggested Page',
+                            'Like & Comment script for 20 viral posts',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Care + 2 months content (60 posts + videos)',
+                            'Free: 2 months seeding like comment script',
+                        ]
+                    },
+                    {
+                        title: 'Ads',
+                        items: [
+                            'Ads Support only 5%: Run Ads for Vietnam traffic',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
         ],
     },

@@ -28,7 +28,6 @@ export default function CaseStudiesSlider({
     const AnimationWrapper = isMobile ? ({ children }: { children: React.ReactNode }) => <>{children}</> : AnimatePresence;
     const ContentWrapper = isMobile ? 'div' : motion.div;
     const contentWrapperProps = isMobile ? { className: "mb-8" } : {
-        key: activeCategory,
         initial: { opacity: 0, x: 20 },
         animate: { opacity: 1, x: 0 },
         exit: { opacity: 0, x: -20 },
@@ -38,7 +37,7 @@ export default function CaseStudiesSlider({
 
     return (
         <AnimationWrapper mode="wait">
-            <ContentWrapper {...contentWrapperProps}>
+            <ContentWrapper key={isMobile ? undefined : activeCategory} {...contentWrapperProps}>
                 <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-green-500/10">
                     <Swiper
                         modules={[Autoplay, FreeMode]}

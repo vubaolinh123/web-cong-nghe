@@ -4,7 +4,7 @@ export const vi: FanpageTranslations = {
     pageCta: {
         title: 'Bạn Đã Sẵn Sàng Bùng Nổ Doanh Số?',
         description: 'Sở hữu ngay Fanpage nghìn đơn với chi phí tối ưu nhất thị trường.',
-        button: 'GỌI NGAY: 0923.451.469',
+        button: 'GỌI NGAY: 058.450.3333',
     },
     hero: {
         badge: 'GIẢI PHÁP TĂNG TRƯỞNG 1000+ ĐƠN',
@@ -66,71 +66,164 @@ export const vi: FanpageTranslations = {
         registerButton: 'Đăng Ký',
         plans: [
             {
-                price: '5. TRIỆU',
+                badge: 'Gói Cơ Bản',
+                price: '5.000.000',
+                originalPrice: '7.000.000',
                 sales: 'Đã bán 375',
-                features: [
-                    'THÀNH VIÊN FOLLOW : > 20.000',
-                    'BÀN GIAO : 9 - 15 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'HỖ TRỢ : FANPAGE SEO TOP >3 ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : ĐỔI TÊN FANPAGE',
-                    'HỖ TRỢ : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN TỪ KHÓA KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA 5 TỪ KHÓA + 5 PAGE ĐỐI THỦ',
-                    'HỖ TRỢ : LIKE & COMMENT THEO KỊCH BẢN CHO 3 BÀI VIẾT ĐẦU TIÊN ( hỗ trợ viết content seo 3 bài )',
+                target: 'Phù hợp cho cá nhân, shop nhỏ mới bắt đầu',
+                visibleFeatures: [
+                    'Thành viên Follow: > 20.000',
+                    'Bàn giao: 9 - 15 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Hỗ trợ: Fanpage SEO Top >3 đề xuất Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Cơ Bản',
+                        items: [
+                            'Đổi tên Fanpage',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn từ khóa kéo thêm tệp khách tiềm năng (5 từ khóa + 5 Page đối thủ)',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            'Like & Comment theo kịch bản cho 3 bài viết đầu tiên',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '8. TRIỆU',
+                badge: 'Gói Tiêu Chuẩn',
+                featuredBadge: 'Phổ Biến Nhất',
+                price: '8.000.000',
+                originalPrice: '12.000.000',
                 sales: 'Đã bán 165',
-                features: [
-                    'THÀNH VIÊN FOLLOW : > 40.000',
-                    'BÀN GIAO : 15 - 30 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'HỖ TRỢ : FANPAGE SEO TOP >3 ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : ĐỔI TÊN FANPAGE + SETUP CHUẨN SEO',
-                    'HỖ TRỢ : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA 5 TỪ KHÓA',
-                    'HỖ TRỢ : LIKE 200-300 LIKE/ 5 BÀI VIẾT',
-                    'HỖ TRỢ : LIKE & COMMENT THEO KỊCH BẢN CHO 5 BÀI VIẾT ĐẦU TIÊN',
-                    'HỖ TRỢ : CHĂM SÓC + 1 tháng chăm nội dung page content hình ảnh tương tự ngành',
-                    'TẶNG : seeding 1 tháng like comment kịch bản tăng trafic tăng seo',
+                target: 'Phù hợp cho shop online, kinh doanh tự do',
+                visibleFeatures: [
+                    'Thành viên Follow: > 40.000',
+                    'Bàn giao: 15 - 30 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Hỗ trợ: Fanpage SEO Top >3 đề xuất Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nâng Cao',
+                        items: [
+                            'Đổi tên Fanpage + Setup chuẩn SEO',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn kéo thêm tệp khách tiềm năng (5 từ khóa)',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            'Like 200-300 like / 5 bài viết',
+                            'Like & Comment theo kịch bản cho 5 bài viết đầu tiên',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Chăm sóc + 1 tháng chăm nội dung page',
+                            'Tặng: Seeding 1 tháng like comment kịch bản',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '20. TRIỆU',
+                badge: 'Gói Nâng Cao',
+                price: '20.000.000',
+                originalPrice: '28.000.000',
                 sales: 'Đã bán 95',
-                features: [
-                    'THÀNH VIÊN FOLLOW : > 80.000',
-                    'BÀN GIAO : 30 - 40 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'HỖ TRỢ : FANPAGE SEO TOP >1-3 ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : ĐỔI TÊN FANPAGE + SETUP CHUẨN SEO',
-                    'HỖ TRỢ : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA 5 TỪ KHÓA + 5 PAGE ĐỐI THỦ',
-                    'HỖ TRỢ : LIKE 350-700 LIKE/ 10 BÀI VIẾT',
-                    'HỖ TRỢ : LIKE & COMMENT THEO KỊCH BẢN CHO 10 BÀI VIẾT ĐẦU TIÊN',
-                    'HỖ TRỢ : CHĂM SÓC + 1 tháng chăm nội dung page + thiết kế brand banner',
-                    'TẶNG : seeding 1 tháng like comment kịch bản tăng trafic tăng seo',
+                target: 'Phù hợp cho doanh nghiệp, thương hiệu SME',
+                visibleFeatures: [
+                    'Thành viên Follow: > 80.000',
+                    'Bàn giao: 30 - 40 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Hỗ trợ: Fanpage SEO Top >1-3 đề xuất Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nâng Cao',
+                        items: [
+                            'Đổi tên Fanpage + Setup chuẩn SEO',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn kéo thêm tệp khách tiềm năng (5 từ khóa + 5 Page đối thủ)',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            'Like 350-700 like / 10 bài viết',
+                            'Like & Comment theo kịch bản cho 10 bài viết đầu tiên',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Chăm sóc + 1 tháng chăm nội dung page + thiết kế brand banner',
+                            'Tặng: Seeding 1 tháng like comment kịch bản',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '50. TRIỆU',
-                sales: '',
-                features: [
-                    'THÀNH VIÊN FOLLOW : > 100.000',
-                    'BÀN GIAO : 60 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'HỖ TRỢ : FANPAGE SEO TOP >1 ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : ĐỔI TÊN FANPAGE + SETUP CHUẨN SEO',
-                    'HỖ TRỢ : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : LÊN TÍCH XANH',
-                    'HỖ TRỢ : LIKE -1000 LIKE/ 20 BÀI VIẾT',
-                    'HỖ TRỢ : SHARE LINK BÀI VIRAL TRÊN PAGE ĐỀ XUẤT',
-                    'HỖ TRỢ : LIKE & COMMENT KỊCH BẢN CHO 20 BÀI VIRAL (CHUẨN SEO NGÀNH)',
-                    'HỖ TRỢ : CHĂM SÓC + 2 tháng chăm nội dung (60 bài + video)',
-                    'TẶNG : seeding 2 tháng like comment kịch bản',
-                    'HỖ TRỢ QUẢNG CÁO CHỈ 5% : CHẠY ADS KÉO TRAFFIC VIỆT NAM',
+                badge: 'Gói VIP',
+                price: '50.000.000',
+                originalPrice: '70.000.000',
+                sales: 'Hot',
+                target: 'Phù hợp cho doanh nghiệp lớn, thương hiệu quốc gia',
+                visibleFeatures: [
+                    'Thành viên Follow: > 100.000',
+                    'Bàn giao: 60 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Hỗ trợ: Lên tích xanh Facebook',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ VIP',
+                        items: [
+                            'Fanpage SEO Top >1 đề xuất Facebook',
+                            'Đổi tên Fanpage + Setup chuẩn SEO',
+                            'Chuyên gia 1:1 Support 24/7',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            'Like ~1000 like / 20 bài viết',
+                            'Share link bài viral trên Page đề xuất',
+                            'Like & Comment kịch bản cho 20 bài viral (chuẩn SEO ngành)',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Chăm sóc + 2 tháng chăm nội dung (60 bài + video)',
+                            'Tặng: Seeding 2 tháng like comment kịch bản',
+                        ]
+                    },
+                    {
+                        title: 'Quảng Cáo',
+                        items: [
+                            'Hỗ trợ quảng cáo chỉ 5%: Chạy Ads kéo traffic Việt Nam',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
         ],
     },

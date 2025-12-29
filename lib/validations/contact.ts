@@ -39,12 +39,6 @@ export const validateName = (name: string): string | undefined => {
 };
 
 export const validateJobTitle = (jobTitle: string): string | undefined => {
-  if (!jobTitle.trim()) return "Vui lòng nhập chức danh";
-  return undefined;
-};
-
-export const validateCurrentJob = (currentJob: string): string | undefined => {
-  if (!currentJob.trim()) return "Vui lòng nhập công việc hiện tại";
   return undefined;
 };
 
@@ -68,9 +62,6 @@ export const validateSpecificServices = (specificServices: string[]): string | u
 };
 
 export const validateMessage = (message: string): string | undefined => {
-  if (!message.trim()) return "Vui lòng nhập nội dung tin nhắn";
-  if (message.trim().length < 10) return "Tin nhắn phải có ít nhất 10 ký tự";
-  if (message.trim().length > 2000) return "Tin nhắn không được quá 2000 ký tự";
   return undefined;
 };
 
@@ -80,12 +71,6 @@ export const validateContactForm = (data: ContactFormData): ContactFormErrors =>
   const nameError = validateName(data.name);
   if (nameError) errors.name = nameError;
 
-  const jobTitleError = validateJobTitle(data.jobTitle);
-  if (jobTitleError) errors.jobTitle = jobTitleError;
-
-  const currentJobError = validateCurrentJob(data.currentJob);
-  if (currentJobError) errors.currentJob = currentJobError;
-
   const phoneError = validatePhone(data.phone);
   if (phoneError) errors.phone = phoneError;
 
@@ -94,9 +79,6 @@ export const validateContactForm = (data: ContactFormData): ContactFormErrors =>
 
   const specificServicesError = validateSpecificServices(data.specificServices);
   if (specificServicesError) errors.specificServices = specificServicesError;
-
-  const messageError = validateMessage(data.message);
-  if (messageError) errors.message = messageError;
 
   return errors;
 };
@@ -122,8 +104,8 @@ export const technologyServiceOptions = [
 // Marketing services - 4 main categories
 export const marketingServiceOptions = [
   { value: "marketing-tong-the", label: "Marketing Tổng Thể" },
-  { value: "xay-group", label: "Xây Group" },
-  { value: "xay-kenh", label: "Xây Kênh" },
-  { value: "livestream-tiktok", label: "Livestream TikTok" },
+  { value: "xay-group", label: "Group Facebook" },
+  { value: "xay-kenh", label: "Fanpage" },
+  { value: "livestream-tiktok", label: "TiktokShop" },
 ];
 

@@ -421,7 +421,7 @@ export const en: TranslationDictionary = {
     contact: {
       email: "vtscademy9999@gmail.com",
       phone: "058.450.3333",
-      address: "21 Street No. 7 Cityland, Ward 10, Go Vap District, HCMC",
+      address: "HB Building, 154 Pham Van Chieu, Thong Tay Hoi Ward, Ho Chi Minh City, Vietnam",
       businessHours: "Mon - Sat: 8:00 AM - 6:00 PM"
     },
     copyright: "© 2025 ASI EVEREST. All rights reserved.",

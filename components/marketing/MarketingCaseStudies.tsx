@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Container } from "../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -47,11 +47,20 @@ export default function MarketingCaseStudies() {
     const { t } = useLanguage();
     const [activeCategory, setActiveCategory] = useState<CategoryKey>('marketing');
     const [selectedImage, setSelectedImage] = useState<CaseStudy | null>(null);
+    // Track which tabs have been mounted (for lazy loading)
+    const [mountedTabs, setMountedTabs] = useState<Set<CategoryKey>>(new Set(['marketing']));
 
     // Build categories and stats from translations
     const categories = buildCategories(t);
     const activeCategoryData = categories.find(cat => cat.key === activeCategory)!;
     const stats = buildStats(t);
+
+    // When category changes, add it to mounted tabs (if not already there)
+    useEffect(() => {
+        if (!mountedTabs.has(activeCategory)) {
+            setMountedTabs(prev => new Set([...prev, activeCategory]));
+        }
+    }, [activeCategory, mountedTabs]);
 
     return (
         <section className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
@@ -78,22 +87,30 @@ export default function MarketingCaseStudies() {
                     activeCategoryData={activeCategoryData}
                 />
 
-                {/* Featured Projects - Conditional rendering based on category */}
-                {activeCategory === 'marketing' && (
-                    <FeaturedProjectsMarketing
-                        t={t}
-                        stats={stats}
-                        setSelectedImage={setSelectedImage}
-                    />
+                {/* Featured Projects - Lazy loaded: only mount when first selected, then keep mounted but hidden */}
+                {mountedTabs.has('marketing') && (
+                    <div className={activeCategory === 'marketing' ? '' : 'hidden'}>
+                        <FeaturedProjectsMarketing
+                            t={t}
+                            stats={stats}
+                            setSelectedImage={setSelectedImage}
+                        />
+                    </div>
                 )}
-                {activeCategory === 'group' && (
-                    <FeaturedProjectsGroup setSelectedImage={setSelectedImage} />
+                {mountedTabs.has('group') && (
+                    <div className={activeCategory === 'group' ? '' : 'hidden'}>
+                        <FeaturedProjectsGroup setSelectedImage={setSelectedImage} />
+                    </div>
                 )}
-                {activeCategory === 'fanpage' && (
-                    <FeaturedProjectsFanpage setSelectedImage={setSelectedImage} />
+                {mountedTabs.has('fanpage') && (
+                    <div className={activeCategory === 'fanpage' ? '' : 'hidden'}>
+                        <FeaturedProjectsFanpage setSelectedImage={setSelectedImage} />
+                    </div>
                 )}
-                {activeCategory === 'tiktok' && (
-                    <FeaturedProjectsTiktok setSelectedImage={setSelectedImage} />
+                {mountedTabs.has('tiktok') && (
+                    <div className={activeCategory === 'tiktok' ? '' : 'hidden'}>
+                        <FeaturedProjectsTiktok setSelectedImage={setSelectedImage} />
+                    </div>
                 )}
 
                 {/* Case Studies Slider - Hidden for marketing category */}

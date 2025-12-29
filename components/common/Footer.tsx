@@ -20,9 +20,9 @@ export default function Footer() {
   const footerLinks = {
     marketingServices: [
       { name: "Marketing Tổng Thể", href: "/dich-vu-marketing/marketing-tong-the" },
-      { name: "Xây Group", href: "/dich-vu-marketing/xay-dung-group-facebook" },
-      { name: "Xây Kênh", href: "/dich-vu-marketing/xay-dung-fanpage" },
-      { name: "Livestream TikTok", href: "/dich-vu-marketing/xay-dung-tiktok-shop" },
+      { name: "Group Facebook", href: "/dich-vu-marketing/xay-dung-group-facebook" },
+      { name: "Fanpage", href: "/dich-vu-marketing/xay-dung-fanpage" },
+      { name: "TiktokShop", href: "/dich-vu-marketing/xay-dung-tiktok-shop" },
     ],
     techServices: [
       { name: "Custom Website", href: "/dich-vu-cong-nghe" },

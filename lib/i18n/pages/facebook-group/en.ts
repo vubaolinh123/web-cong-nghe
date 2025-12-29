@@ -3,7 +3,7 @@ import { FacebookGroupTranslations } from './types';
 export const en: FacebookGroupTranslations = {
     pageCta: {
         title: 'Contact Now To Own Quality Group',
-        button: 'HOTLINE: 0923.451.469',
+        button: 'HOTLINE: 058.450.3333',
     },
     hero: {
         badge: 'VIP GROUP SERVICE #1 VIETNAM',
@@ -15,7 +15,7 @@ export const en: FacebookGroupTranslations = {
         descriptionHighlight: '100,000+ real members',
         descriptionLine2: 'Automated, credible, and sustainable sales channel on Facebook.',
         ctaPrimary: 'Fill Implementation Info',
-        ctaSecondary: 'Consult: 0923.451.469',
+        ctaSecondary: 'Consult: 058.450.3333',
     },
     intro: {
         paragraph1Start: 'The',
@@ -44,78 +44,181 @@ export const en: FacebookGroupTranslations = {
         ebookButton: 'FREE EBOOK',
         plans: [
             {
-                price: '5,000,000 VND',
+                badge: 'Basic',
+                price: '5,000,000',
+                originalPrice: '7,000,000',
                 sales: 'Sold 479',
-                features: [
-                    'MEMBERS : > 20,000',
-                    'DELIVERY : 9 - 15 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'WARRANTY : lifetime',
-                    'SUPPORT : GROUP NAME CHANGE',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE GROUP TO ADD POTENTIAL CUSTOMER FILES WITH KEYWORDS + COMPETITOR GROUP FILES',
-                    'SUPPORT : SEO TOP 7 ACCORDING TO FACEBOOK SUGGESTIONS',
-                    'SUPPORT : 500 LIKES FOR 1 PINNED POST',
+                target: 'For individuals and small businesses',
+                visibleFeatures: [
+                    'Members: > 20,000',
+                    'Delivery: 9 - 15 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Basic Support',
+                        items: [
+                            'Group Name Change',
+                            '1:1 Expert Support 24/7',
+                            'Choose Group to add potential customer files with keywords',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Seeding',
+                        items: [
+                            'SEO Top 7 according to Facebook suggestions',
+                            '500 Likes for 1 pinned post',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '8,000,000 VND',
+                badge: 'Standard',
+                featuredBadge: 'Most Popular',
+                price: '8,000,000',
+                originalPrice: '12,000,000',
                 sales: 'Popular',
-                features: [
-                    'MEMBERS : > 40,000',
-                    'DELIVERY : 20 - 30 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'WARRANTY : lifetime',
-                    'SUPPORT : GROUP NAME CHANGE',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE GROUP TO ADD POTENTIAL CUSTOMER FILES WITH KEYWORDS + COMPETITOR GROUP FILES',
-                    'SUPPORT : SEO TOP > 1-5 ACCORDING TO FACEBOOK SUGGESTIONS',
-                    'SUPPORT : DESIGN 1 BANNER + VIP COVER PHOTO',
-                    'SUPPORT : 100-200 LIKES FOR 5 PINNED POSTS',
-                    'SUPPORT : 30 COMMENTS BY SCRIPT FOR 5 PINNED POSTS',
-                    'SUPPORT : POST CONTENT CARE & DEVELOPMENT FOR 1 MONTH',
+                target: 'For online shops and community businesses',
+                visibleFeatures: [
+                    'Members: > 40,000',
+                    'Delivery: 20 - 30 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Advanced Support',
+                        items: [
+                            'Group Name Change',
+                            '1:1 Expert Support 24/7',
+                            'Choose Group to add potential customer files with keywords',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top > 1-5 according to Facebook suggestions',
+                            'Design 1 Banner + VIP Cover Photo',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '100-200 Likes for 5 pinned posts',
+                            '30 Comments by script for 5 pinned posts',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Post content care & development for 1 month',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '20,000,000 VND',
+                badge: 'Advanced',
+                price: '20,000,000',
+                originalPrice: '28,000,000',
                 sales: 'Sold 278',
-                features: [
-                    'MEMBERS : > 80,000',
-                    'DELIVERY : > 50 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'WARRANTY : lifetime',
-                    'SUPPORT : GROUP NAME CHANGE',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE GROUP TO ADD POTENTIAL CUSTOMER FILES WITH KEYWORDS + COMPETITOR GROUP FILES',
-                    'SUPPORT : SEO TOP 1-3 ACCORDING TO FACEBOOK SUGGESTIONS',
-                    'SUPPORT : DESIGN 1 BANNER + 1 VIP COVER PHOTO',
-                    'SUPPORT : 200-500 LIKES FOR 10 PINNED POSTS',
-                    'SUPPORT : 50 COMMENTS BY SCRIPT /10 PINNED POSTS',
-                    'SUPPORT : 2 BRAND VIDEOS FOR GROUP',
-                    'SUPPORT : POST CONTENT CARE & DEVELOPMENT FOR 2 MONTHS',
-                    'SUPPORT : SEEDING 10 ATTRACTIVE SCRIPTS TO ATTRACT TARGET CUSTOMERS',
+                target: 'For businesses and SME brands',
+                visibleFeatures: [
+                    'Members: > 80,000',
+                    'Delivery: > 50 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Advanced Support',
+                        items: [
+                            'Group Name Change',
+                            '1:1 Expert Support 24/7',
+                            'Choose Group to add potential customer files with keywords',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top 1-3 according to Facebook suggestions',
+                            'Design 1 Banner + 1 VIP Cover Photo',
+                            '2 Brand Videos for Group',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '200-500 Likes for 10 pinned posts',
+                            '50 Comments by script /10 pinned posts',
+                            'Seeding 10 attractive scripts to attract customers',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Post content care & development for 2 months',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '50,000,000 VND',
+                badge: 'VIP',
+                price: '50,000,000',
+                originalPrice: '70,000,000',
                 sales: 'Sold 78',
-                features: [
-                    'MEMBERS : > 120,000',
-                    'DELIVERY : > 60 days',
-                    'FEATURES : VIETNAMESE - REAL & AUTHENTIC',
-                    'WARRANTY : lifetime',
-                    'SUPPORT : GROUP NAME CHANGE',
-                    'SUPPORT : 1:1 EXPERT SUPPORT 24/7',
-                    'SUPPORT : CHOOSE GROUP TO ADD POTENTIAL CUSTOMER FILES WITH KEYWORDS + COMPETITOR GROUP FILES',
-                    'SUPPORT : SEO TOP 1 ACCORDING TO FACEBOOK SUGGESTIONS',
-                    'SUPPORT : DESIGN 1 BANNER + 1 VIP COVER PHOTO',
-                    'SUPPORT : 200-500 LIKES FOR 30 PINNED POSTS & SHARE',
-                    'SUPPORT : 70 COMMENTS BY SCRIPT / PINNED POST',
-                    'SUPPORT : RUN ADS TO ATTRACT GROUP',
-                    'SUPPORT : DESIGN 5 BRAND VIDEOS FOR GROUP',
-                    'SUPPORT : POST CONTENT CARE & DEVELOPMENT FOR 3 MONTHS WITH STANDARD SCRIPTS',
-                    'SUPPORT : SEEDING 10 ATTRACTIVE SCRIPTS TO ATTRACT TARGET CUSTOMERS',
+                target: 'For large enterprises and national brands',
+                visibleFeatures: [
+                    'Members: > 120,000',
+                    'Delivery: > 60 days',
+                    'Features: Vietnamese - Real & Authentic',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'VIP Support',
+                        items: [
+                            'Group Name Change',
+                            '1:1 Expert Support 24/7',
+                            'Choose Group to add potential customer files with keywords',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top 1 according to Facebook suggestions',
+                            'Design 1 Banner + 1 VIP Cover Photo',
+                            'Design 5 Brand Videos for Group',
+                        ]
+                    },
+                    {
+                        title: 'Seeding & Ads',
+                        items: [
+                            '200-500 Likes for 30 pinned posts & share',
+                            '70 Comments by script / pinned post',
+                            'Run Ads to attract Group',
+                            'Seeding 10 attractive scripts to attract customers',
+                        ]
+                    },
+                    {
+                        title: 'Care',
+                        items: [
+                            'Post content care & development for 3 months with standard scripts',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
         ],
     },

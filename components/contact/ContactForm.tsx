@@ -189,10 +189,8 @@ function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, o
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <FormInput label="Họ và Tên" name="name" value={formData.name} onChange={onChange}
           error={errors.name} placeholder="Nguyễn Văn A" required icon={<User size={20} />} />
-        <FormInput label="Chức Danh" name="jobTitle" value={formData.jobTitle} onChange={onChange}
-          error={errors.jobTitle} placeholder="Giám đốc, Quản lý, ..." required icon={<Briefcase size={20} />} />
-        <FormInput label="Công Việc Hiện Tại" name="currentJob" value={formData.currentJob} onChange={onChange}
-          error={errors.currentJob} placeholder="Mô tả công việc hiện tại" required icon={<Briefcase size={20} />} />
+        <FormInput label="Chức Danh (Tùy chọn)" name="jobTitle" value={formData.jobTitle} onChange={onChange}
+          error={errors.jobTitle} placeholder="Giám đốc, Quản lý, ..." icon={<Briefcase size={20} />} />
         <FormInput label="Số Điện Thoại" name="phone" type="tel" value={formData.phone} onChange={onChange}
           error={errors.phone} placeholder="0912 345 678" required icon={<Phone size={20} />} />
       </div>
@@ -267,8 +265,8 @@ function FormContent({ formData, errors, isLoading, onChange, onServiceToggle, o
 
       {/* Message */}
       <div className="mb-8">
-        <FormTextarea label="Nội Dung Tin Nhắn" name="message" value={formData.message} onChange={onChange}
-          error={errors.message} placeholder="Mô tả ngắn gọn về dự án hoặc nhu cầu của bạn..." required rows={5} />
+        <FormTextarea label="Nội Dung Tin Nhắn (Tùy chọn)" name="message" value={formData.message} onChange={onChange}
+          error={errors.message} placeholder="Mô tả ngắn gọn về dự án hoặc nhu cầu của bạn..." rows={5} />
       </div>
 
       <SubmitButton isLoading={isLoading} loadingText="Đang gửi thông tin...">

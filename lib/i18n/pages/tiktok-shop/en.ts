@@ -4,7 +4,7 @@ export const en: TiktokShopTranslations = {
     pageCta: {
         title: 'Ready to Explode Sales on',
         titleHighlight: 'TikTok Shop?',
-        button: 'CALL NOW: 0923.451.469',
+        button: 'CALL NOW: 058.450.3333',
     },
     hero: {
         badge: 'COMPREHENSIVE TIKTOK SHOP SOLUTION',
@@ -15,7 +15,7 @@ export const en: TiktokShopTranslations = {
         description: 'Turn your TikTok channel into an automated 24/7 sales machine. Reach millions of potential young customers.',
         descriptionHighlight: 'Credible - Fast - Sustainable.',
         ctaPrimary: 'Consult Now',
-        ctaSecondary: 'Hotline: 0923.451.469',
+        ctaSecondary: 'Hotline: 058.450.3333',
     },
     benefits: {
         items: [
@@ -43,76 +43,141 @@ export const en: TiktokShopTranslations = {
         registerButton: 'Register',
         plans: [
             {
-                price: '5,000,000 VND',
+                badge: 'Starter',
+                price: '5,000,000',
+                originalPrice: '7,000,000',
                 sales: 'Sold 165',
-                features: [
-                    { text: 'MEMBERS : > 7,000 followers', active: true },
-                    { text: 'DELIVERY : 15 days', active: true },
-                    { text: 'FEATURES : real Vietnamese + SEO-nurtured ID files', active: true },
-                    { text: 'FEATURES : support live and TikTok shop activation', active: true },
-                    { text: 'SUPPORT : seeding 10 script comments / 10 videos', active: false },
-                    { text: 'SUPPORT : seeding 5 live sales sessions with 100 real viewers', active: false },
-                    { text: 'SUPPORT : 8 themed video content sets', active: true },
-                    { text: 'SUPPORT : KOL/KOC professional video review for products and brands', active: false },
-                    { text: 'WARRANTY : 1 year', active: true },
-                    { text: 'SUPPORT : TikTok name change', active: true },
-                    { text: 'SUPPORT : 24/7', active: true },
-                    { text: 'SUPPORT : build TikTok with gradual effective followers following SEO standards', active: true },
+                target: 'For individuals and small shops starting out',
+                visibleFeatures: [
+                    'Members: > 7,000 followers',
+                    'Delivery: 15 days',
+                    'Features: Real Vietnamese + SEO ID',
+                    'Warranty: 1 year',
                 ],
+                features: [
+                    {
+                        title: 'Content Support',
+                        items: [
+                            '8 themed video content sets',
+                            'Support TikTok name change',
+                        ]
+                    },
+                    {
+                        title: 'Live Support',
+                        items: [
+                            'Support live and TikTok shop activation',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '10,000,000 VND',
+                badge: 'Standard',
+                featuredBadge: 'Most Popular',
+                price: '10,000,000',
+                originalPrice: '15,000,000',
                 sales: 'Sold 135',
-                features: [
-                    { text: 'MEMBERS : > 20,000 followers', active: true },
-                    { text: 'DELIVERY : 25 days', active: true },
-                    { text: 'FEATURES : real Vietnamese + SEO-nurtured ID files', active: true },
-                    { text: 'FEATURES : support live and TikTok shop activation', active: true },
-                    { text: 'SUPPORT : seeding 10 script comments / 10 videos', active: true },
-                    { text: 'SUPPORT : seeding 5 live sales sessions with 100 real viewers', active: true },
-                    { text: 'SUPPORT : 8 themed video content sets', active: true },
-                    { text: 'SUPPORT : KOL/KOC professional video review for products and brands', active: false },
-                    { text: 'WARRANTY : lifetime', active: true },
-                    { text: 'SUPPORT : TikTok name change', active: true },
-                    { text: 'SUPPORT : 24/7', active: true },
-                    { text: 'SUPPORT : build TikTok with gradual effective followers following SEO standards', active: true },
+                target: 'For online shops looking to grow fast',
+                visibleFeatures: [
+                    'Members: > 20,000 followers',
+                    'Delivery: 25 days',
+                    'Features: Real Vietnamese + SEO ID',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Content Support',
+                        items: [
+                            '8 themed video content sets',
+                            'Seeding 10 script comments / 10 videos',
+                            'Support TikTok name change',
+                        ]
+                    },
+                    {
+                        title: 'Live Support',
+                        items: [
+                            'Support live and TikTok shop activation',
+                            'Seeding 5 live sessions with 100 real viewers',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '40,000,000 VND',
+                badge: 'Advanced',
+                price: '40,000,000',
+                originalPrice: '55,000,000',
                 sales: 'Sold 65',
-                features: [
-                    { text: 'MEMBERS : > 60,000 followers', active: true },
-                    { text: 'DELIVERY : 40 days', active: true },
-                    { text: 'FEATURES : real Vietnamese + SEO-nurtured ID files', active: true },
-                    { text: 'FEATURES : support live and TikTok shop building', active: true },
-                    { text: 'SUPPORT : seeding 10 script comments / 10 videos', active: true },
-                    { text: 'SUPPORT : seeding 10 live sales sessions with 100 real viewers', active: true },
-                    { text: 'SUPPORT : 8 themed video content sets', active: true },
-                    { text: 'SUPPORT : KOL/KOC professional video review for products and brands', active: false },
-                    { text: 'WARRANTY : lifetime', active: true },
-                    { text: 'SUPPORT : TikTok name change', active: true },
-                    { text: 'SUPPORT : 24/7', active: true },
-                    { text: 'SUPPORT : build TikTok with gradual effective followers following SEO standards', active: true },
+                target: 'For businesses building brands',
+                visibleFeatures: [
+                    'Members: > 60,000 followers',
+                    'Delivery: 40 days',
+                    'Features: Real Vietnamese + SEO ID',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Content Support',
+                        items: [
+                            '8 themed video content sets',
+                            'Seeding 10 script comments / 10 videos',
+                            'Support TikTok name change',
+                        ]
+                    },
+                    {
+                        title: 'Live Support',
+                        items: [
+                            'Support live and TikTok shop building',
+                            'Seeding 10 live sessions with 100 real viewers',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
             {
-                price: '70,000,000 VND',
+                badge: 'VIP',
+                price: '70,000,000',
+                originalPrice: '95,000,000',
                 sales: 'Sold 85',
-                features: [
-                    { text: 'MEMBERS : > 90,000 followers', active: true },
-                    { text: 'DELIVERY : 60 days', active: true },
-                    { text: 'FEATURES : real Vietnamese + SEO-nurtured ID files', active: true },
-                    { text: 'FEATURES : support live and TikTok shop building', active: true },
-                    { text: 'SUPPORT : seeding 100 script comments / 30 videos', active: true },
-                    { text: 'SUPPORT : seeding 10 live sales sessions with 900-1600 real viewers', active: true },
-                    { text: 'SUPPORT : 18 themed video content sets', active: true },
-                    { text: 'SUPPORT : KOL/KOC professional video review for products, brands and company', active: true },
-                    { text: 'WARRANTY : lifetime', active: true },
-                    { text: 'SUPPORT : TikTok name change + page description keywords', active: true },
-                    { text: 'SUPPORT : 24/7', active: true },
-                    { text: 'SUPPORT : build TikTok with gradual effective followers following SEO standards', active: true },
+                target: 'For large enterprises and national brands',
+                visibleFeatures: [
+                    'Members: > 90,000 followers',
+                    'Delivery: 60 days',
+                    'Features: Real Vietnamese + SEO ID',
+                    'Warranty: Lifetime',
                 ],
+                features: [
+                    {
+                        title: 'Content Support',
+                        items: [
+                            '18 themed video content sets',
+                            'Seeding 100 script comments / 30 videos',
+                            'Support TikTok name change + keywords',
+                        ]
+                    },
+                    {
+                        title: 'Live Support',
+                        items: [
+                            'Support live and TikTok shop building',
+                            'Seeding 10 live sessions with 900-1600 real viewers',
+                        ]
+                    },
+                    {
+                        title: 'KOL/KOC',
+                        items: [
+                            'Professional video review for products and brands',
+                        ]
+                    },
+                ],
+                expandButton: 'View Details',
+                collapseButton: 'Collapse',
+                ctaButton: 'Contact Now',
             },
         ],
     },

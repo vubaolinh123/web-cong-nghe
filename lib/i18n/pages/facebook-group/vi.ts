@@ -3,7 +3,7 @@ import { FacebookGroupTranslations } from './types';
 export const vi: FacebookGroupTranslations = {
     pageCta: {
         title: 'Liên Hệ Ngay Để Sở Hữu Group Chất Lượng',
-        button: 'HOTLINE: 0923.451.469',
+        button: 'HOTLINE: 058.450.3333',
     },
     hero: {
         badge: 'DỊCH VỤ GROUP VIP #1 VIỆT NAM',
@@ -15,7 +15,7 @@ export const vi: FacebookGroupTranslations = {
         descriptionHighlight: '100.000+ thành viên thật',
         descriptionLine2: 'Kênh bán hàng tự động, uy tín và bền vững nhất trên mạng xã hội Facebook.',
         ctaPrimary: 'Điền Thông Tin Triển Khai',
-        ctaSecondary: 'Tư Vấn: 0923.451.469',
+        ctaSecondary: 'Tư Vấn: 058.450.3333',
     },
     intro: {
         paragraph1Start: 'Kênh',
@@ -44,78 +44,181 @@ export const vi: FacebookGroupTranslations = {
         ebookButton: 'TẶNG EBOOK',
         plans: [
             {
-                price: '5.000.000 Đ',
+                badge: 'Gói Cơ Bản',
+                price: '5.000.000',
+                originalPrice: '7.000.000',
                 sales: 'Đã bán 479',
-                features: [
-                    'THÀNH VIÊN : > 20.000',
-                    'BÀN GIAO : 9 - 15 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'BẢO HÀNH : vĩnh viễn',
-                    'HỖ TRỢ : ĐỔI TÊN GROUP',
-                    'SUPORT : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN GROUP KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA + TỆP NHÓM ĐỐI THỦ',
-                    'HỖ TRỢ : SEO TOP 7 THEO ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : 500 LIKE 1 BÀI VIẾT GHIM NHÓM',
+                target: 'Phù hợp cho cá nhân, kinh doanh nhỏ lẻ',
+                visibleFeatures: [
+                    'Thành viên: > 20.000',
+                    'Bàn giao: 9 - 15 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Cơ Bản',
+                        items: [
+                            'Đổi tên Group',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn Group kéo thêm tệp khách tiềm năng dính từ khóa + Tệp nhóm đối thủ',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Seeding',
+                        items: [
+                            'SEO Top 7 theo đề xuất Facebook',
+                            '500 Like 1 bài viết ghim nhóm',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '8.000.000 Đ',
+                badge: 'Gói Tiêu Chuẩn',
+                featuredBadge: 'Phổ Biến Nhất',
+                price: '8.000.000',
+                originalPrice: '12.000.000',
                 sales: 'Phổ biến',
-                features: [
-                    'THÀNH VIÊN : > 40.000',
-                    'BÀN GIAO : 20 - 30 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'BẢO HÀNH : vĩnh viễn',
-                    'HỖ TRỢ : ĐỔI TÊN GROUP',
-                    'SUPORT : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN GROUP KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA + TỆP NHÓM ĐỐI THỦ',
-                    'HỖ TRỢ : SEO TOP > 1-5 THEO ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : THIẾT KẾ 1 BANNER + ẢNH BÌA VIP KÉO KHÁCH',
-                    'HỖ TRỢ : 100-200 LIKE 5 BÀI GHIM NHÓM',
-                    'HỖ TRỢ : 30 COMMENT THEO KỊCH BẢN 5 GHIM NHÓM',
-                    'HỖ TRỢ : ĐĂNG BÀI CHĂM SÓC PHÁT TRIỂN NỘI DUNG GROUP 1 THÁNG',
+                target: 'Phù hợp cho shop online, kinh doanh cộng đồng',
+                visibleFeatures: [
+                    'Thành viên: > 40.000',
+                    'Bàn giao: 20 - 30 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nâng Cao',
+                        items: [
+                            'Đổi tên Group',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn Group kéo thêm tệp khách tiềm năng dính từ khóa + Tệp nhóm đối thủ',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top > 1-5 theo đề xuất Facebook',
+                            'Thiết kế 1 Banner + Ảnh bìa VIP kéo khách',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '100-200 Like 5 bài ghim nhóm',
+                            '30 Comment theo kịch bản 5 ghim nhóm',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Đăng bài chăm sóc phát triển nội dung Group 1 tháng',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '20.000.000 Đ',
+                badge: 'Gói Nâng Cao',
+                price: '20.000.000',
+                originalPrice: '28.000.000',
                 sales: 'Đã bán 278',
-                features: [
-                    'THÀNH VIÊN : > 80.000',
-                    'BÀN GIAO : > 50 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'BẢO HÀNH : vĩnh viễn',
-                    'HỖ TRỢ : ĐỔI TÊN GROUP',
-                    'SUPORT : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN GROUP KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA + TỆP NHÓM ĐỐI THỦ',
-                    'HỖ TRỢ : SEO TOP 1-3 THEO ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : THIẾT KẾ 1 BANNER + 1 ẢNH BÌA VIP KÉO KHÁCH',
-                    'HỖ TRỢ : 200-500 LIKE 10 BÀI GHIM NHÓM',
-                    'HỖ TRỢ : 50 COMMENT THEO KỊCH BẢN /10 BÀI GHIM',
-                    'HỖ TRỢ : 2 VIDEO BRAND CỦA GROUP',
-                    'HỖ TRỢ : ĐĂNG BÀI CHĂM SÓC PHÁT TRIỂN NỘI DUNG GROUP 2 THÁNG',
-                    'HỖ TRỢ : SEEDING 10 KỊCH BẢN LÔI CUỐN GIÚP THU HÚT KHÁCH HÀNG MỤC TIÊU LỚN ĐÍCH PHỄU LỚN NHẤT',
+                target: 'Phù hợp cho doanh nghiệp, thương hiệu SME',
+                visibleFeatures: [
+                    'Thành viên: > 80.000',
+                    'Bàn giao: > 50 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nâng Cao',
+                        items: [
+                            'Đổi tên Group',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn Group kéo thêm tệp khách tiềm năng dính từ khóa + Tệp nhóm đối thủ',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top 1-3 theo đề xuất Facebook',
+                            'Thiết kế 1 Banner + 1 Ảnh bìa VIP kéo khách',
+                            '2 Video Brand của Group',
+                        ]
+                    },
+                    {
+                        title: 'Seeding',
+                        items: [
+                            '200-500 Like 10 bài ghim nhóm',
+                            '50 Comment theo kịch bản / 10 bài ghim',
+                            'Seeding 10 kịch bản lôi cuốn giúp thu hút khách hàng',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Đăng bài chăm sóc phát triển nội dung Group 2 tháng',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '50.000.000 Đ',
+                badge: 'Gói VIP',
+                price: '50.000.000',
+                originalPrice: '70.000.000',
                 sales: 'Đã bán 78',
-                features: [
-                    'THÀNH VIÊN : > 120.000',
-                    'BÀN GIAO : > 60 ngày',
-                    'ĐẶC ĐIỂM : VIỆT - THẬT & REAL',
-                    'BẢO HÀNH : vĩnh viễn',
-                    'HỖ TRỢ : ĐỔI TÊN GROUP',
-                    'SUPORT : CHUYÊN GIA 1:1 SUPORT 24/7',
-                    'HỖ TRỢ : CHỌN GROUP KÉO THÊM TỆP KHÁCH TIỀM NĂNG DÍNH TỪ KHÓA + TỆP NHÓM ĐỐI THỦ',
-                    'HỖ TRỢ : SEO TOP 1 THEO ĐỀ XUẤT FACEBOOK',
-                    'HỖ TRỢ : THIẾT KẾ 1 BANNER + 1 ẢNH BÌA VIP KÉO KHÁCH',
-                    'HỖ TRỢ : 200-500 LIKE 30 BÀI GHIM NHÓM & SHARE',
-                    'HỖ TRỢ : 70 COMMENT KỊCH BẢN / BÀI GHIM',
-                    'HỖ TRỢ : CHẠY ADS QUẢNG CÁO THU HÚT GROUP',
-                    'HỖ TRỢ : THIẾT KẾ 5 VIDEO THEO BRAND CỦA GROUP',
-                    'HỖ TRỢ : ĐĂNG BÀI CHĂM SÓC PHÁT TRIỂN NỘI DUNG GROUP 3 THÁNG KỊCH BẢN CHUẨN XÔI ĐỘNG',
-                    'HỖ TRỢ : SEEDING 10 KỊCH BẢN LÔI CUỐN GIÚP THU HÚT KHÁCH HÀNG MỤC TIÊU LỚN ĐÍCH PHỄU LỚN NHẤT',
+                target: 'Phù hợp cho doanh nghiệp lớn, thương hiệu quốc gia',
+                visibleFeatures: [
+                    'Thành viên: > 120.000',
+                    'Bàn giao: > 60 ngày',
+                    'Đặc điểm: Việt - Thật & Real',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ VIP',
+                        items: [
+                            'Đổi tên Group',
+                            'Chuyên gia 1:1 Support 24/7',
+                            'Chọn Group kéo thêm tệp khách tiềm năng dính từ khóa + Tệp nhóm đối thủ',
+                        ]
+                    },
+                    {
+                        title: 'SEO & Design',
+                        items: [
+                            'SEO Top 1 theo đề xuất Facebook',
+                            'Thiết kế 1 Banner + 1 Ảnh bìa VIP kéo khách',
+                            'Thiết kế 5 Video theo Brand của Group',
+                        ]
+                    },
+                    {
+                        title: 'Seeding & Ads',
+                        items: [
+                            '200-500 Like 30 bài ghim nhóm & Share',
+                            '70 Comment kịch bản / bài ghim',
+                            'Chạy Ads quảng cáo thu hút Group',
+                            'Seeding 10 kịch bản lôi cuốn giúp thu hút khách hàng',
+                        ]
+                    },
+                    {
+                        title: 'Chăm Sóc',
+                        items: [
+                            'Đăng bài chăm sóc phát triển nội dung Group 3 tháng kịch bản chuẩn',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
         ],
     },

@@ -4,7 +4,7 @@ export const vi: TiktokShopTranslations = {
     pageCta: {
         title: 'Sẵn Sàng Bùng Nổ Doanh Số Trên',
         titleHighlight: 'TikTok Shop?',
-        button: 'GỌI NGAY: 0923.451.469',
+        button: 'GỌI NGAY: 058.450.3333',
     },
     hero: {
         badge: 'GIẢI PHÁP TIKTOK SHOP TOÀN DIỆN',
@@ -15,7 +15,7 @@ export const vi: TiktokShopTranslations = {
         description: 'Biến kênh TikTok thành cỗ máy bán hàng tự động 24/7. Tiếp cận hàng triệu khách hàng trẻ tiềm năng.',
         descriptionHighlight: 'Uy tín - Nhanh chóng - Bền vững.',
         ctaPrimary: 'Tư Vấn Ngay',
-        ctaSecondary: 'Hotline: 0923.451.469',
+        ctaSecondary: 'Hotline: 058.450.3333',
     },
     benefits: {
         items: [
@@ -43,76 +43,164 @@ export const vi: TiktokShopTranslations = {
         registerButton: 'Đăng Ký',
         plans: [
             {
-                price: '5.000.000 Đ',
+                badge: 'Gói Cơ Bản',
+                price: '5.000.000',
+                originalPrice: '7.000.000',
                 sales: 'Đã bán 165',
-                features: [
-                    { text: 'THÀNH VIÊN : > 7.000 follower', active: true },
-                    { text: 'BÀN GIAO : 15 ngày', active: true },
-                    { text: 'ĐẶC ĐIỂM : việt thật + real + tệp nuôi id seo', active: true },
-                    { text: 'ĐẶC ĐIỂM : hỗ trợ bật live và bật tiktok shop', active: true },
-                    { text: 'HỖ TRỢ : seeding 10 comment kịch bản / 10 video', active: false },
-                    { text: 'HỖ TRỢ : seeding 5 phiên live bán hàng 100 mắt xem thật thu hút khách hàng', active: false },
-                    { text: 'HỖ TRỢ : 8 bộ nội dung video theo chủ đề editor', active: true },
-                    { text: 'HỖ TRỢ : kol koc chuyên nghành quay editor video review sản phẩm và nhãn hàng thương hiệu', active: false },
-                    { text: 'BẢO HÀNH : 1 năm', active: true },
-                    { text: 'HỖ TRỢ : đổi tên tiktok', active: true },
-                    { text: 'SUPORT : 24/7', active: true },
-                    { text: 'HỖ TRỢ : xây tiktok đủ lượng follower thành viên từ từ hiệu quả đúng quy trình và chuẩn quy chuẩn seo', active: true },
+                target: 'Phù hợp cho cá nhân mới bắt đầu kinh doanh trên TikTok',
+                visibleFeatures: [
+                    'Thành viên: > 7.000 follower',
+                    'Bàn giao: 15 ngày',
+                    'Đặc điểm: Việt thật + Real + Tệp nuôi ID SEO',
+                    'Bảo hành: 1 năm',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nội Dung',
+                        items: [
+                            'Hỗ trợ bật live và bật TikTok Shop',
+                            '8 bộ nội dung video theo chủ đề editor',
+                            'Hỗ trợ đổi tên TikTok',
+                        ]
+                    },
+                    {
+                        title: 'Dịch Vụ Bổ Sung',
+                        items: [
+                            'Support: 24/7',
+                            'Xây TikTok đủ lượng follower hiệu quả đúng quy trình chuẩn SEO',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '10.000.000 Đ',
+                badge: 'Gói Tiêu Chuẩn',
+                featuredBadge: 'Phổ Biến Nhất',
+                price: '10.000.000',
+                originalPrice: '15.000.000',
                 sales: 'Đã bán 135',
-                features: [
-                    { text: 'THÀNH VIÊN : > 20.000 follower', active: true },
-                    { text: 'BÀN GIAO : 25 ngày', active: true },
-                    { text: 'ĐẶC ĐIỂM : việt thật + real + tệp nuôi id seo', active: true },
-                    { text: 'ĐẶC ĐIỂM : hỗ trợ bật live và bật tiktok shop', active: true },
-                    { text: 'HỖ TRỢ : seeding 10 comment kịch bản / 10 video', active: true },
-                    { text: 'HỖ TRỢ : seeding 5 phiên live bán hàng 100 mắt xem thật thu hút khách hàng', active: true },
-                    { text: 'HỖ TRỢ : 8 bộ nội dung video theo chủ đề editor', active: true },
-                    { text: 'HỖ TRỢ : kol koc chuyên nghành quay editor video review sản phẩm và nhãn hàng thương hiệu', active: false },
-                    { text: 'BẢO HÀNH : vĩnh viễn', active: true },
-                    { text: 'HỖ TRỢ : đổi tên tiktok', active: true },
-                    { text: 'SUPORT : 24/7', active: true },
-                    { text: 'HỖ TRỢ : xây tiktok đủ lượng follower thành viên từ từ hiệu quả đúng quy trình và chuẩn quy chuẩn seo', active: true },
+                target: 'Phù hợp cho shop online muốn tăng trưởng nhanh',
+                visibleFeatures: [
+                    'Thành viên: > 20.000 follower',
+                    'Bàn giao: 25 ngày',
+                    'Đặc điểm: Việt thật + Real + Tệp nuôi ID SEO',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nội Dung',
+                        items: [
+                            'Hỗ trợ bật live và bật TikTok Shop',
+                            '8 bộ nội dung video theo chủ đề editor',
+                            'Seeding 10 comment kịch bản / 10 video',
+                            'Hỗ trợ đổi tên TikTok',
+                        ]
+                    },
+                    {
+                        title: 'Hỗ Trợ Live',
+                        items: [
+                            'Seeding 5 phiên live bán hàng 100 mắt xem thật',
+                        ]
+                    },
+                    {
+                        title: 'Dịch Vụ Bổ Sung',
+                        items: [
+                            'Support: 24/7',
+                            'Xây TikTok đủ lượng follower hiệu quả đúng quy trình chuẩn SEO',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '40.000.000 Đ',
+                badge: 'Gói Nâng Cao',
+                price: '40.000.000',
+                originalPrice: '55.000.000',
                 sales: 'Đã bán 65',
-                features: [
-                    { text: 'THÀNH VIÊN : > 60.000 follower', active: true },
-                    { text: 'BÀN GIAO : 40 ngày', active: true },
-                    { text: 'ĐẶC ĐIỂM : việt thật + real + tệp nuôi id seo', active: true },
-                    { text: 'ĐẶC ĐIỂM : hỗ trợ bật live và xây dựng tiktok shop', active: true },
-                    { text: 'HỖ TRỢ : seeding 10 comment kịch bản / 10 video', active: true },
-                    { text: 'HỖ TRỢ : seeding 10 phiên live bán hàng 100 mắt xem thật thu hút khách hàng', active: true },
-                    { text: 'HỖ TRỢ : 8 bộ nội dung video theo chủ đề editor', active: true },
-                    { text: 'HỖ TRỢ : kol koc chuyên nghành quay editor video review sản phẩm và nhãn hàng thương hiệu', active: false },
-                    { text: 'BẢO HÀNH : vĩnh viễn', active: true },
-                    { text: 'HỖ TRỢ : đổi tên tiktok', active: true },
-                    { text: 'SUPORT : 24/7', active: true },
-                    { text: 'HỖ TRỢ : xây tiktok đủ lượng follower thành viên từ từ hiệu quả đúng quy trình và chuẩn quy chuẩn seo', active: true },
+                target: 'Phù hợp cho doanh nghiệp muốn xây dựng thương hiệu',
+                visibleFeatures: [
+                    'Thành viên: > 60.000 follower',
+                    'Bàn giao: 40 ngày',
+                    'Đặc điểm: Việt thật + Real + Tệp nuôi ID SEO',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nội Dung',
+                        items: [
+                            'Hỗ trợ bật live và xây dựng TikTok Shop',
+                            '8 bộ nội dung video theo chủ đề editor',
+                            'Seeding 10 comment kịch bản / 10 video',
+                            'Hỗ trợ đổi tên TikTok',
+                        ]
+                    },
+                    {
+                        title: 'Hỗ Trợ Live',
+                        items: [
+                            'Seeding 10 phiên live bán hàng 100 mắt xem thật',
+                        ]
+                    },
+                    {
+                        title: 'Dịch Vụ Bổ Sung',
+                        items: [
+                            'Support: 24/7',
+                            'Xây TikTok đủ lượng follower hiệu quả đúng quy trình chuẩn SEO',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
             {
-                price: '70.000.000 Đ',
+                badge: 'Gói VIP',
+                price: '70.000.000',
+                originalPrice: '95.000.000',
                 sales: 'Đã bán 85',
-                features: [
-                    { text: 'THÀNH VIÊN : > 90.000 follower', active: true },
-                    { text: 'BÀN GIAO : 60 ngày', active: true },
-                    { text: 'ĐẶC ĐIỂM : việt thật + real + tệp nuôi id seo', active: true },
-                    { text: 'ĐẶC ĐIỂM : hỗ trợ bật live và xây dựng tiktok shop', active: true },
-                    { text: 'HỖ TRỢ : seeding 100 comment kịch bản / 30 video', active: true },
-                    { text: 'HỖ TRỢ : seeding 10 phiên live bán hàng 900-1600 mắt xem thật thu hút khách hàng', active: true },
-                    { text: 'HỖ TRỢ : 18 bộ nội dung video theo chủ đề editor', active: true },
-                    { text: 'HỖ TRỢ : kol koc chuyên nghành quay editor video review sản phẩm và nhãn hàng thương hiệu và CTy', active: true },
-                    { text: 'BẢO HÀNH : vĩnh viễn', active: true },
-                    { text: 'HỖ TRỢ : thay tên tiktok + từ khóa mô tả trang', active: true },
-                    { text: 'SUPORT : 24/7', active: true },
-                    { text: 'HỖ TRỢ : xây tiktok đủ lượng follower thành viên từ từ hiệu quả đúng quy trình và chuẩn quy chuẩn seo', active: true },
+                target: 'Phù hợp cho thương hiệu lớn, KOL, doanh nghiệp',
+                visibleFeatures: [
+                    'Thành viên: > 90.000 follower',
+                    'Bàn giao: 60 ngày',
+                    'Đặc điểm: Việt thật + Real + Tệp nuôi ID SEO',
+                    'Bảo hành: Vĩnh viễn',
                 ],
+                features: [
+                    {
+                        title: 'Hỗ Trợ Nội Dung',
+                        items: [
+                            'Hỗ trợ bật live và xây dựng TikTok Shop',
+                            '18 bộ nội dung video theo chủ đề editor',
+                            'Seeding 100 comment kịch bản / 30 video',
+                            'Thay tên TikTok + từ khóa mô tả trang',
+                        ]
+                    },
+                    {
+                        title: 'Hỗ Trợ Live',
+                        items: [
+                            'Seeding 10 phiên live bán hàng 900-1600 mắt xem thật',
+                        ]
+                    },
+                    {
+                        title: 'KOL/KOC',
+                        items: [
+                            'KOL KOC chuyên ngành quay editor video review sản phẩm và nhãn hàng',
+                        ]
+                    },
+                    {
+                        title: 'Dịch Vụ Bổ Sung',
+                        items: [
+                            'Support: 24/7',
+                            'Xây TikTok đủ lượng follower hiệu quả đúng quy trình chuẩn SEO',
+                        ]
+                    },
+                ],
+                expandButton: 'Xem chi tiết',
+                collapseButton: 'Thu gọn',
+                ctaButton: 'Liên Hệ Tư Vấn',
             },
         ],
     },
