@@ -46,7 +46,7 @@ export default function GroupPage() {
                         {t.pageCta.title}
                     </h2>
                     <a
-                        href="tel:0923451469"
+                        href="tel:0584503333"
                         className="inline-block px-10 py-4 bg-white text-purple-900 font-bold text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.3)]"
                     >
                         {t.pageCta.button}

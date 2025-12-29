@@ -70,7 +70,7 @@ export default function Hero() {
                             {t.hero.ctaPrimary}
                         </Link>
                         <a
-                            href="tel:0923451469"
+                            href="tel:0584503333"
                             className="px-8 py-4 rounded-full bg-slate-800/80 border border-slate-700 text-white font-bold text-lg hover:bg-slate-700 transition-all backdrop-blur-md flex items-center gap-2"
                         >
                             {t.hero.ctaSecondary}

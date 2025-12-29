@@ -47,7 +47,7 @@ export default function TiktokPage() {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">{t.pageCta.titleHighlight}</span>
                     </h2>
                     <a
-                        href="tel:0923451469"
+                        href="tel:0584503333"
                         className="inline-block px-12 py-5 bg-white text-black font-black text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)]"
                     >
                         {t.pageCta.button}

@@ -97,7 +97,7 @@ export const serviceCategoryOptions = [
 export const technologyServiceOptions = [
   { value: "custom-website", label: "Custom Website" },
   { value: "low-code-automation", label: "Low Code Automation" },
-  { value: "ai-chatbot", label: "AI Chatbot" },
+  { value: "mobile-app", label: "Mobile App" },
   { value: "ai-agent", label: "AI Agent" },
 ];
 

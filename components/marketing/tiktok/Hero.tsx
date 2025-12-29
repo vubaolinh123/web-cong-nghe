@@ -40,7 +40,7 @@ export default function Hero() {
                                 {t.hero.ctaPrimary}
                             </a>
                             <a
-                                href="tel:0923451469"
+                                href="tel:0584503333"
                                 className="px-8 py-4 rounded-full border border-pink-500/50 bg-pink-900/10 hover:bg-pink-900/30 text-pink-400 font-bold text-lg transition-all backdrop-blur-md flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]"
                             >
                                 {t.hero.ctaSecondary}
