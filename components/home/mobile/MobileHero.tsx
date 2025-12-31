@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Sparkles, Rocket, TrendingUp, Users, Zap } from "lucide-react";
-import { Container, Button } from "../../common";
+import { Sparkles, ArrowRight, TrendingUp, Users, Zap } from "lucide-react";
+import { Container } from "../../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function MobileHero() {
@@ -17,138 +17,184 @@ export default function MobileHero() {
     ];
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 pt-24 pb-16">
-            {/* === SIMPLE BACKGROUND === */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] pt-24 pb-16">
+            {/* === DIGITAL NEURAL MATRIX BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* 1. Void Base */}
+                <div className="absolute inset-0 bg-[#020617]" />
 
-                {/* Static Grid Pattern */}
-                <div
-                    className="absolute inset-0 opacity-20"
+                {/* 2. Cyber Perspective Grid - Moving Down */}
+                <motion.div
+                    className="absolute inset-0 opacity-20 animate-grid-flow"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.15) 1px, transparent 1px),
-                                         linear-gradient(90deg, rgba(6, 182, 212, 0.15) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)`,
                         backgroundSize: '40px 40px',
-                        maskImage: 'radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%)',
+                        maskImage: 'linear-gradient(to bottom, transparent 5%, black 40%, black 70%, transparent 95%)',
                     }}
                 />
 
-                {/* Static Gradient Orbs */}
-                <div className="absolute top-1/4 left-0 w-64 h-64 bg-cyan-500/15 rounded-full blur-[80px]" />
-                <div className="absolute bottom-1/4 right-0 w-56 h-56 bg-green-500/15 rounded-full blur-[70px]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]" />
+                {/* 3. Neural Nodes - Breathing Orbs */}
+                <motion.div
+                    className="absolute top-1/4 -left-20 w-80 h-80 bg-cyan-600/20 rounded-full blur-[100px] mix-blend-screen"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                    className="absolute bottom-1/4 -right-20 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                />
 
-                {/* Vignette Effect */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(2,6,23,0.7)_100%)]" />
+                {/* 4. Digital Data Streams (Vertical Energy Beams) */}
+                {[...Array(3)].map((_, i) => (
+                    <motion.div
+                        key={`beam-${i}`}
+                        className="absolute w-[1px] h-[30vh] bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
+                        style={{
+                            left: `${20 + i * 30}%`,
+                            top: '-30vh',
+                            opacity: 0.3
+                        }}
+                        animate={{
+                            top: ['-30vh', '130vh'],
+                        }}
+                        transition={{
+                            duration: 3 + i * 2,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: i * 1.5
+                        }}
+                    />
+                ))}
+
+                {/* 5. Cinematic Grain Overlay */}
+                <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}
+                />
+
+                {/* Vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_100%)]" />
             </div>
 
             {/* === CONTENT === */}
             <Container className="relative z-10">
-                <div className="flex flex-col items-center text-center gap-5">
-                    {/* Badge */}
+                <div className="flex flex-col items-center text-center gap-6">
+                    {/* Tech Badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-cyan-500/30 backdrop-blur-sm text-xs font-medium shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+                        className="relative group"
                     >
-                        <Sparkles size={14} className="text-yellow-400" />
-                        <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-green-300 bg-clip-text text-transparent font-bold">
-                            AI-First Company
-                        </span>
+                        <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                        <div className="relative flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0f1e] border border-cyan-500/30">
+                            <Sparkles size={14} className="text-cyan-400 animate-pulse" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-white text-xs font-bold tracking-wider uppercase">
+                                AI-First Agency
+                            </span>
+                        </div>
                     </motion.div>
 
-                    {/* Heading */}
-                    <motion.h1
+                    {/* Heading - Maximum Impact */}
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-3xl sm:text-4xl font-bold text-white leading-tight"
+                        className="relative"
                     >
-                        <span className="block">{dictionary.hero.title1}</span>
-                        <span className="block mt-2">
-                            <span className="inline-block bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                                {dictionary.hero.title2}
-                            </span>
-                            {" "} & {" "}
-                            <span className="inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                                {dictionary.hero.title3}
-                            </span>
-                        </span>
-                        <span className="block mt-2">{dictionary.hero.title4}</span>
-                    </motion.h1>
+                        {/* Text Glow Behind */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-20 bg-cyan-500/20 blur-3xl rounded-full pointer-events-none" />
 
-                    {/* Subtitle */}
-                    <motion.p
+                        <h1 className="text-[34px] sm:text-4xl font-black text-white leading-[1.1] tracking-tight relative z-10">
+                            <span className="block mb-1">{dictionary.hero.title1}</span>
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 animate-gradient-text drop-shadow-[0_0_10px_rgba(6,182,212,0.5)] pb-1">
+                                {dictionary.hero.title2} & {dictionary.hero.title3}
+                            </span>
+                            <span className="block mt-1">{dictionary.hero.title4}</span>
+                        </h1>
+                    </motion.div>
+
+                    {/* Subtitle - Cyber Punctuation */}
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-sm text-slate-400 max-w-sm mx-auto leading-relaxed"
+                        className="relative max-w-[300px] sm:max-w-sm mx-auto"
                     >
-                        {dictionary.hero.subtitle}
-                    </motion.p>
+                        {/* Decorative Brackets */}
+                        <div className="absolute -left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent"></div>
+                        <div className="absolute -right-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent"></div>
 
-                    {/* Stats Row */}
+                        <p className="text-sm font-medium text-slate-300 leading-relaxed">
+                            {dictionary.hero.subtitleMobile}
+                        </p>
+                    </motion.div>
+
+                    {/* Stats Row - Hexagon Style */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex justify-center gap-6 w-full"
+                        className="flex justify-center gap-4 w-full py-2"
                     >
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
-                                className="text-center"
-                                initial={{ opacity: 0, scale: 0.5 }}
+                                className="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-900/40 border border-slate-800 backdrop-blur-sm min-w-[90px]"
+                                initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.4 + i * 0.1, type: "spring" }}
+                                transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
                             >
-                                <div className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">
-                                    {stat.value}
-                                </div>
-                                <div className="text-[10px] text-slate-500">{stat.label}</div>
+                                <span className="text-lg font-bold text-white mb-0.5">{stat.value}</span>
+                                <span className="text-[10px] text-cyan-400/80 uppercase tracking-wider font-semibold">{stat.label}</span>
                             </motion.div>
                         ))}
                     </motion.div>
 
-                    {/* CTA Buttons */}
+                    {/* Primary CTA - The "Power Button" */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex flex-col w-full gap-3 mt-2"
+                        className="w-full max-w-[320px] mt-2"
+                        whileTap={{ scale: 0.95 }}
                     >
-                        <Link href="/lien-he" className="w-full">
-                            <motion.div whileTap={{ scale: 0.97 }}>
-                                <Button
-                                    size="lg"
-                                    className="w-full group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 border-0 shadow-[0_0_30px_rgba(6,182,212,0.3)]"
-                                >
-                                    <Rocket className="mr-2 group-hover:rotate-12 transition-transform" size={18} />
-                                    {dictionary.hero.ctaPrimary}
-                                    <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                </Button>
-                            </motion.div>
+                        <Link href="/lien-he" className="block w-full">
+                            <div className="relative group rounded-full p-[1px] overflow-hidden">
+                                {/* Rotating Gradient Border */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 animate-spin-slow opacity-100 group-hover:opacity-100 transition-opacity" style={{ backgroundSize: '200% 200%' }} />
+
+                                {/* Inner Button */}
+                                <div className="relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-slate-950 rounded-full group-hover:bg-slate-900 transition-colors">
+                                    <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                                    <span className="relative flex h-3 w-3">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                                    </span>
+
+                                    <span className="font-bold text-white text-base tracking-wide uppercase group-hover:text-cyan-200 transition-colors">
+                                        {dictionary.hero.ctaPrimary}
+                                    </span>
+
+                                    <ArrowRight className="w-5 h-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </div>
                         </Link>
-                        <motion.div whileTap={{ scale: 0.97 }}>
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                className="w-full border-slate-700 hover:border-cyan-500/50 bg-slate-900/50 backdrop-blur-sm"
-                            >
-                                <Play className="mr-2 text-cyan-400" size={18} />
-                                {dictionary.hero.ctaSecondary}
-                            </Button>
-                        </motion.div>
                     </motion.div>
                 </div>
             </Container>
 
-            {/* Static Scroll Indicator */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-                <div className="w-5 h-8 rounded-full border-2 border-slate-700 flex justify-center pt-1.5">
-                    <div className="w-1 h-2 rounded-full bg-cyan-500" />
-                </div>
-            </div>
+            {/* Tech Scroll Indicator */}
+            <motion.div
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
+                animate={{ opacity: [0.4, 0.8, 0.4] }}
+                transition={{ duration: 3, repeat: Infinity }}
+            >
+                <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-500/80 font-mono">Scroll</div>
+                <div className="w-[1px] h-8 bg-gradient-to-b from-cyan-500 to-transparent" />
+            </motion.div>
         </section>
     );
 }

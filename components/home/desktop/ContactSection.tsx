@@ -26,7 +26,6 @@ const budgetOptions = [
 const initialFormData: ContactFormData = {
   name: "",
   jobTitle: "",
-  currentJob: "",
   phone: "",
   fanpageOrWebsite: "",
   budget: "",
@@ -213,9 +212,7 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <FormInput label={t("contactSection.form.jobTitle")} name="jobTitle" value={formData.jobTitle} onChange={handleChange}
-                      error={errors.jobTitle} placeholder={t("contactSection.form.jobTitlePlaceholder")} required icon={<Briefcase size={16} />} />
-                    <FormInput label={t("contactSection.form.currentJob")} name="currentJob" value={formData.currentJob} onChange={handleChange}
-                      error={errors.currentJob} placeholder={t("contactSection.form.currentJobPlaceholder")} required icon={<Briefcase size={16} />} />
+                      error={errors.jobTitle} placeholder={t("contactSection.form.jobTitlePlaceholder")} icon={<Briefcase size={16} />} />
                   </div>
 
                   <FormInput label={t("contactSection.form.fanpage")} name="fanpageOrWebsite"

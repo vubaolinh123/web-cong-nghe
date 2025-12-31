@@ -77,30 +77,6 @@ export default function Hero() {
                             <ArrowRight size={20} />
                         </a>
                     </div>
-
-                    {/* Video Embed - Merged from StrategyVideo */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <div className="mb-4 text-center">
-                            <span className="inline-flex items-center gap-2 text-sm text-purple-400 font-medium">
-                                <Play size={16} />
-                                {t.strategyVideo.title} - {t.strategyVideo.subtitle}
-                            </span>
-                        </div>
-                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-black aspect-video">
-                            <iframe
-                                className="w-full h-full"
-                                src="https://www.youtube.com/embed/m6lGgyleInU"
-                                title="1000 đơn hàng / tháng, Video hướng dẫn cách kéo tệp khách GROUP FACEBOOK tiềm năng"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    </motion.div>
                 </motion.div>
             </div>
 

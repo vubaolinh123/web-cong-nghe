@@ -1,19 +1,49 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Play, Sparkles, Rocket, Zap, TrendingUp, Users } from "lucide-react";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { ArrowRight, Sparkles, TrendingUp, Users, Zap, Power } from "lucide-react";
 import { Container, Button } from "../../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { SplineScene } from "@/components/ui/spline";
-import { Spotlight } from "@/components/ui/spotlight";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { useRef } from "react";
+import { FloatingPaths } from "@/components/ui/background-paths";
 
 export default function Hero() {
   const { dictionary } = useLanguage();
-  const { isDesktop, isMobile } = useIsMobile();
   const heroRef = useRef<HTMLElement>(null);
+
+  // Mouse Parallax Setup
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Custom Cursor Setup
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 150 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  // Smooth spring for Parallax
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+
+  // Parallax transforms
+  const backgroundX = useTransform(springX, [-0.5, 0.5], ["30px", "-30px"]);
+  const backgroundY = useTransform(springY, [-0.5, 0.5], ["30px", "-30px"]);
+
+  const contentX = useTransform(springX, [-0.5, 0.5], ["-15px", "15px"]);
+  const contentY = useTransform(springY, [-0.5, 0.5], ["-15px", "15px"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+
+    cursorX.set(e.clientX - left);
+    cursorY.set(e.clientY - top);
+  };
 
   const stats = [
     { value: "500+", label: "Dự án hoàn thành", icon: TrendingUp },
@@ -24,165 +54,167 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative h-full min-h-screen flex items-center justify-center overflow-x-clip bg-slate-950"
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] cursor-none"
     >
-      {/* === SIMPLE BACKGROUND === */}
+      {/* === CUSTOM CURSOR === */}
+      <motion.div
+        style={{
+          left: cursorXSpring,
+          top: cursorYSpring,
+        }}
+        className="absolute pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 mix-blend-screen"
+      >
+        <div className="relative">
+          <div className="w-8 h-8 rounded-full border border-cyan-400/80 shadow-[0_0_20px_rgba(34,211,238,0.5)] animate-spin-slow" />
+          <div className="absolute inset-0 w-2 h-2 m-auto bg-white rounded-full shadow-[0_0_10px_white]" />
+        </div>
+      </motion.div>
+
+      {/* === BACKGROUND LAYERS === */}
+
+      {/* 1. Deep Space Base */}
+      <div className="absolute inset-0 bg-[#020617]" />
+
+      {/* 2. BackgroundPaths - Animated SVG Network (Parallax) */}
+      <motion.div
+        style={{ x: backgroundX, y: backgroundY }}
+        className="absolute inset-0"
+      >
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </motion.div>
+
+      {/* 3. Glow Spheres for Depth */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Spotlights */}
-        {isDesktop && (
-          <>
-            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="rgba(59, 130, 246, 0.4)" />
-            <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="rgba(34, 197, 94, 0.3)" />
-          </>
-        )}
-
-        {/* Static Grid */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-            maskImage: 'radial-gradient(ellipse 80% 50% at 50% 50%, black 40%, transparent 100%)',
+        <motion.div
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1],
           }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"
         />
-
-        {/* Static Gradient Orbs */}
-        <div className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-[500px] h-[500px]'} bg-blue-500/15 rounded-full blur-[100px]`} />
-        <div className={`absolute bottom-1/4 right-1/4 ${isMobile ? 'w-48 h-48' : 'w-[400px] h-[400px]'} bg-green-500/15 rounded-full blur-[80px]`} />
-        {!isMobile && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-green-600/10 rounded-full blur-[120px]" />
-        )}
-
-        {/* Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(2,6,23,0.6)_100%)]" />
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[90px]"
+        />
       </div>
 
-      <Container className="relative z-10">
-        <div className={`grid grid-cols-1 ${isDesktop ? 'lg:grid-cols-2 gap-8 lg:gap-12' : 'gap-6'} items-center ${isDesktop ? 'min-h-[calc(100vh-100px)]' : 'py-20 sm:py-28'}`}>
-          {/* Left: Content */}
-          <div className={`text-center ${isDesktop ? 'lg:text-left order-2 lg:order-1' : ''}`}>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/30 backdrop-blur-sm text-xs sm:text-sm font-medium mb-6"
-            >
-              <Sparkles size={isMobile ? 14 : 16} className="text-yellow-400" />
-              <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold">
-                AI-First Company
-              </span>
-            </motion.div>
+      {/* 4. Vignette & Grain */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(2,6,23,0.7)_100%)] pointer-events-none" />
 
-            {/* Main Heading */}
+      {/* === MAIN CONTENT === */}
+      <Container className="relative z-10 w-full">
+        <motion.div
+          style={{ x: contentX, y: contentY }}
+          className="max-w-4xl mx-auto text-center relative"
+        >
+          {/* Text now directly on background - no glass card */}
+
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-slate-900/70 border border-cyan-500/30 backdrop-blur-md mb-8 group hover:border-cyan-400/50 transition-colors duration-300"
+          >
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm font-medium bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">
+              AI-First Technology Partner
+            </span>
+            <div className="w-[1px] h-4 bg-cyan-500/30 mx-2" />
+            <span className="text-xs text-cyan-400/80 font-mono">EST. 2017</span>
+          </motion.div>
+
+          {/* Titles */}
+          <div className="mb-8 relative">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-[0_2px_30px_rgba(34,211,238,0.5)]"
             >
-              <span className="block">{dictionary.hero.title1}</span>
-              <span className="block mt-2">
-                <span className="inline-block bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  {dictionary.hero.title2}
-                </span>
-                {" "} & {" "}
-                <span className="inline-block bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                  {dictionary.hero.title3}
+              <span className="block mb-2">{dictionary.hero.title1}</span>
+              <span className="block">
+                <span className="inline-block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent animate-gradient-text bg-[length:200%_auto]">
+                  {dictionary.hero.title2} & {dictionary.hero.title3}
                 </span>
               </span>
-              <span className="block mt-2">{dictionary.hero.title4}</span>
             </motion.h1>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
-            >
-              {dictionary.hero.subtitle}
-            </motion.p>
+            {/* Glow effect behind title */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-cyan-500/15 blur-[80px] -z-10 rounded-full pointer-events-none" />
+          </div>
 
-            {/* Stats Row - Mobile friendly */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 mb-8"
-            >
-              {stats.map((stat, i) => (
-                <div key={i} className="text-center lg:text-left">
-                  <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                    {stat.value}
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg md:text-xl text-slate-100 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+          >
+            {dictionary.hero.subtitle}
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          >
+            <Link href="/lien-he">
+              <Button
+                size="lg"
+                className="relative group h-14 pl-8 pr-10 bg-slate-900/70 overflow-hidden border border-cyan-500/50 hover:border-cyan-400/80 rounded-full transition-all duration-300 hover:shadow-[0_0_50px_rgba(34,211,238,0.4)]"
+              >
+                {/* Button Background Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Button Content */}
+                <div className="relative flex items-center gap-3">
+                  <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute inset-0 rounded-full animate-spin-slow bg-gradient-to-tr from-transparent via-white/50 to-transparent" />
+                    <Power size={16} className="text-white relative z-10" />
                   </div>
-                  <div className="text-xs text-slate-500">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <Link href="/lien-he">
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" className="w-full sm:w-auto min-w-[200px] group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_50px_rgba(59,130,246,0.5)]">
-                    <Rocket className="group-hover:rotate-12 transition-transform" size={isMobile ? 18 : 20} />
+                  <span className="text-lg font-medium tracking-wide text-cyan-100 group-hover:text-white transition-colors">
                     {dictionary.hero.ctaPrimary}
-                    <ArrowRight size={isMobile ? 18 : 20} className="group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </motion.div>
-              </Link>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto min-w-[200px] group border-slate-700 hover:border-blue-500/50 bg-slate-900/50 backdrop-blur-sm">
-                  <Play size={isMobile ? 18 : 20} className="group-hover:scale-110 transition-transform text-blue-400" />
-                  {dictionary.hero.ctaSecondary}
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-cyan-400 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </Button>
+            </Link>
+          </motion.div>
 
-          {/* Empty placeholder for grid layout */}
-          {isDesktop && <div className="order-1 lg:order-2" />}
-        </div>
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="grid grid-cols-3 gap-8 md:gap-16 mt-16 pt-10 border-t border-cyan-500/20"
+          >
+            {stats.map((stat, i) => (
+              <div key={i} className="text-center group cursor-default">
+                <div className="flex items-center justify-center gap-2 mb-2 text-cyan-500/70 group-hover:text-cyan-400 transition-colors duration-300">
+                  <stat.icon size={16} />
+                </div>
+                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-b from-white to-cyan-200 bg-clip-text text-transparent mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+        </motion.div>
       </Container>
-
-      {/* Right: 3D Scene - Desktop only */}
-      {isDesktop && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="absolute top-0 right-0 w-1/2 h-full z-20 pointer-events-none"
-        >
-          <div className="relative w-full h-full pointer-events-auto">
-            <SplineScene
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
-              enableMouseTracking={true}
-            />
-          </div>
-        </motion.div>
-      )}
-
-      {/* Static Scroll Indicator */}
-      {isDesktop && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-slate-700 flex items-start justify-center p-2">
-            <div className="w-1.5 h-2 rounded-full bg-gradient-to-b from-blue-400 to-cyan-400" />
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }

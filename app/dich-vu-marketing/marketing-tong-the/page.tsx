@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
+import FloatingServicesNav from "@/components/common/FloatingServicesNav";
 import { useEffect } from "react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -30,6 +31,7 @@ export default function MarketingFullPackagePage() {
     return (
         <main className="min-h-screen bg-slate-950">
             <Header />
+            <FloatingServicesNav />
 
             <Hero />
 

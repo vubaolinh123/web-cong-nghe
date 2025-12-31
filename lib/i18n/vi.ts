@@ -19,12 +19,13 @@ export const vi: TranslationDictionary = {
     sending: "Đang gửi..."
   },
   hero: {
-    badge: "Đối Tác Marketing & Công Nghệ #1 Việt Nam",
-    title1: "Giải Pháp",
+    badge: "Đội Ngũ 7 Năm Kinh Nghiệm | Đối Tác Marketing & Công Nghệ #1",
+    title1: "7 Năm Đồng Hành",
     title2: "Marketing",
     title3: "Công Nghệ",
-    title4: "Toàn Diện",
-    subtitle: "Chúng tôi chuyển đổi ý tưởng thành sản phẩm số xuất sắc. Từ phát triển phần mềm, ứng dụng di động đến AI và Cloud — đội ngũ chuyên gia của chúng tôi sẵn sàng đồng hành cùng doanh nghiệp của bạn.",
+    title4: "Chuyên Nghiệp",
+    subtitle: "Với đội ngũ chuyên gia 7 năm kinh nghiệm, chúng tôi chuyển đổi ý tưởng thành sản phẩm số xuất sắc. Từ phát triển phần mềm, ứng dụng di động đến AI và Cloud — sẵn sàng đồng hành cùng doanh nghiệp của bạn.",
+    subtitleMobile: "Đối tác chiến lược giúp doanh nghiệp đột phá doanh thu và tối ưu vận hành.",
     subtitleMarketing: "Marketing Online",
     subtitleTechnology: "Gia Công Phần Mềm",
     ctaPrimary: "Tư Vấn Miễn Phí",
@@ -307,8 +308,7 @@ export const vi: TranslationDictionary = {
       phonePlaceholder: "0912 345 678",
       jobTitle: "Chức Danh",
       jobTitlePlaceholder: "Giám đốc, Quản lý, ...",
-      currentJob: "Công Việc Hiện Tại",
-      currentJobPlaceholder: "Mô tả công việc",
+
       fanpage: "Link Fanpage/Website (Tùy chọn)",
       fanpagePlaceholder: "https://facebook.com/yourpage",
       service: "Dịch Vụ Bạn Cần",
@@ -419,7 +419,7 @@ export const vi: TranslationDictionary = {
       terms: "Điều Khoản Sử Dụng"
     },
     contact: {
-      email: "vtscademy9999@gmail.com",
+      email: "info@asieverest.com",
       phone: "058.450.3333",
       address: "Tòa nhà HB 154 Phạm Văn Chiêu, Phường Thông Tây Hội, TP Hồ Chí Minh, Việt Nam",
       businessHours: "Thứ 2 - Thứ 7: 8:00 - 18:00"

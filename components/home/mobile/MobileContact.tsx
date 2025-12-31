@@ -26,7 +26,6 @@ const budgetOptions = [
 const initialFormData: ContactFormData = {
     name: "",
     jobTitle: "",
-    currentJob: "",
     phone: "",
     fanpageOrWebsite: "",
     budget: "",
@@ -243,16 +242,6 @@ export default function MobileContact() {
                                 onChange={handleChange}
                                 error={errors.jobTitle}
                                 placeholder={t("contactSection.form.jobTitlePlaceholder")}
-                                required
-                                icon={<Briefcase size={16} />}
-                            />
-                            <FormInput
-                                label={t("contactSection.form.currentJob")}
-                                name="currentJob"
-                                value={formData.currentJob}
-                                onChange={handleChange}
-                                error={errors.currentJob}
-                                placeholder={t("contactSection.form.currentJobPlaceholder")}
                                 required
                                 icon={<Briefcase size={16} />}
                             />

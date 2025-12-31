@@ -27,7 +27,7 @@ export default function FooterSection() {
     techServices: [
       { name: "Custom Website", href: "/dich-vu-cong-nghe" },
       { name: "Low Code Automation", href: "/dich-vu-cong-nghe" },
-      { name: "AI Chatbot", href: "/dich-vu-cong-nghe" },
+      { name: "Mobile App", href: "/dich-vu-cong-nghe" },
       { name: "AI Agent", href: "/dich-vu-cong-nghe" },
     ],
   };

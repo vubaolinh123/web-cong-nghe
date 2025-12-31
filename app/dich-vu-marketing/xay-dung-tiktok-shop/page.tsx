@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
+import FloatingServicesNav from "@/components/common/FloatingServicesNav";
 import { useEffect } from "react";
 import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
 
@@ -26,6 +27,7 @@ export default function TiktokPage() {
     return (
         <main className="min-h-screen bg-black font-sans selection:bg-pink-500 selection:text-white">
             <Header />
+            <FloatingServicesNav />
 
             <Hero />
 

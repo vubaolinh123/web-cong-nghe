@@ -68,7 +68,6 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
       timestamp,
       data.name,
       data.jobTitle,
-      data.currentJob,
       data.phone,
       data.fanpageOrWebsite || "N/A",
       data.serviceCategory,
@@ -81,7 +80,7 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `'${sheetName}'!A:J`, // Use actual sheet name with quotes (10 columns now)
+      range: `'${sheetName}'!A:I`, // Use actual sheet name with quotes (9 columns now)
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -106,21 +105,21 @@ export const initializeSheet = async (): Promise<void> => {
   const sheetName = await getFirstSheetName(sheets, spreadsheetId);
 
   const headers = [
-    ["Timestamp", "Name", "Job Title", "Current Job", "Phone", "Fanpage/Website", "Service Category", "Specific Services", "Message", "Status"],
+    ["Timestamp", "Name", "Job Title", "Phone", "Fanpage/Website", "Service Category", "Specific Services", "Message", "Status"],
   ];
 
   try {
     // Check if headers exist
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `'${sheetName}'!A1:J1`,
+      range: `'${sheetName}'!A1:I1`,
     });
 
     if (!response.data.values || response.data.values.length === 0) {
       // Add headers if they don't exist
       await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `'${sheetName}'!A1:J1`,
+        range: `'${sheetName}'!A1:I1`,
         valueInputOption: "USER_ENTERED",
         requestBody: {
           values: headers,

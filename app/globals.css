@@ -394,3 +394,41 @@ html {
     cursor: none;
   }
 }
+
+/* === HIGH-TECH HERO ANIMATIONS === */
+@keyframes grid-flow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+  /* Alternative for background-position if needed, but transform is performant */
+}
+
+/* Better grid flow for background image */
+@keyframes grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+.animate-grid-flow {
+  animation: grid-scroll 2s linear infinite;
+}
+
+@keyframes spin-custom {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-custom 3s linear infinite;
+}
+
+@keyframes gradient-text-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-text-flow 3s linear infinite;
+}
+

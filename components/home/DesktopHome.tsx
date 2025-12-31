@@ -3,11 +3,7 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { Header, BlogSection } from "@/components/common";
-import {
-    FullPageContainer,
-    FullPageSection,
-    SectionConfig,
-} from "@/components/fullpage";
+
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 // Loading component
@@ -26,16 +22,7 @@ const ApproachSection = dynamic(() => import("./desktop/ApproachSection"));
 const ContactSection = dynamic(() => import("./desktop/ContactSection"));
 const FooterSection = dynamic(() => import("./desktop/FooterSection"));
 
-const sections: SectionConfig[] = [
-    { id: "hero", label: "Trang chủ" },
-    { id: "services", label: "Dịch vụ" },
-    { id: "partners", label: "Đối tác" },
-    { id: "why-us", label: "Vì sao chọn chúng tôi" },
-    { id: "approach", label: "Quy trình" },
-    { id: "contact", label: "Liên hệ" },
-    { id: "blog", label: "Bài viết" },
-    { id: "footer", label: "Thông tin" },
-];
+
 
 export default function DesktopHome() {
     const { dictionary } = useLanguage();
@@ -43,62 +30,68 @@ export default function DesktopHome() {
     return (
         <>
             <Header />
-            <main>
-                <FullPageContainer sections={sections}>
-                    <FullPageSection id="hero">
-                        <Suspense fallback={<SectionLoader />}>
-                            <Hero />
-                        </Suspense>
-                    </FullPageSection>
+            <main className="flex flex-col w-full overflow-x-hidden">
+                {/* Hero Section - Full Screen */}
+                <section id="hero" className="min-h-screen w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <Hero />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="services">
-                        <Suspense fallback={<SectionLoader />}>
-                            <ServicesSection />
-                        </Suspense>
-                    </FullPageSection>
+                {/* Services Section */}
+                <section id="services" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <ServicesSection />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="partners">
-                        <Suspense fallback={<SectionLoader />}>
-                            <PartnerCarousel />
-                        </Suspense>
-                    </FullPageSection>
+                {/* Partner Section */}
+                <section id="partners" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <PartnerCarousel />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="why-us">
-                        <Suspense fallback={<SectionLoader />}>
-                            <WhyUsSection />
-                        </Suspense>
-                    </FullPageSection>
+                {/* Why Us Section */}
+                <section id="why-us" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <WhyUsSection />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="approach">
-                        <Suspense fallback={<SectionLoader />}>
-                            <ApproachSection />
-                        </Suspense>
-                    </FullPageSection>
+                {/* Approach Section */}
+                <section id="approach" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <ApproachSection />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="contact">
-                        <Suspense fallback={<SectionLoader />}>
-                            <ContactSection />
-                        </Suspense>
-                    </FullPageSection>
+                {/* Contact Section */}
+                <section id="contact" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <ContactSection />
+                    </Suspense>
+                </section>
 
-                    <FullPageSection id="blog">
-                        <BlogSection
-                            title={dictionary.blogSection.title}
-                            titleHighlight={dictionary.blogSection.titleHighlight}
-                            subtitle={dictionary.blogSection.subtitle}
-                            viewAllText={dictionary.blogSection.viewAll}
-                            minuteReadText={dictionary.blogSection.minuteRead}
-                            accentColor="cyan"
-                            compact={true}
-                        />
-                    </FullPageSection>
+                {/* Blog Section */}
+                <section id="blog" className="w-full py-20 bg-slate-950">
+                    <BlogSection
+                        title={dictionary.blogSection.title}
+                        titleHighlight={dictionary.blogSection.titleHighlight}
+                        subtitle={dictionary.blogSection.subtitle}
+                        viewAllText={dictionary.blogSection.viewAll}
+                        minuteReadText={dictionary.blogSection.minuteRead}
+                        accentColor="cyan"
+                        compact={true}
+                    />
+                </section>
 
-                    <FullPageSection id="footer">
-                        <Suspense fallback={<SectionLoader />}>
-                            <FooterSection />
-                        </Suspense>
-                    </FullPageSection>
-                </FullPageContainer>
+                {/* Footer Section */}
+                <section id="footer" className="w-full">
+                    <Suspense fallback={<SectionLoader />}>
+                        <FooterSection />
+                    </Suspense>
+                </section>
             </main>
         </>
     );

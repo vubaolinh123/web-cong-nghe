@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
+import FloatingServicesNav from "@/components/common/FloatingServicesNav";
 import { useEffect } from "react";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
@@ -27,6 +28,7 @@ export default function FanpageBuildingPage() {
     return (
         <main className="min-h-screen bg-slate-950 font-sans">
             <Header />
+            <FloatingServicesNav />
 
             <Hero />
 

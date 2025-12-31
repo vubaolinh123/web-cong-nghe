@@ -19,12 +19,13 @@ export const en: TranslationDictionary = {
     sending: "Sending..."
   },
   hero: {
-    badge: "#1 Marketing & Technology Partner in Vietnam",
-    title1: "Comprehensive",
+    badge: "7 Years of Experience | #1 Marketing & Technology Partner",
+    title1: "7 Years Together",
     title2: "Marketing",
     title3: "Technology",
-    title4: "Solutions",
-    subtitle: "We transform ideas into outstanding digital products. From software development, mobile apps to AI and Cloud — our expert team is ready to accompany your business.",
+    title4: "Excellence",
+    subtitle: "With our team of 7 years experience, we transform ideas into outstanding digital products. From software development, mobile apps to AI and Cloud — ready to accompany your business.",
+    subtitleMobile: "Strategic partner helping businesses breakthrough revenue and optimize operations.",
     subtitleMarketing: "Online Marketing",
     subtitleTechnology: "Software Outsourcing",
     ctaPrimary: "Free Consultation",
@@ -307,8 +308,7 @@ export const en: TranslationDictionary = {
       phonePlaceholder: "0912 345 678",
       jobTitle: "Job Title",
       jobTitlePlaceholder: "Director, Manager, ...",
-      currentJob: "Current Job",
-      currentJobPlaceholder: "Describe your work",
+
       fanpage: "Fanpage/Website Link (Optional)",
       fanpagePlaceholder: "https://facebook.com/yourpage",
       service: "Service You Need",
@@ -419,7 +419,7 @@ export const en: TranslationDictionary = {
       terms: "Terms of Service"
     },
     contact: {
-      email: "vtscademy9999@gmail.com",
+      email: "info@asieverest.com",
       phone: "058.450.3333",
       address: "HB Building, 154 Pham Van Chieu, Thong Tay Hoi Ward, Ho Chi Minh City, Vietnam",
       businessHours: "Mon - Sat: 8:00 AM - 6:00 PM"

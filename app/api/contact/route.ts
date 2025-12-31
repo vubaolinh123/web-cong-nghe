@@ -52,7 +52,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
     const formData: ContactFormData = {
       name: body.name || "",
       jobTitle: body.jobTitle || "",
-      currentJob: body.currentJob || "",
       phone: body.phone || "",
       fanpageOrWebsite: body.fanpageOrWebsite || "",
       budget: body.budget || "",

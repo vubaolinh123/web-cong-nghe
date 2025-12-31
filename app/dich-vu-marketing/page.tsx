@@ -4,7 +4,8 @@ import { Header, BlogSection } from "@/components/common";
 import Hero from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import ServiceList from "@/components/marketing/ServiceList";
-import MarketingCaseStudies from "@/components/marketing/MarketingCaseStudies";
+import FeaturedCaseStudies from "@/components/marketing/FeaturedCaseStudies";
+
 import CTASection from "@/components/marketing/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -25,8 +26,8 @@ export default function MarketingServicesPage() {
             {/* Services List */}
             <ServiceList />
 
-            {/* Case Studies - NEW */}
-            <MarketingCaseStudies />
+            {/* Case Studies / Success Stories */}
+            <FeaturedCaseStudies />
 
             {/* CTA Text */}
             <CTASection />

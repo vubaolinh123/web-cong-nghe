@@ -3,7 +3,6 @@
 export interface ContactFormData {
   name: string;
   jobTitle: string;
-  currentJob: string;
   phone: string;
   fanpageOrWebsite: string;
   budget: string;
@@ -15,7 +14,6 @@ export interface ContactFormData {
 export interface ContactFormErrors {
   name?: string;
   jobTitle?: string;
-  currentJob?: string;
   phone?: string;
   fanpageOrWebsite?: string;
   budget?: string;

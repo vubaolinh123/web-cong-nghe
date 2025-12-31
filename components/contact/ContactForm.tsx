@@ -26,7 +26,6 @@ const budgetOptions = [
 const initialFormData: ContactFormData = {
   name: "",
   jobTitle: "",
-  currentJob: "",
   phone: "",
   fanpageOrWebsite: "",
   budget: "",

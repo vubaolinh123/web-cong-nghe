@@ -25,6 +25,7 @@ export type TranslationDictionary = {
     title3: string;
     title4: string;
     subtitle: string;
+    subtitleMobile: string;
     subtitleMarketing: string;
     subtitleTechnology: string;
     ctaPrimary: string;
@@ -203,8 +204,6 @@ export type TranslationDictionary = {
       phonePlaceholder: string;
       jobTitle: string;
       jobTitlePlaceholder: string;
-      currentJob: string;
-      currentJobPlaceholder: string;
       fanpage: string;
       fanpagePlaceholder: string;
       service: string;

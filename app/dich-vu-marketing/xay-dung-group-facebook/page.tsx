@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
+import FloatingServicesNav from "@/components/common/FloatingServicesNav";
 import { useEffect } from "react";
 import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
 
@@ -26,6 +27,7 @@ export default function GroupPage() {
     return (
         <main className="min-h-screen bg-slate-950 font-sans">
             <Header />
+            <FloatingServicesNav />
 
             <Hero />
 
