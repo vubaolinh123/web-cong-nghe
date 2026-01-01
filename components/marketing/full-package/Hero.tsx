@@ -51,27 +51,9 @@ export default function Hero() {
                         >
                             {t.hero.ctaPrimary}
                         </a>
-                        <Link
-                            href="/lien-he"
-                            className="px-8 py-4 rounded-full bg-slate-800 border border-slate-700 text-white font-bold text-lg hover:bg-slate-700 transition-all flex items-center gap-2"
-                        >
-                            {t.hero.ctaSecondary} <ArrowRight size={20} />
-                        </Link>
                     </div>
                 </motion.div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <span className="text-xs uppercase tracking-widest">{t.hero.scrollIndicator}</span>
-                <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-1">
-                    <div className="w-1 h-3 bg-cyan-500 rounded-full" />
-                </div>
-            </motion.div>
         </section>
     );
 }

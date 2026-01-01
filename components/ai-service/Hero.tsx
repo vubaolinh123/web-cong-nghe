@@ -21,7 +21,7 @@ export default function Hero() {
     return (
         <section
             ref={heroRef}
-            className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-slate-950"
+            className="relative min-h-screen md:h-screen md:min-h-[700px] flex items-center justify-center overflow-hidden bg-slate-950 py-20 md:py-0"
         >
             {/* === STUNNING BACKGROUND EFFECTS === */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -74,7 +74,7 @@ export default function Hero() {
             </div>
 
             {/* === CONTENT === */}
-            <Container className="relative z-20 pt-36 sm:pt-0">
+            <Container className="relative z-20 pt-24 sm:pt-0">
                 <div className="max-w-5xl mx-auto text-center">
                     {/* Badge with Pulse */}
                     <motion.div

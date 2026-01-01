@@ -64,7 +64,7 @@ export default function Hero() {
             </div>
 
             {/* === CONTENT === */}
-            <Container className="relative z-20 pt-36 sm:pt-0">
+            <Container className="relative z-20 pt-20 sm:pt-0">
                 <div className="max-w-5xl mx-auto text-center">
                     {/* Badge with Pulse */}
                     <motion.div
@@ -115,7 +115,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-lg sm:text-xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+                        className="text-lg sm:text-xl text-slate-300 mb-7 max-w-3xl mx-auto leading-relaxed"
                     >
                         <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">
                             {t.hero.optimizeText}
@@ -129,7 +129,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="flex flex-wrap justify-center gap-8 sm:gap-12 mb-12"
+                        className="flex flex-wrap justify-center gap-8 sm:gap-12 mb-5"
                     >
                         {stats.map((stat, i) => (
                             <div key={i} className="text-center">
@@ -146,7 +146,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-6 "
                     >
                         <Link href="#tu-van" scroll={true}>
                             <Button
@@ -161,35 +161,9 @@ export default function Hero() {
                                 </div>
                             </Button>
                         </Link>
-
-                        <Link href="#services">
-                            <motion.div
-                                className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-pointer group px-6 py-3 rounded-full border border-slate-700 hover:border-emerald-500/50 bg-slate-900/50 backdrop-blur-sm"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                            >
-                                <span className="text-base font-medium">{t.hero.ctaSecondary}</span>
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </motion.div>
-                        </Link>
                     </motion.div>
                 </div>
             </Container>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <div className="w-6 h-10 rounded-full border-2 border-slate-600 flex justify-center pt-2">
-                    <motion.div
-                        className="w-1.5 h-3 rounded-full bg-emerald-500"
-                        animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    />
-                </div>
-            </motion.div>
         </section>
     );
 }
