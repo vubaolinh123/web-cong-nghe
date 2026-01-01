@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Megaphone, Users, Video, BarChart3, CheckCircle, ArrowRight, Sparkles, Star, Zap } from "lucide-react";
 import { Container, Button } from "../common";
 import Image from "next/image";
@@ -54,18 +53,16 @@ export default function ServiceList() {
 
     return (
         <section id="services" className="py-16 sm:py-24 lg:py-32 bg-slate-950 relative overflow-hidden">
-            {/* === BACKGROUND EFFECTS === */}
+            {/* === OPTIMIZED BACKGROUND - No animated orbs for mobile performance === */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Animated gradient orbs */}
-                <motion.div
-                    className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]"
-                    animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                {/* Static gradient orbs - no animation, reduced blur */}
+                <div
+                    className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full hidden sm:block"
+                    style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)' }}
                 />
-                <motion.div
-                    className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]"
-                    animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                <div
+                    className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full hidden sm:block"
+                    style={{ background: 'radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%)' }}
                 />
 
                 {/* Grid pattern */}
@@ -73,56 +70,33 @@ export default function ServiceList() {
             </div>
 
             <Container className="relative z-10">
-                {/* Section Header */}
+                {/* Section Header - Static for mobile performance */}
                 <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6"
-                    >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
                         <Sparkles className="w-4 h-4 text-emerald-400" />
                         <span className="text-sm font-semibold text-emerald-400">{t.serviceList.badge}</span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h2
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6"
-                    >
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
                         {t.serviceList.title}{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                             {t.serviceList.titleHighlight}
                         </span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto px-4"
-                    >
+                    </h2>
+                    <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto px-4">
                         {t.serviceList.description}
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Services Grid - 2x2 on desktop, 1 column on mobile */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                     {services.map((service, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="group"
                         >
-                            <div className="relative h-full bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-slate-700 transition-all duration-500">
-                                {/* Hover glow effect */}
-                                <div className={`absolute inset-0 ${service.bgGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
+                            {/* Removed backdrop-blur-sm and hover glow blur for mobile performance */}
+                            <div className="relative h-full bg-slate-900/70 border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-slate-700 transition-colors duration-300">
 
                                 {/* Image Section */}
                                 <div className="relative h-48 sm:h-56 overflow-hidden">
@@ -172,50 +146,38 @@ export default function ServiceList() {
                                         {service.description}
                                     </p>
 
-                                    {/* Features Grid */}
+                                    {/* Features Grid - Static for mobile performance */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
                                         {service.features.map((feature, idx) => (
-                                            <motion.div
+                                            <div
                                                 key={idx}
                                                 className="flex items-center gap-2"
-                                                initial={{ opacity: 0, x: -10 }}
-                                                whileInView={{ opacity: 1, x: 0 }}
-                                                viewport={{ once: true }}
-                                                transition={{ delay: 0.3 + idx * 0.05 }}
                                             >
                                                 <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0`}>
                                                     <CheckCircle className="w-3 h-3 text-white" />
                                                 </div>
                                                 <span className="text-slate-300 text-xs sm:text-sm font-medium">{feature}</span>
-                                            </motion.div>
+                                            </div>
                                         ))}
                                     </div>
 
-                                    {/* CTA Button */}
+                                    {/* CTA Button - Static for mobile performance */}
                                     <Link href={service.href} className="block">
-                                        <motion.div
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            className={`w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-4 rounded-xl bg-gradient-to-r ${service.color} text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300`}
+                                        <div
+                                            className={`w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-4 rounded-xl bg-gradient-to-r ${service.color} text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-shadow duration-300`}
                                         >
                                             <span>{t.serviceList.viewDetails}</span>
-                                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                                        </motion.div>
+                                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 
-                {/* Bottom CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center mt-12 sm:mt-16"
-                >
+                {/* Bottom CTA - Static for mobile performance */}
+                <div className="text-center mt-12 sm:mt-16">
                     <p className="text-slate-400 mb-6">
                         {t.serviceList.bottomCta.text}
                     </p>
@@ -223,10 +185,10 @@ export default function ServiceList() {
                         <Button className="group bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-300">
                             <Zap className="w-5 h-5 mr-2 text-emerald-400" />
                             {t.serviceList.bottomCta.button}
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
                     </Link>
-                </motion.div>
+                </div>
             </Container>
         </section>
     );

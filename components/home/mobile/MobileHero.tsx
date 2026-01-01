@@ -7,6 +7,26 @@ import { Sparkles, ArrowRight, TrendingUp, Users, Zap } from "lucide-react";
 import { Container } from "../../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+// CSS for mobile-optimized animations
+const mobileAnimationStyles = `
+@keyframes mobile-pulse-cyan {
+    0%, 100% { opacity: 0.15; transform: translate3d(0,0,0) scale(1); }
+    50% { opacity: 0.25; transform: translate3d(0,0,0) scale(1.05); }
+}
+@keyframes mobile-pulse-purple {
+    0%, 100% { opacity: 0.1; transform: translate3d(0,0,0) scale(1); }
+    50% { opacity: 0.2; transform: translate3d(0,0,0) scale(1.05); }
+}
+@keyframes mobile-beam {
+    0% { transform: translate3d(0, -100%, 0); }
+    100% { transform: translate3d(0, 400%, 0); }
+}
+@keyframes mobile-scroll-fade {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+`;
+
 export default function MobileHero() {
     const { dictionary } = useLanguage();
 
@@ -18,62 +38,61 @@ export default function MobileHero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] pt-24 pb-16">
-            {/* === DIGITAL NEURAL MATRIX BACKGROUND === */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Inject mobile-optimized CSS animations */}
+            <style jsx>{mobileAnimationStyles}</style>
+
+            {/* === OPTIMIZED BACKGROUND FOR MOBILE === */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden transform-gpu">
                 {/* 1. Void Base */}
                 <div className="absolute inset-0 bg-[#020617]" />
 
-                {/* 2. Cyber Perspective Grid - Moving Down */}
-                <motion.div
-                    className="absolute inset-0 opacity-20 animate-grid-flow"
+                {/* 2. Static Grid - No animation for better performance */}
+                <div
+                    className="absolute inset-0 opacity-15 transform-gpu"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px),
-                                    linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(rgba(6, 182, 212, 0.25) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(6, 182, 212, 0.25) 1px, transparent 1px)`,
                         backgroundSize: '40px 40px',
                         maskImage: 'linear-gradient(to bottom, transparent 5%, black 40%, black 70%, transparent 95%)',
                     }}
                 />
 
-                {/* 3. Neural Nodes - Breathing Orbs */}
-                <motion.div
-                    className="absolute top-1/4 -left-20 w-80 h-80 bg-cyan-600/20 rounded-full blur-[100px] mix-blend-screen"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                {/* 3. Neural Orbs - Using CSS animations + gradient instead of blur for performance */}
+                <div
+                    className="absolute top-1/4 -left-20 w-80 h-80 rounded-full transform-gpu"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)',
+                        animation: 'mobile-pulse-cyan 8s ease-in-out infinite',
+                        willChange: 'transform, opacity',
+                    }}
                 />
-                <motion.div
-                    className="absolute bottom-1/4 -right-20 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                <div
+                    className="absolute bottom-1/4 -right-20 w-80 h-80 rounded-full transform-gpu"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%)',
+                        animation: 'mobile-pulse-purple 10s ease-in-out infinite',
+                        animationDelay: '2s',
+                        willChange: 'transform, opacity',
+                    }}
                 />
 
-                {/* 4. Digital Data Streams (Vertical Energy Beams) */}
-                {[...Array(3)].map((_, i) => (
-                    <motion.div
+                {/* 4. Simplified Data Streams - Only 2 beams with CSS animation */}
+                {[0, 1].map((i) => (
+                    <div
                         key={`beam-${i}`}
-                        className="absolute w-[1px] h-[30vh] bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
+                        className="absolute w-[1px] h-[25vh] transform-gpu"
                         style={{
-                            left: `${20 + i * 30}%`,
-                            top: '-30vh',
-                            opacity: 0.3
-                        }}
-                        animate={{
-                            top: ['-30vh', '130vh'],
-                        }}
-                        transition={{
-                            duration: 3 + i * 2,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: i * 1.5
+                            left: `${25 + i * 50}%`,
+                            top: 0,
+                            background: 'linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.3), transparent)',
+                            animation: `mobile-beam ${4 + i * 2}s linear infinite`,
+                            animationDelay: `${i * 1.5}s`,
+                            willChange: 'transform',
                         }}
                     />
                 ))}
 
-                {/* 5. Cinematic Grain Overlay */}
-                <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}
-                />
-
-                {/* Vignette */}
+                {/* 5. Static Vignette - No grain overlay on mobile for performance */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_100%)]" />
             </div>
 
@@ -141,7 +160,7 @@ export default function MobileHero() {
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={i}
-                                className="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-900/40 border border-slate-800 backdrop-blur-sm min-w-[90px]"
+                                className="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-900/60 border border-slate-800 min-w-[90px]"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
@@ -162,17 +181,13 @@ export default function MobileHero() {
                     >
                         <Link href="/lien-he" className="block w-full">
                             <div className="relative group rounded-full p-[1px] overflow-hidden">
-                                {/* Rotating Gradient Border */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 animate-spin-slow opacity-100 group-hover:opacity-100 transition-opacity" style={{ backgroundSize: '200% 200%' }} />
+                                {/* Static Gradient Border - No animation for mobile performance */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400" />
 
                                 {/* Inner Button */}
-                                <div className="relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-slate-950 rounded-full group-hover:bg-slate-900 transition-colors">
-                                    <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                                    <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-                                    </span>
+                                <div className="relative flex items-center justify-center gap-3 w-full px-8 py-4 bg-slate-950 rounded-full">
+                                    {/* Static dot instead of ping animation */}
+                                    <span className="inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
 
                                     <span className="font-bold text-white text-base tracking-wide uppercase group-hover:text-cyan-200 transition-colors">
                                         {dictionary.hero.ctaPrimary}
@@ -186,15 +201,14 @@ export default function MobileHero() {
                 </div>
             </Container>
 
-            {/* Tech Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
-                animate={{ opacity: [0.4, 0.8, 0.4] }}
-                transition={{ duration: 3, repeat: Infinity }}
+            {/* Tech Scroll Indicator - CSS animation for better performance */}
+            <div
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                style={{ animation: 'mobile-scroll-fade 3s ease-in-out infinite' }}
             >
                 <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-500/80 font-mono">Scroll</div>
                 <div className="w-[1px] h-8 bg-gradient-to-b from-cyan-500 to-transparent" />
-            </motion.div>
+            </div>
         </section>
     );
 }

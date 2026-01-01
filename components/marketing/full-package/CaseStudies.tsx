@@ -73,7 +73,7 @@ const featuredProjects: CaseStudyProject[] = [
         nameEN: 'VTV Partnership',
         descriptionVI: 'Hợp tác chiến lược với Đài Truyền hình Việt Nam (VTV) - Xây dựng chiến dịch truyền thông đa nền tảng, tiếp cận hàng triệu khán giả trên toàn quốc.',
         descriptionEN: 'Strategic partnership with Vietnam Television (VTV) - Building multi-platform media campaigns, reaching millions of viewers nationwide.',
-        image: '/image/casestudies/vtv_ai.png',
+        image: '/image/casestudies/marketing_7.jpg',
         stats: [
             { icon: Eye, value: '10M+', labelVI: 'Lượt xem', labelEN: 'Views' },
             { icon: Users, value: '5M+', labelVI: 'Khán giả', labelEN: 'Audience' },
@@ -87,7 +87,7 @@ const featuredProjects: CaseStudyProject[] = [
         nameEN: 'Palado Vietnam',
         descriptionVI: 'Xây dựng thương hiệu PALADO Việt Nam - Thiết bị vệ sinh cao cấp từ châu Âu. Phát triển định vị thương hiệu và chiến lược truyền thông toàn diện.',
         descriptionEN: 'Building PALADO Vietnam brand - Premium European sanitary equipment. Developing brand positioning and comprehensive communication strategy.',
-        image: '/image/casestudies/palado_brand_ai.png',
+        image: '/image/casestudies/marketing_8.jpg',
         stats: [
             { icon: TrendingUp, value: '+200%', labelVI: 'Doanh số', labelEN: 'Sales' },
             { icon: Award, value: 'Top 5', labelVI: 'Thương hiệu', labelEN: 'Brand Rank' },
@@ -101,7 +101,7 @@ const featuredProjects: CaseStudyProject[] = [
         nameEN: 'HPMED Vietnam',
         descriptionVI: 'Chiến dịch Marketing toàn diện cho HPMED - Công ty Thiết bị Thẩm mỹ Y tế hàng đầu Việt Nam. Từ branding đến digital marketing.',
         descriptionEN: 'Comprehensive Marketing campaign for HPMED - Leading Medical Aesthetic Equipment Company in Vietnam. From branding to digital marketing.',
-        image: '/image/casestudies/hpmed_marketing_ai.png',
+        image: '/image/casestudies/marketing_11.webp',
         stats: [
             { icon: TrendingUp, value: '+250%', labelVI: 'Tăng trưởng', labelEN: 'Growth' },
             { icon: Eye, value: '3M+', labelVI: 'Tiếp cận', labelEN: 'Reach' },
@@ -115,7 +115,7 @@ const featuredProjects: CaseStudyProject[] = [
         nameEN: 'Real EMS',
         descriptionVI: 'Ra mắt sản phẩm Real EMS - Công nghệ tập luyện EMS tiên tiến. Chiến dịch launch đa kênh với influencer marketing và PR.',
         descriptionEN: 'Product launch for Real EMS - Advanced EMS training technology. Multi-channel launch campaign with influencer marketing and PR.',
-        image: '/image/casestudies/real_ems_ai.png',
+        image: '/image/casestudies/marketing_10.jpg',
         stats: [
             { icon: Users, value: '50K+', labelVI: 'Khách hàng', labelEN: 'Customers' },
             { icon: TrendingUp, value: '+180%', labelVI: 'ROI', labelEN: 'ROI' },
