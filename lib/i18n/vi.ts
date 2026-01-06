@@ -163,7 +163,7 @@ export const vi: TranslationDictionary = {
       },
       permanentOperation: {
         title: "Vận Hành Vĩnh Viễn",
-        description: "Thời gian vận hành vĩnh viễn, setup hoàn thành trong 3-5 ngày"
+        description: "Thời gian vận hành vĩnh viễn, setup hoàn thành trong 2 tháng"
       }
     }
   },

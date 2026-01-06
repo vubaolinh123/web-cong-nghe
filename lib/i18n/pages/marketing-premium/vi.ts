@@ -12,7 +12,7 @@ export const vi: MarketingPremiumTranslations = {
         price: '70.000.000',
         originalPrice: '95.000.000',
         duration: 'Full / Hoàn thành / 3 tháng',
-        setupTime: 'Setup hoàn thành sau 3-5 ngày',
+        setupTime: 'Setup hoàn thành sau 3 tháng',
         ctaPrimary: 'Đăng Ký Ngay',
         ctaSecondary: 'Tư Vấn Miễn Phí',
     },
