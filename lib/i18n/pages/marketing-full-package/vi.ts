@@ -7,13 +7,18 @@ export const vi: MarketingFullPackageTranslations = {
         button: 'Tư Vấn Chiến Lược Ngay',
     },
     hero: {
-        badge: 'Giải pháp Marketing toàn diện A-Z',
+        badge: '🚀 Tăng trưởng doanh thu 300% trong 90 ngày',
         title: 'Nâng Tầm Thương Hiệu',
         titleHighlight: 'Đột Phá Doanh Thu',
-        description: 'Hệ thống Marketing tổng thể được thiết kế riêng cho doanh nghiệp của bạn. Từ xây dựng chiến lược, sáng tạo nội dung đến tối ưu hóa quảng cáo đa kênh.',
+        description: 'Hệ thống Marketing AI toàn diện đã giúp 500+ doanh nghiệp bùng nổ doanh số. Từ xây dựng thương hiệu, viral content đến tối ưu quảng cáo đa kênh.',
         ctaPrimary: 'Tư Vấn Miễn Phí',
-        ctaSecondary: 'Tư Vấn Miễn Phí',
+        ctaSecondary: 'Xem Case Studies',
         scrollIndicator: 'Khám phá',
+        stats: [
+            { value: '500+', label: 'Dự án thành công' },
+            { value: '10+', label: 'Năm kinh nghiệm' },
+            { value: '98%', label: 'Khách hài lòng' },
+        ],
     },
     benefits: {
         title: 'Tại Sao Chọn',

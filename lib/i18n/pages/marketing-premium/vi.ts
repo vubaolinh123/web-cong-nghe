@@ -1,0 +1,117 @@
+import { MarketingPremiumTranslations } from './types';
+
+export const vi: MarketingPremiumTranslations = {
+    meta: {
+        title: 'Gói Marketing Premium 70 Triệu | ASI EVEREST',
+        description: 'Gói marketing tổng thể Premium cho doanh nghiệp muốn tăng tốc và mở rộng thị phần. Setup hoàn thành trong 3 tháng.',
+    },
+    hero: {
+        badge: 'GÓI PREMIUM',
+        title: 'Marketing Tổng Thể',
+        titleHighlight: 'PREMIUM',
+        price: '70.000.000',
+        originalPrice: '95.000.000',
+        duration: 'Full / Hoàn thành / 3 tháng',
+        setupTime: 'Setup hoàn thành sau 3-5 ngày',
+        ctaPrimary: 'Đăng Ký Ngay',
+        ctaSecondary: 'Tư Vấn Miễn Phí',
+    },
+    overview: {
+        title: 'Bạn Sẽ Nhận Được',
+        titleHighlight: 'Trọn Gói Premium',
+        services: [
+            { icon: 'facebook', title: 'Fanpage & Ads Pro', desc: 'Setup Fanpage chuẩn SEO + 40 bài + Ads đa dạng' },
+            { icon: 'tiktok', title: 'TikTok + 10 Video', desc: 'Xây kênh 20K follow + 10 video viral content' },
+            { icon: 'users', title: 'Group 50K Thành Viên', desc: 'Setup Group 50.000 thành viên thật chất lượng' },
+            { icon: 'palette', title: 'Brand Design Pro', desc: '10 banner + 8 poster nhận diện thương hiệu' },
+            { icon: 'search', title: 'SEO & 2000 Backlinks', desc: '2000+ backlink tăng traffic organic mạnh mẽ' },
+            { icon: 'headset', title: 'Website DN + Coaching', desc: 'Website doanh nghiệp + Tư vấn chiến lược 1-1' },
+        ],
+    },
+    facebook: {
+        title: 'Setup Fanpage &',
+        titleHighlight: 'Facebook Ads Pro',
+        description: 'Xây dựng Fanpage Facebook chuẩn SEO top 1, tối ưu cho tìm kiếm và chạy quảng cáo đa dạng loại hình với 40 bài viết chất lượng.',
+        features: [
+            'Từ khóa chiến lược SEO & Hashtag trọng tâm',
+            'Phân tích đối tượng khách hàng & đối thủ cạnh tranh',
+            'Đề xuất loại hình Facebook Ads phù hợp',
+            'Facebook Ads Video, Click To Web, Messenger, Remarketing',
+            'Thiết kế Fanpage: Ảnh bìa, Cover, Tối ưu SEO',
+            'SEO top 1 Fanpage tìm là ra & úp page 5 sao',
+            '40 bài viết SEO chăm sóc Fanpage (gấp đôi Basic)',
+            'Viết content chủ lực SEO + hashtag + ads',
+            '2000 backlink rải link trên Facebook hút traffic',
+            '40 backlink social trên nền tảng tăng SEO',
+        ],
+    },
+    tiktok: {
+        title: 'Xây Kênh TikTok &',
+        titleHighlight: '10 Video Viral',
+        description: 'Xây dựng kênh TikTok từ 0 đến 20.000 follow trong 30 ngày với 10 video viral content sẵn sàng.',
+        features: [
+            'Tạo tên TikTok chuẩn hóa kênh cho doanh nghiệp',
+            'Tạo kênh chuẩn SEO, cài đặt chuẩn SEO',
+            'Xây kênh kéo tệp khách tạo viral nhanh',
+            'Tạo lộ trình cho kênh nhanh lên xu hướng',
+            'Kênh có sẵn tệp xây trong 30 ngày: 20.000 follow',
+            '10 nội dung video viral sẵn cho TikTok (Premium)',
+        ],
+    },
+    group: {
+        title: 'Setup Group',
+        titleHighlight: 'Facebook 50K Thành Viên',
+        description: 'Xây dựng Group Facebook với 50.000 thành viên thật, chất lượng từ tệp UID đối thủ và SEO - gấp 1.7 lần gói Basic.',
+        features: [
+            'Setup Group 50.000 thành viên seeding chăm sóc',
+            'Chuẩn đúng tệp khách UID đối thủ: 30% thành viên',
+            'Chuẩn tệp từ khóa SEO lên top: 70% thành viên',
+            'Chiến lược seeding kịch bản lộ trình viral',
+            'Kết hợp tăng uy tín, tăng trưởng thương hiệu',
+            'Điều hướng khách hàng hoặc CTV theo hướng DN cần',
+            'Chăm sóc 2 tháng đầu giúp Group tạo kết quả',
+        ],
+    },
+    brand: {
+        title: 'Thiết Kế Brand &',
+        titleHighlight: 'Website Doanh Nghiệp',
+        description: 'Thiết kế bộ nhận diện thương hiệu chuyên nghiệp với số lượng gấp đôi và website doanh nghiệp phễu hút khách.',
+        features: [
+            '1 hình bìa Fanpage chuyên nghiệp',
+            '1 cover Fanpage theo brand',
+            '10 banner theo brand identity (gấp đôi Basic)',
+            '8 poster giá trị cho sản phẩm/dịch vụ',
+            'Website doanh nghiệp phễu hút khách sự kiện',
+            'Sử dụng brand hình ảnh lan tỏa tiếp cận khách',
+            'Áp dụng vào Ads, Facebook, Web, TikTok, Google Maps, Zalo',
+        ],
+    },
+    kpiResults: {
+        title: 'Kết Quả',
+        titleHighlight: 'Cam Kết KPI Premium',
+        results: [
+            {
+                value: '200-400',
+                title: 'Khách Hàng Đầu Tiên',
+                desc: 'Kết quả KPI khách hàng đổ về sau 3 tháng hoàn thành. Con số tăng mạnh & bền nhờ hệ sinh thái hoàn chỉnh.',
+            },
+            {
+                value: '95%',
+                title: 'Tỷ Lệ Chuyển Đổi',
+                desc: 'Giá trị thương hiệu Premium và uy tín sản phẩm cực cao, khách hàng tin tưởng tuyệt đối.',
+            },
+            {
+                value: '15M/th',
+                title: 'Hỗ Trợ Dài Hạn',
+                desc: 'Chăm sóc gói dịch vụ hệ sinh thái Premium chỉ 15.000.000 VNĐ/tháng để đồng hành phát triển.',
+            },
+        ],
+    },
+    cta: {
+        title: 'Sẵn Sàng Bứt Phá',
+        titleHighlight: 'Doanh Số Premium?',
+        description: 'Đừng chờ đợi thêm! Đăng ký ngay gói Premium để được tư vấn chiến lược marketing toàn diện nhất.',
+        phone: '+84 58.450.3333',
+        button: 'Đăng Ký Tư Vấn Premium',
+    },
+};

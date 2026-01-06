@@ -7,13 +7,18 @@ export const en: MarketingFullPackageTranslations = {
         button: 'Get Strategy Consultation Now',
     },
     hero: {
-        badge: 'Complete A-Z Marketing Solution',
+        badge: '🚀 300% Revenue Growth in 90 Days',
         title: 'Elevate Your Brand',
         titleHighlight: 'Breakthrough Revenue',
-        description: 'A comprehensive marketing system designed specifically for your business. From strategy development, content creation to multi-channel advertising optimization.',
+        description: 'Comprehensive AI Marketing system that has helped 500+ businesses explode their sales. From brand building, viral content to multi-channel advertising optimization.',
         ctaPrimary: 'Free Consultation',
-        ctaSecondary: 'Free Consultation',
+        ctaSecondary: 'View Case Studies',
         scrollIndicator: 'Explore',
+        stats: [
+            { value: '500+', label: 'Successful Projects' },
+            { value: '10+', label: 'Years Experience' },
+            { value: '98%', label: 'Client Satisfaction' },
+        ],
     },
     benefits: {
         title: 'Why Choose',

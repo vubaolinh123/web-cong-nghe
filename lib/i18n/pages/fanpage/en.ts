@@ -9,9 +9,9 @@ export const en: FanpageTranslations = {
     hero: {
         badge: 'GROWTH SOLUTION 1000+ ORDERS',
         title: 'Build',
-        titleHighlight: 'Fanpage/Group',
+        titleHighlight: 'Page Channel',
         titleLine2: 'SEO Standard Top #1',
-        description: 'Own a Fanpage/Group system with tens of thousands of real members. Reach the right target customers, explode sales with',
+        description: 'Own a Fanpage with tens of thousands of real followers. Reach the right target customers, explode sales with',
         descriptionHighlight: 'ASI Everest',
         ctaPrimary: 'Fill Implementation Info',
         ctaSecondary: 'Free Consultation',
@@ -29,8 +29,8 @@ export const en: FanpageTranslations = {
     },
     whySetup: {
         title: 'Why Need',
-        titleHighlight: 'Setup Fanpage/Group?',
-        description: 'Buying and Setting up Facebook Fanpage is the first option for many people when starting a business. Because currently activities on Facebook are very vibrant. If you need to buy and own a group with many members, contact ASI Everest for suitable consultation.',
+        titleHighlight: 'Setup Fanpage?',
+        description: 'Buying and Setting up Facebook Fanpage is the first option for many people when starting a business. Because currently activities on Facebook are very vibrant. If you need to own a Fanpage with many followers, contact ASI Everest for suitable consultation.',
         visualTitle: 'Lightning Fast Growth',
         visualDesc: 'Own ready-made customer files immediately, skip the difficult "build" phase from zero.',
     },
@@ -210,7 +210,7 @@ export const en: FanpageTranslations = {
                     {
                         title: 'Care',
                         items: [
-                            'Care + 2 months content (60 posts + videos)',
+                            'Care + 2 months content (60 image posts + videos + AI)',
                             'Free: 2 months seeding like comment script',
                         ]
                     },

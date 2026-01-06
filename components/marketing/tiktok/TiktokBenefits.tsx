@@ -10,9 +10,9 @@ const benefitColors = [
 ];
 
 const benefitImages = [
-    "/image/tiktok_growth_real.jpg",
-    "/image/tiktok_shop_real.jpg",
-    "/image/tiktok_live_real.jpg",
+    "/image/tiktok_campaign_stats.png",    // Chiến dịch hàng tháng - Dashboard với chỉ số
+    "/image/tiktok_shop_real.jpg",         // Kiếm thêm thu nhập - Giữ nguyên
+    "/image/tiktok_shop_products.png",     // Tiết kiệm thời gian - Sản phẩm thương mại
 ];
 
 export default function TiktokBenefits() {
@@ -25,12 +25,12 @@ export default function TiktokBenefits() {
     }));
 
     return (
-        <section className="py-20 bg-black text-white relative overflow-hidden">
+        <section className="py-12 sm:py-20 bg-black text-white relative overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 gap-12">
+                <div className="grid grid-cols-1 gap-8 sm:gap-12">
                     {items.map((item, index) => (
                         <motion.div
                             key={index}
@@ -38,10 +38,10 @@ export default function TiktokBenefits() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.2 }}
-                            className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                            className={`flex flex-col md:flex-row items-center gap-6 sm:gap-8 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
                         >
                             <div className="w-full md:w-1/2 flex justify-center">
-                                <div className="relative w-full max-w-[400px] aspect-[4/3]">
+                                <div className="relative w-full max-w-[280px] sm:max-w-[400px] aspect-[4/3]">
                                     <div className={`absolute inset-0 bg-gradient-to-r ${item.color} blur-[50px] opacity-20`} />
                                     <img
                                         src={item.img}
@@ -51,14 +51,14 @@ export default function TiktokBenefits() {
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 space-y-4 text-center md:text-left">
-                                <h3 className={`text-2xl md:text-4xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r ${item.color}`}>
+                            <div className="w-full md:w-1/2 space-y-3 sm:space-y-4 text-center md:text-left">
+                                <h3 className={`text-xl sm:text-2xl md:text-4xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r ${item.color}`}>
                                     {item.title}
                                 </h3>
-                                <h4 className="text-xl md:text-2xl font-bold text-white">
+                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                                     {item.subtitle}
                                 </h4>
-                                <p className="text-slate-400 text-lg leading-relaxed">
+                                <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
                                     {item.desc}
                                 </p>
                             </div>
@@ -69,3 +69,4 @@ export default function TiktokBenefits() {
         </section>
     );
 }
+

@@ -1,0 +1,117 @@
+import { MarketingPremiumTranslations } from './types';
+
+export const en: MarketingPremiumTranslations = {
+    meta: {
+        title: 'Premium Marketing Package 70M | ASI EVEREST',
+        description: 'Premium comprehensive marketing package for businesses wanting to accelerate and expand market share. Setup completed in 3 months.',
+    },
+    hero: {
+        badge: 'PREMIUM PACKAGE',
+        title: 'Full Package Marketing',
+        titleHighlight: 'PREMIUM',
+        price: '70,000,000',
+        originalPrice: '95,000,000',
+        duration: 'Full / Complete / 3 months',
+        setupTime: 'Setup completed in 3-5 days',
+        ctaPrimary: 'Register Now',
+        ctaSecondary: 'Free Consultation',
+    },
+    overview: {
+        title: 'You Will Receive',
+        titleHighlight: 'Premium Package',
+        services: [
+            { icon: 'facebook', title: 'Fanpage & Ads Pro', desc: 'SEO Fanpage setup + 40 posts + various Ads' },
+            { icon: 'tiktok', title: 'TikTok + 10 Videos', desc: 'Build 20K followers + 10 viral video content' },
+            { icon: 'users', title: 'Group 50K Members', desc: 'Setup Group with 50,000 real quality members' },
+            { icon: 'palette', title: 'Brand Design Pro', desc: '10 banners + 8 posters for brand identity' },
+            { icon: 'search', title: 'SEO & 2000 Backlinks', desc: '2000+ backlinks for powerful organic traffic' },
+            { icon: 'headset', title: 'Business Website + Coaching', desc: 'Business website + 1-1 strategy consulting' },
+        ],
+    },
+    facebook: {
+        title: 'Fanpage Setup &',
+        titleHighlight: 'Facebook Ads Pro',
+        description: 'Build top 1 SEO-optimized Facebook Fanpage, optimized for search and running various ad types with 40 quality posts.',
+        features: [
+            'Strategic SEO keywords & core Hashtags',
+            'Customer audience & competitor analysis',
+            'Recommend suitable Facebook Ads types',
+            'Facebook Ads: Video, Click To Web, Messenger, Remarketing',
+            'Fanpage design: Cover photo, optimized for SEO',
+            'SEO top 1 Fanpage ranking & 5-star page',
+            '40 SEO posts for Fanpage care (double Basic)',
+            'Main content writing: SEO + hashtag + ads ready',
+            '2000 backlinks on Facebook to drive traffic',
+            '40 social backlinks to boost SEO',
+        ],
+    },
+    tiktok: {
+        title: 'Build TikTok Channel &',
+        titleHighlight: '10 Viral Videos',
+        description: 'Build TikTok channel from 0 to 20,000 followers in 30 days with 10 viral video content ready.',
+        features: [
+            'Create standardized TikTok name for business',
+            'Create SEO-standard channel with proper settings',
+            'Build channel to attract customers and go viral fast',
+            'Create roadmap for trending quickly',
+            'Ready-made audience: 20,000 followers in 30 days',
+            '10 viral video content ready for TikTok (Premium)',
+        ],
+    },
+    group: {
+        title: 'Setup Facebook Group',
+        titleHighlight: '50K Members',
+        description: 'Build Facebook Group with 50,000 real, quality members from competitor UIDs and SEO - 1.7x Basic package.',
+        features: [
+            'Setup Group with 50,000 members with seeding care',
+            'Accurate competitor UID audience: 30% members',
+            'SEO keyword ranking audience: 70% members',
+            'Viral roadmap seeding strategy',
+            'Combined credibility and brand growth',
+            'Direct customers or affiliates as business needs',
+            'First 2 months care to help Group generate results',
+        ],
+    },
+    brand: {
+        title: 'Brand Design &',
+        titleHighlight: 'Business Website',
+        description: 'Professional brand identity design with double quantity and business website funnel to attract customers.',
+        features: [
+            '1 professional Fanpage cover photo',
+            '1 Fanpage cover following brand guidelines',
+            '10 banners following brand identity (double Basic)',
+            '8 value posters for products/services',
+            'Business website funnel for customer acquisition',
+            'Use brand imagery to reach customers',
+            'Apply to Ads, Facebook, Web, TikTok, Google Maps, Zalo campaigns',
+        ],
+    },
+    kpiResults: {
+        title: 'Committed',
+        titleHighlight: 'Premium KPI Results',
+        results: [
+            {
+                value: '200-400',
+                title: 'First Customers',
+                desc: 'KPI results with customers coming after 3 months. Numbers grow strongly & sustainably thanks to complete ecosystem.',
+            },
+            {
+                value: '95%',
+                title: 'Conversion Rate',
+                desc: 'Premium brand value and extremely high product credibility, customers trust absolutely.',
+            },
+            {
+                value: '15M/mo',
+                title: 'Long-term Support',
+                desc: 'Premium ecosystem service care for only 15,000,000 VND/month to accompany development.',
+            },
+        ],
+    },
+    cta: {
+        title: 'Ready for Premium',
+        titleHighlight: 'Sales Breakthrough?',
+        description: "Don't wait any longer! Register for Premium package now for the most comprehensive marketing strategy consultation.",
+        phone: '+84 58.450.3333',
+        button: 'Register for Premium Consultation',
+    },
+};

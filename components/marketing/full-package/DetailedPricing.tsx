@@ -99,7 +99,11 @@ export default function DetailedPricing() {
                             </div>
 
                             <a
-                                href="/lien-he"
+                                href={
+                                    index === 0 ? "/dich-vu-marketing/marketing-tong-the/goi-basic" :
+                                        index === 1 ? "/dich-vu-marketing/marketing-tong-the/goi-premium" :
+                                            "/lien-he"
+                                }
                                 rel="noreferrer"
                                 className={`w-full py-4 rounded-xl text-white font-bold text-center transition-all flex items-center justify-center gap-2 shadow-lg ${plan.btnColor} transform group-hover:-translate-y-1`}
                             >

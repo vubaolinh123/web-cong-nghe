@@ -4,18 +4,18 @@ export const en: TiktokShopTranslations = {
     pageCta: {
         title: 'Ready to Explode Sales on',
         titleHighlight: 'TikTok Shop?',
-        button: 'CALL NOW: 058.450.3333',
+        button: 'CALL NOW: +84 58.450.3333',
     },
     hero: {
-        badge: 'COMPREHENSIVE TIKTOK SHOP SOLUTION',
+        badge: 'TIKTOK CHANNEL & SHOP SOLUTION',
         title: 'Build',
-        titleHighlight: 'TikTok Shop',
+        titleHighlight: 'TikTok Channel & Shop',
         titleLine2: 'Thousand Orders With',
         titleHighlight2: 'ASI Everest',
         description: 'Turn your TikTok channel into an automated 24/7 sales machine. Reach millions of potential young customers.',
         descriptionHighlight: 'Credible - Fast - Sustainable.',
         ctaPrimary: 'Consult Now',
-        ctaSecondary: 'Hotline: 058.450.3333',
+        ctaSecondary: 'Hotline: +84 58.450.3333',
     },
     benefits: {
         items: [

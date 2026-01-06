@@ -8,10 +8,10 @@ export const vi: FanpageTranslations = {
     },
     hero: {
         badge: 'GIẢI PHÁP TĂNG TRƯỞNG 1000+ ĐƠN',
-        title: 'Xây Dựng',
-        titleHighlight: 'Fanpage/Group',
+        title: 'Xây Kênh',
+        titleHighlight: 'Page',
         titleLine2: 'Chuẩn SEO Top #1',
-        description: 'Sở hữu hệ thống Fanpage/Group hàng chục nghìn thành viên thật. Tiếp cận đúng khách hàng mục tiêu, bùng nổ doanh số cùng',
+        description: 'Sở hữu Fanpage hàng chục nghìn follow thật. Tiếp cận đúng khách hàng mục tiêu, bùng nổ doanh số cùng',
         descriptionHighlight: 'ASI Everest',
         ctaPrimary: 'Điền Thông Tin Triển Khai',
         ctaSecondary: 'Tư Vấn Miễn Phí',
@@ -29,8 +29,8 @@ export const vi: FanpageTranslations = {
     },
     whySetup: {
         title: 'Tại Sao Cần',
-        titleHighlight: 'Setup Fanpage/Group?',
-        description: 'Mua và Setup Fanpage Facebook là phương án đầu tiên của nhiều người khi họ bắt đầu kinh doanh. Bởi vì hiện nay các hoạt động trên Facebook hết sức sôi nổi. Nếu khách hàng cần mua và sở hữu 1 group nhiều thành viên, hãy liên hệ với ASI Everest để được tư vấn chốt đơn phù hợp.',
+        titleHighlight: 'Setup Fanpage?',
+        description: 'Mua và Setup Fanpage Facebook là phương án đầu tiên của nhiều người khi họ bắt đầu kinh doanh. Bởi vì hiện nay các hoạt động trên Facebook hết sức sôi nổi. Nếu bạn cần sở hữu 1 Fanpage nhiều follow, hãy liên hệ với ASI Everest để được tư vấn phù hợp.',
         visualTitle: 'Tăng Trưởng Thần Tốc',
         visualDesc: 'Sở hữu ngay tệp khách hàng có sẵn, bỏ qua giai đoạn "build" từ con số 0 cực khổ.',
     },
@@ -210,7 +210,7 @@ export const vi: FanpageTranslations = {
                     {
                         title: 'Chăm Sóc',
                         items: [
-                            'Chăm sóc + 2 tháng chăm nội dung (60 bài + video)',
+                            'Chăm sóc + 2 tháng chăm nội dung (60 bài hình ảnh + video + AI)',
                             'Tặng: Seeding 2 tháng like comment kịch bản',
                         ]
                     },

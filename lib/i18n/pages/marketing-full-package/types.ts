@@ -12,6 +12,10 @@ export type MarketingFullPackageTranslations = {
         ctaPrimary: string;
         ctaSecondary: string;
         scrollIndicator: string;
+        stats: Array<{
+            value: string;
+            label: string;
+        }>;
     };
     benefits: {
         title: string;

@@ -4,18 +4,18 @@ export const vi: TiktokShopTranslations = {
     pageCta: {
         title: 'Sẵn Sàng Bùng Nổ Doanh Số Trên',
         titleHighlight: 'TikTok Shop?',
-        button: 'GỌI NGAY: 058.450.3333',
+        button: 'GỌI NGAY: +84 58.450.3333',
     },
     hero: {
-        badge: 'GIẢI PHÁP TIKTOK SHOP TOÀN DIỆN',
-        title: 'Xây Dựng',
-        titleHighlight: 'TikTok Shop',
+        badge: 'GIẢI PHÁP XÂY KÊnh TIKTOK & SHOP',
+        title: 'Xây Kênh',
+        titleHighlight: 'TikTok & Shop',
         titleLine2: 'Nghìn Đơn Cùng',
         titleHighlight2: 'ASI Everest',
         description: 'Biến kênh TikTok thành cỗ máy bán hàng tự động 24/7. Tiếp cận hàng triệu khách hàng trẻ tiềm năng.',
         descriptionHighlight: 'Uy tín - Nhanh chóng - Bền vững.',
         ctaPrimary: 'Tư Vấn Ngay',
-        ctaSecondary: 'Hotline: 058.450.3333',
+        ctaSecondary: 'Hotline: +84 58.450.3333',
     },
     benefits: {
         items: [

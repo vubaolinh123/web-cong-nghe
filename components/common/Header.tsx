@@ -46,9 +46,9 @@ export default function Header() {
       color: "text-green-400",
       children: [
         { name: "Marketing Tổng Thể", href: "/dich-vu-marketing/marketing-tong-the" },
-        { name: "Group Facebook", href: "/dich-vu-marketing/xay-dung-group-facebook" },
-        { name: "Fanpage", href: "/dich-vu-marketing/xay-dung-fanpage" },
-        { name: "TikTok Shop", href: "/dich-vu-marketing/xay-dung-tiktok-shop" },
+        { name: "Xây Hoặc Setup Group", href: "/dich-vu-marketing/xay-dung-group-facebook" },
+        { name: "Xây Kênh Page", href: "/dich-vu-marketing/xay-dung-fanpage" },
+        { name: "Xây Kênh TikTok", href: "/dich-vu-marketing/xay-dung-tiktok-shop" },
       ]
     },
     {
