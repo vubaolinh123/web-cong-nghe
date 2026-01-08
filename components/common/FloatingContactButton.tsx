@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, X } from "lucide-react";
+import ProductShowcaseButton from "./ProductShowcaseButton";
 
 export default function FloatingContactButton() {
     const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,9 @@ export default function FloatingContactButton() {
 
     return (
         <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end gap-2 sm:gap-4">
+            {/* Product Showcase Button */}
+            <ProductShowcaseButton />
+
             {/* Contact Options Menu */}
             <AnimatePresence>
                 {isOpen && (
