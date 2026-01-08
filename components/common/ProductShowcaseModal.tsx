@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import Image from "next/image";
 import { X } from "lucide-react";
-import { useIsMobile } from "@/hooks/useIsMobile";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,7 +15,7 @@ interface ProductShowcaseModalProps {
     onClose: () => void;
 }
 
-// Case studies images data
+// All Case Studies images
 const showcaseImages = [
     { src: "/image/casestudies/fanpage_1.jpg", alt: "Fanpage Case Study 1" },
     { src: "/image/casestudies/fanpage_2.jpg", alt: "Fanpage Case Study 2" },
@@ -35,8 +34,41 @@ const showcaseImages = [
     { src: "/image/casestudies/tiktok_slider/tiktok_13.jpg", alt: "TikTok Case Study 13" },
 ];
 
+// Split images into 2 rows
+const row1Images = showcaseImages.slice(0, 8);
+const row2Images = showcaseImages.slice(8);
+
+// Reusable slide component
+const SlideCard = ({ image, index, isMainRow = false }: {
+    image: { src: string; alt: string };
+    index: number;
+    isMainRow?: boolean;
+}) => (
+    <div className={`flex flex-col items-center showcase-slide ${isMainRow ? 'main-row-slide' : ''}`}>
+        <div className="relative p-[3px] rounded-[2rem] bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 shadow-lg slide-content">
+            <div className="relative bg-slate-900 rounded-[1.8rem] overflow-hidden">
+                <div className="relative w-[120px] sm:w-[140px] lg:w-[160px] aspect-[9/16]">
+                    <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
+                        priority={index < 4}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
 export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcaseModalProps) {
-    const { isMobile } = useIsMobile();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -61,6 +93,25 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
         return () => window.removeEventListener('keydown', handleEscape);
     }, [isOpen, onClose]);
 
+    if (!isClient) return null;
+
+    // Shared Swiper config
+    const swiperBaseConfig = {
+        modules: [Autoplay, FreeMode],
+        spaceBetween: 16,
+        slidesPerView: 2,
+        freeMode: true,
+        loop: true,
+        speed: 2000, // Faster speed
+        breakpoints: {
+            480: { slidesPerView: 2.5, spaceBetween: 20 },
+            640: { slidesPerView: 3.5, spaceBetween: 24 },
+            768: { slidesPerView: 4.5, spaceBetween: 28 },
+            1024: { slidesPerView: 5.5, spaceBetween: 32 },
+            1280: { slidesPerView: 7, spaceBetween: 36 },
+        },
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -69,28 +120,25 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className={`fixed inset-0 z-[60] flex items-center justify-center ${isMobile ? 'bg-black/95' : 'bg-black/90 backdrop-blur-md'
-                        }`}
+                    className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-sm"
                     onClick={onClose}
                 >
                     {/* Close Button */}
                     <motion.button
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ delay: 0.1 }}
                         onClick={onClose}
-                        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors group"
+                        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                         aria-label="Đóng"
                     >
-                        <X className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-90 transition-transform duration-300" />
+                        <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </motion.button>
 
                     {/* Title */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
                         transition={{ delay: 0.15 }}
                         className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10"
                     >
@@ -102,66 +150,59 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                         </p>
                     </motion.div>
 
-                    {/* Slider Container */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ delay: 0.2 }}
-                        className="w-full px-0"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <Swiper
-                            modules={[Autoplay, FreeMode]}
-                            spaceBetween={isMobile ? 12 : 20}
-                            slidesPerView="auto"
-                            centeredSlides={false}
-                            freeMode={true}
-                            autoplay={{
-                                delay: 1,
-                                disableOnInteraction: false,
-                            }}
-                            loop={true}
-                            speed={isMobile ? 5000 : 4000}
-                            className="product-showcase-swiper"
+                    {/* Dual Row Sliders Container */}
+                    <div className="w-full flex flex-col gap-4 sm:gap-6" onClick={(e) => e.stopPropagation()}>
+                        {/* Row 1: Left to Right with Center Zoom */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="w-full"
                         >
-                            {showcaseImages.map((image, index) => (
-                                <SwiperSlide
-                                    key={index}
-                                    style={{ width: 'auto' }}
-                                >
-                                    <div className="relative group cursor-pointer">
-                                        {/* Image Container */}
-                                        <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl border-2 border-white/10 ${isMobile ? '' : 'hover:border-purple-500/50 transition-colors duration-300'
-                                            }`}>
-                                            <div className={`relative ${isMobile
-                                                    ? 'w-[140px] aspect-[9/16]'
-                                                    : 'w-[180px] sm:w-[200px] lg:w-[220px] aspect-[9/16]'
-                                                }`}>
-                                                <Image
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    fill
-                                                    className={`object-cover object-top ${isMobile ? '' : 'group-hover:scale-105 transition-transform duration-500'
-                                                        }`}
-                                                    sizes="(max-width: 640px) 140px, (max-width: 768px) 180px, 220px"
-                                                    loading="lazy"
-                                                />
+                            <Swiper
+                                {...swiperBaseConfig}
+                                centeredSlides={true}
+                                autoplay={{
+                                    delay: 1,
+                                    disableOnInteraction: false,
+                                    pauseOnMouseEnter: false,
+                                }}
+                                className="!py-6 center-zoom-swiper"
+                            >
+                                {row1Images.map((image, index) => (
+                                    <SwiperSlide key={`row1-${index}`}>
+                                        <SlideCard image={image} index={index} isMainRow={true} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </motion.div>
 
-                                                {/* Gradient Overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-                                            </div>
-                                        </div>
-
-                                        {/* Glow Effect - Desktop only */}
-                                        {!isMobile && (
-                                            <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                                        )}
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </motion.div>
+                        {/* Row 2: Right to Left */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="w-full"
+                        >
+                            <Swiper
+                                {...swiperBaseConfig}
+                                centeredSlides={false}
+                                autoplay={{
+                                    delay: 1,
+                                    disableOnInteraction: false,
+                                    pauseOnMouseEnter: false,
+                                    reverseDirection: true, // Reverse direction for row 2
+                                }}
+                                className="!py-4"
+                            >
+                                {row2Images.map((image, index) => (
+                                    <SwiperSlide key={`row2-${index}`}>
+                                        <SlideCard image={image} index={index} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </motion.div>
+                    </div>
 
                     {/* Bottom Hint */}
                     <motion.p
