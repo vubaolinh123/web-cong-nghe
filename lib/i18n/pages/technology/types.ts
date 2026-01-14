@@ -58,15 +58,20 @@ export type TechnologyPageTranslations = {
     caseStudies: {
         title: string;
         subtitle: string;
-        cases: Array<{
+        readMore: string;
+        viewProject: string;
+        projects: Array<{
+            id: string;
             title: string;
-            client: string;
             category: string;
+            image: string;
             description: string;
-            stats: Array<{
-                value: string;
-                label: string;
-            }>;
+            content: {
+                overview: string;
+                challenges: string;
+                solutions: string[];
+                results: string;
+            };
         }>;
     };
     cta: {
@@ -85,26 +90,70 @@ export type TechnologyPageTranslations = {
             description: string;
         }>;
     };
-    pricingPackages: {
+    servicePricing: {
         title: string;
         titleHighlight: string;
         description: string;
-        packages: Array<{
-            badge: string;
-            name: string;
-            price: string;
-            originalPrice: string;
-            target: string;
-            featuredBadge?: string;
-            visibleFeatures: string[];
-            expandButton: string;
-            collapseButton: string;
-            ctaButton: string;
-            features: Array<{
-                title: string;
-                items: string[];
-            }>;
-        }>;
+        ctaButton: string;
+        ctaButtonContact: string;
+        expandButton: string;
+        collapseButton: string;
+        tabs: {
+            mobileApp: string;
+            website: string;
+            aiAgent: string;
+            automation: string;
+        };
+        categories: {
+            mobileApp: {
+                icon: string;
+                description: string;
+                packages: Array<{
+                    name: string;
+                    price: string;
+                    priceNote?: string;
+                    subtitle: string;
+                    features: string[];
+                    highlighted?: boolean;
+                }>;
+            };
+            website: {
+                icon: string;
+                description: string;
+                packages: Array<{
+                    name: string;
+                    price: string;
+                    priceNote?: string;
+                    subtitle: string;
+                    features: string[];
+                    highlighted?: boolean;
+                }>;
+            };
+            aiAgent: {
+                icon: string;
+                description: string;
+                packages: Array<{
+                    name: string;
+                    price: string;
+                    priceNote?: string;
+                    subtitle: string;
+                    features: string[];
+                    highlighted?: boolean;
+                }>;
+            };
+            automation: {
+                icon: string;
+                description: string;
+                packages: Array<{
+                    name: string;
+                    price: string;
+                    priceNote?: string;
+                    subtitle: string;
+                    features: string[];
+                    highlighted?: boolean;
+                }>;
+            };
+        };
     };
     commitments: {
         badge: string;

@@ -1,238 +1,307 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Container } from "../common";
-import { TrendingUp, Users, Clock, Database, BarChart3, ChevronLeft, ChevronRight, Star, Zap } from "lucide-react";
-import { useRef, useState, MouseEvent } from "react";
-import Image from "next/image";
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Expand, ExternalLink } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Container } from '../common';
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
-
-// Icon and style mapping for cases
-const caseConfigs = [
-    {
-        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop",
-        statIcons: [Clock, Users],
-        statColors: ["text-purple-400", "text-purple-400"],
-        border: "hover:border-purple-500/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop",
-        statIcons: [TrendingUp, Star],
-        statColors: ["text-blue-400", "text-yellow-400"],
-        border: "hover:border-blue-500/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-        statIcons: [Users, Zap],
-        statColors: ["text-green-400", "text-red-400"],
-        border: "hover:border-green-500/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000&auto=format&fit=crop",
-        statIcons: [Database, BarChart3],
-        statColors: ["text-orange-400", "text-emerald-400"],
-        border: "hover:border-orange-500/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?q=80&w=1000&auto=format&fit=crop",
-        statIcons: [TrendingUp, Clock],
-        statColors: ["text-cyan-400", "text-blue-300"],
-        border: "hover:border-cyan-500/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
-    }
-];
+import ProjectModal from './ProjectModal';
+import { cn } from '@/lib/utils';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 export default function CaseStudies() {
     const t = useTechnologyTranslations();
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
+    const [selectedProject, setSelectedProject] = useState<any>(null);
 
-    // Build cases array from translations
-    const cases = t.caseStudies.cases.map((caseItem, index) => ({
-        ...caseConfigs[index],
-        title: caseItem.title,
-        client: caseItem.client,
-        category: caseItem.category,
-        description: caseItem.description,
-        stats: caseItem.stats.map((stat, i) => ({
-            icon: caseConfigs[index].statIcons[i],
-            value: stat.value,
-            label: stat.label,
-            color: caseConfigs[index].statColors[i],
-        })),
-    }));
+    // Desktop Navigation Refs
+    const prevRef = useRef<HTMLButtonElement>(null);
+    const nextRef = useRef<HTMLButtonElement>(null);
 
-    const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            const { current } = scrollRef;
-            const scrollAmount = direction === 'left' ? -400 : 400;
-            current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
+    // Mobile Navigation Refs
+    const mobilePrevRef = useRef<HTMLButtonElement>(null);
+    const mobileNextRef = useRef<HTMLButtonElement>(null);
 
-    const handleMouseDown = (e: MouseEvent) => {
-        if (!scrollRef.current) return;
-        setIsDragging(true);
-        setStartX(e.pageX - scrollRef.current.offsetLeft);
-        setScrollLeft(scrollRef.current.scrollLeft);
-    };
+    // Data Selection
+    // Mobile: Standard 5 items
+    const projects = t.caseStudies.projects || [];
 
-    const handleMouseLeave = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-        if (!isDragging || !scrollRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - scrollRef.current.offsetLeft;
-        const walk = (x - startX) * 1.5; // Scroll speed multiplier
-        scrollRef.current.scrollLeft = scrollLeft - walk;
-    };
+    // Desktop: 6 items (duplicate first item at end for visual balance as requested)
+    const desktopProjects = projects.length > 0
+        ? [...projects, { ...projects[0], id: `${projects[0].id}-loop` }]
+        : [];
 
     return (
-        <section className="py-20 sm:py-32 bg-slate-900/50 overflow-hidden select-none">
-            <Container>
-                {/* Header */}
-                <div className="flex flex-col items-center mb-12 gap-6">
-                    <div className="text-center">
-                        <motion.h2
-                            initial={{ opacity: 0, y: -20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
-                        >
-                            {t.caseStudies.title}
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: -20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-slate-400 text-lg"
-                        >
-                            {t.caseStudies.subtitle}
-                        </motion.p>
-                    </div>
+        <section className="relative py-16 sm:py-32 bg-slate-950/50 overflow-hidden" id="case-studies">
+            {/* Background elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
+            </div>
 
-                    {/* Controls */}
-                    <div className="flex gap-3 hidden sm:flex">
+            <Container className="relative z-10 w-full">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-16 text-center md:text-left">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="max-w-2xl mx-auto md:mx-0"
+                    >
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs sm:text-sm font-medium text-purple-400 mb-4 backdrop-blur-sm justify-center md:justify-start">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                            </span>
+                            {t.caseStudies.title}
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                            {t.caseStudies.subtitle}
+                        </h2>
+                        <p className="text-slate-400 text-lg max-w-xl mx-auto md:mx-0">
+                            Khám phá cách chúng tôi giúp doanh nghiệp chuyển đổi số thành công
+                        </p>
+                    </motion.div>
+
+                    {/* Desktop Navigation Buttons */}
+                    <div className="hidden md:flex items-center gap-3">
                         <button
-                            onClick={() => scroll('left')}
-                            className="p-4 rounded-full bg-slate-800 border border-slate-700 text-slate-300 hover:bg-cyan-600 hover:border-cyan-500 hover:text-white transition-all transform hover:scale-110 active:scale-95 shadow-lg"
+                            ref={prevRef}
+                            className="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                         >
-                            <ChevronLeft size={24} />
+                            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                         </button>
                         <button
-                            onClick={() => scroll('right')}
-                            className="p-4 rounded-full bg-slate-800 border border-slate-700 text-slate-300 hover:bg-cyan-600 hover:border-cyan-500 hover:text-white transition-all transform hover:scale-110 active:scale-95 shadow-lg"
+                            ref={nextRef}
+                            className="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                         >
-                            <ChevronRight size={24} />
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
                 </div>
 
-                {/* Slider with mobile scroll buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="relative"
-                >
-                    {/* Mobile scroll buttons - overlaid on slider */}
-                    <button
-                        onClick={() => scroll('left')}
-                        className="sm:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 text-white/70 active:bg-cyan-600 transition-all"
-                        aria-label="Scroll left"
-                    >
-                        <ChevronLeft size={20} />
-                    </button>
-                    <button
-                        onClick={() => scroll('right')}
-                        className="sm:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 text-white/70 active:bg-cyan-600 transition-all"
-                        aria-label="Scroll right"
-                    >
-                        <ChevronRight size={20} />
-                    </button>
-
-                    <div
-                        ref={scrollRef}
-                        className={`flex overflow-x-auto gap-3 lg:gap-4 pb-6 scrollbar-hide ${isDragging ? 'snap-none' : 'snap-x snap-mandatory'}`}
-                        style={{
-                            scrollbarWidth: 'none',
-                            msOverflowStyle: 'none',
-                            cursor: isDragging ? 'grabbing' : 'grab'
+                {/* ---------------- MOBILE LAYOUT (Swiper 1 Slide + Hints) ---------------- */}
+                <div className="md:hidden pb-12 relative">
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={16}
+                        slidesPerView={1}
+                        loop={true}
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: false,
                         }}
-                        onMouseDown={handleMouseDown}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseUp={handleMouseUp}
-                        onMouseMove={handleMouseMove}
+                        pagination={{
+                            clickable: true,
+                            dynamicBullets: true,
+                        }}
+                        navigation={{
+                            prevEl: mobilePrevRef.current,
+                            nextEl: mobileNextRef.current,
+                        }}
+                        onBeforeInit={(swiper) => {
+                            // @ts-ignore
+                            swiper.params.navigation.prevEl = mobilePrevRef.current;
+                            // @ts-ignore
+                            swiper.params.navigation.nextEl = mobileNextRef.current;
+                        }}
+                        className="w-full !pb-12" // Padding bottom for pagination bullets
                     >
-                        {cases.map((item, index) => (
-                            <div
-                                key={index}
-                                className="w-[calc(100vw-48px)] min-w-[calc(100vw-48px)] sm:w-[calc(50vw-32px)] sm:min-w-[calc(50vw-32px)] lg:w-[calc(33.333%-11px)] lg:min-w-[calc(33.333%-11px)] snap-start flex-none"
-                            >
-                                <div className={`relative h-full bg-slate-950 border border-slate-800 rounded-xl p-3 sm:p-4 flex flex-col group hover:-translate-y-1 transition-transform duration-300 ${item.border} ${item.shadow}`}>
-
-                                    {/* Image Area - Compact */}
-                                    <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mb-3 shadow-xl">
-                                        <Image
-                                            src={item.image}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        {projects.map((project, index) => (
+                            <SwiperSlide key={`mobile-${project.id}-${index}`} className="!h-auto">
+                                <div
+                                    className="group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 flex flex-col shadow-xl"
+                                >
+                                    {/* Image */}
+                                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.currentTarget.src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop';
+                                            }}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-
-                                        {/* Floating Tag */}
-                                        <div className="absolute top-2 left-2">
-                                            <span className="px-2 py-0.5 rounded-full bg-slate-900/70 backdrop-blur-sm border border-white/10 text-[8px] font-bold text-white tracking-wide uppercase">
-                                                {item.category}
+                                        <div className="absolute top-3 left-3">
+                                            <span className="px-2.5 py-1 rounded-full bg-slate-950/70 backdrop-blur border border-slate-700 text-[10px] font-bold text-white uppercase tracking-wider shadow-lg">
+                                                {project.category}
                                             </span>
                                         </div>
                                     </div>
 
-                                    {/* Content Area - Compact */}
-                                    <div className="flex flex-col flex-grow">
-                                        <h4 className="text-slate-500 text-[9px] font-semibold mb-1 uppercase tracking-wider flex items-center gap-1">
-                                            <div className="w-1 h-1 rounded-full bg-cyan-500" />
-                                            {item.client}
-                                        </h4>
-                                        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-400 transition-colors leading-tight mb-1.5">
-                                            {item.title}
+                                    {/* Content */}
+                                    <div className="p-5 flex flex-col gap-3">
+                                        <h3 className="text-xl font-bold text-white leading-snug line-clamp-2">
+                                            {project.title}
                                         </h3>
-                                        <p className="text-slate-400 text-[10px] sm:text-xs leading-snug line-clamp-2 mb-3">
-                                            {item.description}
+                                        <p className="text-slate-400 text-sm line-clamp-3">
+                                            {project.description}
                                         </p>
-
-                                        {/* Stats Row - Inline compact */}
-                                        <div className="grid grid-cols-2 gap-1.5 mt-auto">
-                                            {item.stats.map((stat, i) => (
-                                                <div key={i} className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-2 flex flex-col items-center text-center">
-                                                    <stat.icon className={`w-3.5 h-3.5 mb-1 ${stat.color}`} />
-                                                    <span className={`text-sm font-bold ${stat.color}`}>{stat.value}</span>
-                                                    <span className="text-[7px] text-slate-500 font-medium uppercase">{stat.label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                        <button
+                                            onClick={() => setSelectedProject(project)}
+                                            className="mt-2 w-full py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 font-medium text-sm transition-colors flex items-center justify-center gap-2 border border-slate-700/50"
+                                        >
+                                            {t.caseStudies.readMore}
+                                            <ArrowRight size={14} />
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
+                            </SwiperSlide>
                         ))}
+                    </Swiper>
+
+                    {/* Visual Hint: Navigation Buttons underneath on Mobile */}
+                    <div className="flex items-center justify-center gap-4 mt-2">
+                        <button
+                            ref={mobilePrevRef}
+                            className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
+                        >
+                            <ArrowLeft size={18} />
+                        </button>
+                        <span className="text-xs text-slate-500 font-medium uppercase tracking-widest">
+                            Lướt xem thêm
+                        </span>
+                        <button
+                            ref={mobileNextRef}
+                            className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
+                        >
+                            <ArrowRight size={18} />
+                        </button>
                     </div>
-                </motion.div>
+                </div>
+
+
+                {/* ---------------- DESKTOP LAYOUT (Swiper 6 Items Loop) ---------------- */}
+                <div className="hidden md:block">
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+                        effect={'coverflow'}
+                        grabCursor={true}
+                        centeredSlides={true}
+                        slidesPerView={'auto'}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 2.5,
+                            slideShadows: false,
+                        }}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true
+                        }}
+                        navigation={{
+                            prevEl: prevRef.current,
+                            nextEl: nextRef.current,
+                        }}
+                        onBeforeInit={(swiper) => {
+                            // @ts-ignore
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            // @ts-ignore
+                            swiper.params.navigation.nextEl = nextRef.current;
+                        }}
+                        loop={true}
+                        spaceBetween={32}
+                        breakpoints={{
+                            1024: {
+                                slidesPerView: 2.5,
+                                spaceBetween: 32,
+                            },
+                            1280: {
+                                slidesPerView: 3,
+                                spaceBetween: 32,
+                            }
+                        }}
+                        className="w-full py-8 !overflow-visible"
+                    >
+                        {desktopProjects.map((project, index) => (
+                            <SwiperSlide key={project.id || index} className="!w-[450px]">
+                                <div
+                                    className="group relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 h-[500px] flex flex-col transition-all duration-500 hover:border-slate-600 hover:shadow-2xl"
+                                >
+                                    {/* Image Area */}
+                                    <div className="relative h-[280px] overflow-hidden">
+                                        <div className="absolute inset-0 bg-slate-800 animate-pulse" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-slate-800 text-slate-600">
+                                            {project.image ? (
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                    onError={(e) => {
+                                                        e.currentTarget.src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop';
+                                                    }}
+                                                />
+                                            ) : (
+                                                <span className="text-4xl">📷</span>
+                                            )}
+                                        </div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-3 py-1 rounded-full bg-slate-950/50 backdrop-blur-md border border-slate-700 text-xs font-semibold text-white uppercase tracking-wider">
+                                                {project.category}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Content Area */}
+                                    <div className="relative flex-1 p-8 flex flex-col justify-between z-10 -mt-10">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-3 line-clamp-2 leading-tight group-hover:text-cyan-400 transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-base text-slate-400 line-clamp-3 mb-4 leading-relaxed">
+                                                {project.description}
+                                            </p>
+                                        </div>
+
+                                        <button
+                                            onClick={() => setSelectedProject(project)}
+                                            className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-all flex items-center justify-center gap-2 group/btn border border-slate-700"
+                                        >
+                                            {t.caseStudies.readMore}
+                                            <Expand size={16} className="group-hover/btn:scale-110 transition-transform" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+
+                {/* Modal */}
+                <ProjectModal
+                    isOpen={!!selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                    project={selectedProject}
+                />
             </Container>
+
+            {/* Custom Styles for Swiper Pagination */}
+            <style jsx global>{`
+                .swiper-button-disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+                .swiper-pagination-bullet {
+                    background: #64748b;
+                    opacity: 0.5;
+                }
+                .swiper-pagination-bullet-active {
+                    background: #22d3ee;
+                    opacity: 1;
+                }
+            `}</style>
         </section>
     );
 }

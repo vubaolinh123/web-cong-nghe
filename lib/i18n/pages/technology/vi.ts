@@ -74,7 +74,7 @@ export const vi: TechnologyPageTranslations = {
         },
         otherServices: [
             {
-                title: 'Low Code Automation',
+                title: 'Low-code Automation',
                 description: 'Tự động hóa quy trình làm việc với n8n - nền tảng low-code mạnh mẽ.',
                 features: [
                     'Tự động báo cáo và phân tích dữ liệu',
@@ -83,79 +83,112 @@ export const vi: TechnologyPageTranslations = {
                 ],
             },
             {
-                title: 'AI Chatbot',
-                description: 'Chatbot thông minh phục vụ khách hàng 24/7, tự động chăm sóc và chuyển đổi leads.',
-                features: [
-                    'Tư vấn sản phẩm tức thì',
-                    'Thu thập thông tin khách hàng',
-                    'Chăm sóc khách hàng cũ',
-                ],
-            },
-            {
                 title: 'AI Agent',
-                description: 'Các trợ lý AI chuyên biệt cho từng nhu cầu cụ thể.',
+                description: 'Trợ lý AI thông minh tự động xử lý tác vụ phức tạp, tương tác với hệ thống và đưa ra quyết định dựa trên dữ liệu.',
                 features: [
-                    'Trợ lý Cá nhân: Quản lý lịch, email',
-                    'Sáng tạo Nội dung: Viết bài, thiết kế',
-                    'Quản lý: Giám sát vận hành, báo cáo',
+                    'Tự động hóa quy trình nghiệp vụ',
+                    'Tích hợp đa kênh: Website, Zalo, Messenger',
+                    'Phân tích và báo cáo thông minh',
                 ],
             },
         ],
     },
     caseStudies: {
-        title: 'Case Studies',
-        subtitle: 'Kết quả thực tế từ khách hàng',
-        cases: [
+        title: 'Dự Án Tiêu Biểu',
+        subtitle: 'Kết quả thực tế từ khách hàng doanh nghiệp',
+        readMore: 'Xem chi tiết',
+        viewProject: 'Ghé thăm website',
+        projects: [
             {
-                title: 'Calendar AI Agent',
-                client: 'TPBank',
+                id: 'bbq-website',
+                title: 'Website Landing Page BBQ Hàn Quốc',
+                category: 'Website',
+                image: '/images/projects/bbq-website.png',
+                description: 'Website nhà hàng BBQ chuẩn Hàn Quốc với giao diện đậm chất ẩm thực, tích hợp đặt bàn và menu trực quan.',
+                content: {
+                    overview: 'Dự án Website Landing Page BBQ Hàn Quốc được phát triển với các công nghệ hiện đại nhất, tập trung vào trải nghiệm thị giác và tỷ lệ chuyển đổi.',
+                    challenges: 'Khách hàng cần một website không chỉ đẹp mà còn phải tải nhanh, thể hiện được sự ngon miệng của món ăn và thúc đẩy khách đặt bàn ngay trên web.',
+                    solutions: [
+                        'Thiết kế UI Dark Mode sang trọng làm nổi bật hình ảnh món ăn',
+                        'Tích hợp module đặt bàn (Booking) realtime',
+                        'Tối ưu SEO local để tiếp cận khách hàng khu vực',
+                        'Menu tương tác với hiệu ứng visual hấp dẫn'
+                    ],
+                    results: 'Tăng 200% lượng đặt bàn online sau 1 tháng ra mắt. Tỷ lệ thoát trang giảm xuống dưới 30%.'
+                }
+            },
+            {
+                id: 'real-estate-web',
+                title: 'Sàn Giao Dịch Bất Động Sản LuxHome',
+                category: 'Website',
+                image: '/images/projects/real-estate.png',
+                description: 'Nền tảng listing bất động sản cao cấp với tính năng tìm kiếm bản đồ và VR Tour 360 độ.',
+                content: {
+                    overview: 'LuxHome là sàn giao dịch BĐS phân khúc cao cấp. Website cần thể hiện sự uy tín, minh bạch và đẳng cấp.',
+                    challenges: 'Xử lý lượng dữ liệu listing lớn với hình ảnh độ phân giải cao mà vẫn đảm bảo tốc độ tải trang nhanh.',
+                    solutions: [
+                        'Xây dựng hệ thống lọc tìm kiếm nâng cao (Smart Filter)',
+                        'Tích hợp xem nhà 3D Tour / VR View',
+                        'Hệ thống CMS quản lý giỏ hàng bất động sản',
+                        'Tối ưu Cache và CDN cho hình ảnh'
+                    ],
+                    results: 'Hỗ trợ hơn 500 môi giới hoạt động đồng thời. Thời gian on-site trung bình đạt 5 phút.'
+                }
+            },
+            {
+                id: 'fitness-app',
+                title: 'FitLife - Ứng Dụng Hỗ Trợ Tập Luyện',
+                category: 'Mobile App',
+                image: '/images/projects/fitness-app.png',
+                description: 'Ứng dụng mobile đa nền tảng (iOS/Android) hỗ trợ người dùng tập luyện và theo dõi dinh dưỡng cá nhân hóa.',
+                content: {
+                    overview: 'FitLife giúp người dùng văn phòng duy trì thói quen tập luyện thông qua các bài tập ngắn và chế độ ăn healthy.',
+                    challenges: 'Tạo động lực cho người dùng quay lại app hàng ngày (Retention) và đồng bộ dữ liệu health từ thiết bị đeo.',
+                    solutions: [
+                        'Phát triển bằng Flutter (Cross-platform) tiết kiệm chi phí',
+                        'Gamification: Hệ thống huy hiệu và bảng xếp hạng',
+                        'Tích hợp Apple Health & Google Fit',
+                        'Video player tối ưu streaming bài tập'
+                    ],
+                    results: 'Đạt 10.000 users sau 3 tháng. Rating 4.8/5 trên App Store.'
+                }
+            },
+            {
+                id: 'shop-apple-123',
+                title: 'Trợ Lý AI Shop Apple 123',
+                category: 'AI Agent',
+                image: '/images/projects/ai-agent.png',
+                description: 'Hệ thống AI Agent tự động hóa CSKH, quản lý lịch hẹn và xử lý đơn hàng trên Facebook/Zalo.',
+                content: {
+                    overview: 'Shop Apple 123 gặp quá tải trong việc check tin nhắn và xếp lịch sửa chữa/bảo hành cho khách.',
+                    challenges: 'Nhân viên tốn 4-5 tiếng mỗi ngày chỉ để check lịch trống và confirm với khách. Dễ nhầm lẫn lịch.',
+                    solutions: [
+                        'Phân loại yêu cầu khách hàng tự động bằng NLP',
+                        'Bot tự động kiểm tra Google Sheet để lấy lịch trống',
+                        'Tự động thêm, cập nhật, xóa lịch hẹn khi khách yêu cầu',
+                        'Phản hồi khách ngay lập tức theo kịch bản cá nhân hóa'
+                    ],
+                    results: 'Giảm 90% thời gian xếp lịch thủ công. Shop hoạt động 24/7 không bỏ sót khách hàng nào.'
+                }
+            },
+            {
+                id: 'tpbank-automation',
+                title: 'Hệ Thống Phê Duyệt Tự Động TPBank',
                 category: 'Automation',
-                description: 'Hệ thống AI tự động hóa việc sắp xếp lịch họp cho hơn 500 nhân viên, giải quyết xung đột thời gian và tối ưu hóa phòng họp mà không cần sự can thiệp của con người.',
-                stats: [
-                    { value: '15h+', label: 'Tiết kiệm/tuần' },
-                    { value: '100%', label: 'Tự động hóa' },
-                ],
-            },
-            {
-                title: 'AI Personal Shopper',
-                client: 'Thinh Phan Suit',
-                category: 'Retail AI',
-                description: 'Chatbot thông minh phân tích phong cách và số đo của khách hàng để gợi ý trang phục phù hợp nhất, giúp tăng tỷ lệ chốt đơn và giảm đáng kể tỷ lệ đổi trả.',
-                stats: [
-                    { value: '+40%', label: 'Tỷ lệ thử đồ' },
-                    { value: '4.9/5', label: 'Hài lòng' },
-                ],
-            },
-            {
-                title: 'Smart Lead System',
-                client: 'Caffe Saphie',
-                category: 'Marketing',
-                description: 'Công cụ thu thập và phân loại khách hàng tiềm năng tự động từ đa kênh, giúp đội ngũ sales tập trung vào những leads chất lượng cao nhất.',
-                stats: [
-                    { value: '3.5x', label: 'Leads chất lượng' },
-                    { value: '-60%', label: 'Chi phí Ads' },
-                ],
-            },
-            {
-                title: 'A.I Invoice Processor',
-                client: 'Logistics Corp',
-                category: 'Operations',
-                description: 'Giải pháp OCR & AI xử lý hàng nghìn hóa đơn vận chuyển mỗi ngày với độ chính xác gần như tuyệt đối, giúp cắt giảm 80% nhân sự nhập liệu thủ công.',
-                stats: [
-                    { value: '80%', label: 'Giảm thời gian' },
-                    { value: '99.9%', label: 'Chính xác' },
-                ],
-            },
-            {
-                title: 'Store Manager Agent',
-                client: 'Apple Reseller',
-                category: 'Management',
-                description: 'Trợ lý ảo giám sát tồn kho, doanh số và hiệu suất nhân viên theo thời gian thực, cung cấp báo cáo quản trị chi tiết ngay trên điện thoại.',
-                stats: [
-                    { value: '+25%', label: 'Hiệu quả' },
-                    { value: 'Realtime', label: 'Báo cáo' },
-                ],
-            },
+                image: '/images/projects/automation.png',
+                description: 'Giải pháp Low-code tự động hóa quy trình phê duyệt hồ sơ và phân loại yêu cầu nội bộ.',
+                content: {
+                    overview: 'Ngân hàng cần rút ngắn thời gian xử lý các hồ sơ nội bộ và yêu cầu từ chi nhánh gửi về hội sở.',
+                    challenges: 'Quy trình thủ công qua email rườm rà, khó theo dõi tiến độ và dễ thất lạc hồ sơ.',
+                    solutions: [
+                        'Xây dựng luồng Automation trên nền tảng n8n/Low-code',
+                        'Tự động trích xuất dữ liệu từ form và email',
+                        'Phân luồng phê duyệt theo hạn mức và phòng ban',
+                        'Cập nhật trạng thái realtime về hệ thống quản trị'
+                    ],
+                    results: 'Rút ngắn 60% thời gian phê duyệt. Minh bạch hóa toàn bộ quy trình xử lý nội bộ.'
+                }
+            }
         ],
     },
     cta: {
@@ -167,7 +200,7 @@ export const vi: TechnologyPageTranslations = {
         badge: 'Dịch vụ IT chuyên nghiệp',
         title: 'Giải pháp công nghệ toàn diện từ',
         titleHighlight1: 'Website, App Mobile, AI',
-        titleHighlight2: 'Low Code',
+        titleHighlight2: 'Low-code',
         description: 'Đội ngũ chuyên gia 5+ năm kinh nghiệm, giao hàng đúng hẹn, hỗ trợ tận tình',
         services: [
             {
@@ -183,144 +216,317 @@ export const vi: TechnologyPageTranslations = {
                 description: 'Chatbot AI thông minh với OpenAI, Claude. Tích hợp vào website, Zalo, Facebook Messenger. Tự động hóa chăm sóc khách hàng',
             },
             {
-                title: 'Low Code',
+                title: 'Low-code Automation',
                 description: 'Phát triển ứng dụng nhanh với nền tảng Low Code. Tiết kiệm 70% thời gian, dễ dàng tùy chỉnh, MVP và landing page chỉ trong 1-3 tuần',
             },
         ],
     },
-    pricingPackages: {
+    servicePricing: {
         title: 'Bảng Giá',
-        titleHighlight: 'Dịch Vụ',
-        description: 'Lựa chọn gói phù hợp với quy mô và nhu cầu của doanh nghiệp bạn',
-        packages: [
-            {
-                badge: 'Cơ Bản',
-                name: 'GÓI STARTER',
-                price: '20.000.000',
-                originalPrice: '25.000.000',
-                target: 'Phù hợp cho: Startup, doanh nghiệp nhỏ mới bắt đầu số hóa',
-                visibleFeatures: [
-                    'Landing Page/Website giới thiệu hoàn chỉnh',
-                    'App di động đơn giản 1 nền tảng',
-                    'AI Chatbot cơ bản tích hợp',
-                ],
-                expandButton: 'Xem thêm',
-                collapseButton: 'Thu gọn',
-                ctaButton: 'Xem chi tiết',
-                features: [
+        titleHighlight: 'Chi Tiết',
+        description: 'Lựa chọn dịch vụ phù hợp với nhu cầu và ngân sách của doanh nghiệp',
+        ctaButton: 'Liên Hệ Tư Vấn',
+        ctaButtonContact: 'Liên Hệ',
+        expandButton: 'Xem chi tiết',
+        collapseButton: 'Thu gọn',
+        tabs: {
+            mobileApp: 'Mobile App',
+            website: 'Website',
+            aiAgent: 'AI Agent',
+            automation: 'Automation',
+        },
+        categories: {
+            mobileApp: {
+                icon: '📱',
+                description: 'Ứng dụng di động được xây dựng linh hoạt, từ cơ bản đến cao cấp',
+                packages: [
                     {
-                        title: 'Website/Landing Page',
-                        items: [
-                            '5-7 trang responsive, tối ưu SEO',
-                            'Tên miền + Hosting 1 năm',
-                            'Bàn giao: 5-7 ngày',
+                        name: 'Starter',
+                        price: '50.000.000',
+                        subtitle: 'App đơn giản, UI thiết kế sẵn',
+                        features: [
+                            'Tối ưu giao diện cơ bản',
+                            '≤5 màn hình',
+                            'Không có back-end',
+                            'Chạy trên iOS hoặc Android',
+                            'Tích hợp đăng nhập cơ bản',
+                            'Tốc độ tải nhẹ',
+                            'Triển khai nhanh (>4 tuần)',
+                            'Bảo trì 1 tháng',
+                            'Giao diện thương hiệu cơ bản',
                         ],
                     },
                     {
-                        title: 'App Di Động',
-                        items: [
-                            '1 nền tảng (iOS/Android)',
-                            '5-8 màn hình, React Native/Flutter',
-                            'Bàn giao: 1-2 tháng',
+                        name: 'Plus',
+                        price: '100.000.000',
+                        subtitle: 'App trung cấp, có API, UI custom',
+                        highlighted: true,
+                        features: [
+                            'UX/UI thiết kế theo yêu cầu',
+                            'Tối ưu trải nghiệm người dùng',
+                            'Tích hợp API (thanh toán, MXH...)',
+                            'Hỗ trợ iOS & Android',
+                            'Hệ thống quản trị cơ bản',
+                            'Báo cáo đơn giản',
+                            'Tối ưu performance',
+                            'Bảo trì 3 tháng',
+                            'Tích hợp thông báo đẩy',
+                            'Phân quyền user',
                         ],
                     },
                     {
-                        title: 'AI Chatbot',
-                        items: [
-                            'OpenAI/Claude, 20-30 kịch bản',
-                            'Tích hợp Website/Facebook',
-                            'Bàn giao: 5-7 ngày',
-                        ],
-                    },
-                ],
-            },
-            {
-                badge: 'Phổ biến',
-                name: 'GÓI PROFESSIONAL',
-                price: '50.000.000',
-                originalPrice: '70.000.000',
-                target: 'Phù hợp cho: Doanh nghiệp vừa cần giải pháp toàn diện',
-                featuredBadge: 'Phổ biến nhất',
-                visibleFeatures: [
-                    'Website thương mại điện tử hoàn chỉnh',
-                    'App di động cross-platform nâng cao',
-                    'Hệ thống CRM quản lý khách hàng',
-                ],
-                expandButton: 'Xem thêm',
-                collapseButton: 'Thu gọn',
-                ctaButton: 'Xem chi tiết',
-                features: [
-                    {
-                        title: 'Website TMĐT',
-                        items: [
-                            '15-20 trang, thanh toán online',
-                            'CMS quản trị, SEO nâng cao',
-                            'Tặng 5 bài SEO, bảo trì 1 năm',
-                            'Bàn giao: 1-2 tuần',
+                        name: 'Pro',
+                        price: '250.000.000',
+                        subtitle: 'App thương mại điện tử hoặc dịch vụ',
+                        features: [
+                            'Full UX/UI cao cấp, có animation',
+                            'Tích hợp thanh toán + mã giảm giá',
+                            'Quản lý sản phẩm/dịch vụ',
+                            'Thông báo, ưu đãi cá nhân hóa',
+                            'Dashboard quản trị',
+                            'Multi-platform đồng nhất',
+                            'Bảo mật SSL & xác thực',
+                            'Tối ưu tốc độ và cache',
+                            'Bảo trì 6 tháng',
                         ],
                     },
                     {
-                        title: 'App Cross-platform',
-                        items: [
-                            'iOS + Android, 15-20 màn hình',
-                            'Backend API, Firebase',
-                            'Upload App Store & Play Store',
-                            'Bàn giao: 1-2 tháng',
-                        ],
-                    },
-                    {
-                        title: 'CRM + AI',
-                        items: [
-                            'Quản lý khách hàng, leads, pipeline',
-                            'AI Agent đa kênh, học dữ liệu',
-                            'Chatbot đa ngôn ngữ, 50-100 kịch bản',
-                        ],
-                    },
-                ],
-            },
-            {
-                badge: 'Cao Cấp',
-                name: 'GÓI ENTERPRISE',
-                price: '100.000.000',
-                originalPrice: '150.000.000',
-                target: 'Phù hợp cho: Doanh nghiệp lớn, giải pháp phức tạp toàn diện',
-                visibleFeatures: [
-                    'Nền tảng Web + App + Admin đồng bộ',
-                    'CRM toàn diện Sales + Marketing',
-                    'Giải pháp AI End-to-end hoàn chỉnh',
-                ],
-                expandButton: 'Xem thêm',
-                collapseButton: 'Thu gọn',
-                ctaButton: 'Xem chi tiết',
-                features: [
-                    {
-                        title: 'Nền Tảng Enterprise',
-                        items: [
-                            'Web + App + Admin đồng bộ real-time',
-                            'Microservices, Cloud (AWS/GCP)',
-                            '99.9% uptime, auto-scaling',
-                        ],
-                    },
-                    {
-                        title: 'CRM + AI Toàn Diện',
-                        items: [
-                            'Sales + Marketing + Service',
-                            'AI lead scoring, predictive analytics',
-                            'Multi-branch, Data warehouse, BI tools',
-                        ],
-                    },
-                    {
-                        title: 'AI & Development',
-                        items: [
-                            'AI Agent, Chatbot đa kênh, ML models',
-                            'Dedicated team, PM chuyên trách',
-                            'CI/CD, Security audit, 24/7 support',
-                            'Bàn giao: 2-4 tháng',
+                        name: 'Ultra',
+                        price: 'Liên hệ',
+                        subtitle: 'App cao cấp, tích hợp IoT/ERP',
+                        features: [
+                            'Thiết kế UX/UI cao cấp, animation',
+                            'Đa ngôn ngữ',
+                            'Real-time data (chat, tracking)',
+                            'Tích hợp IoT hoặc ERP/CRM',
+                            'Dashboard quản trị nâng cao',
+                            'Bảo mật nhiều lớp',
+                            'Khả năng mở rộng (scalable)',
+                            'Bảo trì 12 tháng + SLA',
+                            'Kiểm thử tự động',
+                            'Tư vấn triển khai & đào tạo',
                         ],
                     },
                 ],
             },
-        ],
+            website: {
+                icon: '🌐',
+                description: 'Website chuyên nghiệp, từ landing page đến hệ thống phức tạp',
+                packages: [
+                    {
+                        name: 'Landing Page',
+                        price: '5.000.000+',
+                        subtitle: 'Chạy quảng cáo, thu lead',
+                        features: [
+                            'UI/UX cao, tối ưu chuyển đổi',
+                            'Phân tích mục tiêu trước thiết kế',
+                            'Thiết kế theo hành vi khách hàng',
+                            'Tối ưu tốc độ tải quảng cáo',
+                            'Kết nối email marketing, CRM',
+                            'Chuẩn SEO, thân thiện di động',
+                            'Form đăng ký + Chatbot',
+                            'Popup khuyến mại, CTA',
+                            'Bàn giao source code',
+                        ],
+                    },
+                    {
+                        name: 'Cơ Bản',
+                        price: '15.000.000+',
+                        subtitle: 'Cá nhân, hộ kinh doanh nhỏ',
+                        features: [
+                            'Giao diện theo mẫu đẹp',
+                            'Tư vấn tên miền và hosting',
+                            '99+ mẫu theme đẹp, đa ngành',
+                            'Tùy biến màu sắc theo brand',
+                            'Responsive trên mọi thiết bị',
+                            'Hoàn thành: 15+ ngày',
+                            'Có thể nâng cấp lên cao hơn',
+                            'Backup, bảo trì kỹ thuật',
+                            'Bàn giao source code',
+                        ],
+                    },
+                    {
+                        name: 'Theo Yêu Cầu',
+                        price: '25.000.000+',
+                        subtitle: 'Doanh nghiệp vừa, thương hiệu',
+                        highlighted: true,
+                        features: [
+                            'Thiết kế UI/UX riêng theo ngành',
+                            'Tư vấn tên miền và hosting',
+                            'Trang giới thiệu, dịch vụ, liên hệ',
+                            'CMS tùy chỉnh quản lý nội dung',
+                            'Chuẩn SEO, thân thiện di động',
+                            'Tích hợp Momo, VNPAY',
+                            'Tích hợp Zalo OA, Fanpage',
+                            'Dashboard quản trị đơn hàng',
+                            'Mở rộng thành CRM/booking',
+                            'Bàn giao source code',
+                        ],
+                    },
+                    {
+                        name: 'Hệ Thống',
+                        price: '50.000.000+',
+                        subtitle: 'Doanh nghiệp lớn, sàn giao dịch',
+                        features: [
+                            'UI/UX chuyên sâu theo ngành',
+                            'Tư vấn chiến lược & phân tích',
+                            'CMS nâng cao: Module CRM mini',
+                            'Dashboard quản trị tùy biến',
+                            'Hệ thống phân quyền chi tiết',
+                            'CRM mini theo dõi khách hàng',
+                            'Tích hợp ERP, LMS hiện tại',
+                            'Bảo hành dài hạn, nâng cấp',
+                            'Bàn giao source code',
+                        ],
+                    },
+                ],
+            },
+            aiAgent: {
+                icon: '🤖',
+                description: 'Hệ thống AI Agent tự động hóa quy trình, hoạt động 24/7',
+                packages: [
+                    {
+                        name: 'AI Chatbot',
+                        price: '15.000.000+',
+                        priceNote: 'Thiết lập + 1 tháng hỗ trợ',
+                        subtitle: 'Tự động hóa CSKH 24/7',
+                        features: [
+                            'Chatbot trả lời khách tự động',
+                            'Thu thập dữ liệu khách hàng',
+                            'Đặt lịch hẹn tự động',
+                            'Thông báo và dừng bot khi lỗi',
+                            'Tích hợp Facebook, Tiktok, Shopee',
+                            'Tích hợp Instagram, Whatsapp, Zalo',
+                            'Tích hợp với website',
+                            'Tích hợp ERP, CRM (Misa...)',
+                            'Chuyển tiếp cho nhân viên',
+                            'Bảo hành 3 tháng',
+                        ],
+                    },
+                    {
+                        name: 'AI Trợ lý',
+                        price: '25.000.000+',
+                        subtitle: 'Quản lý lịch, email, công việc',
+                        features: [
+                            'Quản lý lịch hẹn tự động',
+                            'Quản lý email, phân loại thư',
+                            'Quản lý danh sách công việc',
+                            'Nhắc nhở thời hạn deadline',
+                            'Tích hợp Google Calendar',
+                            'Tích hợp Gmail/Outlook',
+                            'Đồng bộ với Teams/Slack',
+                            'Báo cáo hoạt động hàng ngày',
+                            'Tối ưu quy trình làm việc',
+                            'Bảo hành 3 tháng',
+                        ],
+                    },
+                    {
+                        name: 'AI Quản lý',
+                        price: '35.000.000+',
+                        subtitle: 'Quản lý nhân sự và dự án',
+                        highlighted: true,
+                        features: [
+                            'Quản lý công việc nhân sự',
+                            'Thông báo công việc mỗi ngày',
+                            'Báo cáo tiến độ cho sếp',
+                            'Lưu thông tin vào Database',
+                            'Quản lý dự án tập trung',
+                            'Theo dõi deadline tự động',
+                            'Tích hợp Asana, Monday, Jira',
+                            'Dashboard hiển thị trực quan',
+                            'Báo cáo tự động tuần/tháng',
+                            'Bảo hành 3 tháng',
+                        ],
+                    },
+                    {
+                        name: 'AI Content',
+                        price: '50.000.000+',
+                        priceNote: 'Thiết lập + 1 tháng hỗ trợ',
+                        subtitle: 'Tạo và đăng nội dung tự động',
+                        features: [
+                            'Tạo bài viết tự động',
+                            'Tạo ảnh bằng AI',
+                            'Tạo video ngắn tự động',
+                            'Đăng Facebook, Instagram, Tiktok',
+                            'Edit, ghép clip tự động',
+                            'Tạo avatar giống người thật',
+                            'Thêm subtitles, âm thanh nền',
+                            'Lên lịch đăng bài',
+                            'Phân tích hiệu suất nội dung',
+                            'Hỗ trợ đa ngôn ngữ',
+                            'Bảo hành 3 tháng',
+                        ],
+                    },
+                ],
+            },
+            automation: {
+                icon: '⚡',
+                description: 'Tự động hóa quy trình kinh doanh, tiết kiệm thời gian',
+                packages: [
+                    {
+                        name: 'Cơ Bản',
+                        price: '6.000.000+',
+                        priceNote: 'Thiết lập + 30 ngày hỗ trợ',
+                        subtitle: '1-2 quy trình đơn giản',
+                        features: [
+                            'Tự động hóa 1-2 quy trình',
+                            'Báo cáo hằng ngày/tuần tự động',
+                            'Gửi email thông báo tự động',
+                            'Nhập liệu từ form cơ bản',
+                            'Đồng bộ dữ liệu 2-3 nền tảng',
+                            'Dashboard giám sát đơn giản',
+                            'Thử nghiệm và tinh chỉnh',
+                        ],
+                    },
+                    {
+                        name: 'Trung Cấp',
+                        price: '10.000.000+',
+                        priceNote: 'Thiết lập + 60 ngày hỗ trợ',
+                        subtitle: '3-5 quy trình, logic phức tạp',
+                        highlighted: true,
+                        features: [
+                            'Tự động hóa 3-5 quy trình',
+                            'Logic phức tạp, điều kiện rõ',
+                            'Tích hợp 5+ nền tảng/API',
+                            'Tạo file báo cáo (Excel, PDF)',
+                            'Xử lý lỗi rate limit tự động',
+                            'Lên lịch chạy tự động',
+                        ],
+                    },
+                    {
+                        name: 'Cao Cấp',
+                        price: '20.000.000+',
+                        priceNote: 'Thiết lập + 90 ngày hỗ trợ',
+                        subtitle: '6+ quy trình, tích hợp toàn diện',
+                        features: [
+                            'Tự động hóa 6+ quy trình',
+                            'Tích hợp ERP, CRM, HR system',
+                            'Logic nâng cao, ML cơ bản',
+                            'Xử lý dữ liệu lớn',
+                            'Quản lý webhook và API',
+                            'Dashboard Executive level',
+                            'Tư vấn tối ưu quy trình',
+                        ],
+                    },
+                    {
+                        name: 'Bảo Trì',
+                        price: '2-10tr/tháng',
+                        subtitle: 'Hỗ trợ liên tục sau triển khai',
+                        features: [
+                            'Hỗ trợ 24/7 khi có lỗi',
+                            'Cập nhật công thức và logic',
+                            'Tối ưu hóa hiệu suất',
+                            'Thêm nền tảng tích hợp mới',
+                            'Monitoring và alert tự động',
+                            'Report hàng tuần',
+                            'Backup dữ liệu định kỳ',
+                            'Training nhân viên mới',
+                            'Tư vấn nâng cấp hệ thống',
+                        ],
+                    },
+                ],
+            },
+        },
     },
     commitments: {
         badge: 'Cam kết chất lượng',

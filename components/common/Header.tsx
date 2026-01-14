@@ -57,11 +57,6 @@ export default function Header() {
       icon: Code2,
       description: "Web, Mobile App, AI & Cloud",
       color: "text-cyan-400",
-      children: [
-        { name: "Web App", href: "/dich-vu-cong-nghe" },
-        { name: "App Mobile", href: "/dich-vu-cong-nghe" },
-        { name: "AI", href: "/dich-vu-cong-nghe" },
-      ]
     },
   ];
 
