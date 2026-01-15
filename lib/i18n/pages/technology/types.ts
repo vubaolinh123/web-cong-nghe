@@ -66,11 +66,22 @@ export type TechnologyPageTranslations = {
             category: string;
             image: string;
             description: string;
+            detailImage?: string;
+            detailImageCaption?: string;
             content: {
+                projectInfo: {
+                    productName: string;
+                    client: string;
+                    projectType: string;
+                    platform: string;
+                    targetUsers: string;
+                    duration: string;
+                };
                 overview: string;
-                challenges: string;
-                solutions: string[];
-                results: string;
+                features: Array<{
+                    title: string;
+                    description: string;
+                }>;
             };
         }>;
     };

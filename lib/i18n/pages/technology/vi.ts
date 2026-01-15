@@ -1,4 +1,5 @@
 import { TechnologyPageTranslations } from './types';
+import { projectsDataVi } from './projects.vi';
 
 export const vi: TechnologyPageTranslations = {
     hero: {
@@ -98,98 +99,7 @@ export const vi: TechnologyPageTranslations = {
         subtitle: 'Kết quả thực tế từ khách hàng doanh nghiệp',
         readMore: 'Xem chi tiết',
         viewProject: 'Ghé thăm website',
-        projects: [
-            {
-                id: 'bbq-website',
-                title: 'Website Landing Page BBQ Hàn Quốc',
-                category: 'Website',
-                image: '/images/projects/bbq-website.png',
-                description: 'Website nhà hàng BBQ chuẩn Hàn Quốc với giao diện đậm chất ẩm thực, tích hợp đặt bàn và menu trực quan.',
-                content: {
-                    overview: 'Dự án Website Landing Page BBQ Hàn Quốc được phát triển với các công nghệ hiện đại nhất, tập trung vào trải nghiệm thị giác và tỷ lệ chuyển đổi.',
-                    challenges: 'Khách hàng cần một website không chỉ đẹp mà còn phải tải nhanh, thể hiện được sự ngon miệng của món ăn và thúc đẩy khách đặt bàn ngay trên web.',
-                    solutions: [
-                        'Thiết kế UI Dark Mode sang trọng làm nổi bật hình ảnh món ăn',
-                        'Tích hợp module đặt bàn (Booking) realtime',
-                        'Tối ưu SEO local để tiếp cận khách hàng khu vực',
-                        'Menu tương tác với hiệu ứng visual hấp dẫn'
-                    ],
-                    results: 'Tăng 200% lượng đặt bàn online sau 1 tháng ra mắt. Tỷ lệ thoát trang giảm xuống dưới 30%.'
-                }
-            },
-            {
-                id: 'real-estate-web',
-                title: 'Sàn Giao Dịch Bất Động Sản LuxHome',
-                category: 'Website',
-                image: '/images/projects/real-estate.png',
-                description: 'Nền tảng listing bất động sản cao cấp với tính năng tìm kiếm bản đồ và VR Tour 360 độ.',
-                content: {
-                    overview: 'LuxHome là sàn giao dịch BĐS phân khúc cao cấp. Website cần thể hiện sự uy tín, minh bạch và đẳng cấp.',
-                    challenges: 'Xử lý lượng dữ liệu listing lớn với hình ảnh độ phân giải cao mà vẫn đảm bảo tốc độ tải trang nhanh.',
-                    solutions: [
-                        'Xây dựng hệ thống lọc tìm kiếm nâng cao (Smart Filter)',
-                        'Tích hợp xem nhà 3D Tour / VR View',
-                        'Hệ thống CMS quản lý giỏ hàng bất động sản',
-                        'Tối ưu Cache và CDN cho hình ảnh'
-                    ],
-                    results: 'Hỗ trợ hơn 500 môi giới hoạt động đồng thời. Thời gian on-site trung bình đạt 5 phút.'
-                }
-            },
-            {
-                id: 'fitness-app',
-                title: 'FitLife - Ứng Dụng Hỗ Trợ Tập Luyện',
-                category: 'Mobile App',
-                image: '/images/projects/fitness-app.png',
-                description: 'Ứng dụng mobile đa nền tảng (iOS/Android) hỗ trợ người dùng tập luyện và theo dõi dinh dưỡng cá nhân hóa.',
-                content: {
-                    overview: 'FitLife giúp người dùng văn phòng duy trì thói quen tập luyện thông qua các bài tập ngắn và chế độ ăn healthy.',
-                    challenges: 'Tạo động lực cho người dùng quay lại app hàng ngày (Retention) và đồng bộ dữ liệu health từ thiết bị đeo.',
-                    solutions: [
-                        'Phát triển bằng Flutter (Cross-platform) tiết kiệm chi phí',
-                        'Gamification: Hệ thống huy hiệu và bảng xếp hạng',
-                        'Tích hợp Apple Health & Google Fit',
-                        'Video player tối ưu streaming bài tập'
-                    ],
-                    results: 'Đạt 10.000 users sau 3 tháng. Rating 4.8/5 trên App Store.'
-                }
-            },
-            {
-                id: 'shop-apple-123',
-                title: 'Trợ Lý AI Shop Apple 123',
-                category: 'AI Agent',
-                image: '/images/projects/ai-agent.png',
-                description: 'Hệ thống AI Agent tự động hóa CSKH, quản lý lịch hẹn và xử lý đơn hàng trên Facebook/Zalo.',
-                content: {
-                    overview: 'Shop Apple 123 gặp quá tải trong việc check tin nhắn và xếp lịch sửa chữa/bảo hành cho khách.',
-                    challenges: 'Nhân viên tốn 4-5 tiếng mỗi ngày chỉ để check lịch trống và confirm với khách. Dễ nhầm lẫn lịch.',
-                    solutions: [
-                        'Phân loại yêu cầu khách hàng tự động bằng NLP',
-                        'Bot tự động kiểm tra Google Sheet để lấy lịch trống',
-                        'Tự động thêm, cập nhật, xóa lịch hẹn khi khách yêu cầu',
-                        'Phản hồi khách ngay lập tức theo kịch bản cá nhân hóa'
-                    ],
-                    results: 'Giảm 90% thời gian xếp lịch thủ công. Shop hoạt động 24/7 không bỏ sót khách hàng nào.'
-                }
-            },
-            {
-                id: 'tpbank-automation',
-                title: 'Hệ Thống Phê Duyệt Tự Động TPBank',
-                category: 'Automation',
-                image: '/images/projects/automation.png',
-                description: 'Giải pháp Low-code tự động hóa quy trình phê duyệt hồ sơ và phân loại yêu cầu nội bộ.',
-                content: {
-                    overview: 'Ngân hàng cần rút ngắn thời gian xử lý các hồ sơ nội bộ và yêu cầu từ chi nhánh gửi về hội sở.',
-                    challenges: 'Quy trình thủ công qua email rườm rà, khó theo dõi tiến độ và dễ thất lạc hồ sơ.',
-                    solutions: [
-                        'Xây dựng luồng Automation trên nền tảng n8n/Low-code',
-                        'Tự động trích xuất dữ liệu từ form và email',
-                        'Phân luồng phê duyệt theo hạn mức và phòng ban',
-                        'Cập nhật trạng thái realtime về hệ thống quản trị'
-                    ],
-                    results: 'Rút ngắn 60% thời gian phê duyệt. Minh bạch hóa toàn bộ quy trình xử lý nội bộ.'
-                }
-            }
-        ],
+        projects: projectsDataVi,
     },
     cta: {
         title: 'BẮT ĐẦU NGAY HÔM NAY',

@@ -1,4 +1,5 @@
 import { TechnologyPageTranslations } from './types';
+import { projectsDataEn } from './projects.en';
 
 export const en: TechnologyPageTranslations = {
     hero: {
@@ -98,98 +99,7 @@ export const en: TechnologyPageTranslations = {
         subtitle: 'Real Results from Enterprise Clients',
         readMore: 'View Details',
         viewProject: 'Visit Website',
-        projects: [
-            {
-                id: 'bbq-website',
-                title: 'Korean BBQ Landing Page',
-                category: 'Website',
-                image: '/images/projects/bbq-website.png',
-                description: 'Authentic Korean BBQ restaurant website with food-focused UI, integrated booking engine, and visual menu.',
-                content: {
-                    overview: 'The Korean BBQ Landing Page project was developed with modern technologies, focusing on visual experience and conversion rates.',
-                    challenges: 'The client needed a website that was not only beautiful but also fast-loading, showcasing the deliciousness of the food and encouraging immediate bookings.',
-                    solutions: [
-                        'Luxury Dark Mode UI design highlighting food imagery',
-                        'Realtime table booking module integration',
-                        'Local SEO optimization for regional reach',
-                        'Interactive menu with attractive visual effects'
-                    ],
-                    results: 'Increased online bookings by 200% after 1 month. Bounce rate reduced to under 30%.'
-                }
-            },
-            {
-                id: 'real-estate-web',
-                title: 'LuxHome Real Estate Exchange',
-                category: 'Website',
-                image: '/images/projects/real-estate.png',
-                description: 'Premium real estate listing platform with advanced map search and 360-degree VR Tours.',
-                content: {
-                    overview: 'LuxHome is a high-end real estate exchange. The website needs to demonstrate prestige, transparency, and class.',
-                    challenges: 'Handling large volumes of listing data with high-resolution images while ensuring fast page load speeds.',
-                    solutions: [
-                        'Advanced Smart Filter search system',
-                        ' Integrated 3D Tour / VR View',
-                        'CMS for real estate cart management',
-                        'Cache and CDN optimization for images'
-                    ],
-                    results: 'Supports over 500 brokers simultaneously. Average on-site time reached 5 minutes.'
-                }
-            },
-            {
-                id: 'fitness-app',
-                title: 'FitLife - Workout Companion App',
-                category: 'Mobile App',
-                image: '/images/projects/fitness-app.png',
-                description: 'Cross-platform mobile app (iOS/Android) supporting personalized workout training and nutrition tracking.',
-                content: {
-                    overview: 'FitLife helps office workers maintain workout habits through short exercises and healthy diet plans.',
-                    challenges: 'Motivating users to return to the app daily (Retention) and syncing health data from wearable devices.',
-                    solutions: [
-                        'Developed with Flutter (Cross-platform) for cost efficiency',
-                        'Gamification: Badge and leaderboard system',
-                        'Apple Health & Google Fit integration',
-                        'Video player optimized for workout streaming'
-                    ],
-                    results: 'Reached 10,000 users after 3 months. 4.8/5 rating on App Store.'
-                }
-            },
-            {
-                id: 'shop-apple-123',
-                title: 'Shop Apple 123 AI Assistant',
-                category: 'AI Agent',
-                image: '/images/projects/ai-agent.png',
-                description: 'AI Agent system automating customer service, appointment scheduling, and order processing on Facebook/Zalo.',
-                content: {
-                    overview: 'Shop Apple 123 faced overload in checking messages and scheduling repairs/warranty services for customers.',
-                    challenges: 'Staff spent 4-5 hours daily just checking availability and confirming with customers. Prone to scheduling errors.',
-                    solutions: [
-                        'Automated customer request classification using NLP',
-                        'Bot automatically checks Google Sheet for availability',
-                        'Automatically add, update, delete appointments upon request',
-                        'Instant customer response with personalized scripts'
-                    ],
-                    results: 'Reduced manual scheduling time by 90%. Shop operates 24/7 without missing any customer inquiries.'
-                }
-            },
-            {
-                id: 'tpbank-automation',
-                title: 'TPBank Automated Approval System',
-                category: 'Automation',
-                image: '/images/projects/automation.png',
-                description: 'Low-code solution automating document approval processes and internal request classification.',
-                content: {
-                    overview: 'The bank needed to shorten processing time for internal documents and requests sent from branches to headquarters.',
-                    challenges: 'Manual processes via email were cumbersome, difficult to track progress, and prone to lost documents.',
-                    solutions: [
-                        'Built Automation workflows on n8n/Low-code platform',
-                        'Automated data extraction from forms and emails',
-                        'Approval routing based on limits and departments',
-                        'Realtime status updates to management system'
-                    ],
-                    results: 'Shortened approval time by 60%. Transparentized the entire internal processing workflow.'
-                }
-            }
-        ],
+        projects: projectsDataEn,
     },
     cta: {
         title: 'START TODAY',
@@ -212,8 +122,8 @@ export const en: TechnologyPageTranslations = {
                 description: 'Android & iOS development with React Native, Flutter. Cross-platform, high performance, full features',
             },
             {
-                title: 'AI Chatbot',
-                description: 'Smart AI chatbot with OpenAI, Claude. Integrate into website, Zalo, Facebook Messenger. Automate customer care',
+                title: 'AI Agent',
+                description: 'Intelligent multi-tasking virtual assistant, automating complex workflows and optimizing 24/7 operations with advanced AI technology',
             },
             {
                 title: 'Low-code Automation',
