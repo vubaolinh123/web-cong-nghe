@@ -122,8 +122,8 @@ export const vi: TechnologyPageTranslations = {
                 description: 'Phát triển ứng dụng Android & iOS với React Native, Flutter. Cross-platform, hiệu suất cao, tích hợp đầy đủ tính năng',
             },
             {
-                title: 'Chatbot AI',
-                description: 'Chatbot AI thông minh với OpenAI, Claude. Tích hợp vào website, Zalo, Facebook Messenger. Tự động hóa chăm sóc khách hàng',
+                title: 'AI Agent',
+                description: 'AI Agent thông minh với OpenAI, Claude. Tích hợp vào website, Zalo, Facebook Messenger. Tự động hóa chăm sóc khách hàng',
             },
             {
                 title: 'Low-code Automation',
