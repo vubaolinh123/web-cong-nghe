@@ -1,13 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, X } from "lucide-react";
 import ProductShowcaseButton from "./ProductShowcaseButton";
+import TechShowcaseButton from "../ai-service/TechShowcaseButton";
 
 export default function FloatingContactButton() {
     const [isOpen, setIsOpen] = useState(false);
     const phoneNumber = "0584503333";
+    const pathname = usePathname();
+
+    // Only show ProductShowcaseButton on marketing pages
+    const isMarketingPage = pathname?.startsWith("/dich-vu-marketing");
+    // Only show TechShowcaseButton on technology page
+    const isTechnologyPage = pathname === "/dich-vu-cong-nghe";
 
     const contactOptions = [
         {
@@ -28,8 +36,11 @@ export default function FloatingContactButton() {
 
     return (
         <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end gap-2 sm:gap-4">
-            {/* Product Showcase Button */}
-            <ProductShowcaseButton />
+            {/* Product Showcase Button - Only on marketing pages */}
+            {isMarketingPage && <ProductShowcaseButton />}
+
+            {/* Tech Showcase Button - Only on technology page */}
+            {isTechnologyPage && <TechShowcaseButton />}
 
             {/* Contact Options Menu */}
             <AnimatePresence>

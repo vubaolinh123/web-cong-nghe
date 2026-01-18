@@ -35,8 +35,13 @@ const showcaseImages = [
 ];
 
 // Split images into 2 rows
-const row1Images = showcaseImages.slice(0, 8);
-const row2Images = showcaseImages.slice(8);
+const row1ImagesBase = showcaseImages.slice(0, 8);
+const row2ImagesBase = showcaseImages.slice(8);
+
+// Triple the arrays to ensure enough slides for smooth infinite loop
+// (slidesPerView max is 7, so we need at least 3x = 21+ slides for seamless loop)
+const row1Images = [...row1ImagesBase, ...row1ImagesBase, ...row1ImagesBase];
+const row2Images = [...row2ImagesBase, ...row2ImagesBase, ...row2ImagesBase, ...row2ImagesBase];
 
 // Reusable slide component
 const SlideCard = ({ image, index, isMainRow = false }: {
@@ -95,14 +100,18 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
 
     if (!isClient) return null;
 
-    // Shared Swiper config
+    // Shared Swiper config for TRUE infinite continuous scroll
     const swiperBaseConfig = {
         modules: [Autoplay, FreeMode],
         spaceBetween: 16,
         slidesPerView: 2,
-        freeMode: true,
+        freeMode: {
+            enabled: true,
+            momentum: false, // Disable momentum for smooth continuous motion
+        },
         loop: true,
-        speed: 2000, // Faster speed
+        speed: 5000, // Slower speed = smoother continuous scroll
+        allowTouchMove: false, // Disable touch to prevent interruption
         breakpoints: {
             480: { slidesPerView: 2.5, spaceBetween: 20 },
             640: { slidesPerView: 3.5, spaceBetween: 24 },
@@ -163,7 +172,7 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                                 {...swiperBaseConfig}
                                 centeredSlides={true}
                                 autoplay={{
-                                    delay: 1,
+                                    delay: 0,
                                     disableOnInteraction: false,
                                     pauseOnMouseEnter: false,
                                 }}
@@ -188,7 +197,7 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                                 {...swiperBaseConfig}
                                 centeredSlides={false}
                                 autoplay={{
-                                    delay: 1,
+                                    delay: 0,
                                     disableOnInteraction: false,
                                     pauseOnMouseEnter: false,
                                     reverseDirection: true, // Reverse direction for row 2
