@@ -3,13 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, FreeMode, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
 import Image from "next/image";
-import { X, ExternalLink } from "lucide-react";
+import { X } from "lucide-react";
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 interface TechShowcaseModalProps {
@@ -63,16 +62,16 @@ const tripleProjects = [...techProjects, ...techProjects, ...techProjects];
 const ProjectSlide = ({ project, isMobile = false }: { project: typeof techProjects[0]; isMobile?: boolean }) => (
     <div className="flex flex-col items-center">
         <div className="relative group cursor-pointer">
-            {/* Card Container */}
-            <div className={`relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 shadow-xl transition-all duration-300 group-hover:border-cyan-500/50 group-hover:shadow-cyan-500/20 ${isMobile ? 'w-[280px]' : 'w-[300px] lg:w-[340px]'}`}>
-                {/* Image */}
-                <div className={`relative ${isMobile ? 'h-[180px]' : 'h-[200px] lg:h-[220px]'} overflow-hidden`}>
+            {/* Card Container - Larger on desktop */}
+            <div className={`relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 shadow-xl transition-all duration-300 group-hover:border-cyan-500/50 group-hover:shadow-cyan-500/20 ${isMobile ? 'w-[300px]' : 'w-[420px] lg:w-[500px] xl:w-[550px]'}`}>
+                {/* Image - Taller on desktop */}
+                <div className={`relative ${isMobile ? 'h-[200px]' : 'h-[280px] lg:h-[340px] xl:h-[380px]'} overflow-hidden`}>
                     <Image
                         src={project.image}
                         alt={project.title}
                         fill
                         className="object-contain bg-slate-900 transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 280px, 340px"
+                        sizes="(max-width: 768px) 300px, (max-width: 1024px) 420px, 550px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
 
@@ -219,28 +218,24 @@ export default function TechShowcaseModal({ isOpen, onClose }: TechShowcaseModal
                                 </Swiper>
                             </motion.div>
                         ) : (
-                            /* Desktop Slider with Coverflow Effect */
+                            /* Desktop Slider - Full width, larger cards */
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="w-full max-w-7xl px-4 sm:px-8"
+                                className="w-full px-4"
                             >
                                 <Swiper
-                                    modules={[Autoplay, EffectCoverflow, Pagination]}
-                                    effect="coverflow"
-                                    grabCursor={true}
+                                    modules={[Autoplay, FreeMode, Pagination]}
+                                    spaceBetween={32}
+                                    slidesPerView={1.8}
                                     centeredSlides={true}
-                                    slidesPerView={2.5}
-                                    coverflowEffect={{
-                                        rotate: 0,
-                                        stretch: 0,
-                                        depth: 100,
-                                        modifier: 2,
-                                        slideShadows: false,
+                                    freeMode={{
+                                        enabled: true,
+                                        momentum: false,
                                     }}
                                     loop={true}
-                                    speed={5000}
+                                    speed={6000}
                                     autoplay={{
                                         delay: 0,
                                         disableOnInteraction: false,
@@ -252,10 +247,16 @@ export default function TechShowcaseModal({ isOpen, onClose }: TechShowcaseModal
                                     }}
                                     breakpoints={{
                                         1024: {
-                                            slidesPerView: 3,
+                                            slidesPerView: 2.2,
+                                            spaceBetween: 40,
                                         },
                                         1280: {
-                                            slidesPerView: 3.5,
+                                            slidesPerView: 2.5,
+                                            spaceBetween: 48,
+                                        },
+                                        1536: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 56,
                                         },
                                     }}
                                     className="tech-desktop-swiper !pb-10"

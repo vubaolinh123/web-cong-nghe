@@ -16,6 +16,8 @@ export default function FloatingContactButton() {
     const isMarketingPage = pathname?.startsWith("/dich-vu-marketing");
     // Only show TechShowcaseButton on technology page
     const isTechnologyPage = pathname === "/dich-vu-cong-nghe";
+    // Homepage shows both showcase buttons
+    const isHomePage = pathname === "/" || pathname === "";
 
     const contactOptions = [
         {
@@ -36,11 +38,11 @@ export default function FloatingContactButton() {
 
     return (
         <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end gap-2 sm:gap-4">
-            {/* Product Showcase Button - Only on marketing pages */}
-            {isMarketingPage && <ProductShowcaseButton />}
+            {/* Product Showcase Button - Marketing pages and Homepage */}
+            {(isMarketingPage || isHomePage) && <ProductShowcaseButton />}
 
-            {/* Tech Showcase Button - Only on technology page */}
-            {isTechnologyPage && <TechShowcaseButton />}
+            {/* Tech Showcase Button - Technology page and Homepage */}
+            {(isTechnologyPage || isHomePage) && <TechShowcaseButton />}
 
             {/* Contact Options Menu */}
             <AnimatePresence>
