@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import type { PointerEvent as ReactPointerEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import Image from "next/image";
 import { X } from "lucide-react";
 
@@ -69,11 +71,7 @@ const SlideCard = ({ image, index, isMainRow = false }: {
 );
 
 export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcaseModalProps) {
-    const [isClient, setIsClient] = useState(false);
-
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
+    const backdropPointerRef = useRef({ x: 0, y: 0, active: false });
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -98,26 +96,85 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
         return () => window.removeEventListener('keydown', handleEscape);
     }, [isOpen, onClose]);
 
-    if (!isClient) return null;
+    const baseAutoplayConfig = {
+        delay: 1,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+        waitForTransition: false,
+    };
 
-    // Shared Swiper config for TRUE infinite continuous scroll
+    const resumeAutoplay = (swiper: SwiperType) => {
+        if (!swiper || swiper.destroyed || !swiper.autoplay) return;
+        swiper.autoplay.start();
+    };
+
+    const handleTouchStart = (swiper: SwiperType) => {
+        if (!swiper || swiper.destroyed || !swiper.autoplay) return;
+        swiper.autoplay.stop();
+    };
+
+    const handleTouchEnd = (swiper: SwiperType) => {
+        requestAnimationFrame(() => resumeAutoplay(swiper));
+    };
+
+    const handleBackdropPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+        if (e.target !== e.currentTarget) return;
+        backdropPointerRef.current = {
+            x: e.clientX,
+            y: e.clientY,
+            active: true,
+        };
+    };
+
+    const handleBackdropPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+        if (e.target !== e.currentTarget || !backdropPointerRef.current.active) return;
+
+        const dx = Math.abs(e.clientX - backdropPointerRef.current.x);
+        const dy = Math.abs(e.clientY - backdropPointerRef.current.y);
+        const isTap = dx < 10 && dy < 10;
+
+        backdropPointerRef.current.active = false;
+
+        if (isTap) {
+            onClose();
+        }
+    };
+
+    // Shared Swiper config for continuous autoplay + drag support
     const swiperBaseConfig = {
         modules: [Autoplay, FreeMode],
-        spaceBetween: 16,
-        slidesPerView: 2,
+        spaceBetween: 10,
+        slidesPerView: 2.15,
+        loopAdditionalSlides: 12,
         freeMode: {
             enabled: true,
-            momentum: false, // Disable momentum for smooth continuous motion
+            sticky: false,
+            momentum: true,
+            momentumBounce: false,
+            momentumRatio: 0.25,
+            momentumVelocityRatio: 0.5,
         },
         loop: true,
-        speed: 5000, // Slower speed = smoother continuous scroll
-        allowTouchMove: false, // Disable touch to prevent interruption
+        speed: 7000,
+        watchSlidesProgress: true,
+        allowTouchMove: true,
+        simulateTouch: true,
+        followFinger: true,
+        threshold: 5,
+        resistanceRatio: 0.85,
+        touchStartPreventDefault: false,
+        touchMoveStopPropagation: true,
+        preventClicks: true,
+        preventClicksPropagation: true,
+        grabCursor: true,
         breakpoints: {
-            480: { slidesPerView: 2.5, spaceBetween: 20 },
-            640: { slidesPerView: 3.5, spaceBetween: 24 },
-            768: { slidesPerView: 4.5, spaceBetween: 28 },
-            1024: { slidesPerView: 5.5, spaceBetween: 32 },
-            1280: { slidesPerView: 7, spaceBetween: 36 },
+            0: { slidesPerView: 2.15, spaceBetween: 10 },
+            375: { slidesPerView: 2.35, spaceBetween: 12 },
+            430: { slidesPerView: 2.55, spaceBetween: 12 },
+            640: { slidesPerView: 3.2, spaceBetween: 14 },
+            768: { slidesPerView: 4.1, spaceBetween: 16 },
+            1024: { slidesPerView: 5.2, spaceBetween: 20 },
+            1280: { slidesPerView: 6.2, spaceBetween: 24 },
         },
     };
 
@@ -129,8 +186,9 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-sm"
-                    onClick={onClose}
+                    className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-sm pt-[max(12px,env(safe-area-inset-top))] pb-[max(12px,env(safe-area-inset-bottom))] overscroll-contain"
+                    onPointerDown={handleBackdropPointerDown}
+                    onPointerUp={handleBackdropPointerUp}
                 >
                     {/* Close Button */}
                     <motion.button
@@ -160,7 +218,11 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                     </motion.div>
 
                     {/* Dual Row Sliders Container */}
-                    <div className="w-full flex flex-col gap-4 sm:gap-6" onClick={(e) => e.stopPropagation()}>
+                    <div
+                        className="w-full flex flex-col gap-3 sm:gap-5 px-2 sm:px-4"
+                        onClick={(e) => e.stopPropagation()}
+                        onPointerDown={(e) => e.stopPropagation()}
+                    >
                         {/* Row 1: Left to Right with Center Zoom */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
@@ -171,12 +233,13 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                             <Swiper
                                 {...swiperBaseConfig}
                                 centeredSlides={true}
-                                autoplay={{
-                                    delay: 0,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: false,
-                                }}
-                                className="!py-6 center-zoom-swiper"
+                                autoplay={baseAutoplayConfig}
+                                onTouchStart={handleTouchStart}
+                                onTouchEnd={handleTouchEnd}
+                                onSliderFirstMove={handleTouchStart}
+                                onTap={handleTouchEnd}
+                                onTransitionEnd={handleTouchEnd}
+                                className="!py-4 sm:!py-5 center-zoom-swiper showcase-row-swiper"
                             >
                                 {row1Images.map((image, index) => (
                                     <SwiperSlide key={`row1-${index}`}>
@@ -197,12 +260,15 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                                 {...swiperBaseConfig}
                                 centeredSlides={false}
                                 autoplay={{
-                                    delay: 0,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: false,
+                                    ...baseAutoplayConfig,
                                     reverseDirection: true, // Reverse direction for row 2
                                 }}
-                                className="!py-4"
+                                onTouchStart={handleTouchStart}
+                                onTouchEnd={handleTouchEnd}
+                                onSliderFirstMove={handleTouchStart}
+                                onTap={handleTouchEnd}
+                                onTransitionEnd={handleTouchEnd}
+                                className="!py-3 sm:!py-4 showcase-row-swiper"
                             >
                                 {row2Images.map((image, index) => (
                                     <SwiperSlide key={`row2-${index}`}>
@@ -220,7 +286,7 @@ export default function ProductShowcaseModal({ isOpen, onClose }: ProductShowcas
                         transition={{ delay: 0.4 }}
                         className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/40"
                     >
-                        Nhấn vào bất kỳ đâu để đóng
+                        Chạm nền tối để đóng
                     </motion.p>
                 </motion.div>
             )}

@@ -440,6 +440,14 @@ html {
   position: relative;
 }
 
+.showcase-row-swiper {
+  touch-action: pan-x;
+}
+
+.showcase-row-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
 .center-zoom-swiper .swiper-wrapper {
   overflow: visible !important;
 }
@@ -502,4 +510,3 @@ html {
     transform: scale(1.25) !important;
   }
 }
-
