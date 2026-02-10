@@ -2,6 +2,22 @@
 import { google } from "googleapis";
 import { ContactFormData } from "@/lib/validations/contact";
 
+const SHEET_HEADERS = [
+  "Timestamp",
+  "Name",
+  "Job Title",
+  "Phone",
+  "Fanpage/Website",
+  "Budget",
+  "Service Category",
+  "Specific Services",
+  "Message",
+  "Status",
+] as const;
+
+const SHEET_HEADER_RANGE = "A1:J1";
+const SHEET_APPEND_RANGE = "A:J";
+
 // Service Account credentials from environment variables
 const getGoogleSheetsClient = async () => {
   const credentials = {
@@ -57,6 +73,8 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
   // Get the actual sheet name
   const sheetName = await getFirstSheetName(sheets, spreadsheetId);
 
+  await initializeSheetWithName(sheets, spreadsheetId, sheetName);
+
   // Format timestamp
   const timestamp = new Date().toLocaleString("vi-VN", {
     timeZone: "Asia/Ho_Chi_Minh",
@@ -67,12 +85,13 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
     [
       timestamp,
       data.name,
-      data.jobTitle,
+      data.jobTitle || "N/A",
       data.phone,
       data.fanpageOrWebsite || "N/A",
-      data.serviceCategory,
-      data.specificServices.join(", "),
-      data.message,
+      data.budget || "N/A",
+      data.serviceCategory || "N/A",
+      data.specificServices.length > 0 ? data.specificServices.join(", ") : "N/A",
+      data.message || "N/A",
       "Pending", // Status column
     ],
   ];
@@ -80,7 +99,7 @@ export const appendToGoogleSheet = async (data: ContactFormData): Promise<void> 
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `'${sheetName}'!A:I`, // Use actual sheet name with quotes (9 columns now)
+      range: `'${sheetName}'!${SHEET_APPEND_RANGE}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -104,25 +123,36 @@ export const initializeSheet = async (): Promise<void> => {
   const sheets = await getGoogleSheetsClient();
   const sheetName = await getFirstSheetName(sheets, spreadsheetId);
 
-  const headers = [
-    ["Timestamp", "Name", "Job Title", "Phone", "Fanpage/Website", "Service Category", "Specific Services", "Message", "Status"],
-  ];
+  await initializeSheetWithName(sheets, spreadsheetId, sheetName);
+};
+
+const initializeSheetWithName = async (
+  sheets: Awaited<ReturnType<typeof getGoogleSheetsClient>>,
+  spreadsheetId: string,
+  sheetName: string
+): Promise<void> => {
+  const expectedHeaders = [...SHEET_HEADERS];
 
   try {
     // Check if headers exist
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `'${sheetName}'!A1:I1`,
+      range: `'${sheetName}'!${SHEET_HEADER_RANGE}`,
     });
 
-    if (!response.data.values || response.data.values.length === 0) {
-      // Add headers if they don't exist
+    const currentHeaders = response.data.values?.[0] ?? [];
+    const isSameHeaders =
+      currentHeaders.length === expectedHeaders.length &&
+      expectedHeaders.every((header, index) => currentHeaders[index] === header);
+
+    if (!isSameHeaders) {
+      // Add/update headers if missing or outdated
       await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `'${sheetName}'!A1:I1`,
+        range: `'${sheetName}'!${SHEET_HEADER_RANGE}`,
         valueInputOption: "USER_ENTERED",
         requestBody: {
-          values: headers,
+          values: [expectedHeaders],
         },
       });
     }

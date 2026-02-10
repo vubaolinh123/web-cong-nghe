@@ -6,6 +6,7 @@ import {
   hasErrors,
 } from "@/lib/validations/contact";
 import { appendToGoogleSheet } from "@/lib/google-sheets";
+import { normalizeContactFormPayload } from "@/lib/contact/normalize";
 
 // Rate limiting - simple in-memory store (for production, use Redis)
 const rateLimit = new Map<string, { count: number; timestamp: number }>();
@@ -49,16 +50,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactAp
 
     // Parse request body
     const body = await request.json();
-    const formData: ContactFormData = {
-      name: body.name || "",
-      jobTitle: body.jobTitle || "",
-      phone: body.phone || "",
-      fanpageOrWebsite: body.fanpageOrWebsite || "",
-      budget: body.budget || "",
-      serviceCategory: body.serviceCategory || "",
-      specificServices: body.specificServices || [],
-      message: body.message || "",
-    };
+    const formData: ContactFormData = normalizeContactFormPayload(body);
 
     // Server-side validation
     const validationErrors = validateContactForm(formData);

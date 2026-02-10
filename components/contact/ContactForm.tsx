@@ -9,6 +9,8 @@ import {
   ContactFormData,
   ContactFormErrors,
   ContactApiResponse,
+  initialContactFormData,
+  budgetOptions,
   validateContactForm,
   hasErrors,
   serviceCategoryOptions,
@@ -16,28 +18,10 @@ import {
   marketingServiceOptions,
 } from "@/lib/validations/contact";
 
-const budgetOptions = [
-  { value: "under-20m", label: "Dưới 20 triệu" },
-  { value: "20m-50m", label: "20 - 50 triệu" },
-  { value: "50m-100m", label: "50 - 100 triệu" },
-  { value: "over-100m", label: "Trên 100 triệu" },
-];
-
-const initialFormData: ContactFormData = {
-  name: "",
-  jobTitle: "",
-  phone: "",
-  fanpageOrWebsite: "",
-  budget: "",
-  serviceCategory: "",
-  specificServices: [],
-  message: "",
-};
-
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+  const [formData, setFormData] = useState<ContactFormData>(initialContactFormData);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [serverMessage, setServerMessage] = useState("");
@@ -99,7 +83,7 @@ export default function ContactForm() {
       if (data.success) {
         setSubmitStatus("success");
         setServerMessage(data.message);
-        setFormData(initialFormData);
+        setFormData(initialContactFormData);
       } else {
         setSubmitStatus("error");
         setServerMessage(data.message);
@@ -107,7 +91,7 @@ export default function ContactForm() {
           setErrors(data.errors);
         }
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
       setServerMessage("Đã có lỗi xảy ra. Vui lòng thử lại sau.");
     }
@@ -322,4 +306,3 @@ function ErrorMessage({ message, onReset }: { message: string; onReset: () => vo
     </motion.div>
   );
 }
-

@@ -11,6 +11,17 @@ export interface ContactFormData {
   message: string;
 }
 
+export const initialContactFormData: ContactFormData = {
+  name: "",
+  jobTitle: "",
+  phone: "",
+  fanpageOrWebsite: "",
+  budget: "",
+  serviceCategory: "",
+  specificServices: [],
+  message: "",
+};
+
 export interface ContactFormErrors {
   name?: string;
   jobTitle?: string;
@@ -36,7 +47,7 @@ export const validateName = (name: string): string | undefined => {
   return undefined;
 };
 
-export const validateJobTitle = (jobTitle: string): string | undefined => {
+export const validateJobTitle = (): string | undefined => {
   return undefined;
 };
 
@@ -59,7 +70,7 @@ export const validateSpecificServices = (specificServices: string[]): string | u
   return undefined;
 };
 
-export const validateMessage = (message: string): string | undefined => {
+export const validateMessage = (): string | undefined => {
   return undefined;
 };
 
@@ -107,3 +118,9 @@ export const marketingServiceOptions = [
   { value: "livestream-tiktok", label: "TiktokShop" },
 ];
 
+export const budgetOptions = [
+  { value: "under-20m", label: "Dưới 20 triệu" },
+  { value: "20m-50m", label: "20 - 50 triệu" },
+  { value: "50m-100m", label: "50 - 100 triệu" },
+  { value: "over-100m", label: "Trên 100 triệu" },
+];
