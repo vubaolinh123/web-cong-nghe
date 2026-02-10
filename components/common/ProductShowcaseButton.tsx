@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { GalleryHorizontal } from "lucide-react";
-import ProductShowcaseModal from "./ProductShowcaseModal";
+
+const ProductShowcaseModal = dynamic(() => import("./ProductShowcaseModal"), {
+    ssr: false,
+});
 
 export default function ProductShowcaseButton() {
     const [isModalOpen, setIsModalOpen] = useState(false);

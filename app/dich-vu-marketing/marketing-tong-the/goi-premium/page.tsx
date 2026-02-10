@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
 import FloatingServicesNav from "@/components/common/FloatingServicesNav";
-import { useEffect } from "react";
 import { useMarketingPremiumTranslations } from "@/lib/i18n/pages/marketing-premium";
 
 // Reuse components from basic-package - they use translations from hook
@@ -21,10 +20,6 @@ const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSect
 
 export default function PremiumPackagePage() {
     const t = useMarketingPremiumTranslations();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <>

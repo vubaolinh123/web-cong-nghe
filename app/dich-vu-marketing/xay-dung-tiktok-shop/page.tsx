@@ -2,9 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
-import FloatingServicesNav from "@/components/common/FloatingServicesNav";
-import { useEffect } from "react";
 import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
+
+const FloatingServicesNav = dynamic(() => import("@/components/common/FloatingServicesNav"));
 
 // Dynamic imports
 const Hero = dynamic(() => import("@/components/marketing/tiktok/Hero"), {
@@ -19,10 +19,6 @@ const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSect
 
 export default function TiktokPage() {
     const t = useTiktokShopTranslations();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <main className="min-h-screen bg-black font-sans selection:bg-pink-500 selection:text-white">

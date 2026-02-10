@@ -58,8 +58,10 @@ export type TechnologyPageTranslations = {
     caseStudies: {
         title: string;
         subtitle: string;
+        description: string;
         readMore: string;
         viewProject: string;
+        swipeHint: string;
         projects: Array<{
             id: string;
             title: string;
@@ -104,6 +106,8 @@ export type TechnologyPageTranslations = {
     servicePricing: {
         title: string;
         titleHighlight: string;
+        headingPrefix: string;
+        headingHighlight: string;
         description: string;
         ctaButton: string;
         ctaButtonContact: string;

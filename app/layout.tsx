@@ -4,8 +4,7 @@ import "./globals.css";
 import { defaultSEO, siteConfig } from "@/lib/seo/config";
 import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
-import CustomCursor from "@/components/ui/CustomCursor";
-import FloatingContactButton from "@/components/common/FloatingContactButton";
+import ClientOverlays from "@/components/common/ClientOverlays";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,11 +102,10 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-100`}
       >
-        <CustomCursor />
         <LanguageProvider>
           {children}
         </LanguageProvider>
-        <FloatingContactButton />
+        <ClientOverlays />
       </body>
     </html>
   );

@@ -20,6 +20,8 @@ export type TranslationDictionary = {
   };
   hero: {
     badge: string;
+    partnerBadge: string;
+    established: string;
     title1: string;
     title2: string;
     title3: string;
@@ -30,6 +32,7 @@ export type TranslationDictionary = {
     subtitleTechnology: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    scrollHint: string;
     serviceCards: {
       marketing: { title: string; description: string };
       technology: { title: string; description: string };
@@ -84,6 +87,7 @@ export type TranslationDictionary = {
     };
   };
   partners: {
+    badge: string;
     subtitle: string;
     title1: string;
     title2: string;
@@ -100,6 +104,11 @@ export type TranslationDictionary = {
       conversionRate: { title: string; description: string };
       serviceValue: { title: string; description: string };
       permanentOperation: { title: string; description: string };
+    };
+    quickStats: {
+      trustedPartners: string;
+      diverseIndustries: string;
+      collaborationYears: string;
     };
   };
   stats: {
@@ -146,6 +155,15 @@ export type TranslationDictionary = {
     badge: string;
     title: string;
     titleHighlight: string;
+    badges: {
+      marketing: string;
+      tech: string;
+    };
+    stats: {
+      projects: string;
+      satisfaction: string;
+      aiProjects: string;
+    };
     marketing: {
       title: string;
       description: string;
@@ -167,6 +185,7 @@ export type TranslationDictionary = {
       };
     };
     exploreButton: string;
+    exploreButtonShort: string;
   };
   whyUs: {
     stats: {
@@ -181,9 +200,9 @@ export type TranslationDictionary = {
     title: string;
     titleHighlight: string;
     steps: {
-      discovery: { subtitle: string; description: string };
-      strategy: { subtitle: string; description: string };
-      development: { subtitle: string; description: string };
+      discovery: { title: string; subtitle: string; description: string };
+      strategy: { title: string; subtitle: string; description: string };
+      development: { title: string; subtitle: string; description: string };
     };
   };
   contactSection: {
@@ -206,6 +225,8 @@ export type TranslationDictionary = {
       jobTitlePlaceholder: string;
       fanpage: string;
       fanpagePlaceholder: string;
+      budgetLabel: string;
+      budgetPlaceholder: string;
       service: string;
       servicePlaceholder: string;
       specificService: string;
@@ -222,6 +243,7 @@ export type TranslationDictionary = {
     error: {
       title: string;
       tryAgain: string;
+      genericMessage: string;
     };
   };
   footerCta: {

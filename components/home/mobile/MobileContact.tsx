@@ -88,7 +88,7 @@ export default function MobileContact() {
             }
         } catch {
             setSubmitStatus("error");
-            setServerMessage("Đã có lỗi xảy ra. Vui lòng thử lại sau.");
+            setServerMessage(t("contactSection.error.genericMessage"));
         }
     };
 
@@ -159,15 +159,15 @@ export default function MobileContact() {
                             <div className="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <CheckCircle size={28} className="text-green-400" />
                             </div>
-                            <h3 className="text-lg font-bold text-white mb-2">Gửi Thành Công!</h3>
+                            <h3 className="text-lg font-bold text-white mb-2">{t("contactSection.success.title")}</h3>
                             <p className="text-slate-400 text-sm mb-4">
-                                Đội ngũ của chúng tôi sẽ phản hồi trong vòng 24 giờ.
+                                {t("contactSection.success.message")}
                             </p>
                             <button
                                 onClick={resetForm}
                                 className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors text-sm"
                             >
-                                Gửi Yêu Cầu Khác
+                                {t("contactSection.success.sendAnother")}
                             </button>
                         </motion.div>
                     ) : submitStatus === "error" && serverMessage ? (
@@ -180,13 +180,13 @@ export default function MobileContact() {
                             <div className="w-14 h-14 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <XCircle size={28} className="text-red-400" />
                             </div>
-                            <h3 className="text-lg font-bold text-white mb-2">Có Lỗi Xảy Ra</h3>
+                            <h3 className="text-lg font-bold text-white mb-2">{t("contactSection.error.title")}</h3>
                             <p className="text-slate-400 text-sm mb-4">{serverMessage}</p>
                             <button
                                 onClick={resetForm}
                                 className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors text-sm"
                             >
-                                Thử Lại
+                                {t("contactSection.error.tryAgain")}
                             </button>
                         </motion.div>
                     ) : (
@@ -238,12 +238,12 @@ export default function MobileContact() {
                                 icon={<Globe size={16} />}
                             />
                             <FormSelect
-                                label="Ngân sách (Tùy chọn)"
+                                label={t("contactSection.form.budgetLabel")}
                                 name="budget"
                                 value={formData.budget}
                                 onChange={handleChange}
                                 options={budgetOptions}
-                                placeholder="Chọn ngân sách"
+                                placeholder={t("contactSection.form.budgetPlaceholder")}
                             />
                             <FormSelect
                                 label={t("contactSection.form.service")}

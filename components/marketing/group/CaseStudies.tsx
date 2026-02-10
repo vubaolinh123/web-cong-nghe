@@ -1,13 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
 import Image from "next/image";
 import { Eye, Users, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -43,7 +45,13 @@ const caseStudiesImages = [
 
 export default function CaseStudies() {
     const t = useFacebookGroupTranslations();
+    const shouldReduceMotion = useReducedMotion();
     const [selectedImage, setSelectedImage] = useState<CaseStudyImage | null>(null);
+    const [featuredSwiper, setFeaturedSwiper] = useState<SwiperType | null>(null);
+    const [gallerySwiper, setGallerySwiper] = useState<SwiperType | null>(null);
+    const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.2,
+    });
 
     // Close modal on ESC key
     useEffect(() => {
@@ -68,8 +76,21 @@ export default function CaseStudies() {
         };
     }, [selectedImage]);
 
+    useEffect(() => {
+        const swipers = [featuredSwiper, gallerySwiper];
+        swipers.forEach((swiper) => {
+            if (!swiper || !swiper.autoplay) return;
+
+            if (!shouldReduceMotion && isActive) {
+                swiper.autoplay.start();
+            } else {
+                swiper.autoplay.stop();
+            }
+        });
+    }, [featuredSwiper, gallerySwiper, isActive, shouldReduceMotion]);
+
     return (
-        <section className="relative py-16 sm:py-20 bg-slate-950 overflow-hidden">
+        <section ref={sectionRef} className="relative py-16 sm:py-20 bg-slate-950 overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950" />
@@ -130,9 +151,10 @@ export default function CaseStudies() {
                             }}
                             navigation
                             pagination={{ clickable: true, dynamicBullets: true }}
-                            autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                            autoplay={shouldReduceMotion ? false : { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                             loop={true}
                             speed={600}
+                            onSwiper={setFeaturedSwiper}
                             className="group-featured-swiper !pb-12"
                         >
                             {t.caseStudies.featuredProjects.map((project, index) => (
@@ -231,9 +253,10 @@ export default function CaseStudies() {
                             1024: { slidesPerView: 5, spaceBetween: 28 },
                         }}
                         freeMode={true}
-                        autoplay={{ delay: 1, disableOnInteraction: false }}
+                        autoplay={shouldReduceMotion ? false : { delay: 1, disableOnInteraction: false }}
                         loop={true}
                         speed={3000}
+                        onSwiper={setGallerySwiper}
                         className="continuous-swiper !pb-12"
                     >
                         {caseStudiesImages.map((item) => (

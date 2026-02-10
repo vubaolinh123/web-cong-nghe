@@ -97,8 +97,10 @@ export const en: TechnologyPageTranslations = {
     caseStudies: {
         title: 'Featured Projects',
         subtitle: 'Real Results from Enterprise Clients',
+        description: 'Discover how we help businesses succeed in digital transformation',
         readMore: 'View Details',
         viewProject: 'Visit Website',
+        swipeHint: 'Swipe to see more',
         projects: projectsDataEn,
     },
     cta: {
@@ -134,6 +136,8 @@ export const en: TechnologyPageTranslations = {
     servicePricing: {
         title: 'Service',
         titleHighlight: 'Pricing',
+        headingPrefix: 'Choose Your',
+        headingHighlight: 'Solution',
         description: 'Choose the service that fits your business needs and budget',
         ctaButton: 'Contact Us',
         ctaButtonContact: 'Contact',

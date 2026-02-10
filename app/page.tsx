@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useEffect, useState } from "react";
 
 // Loading state
 const LoadingScreen = () => (
@@ -18,17 +17,11 @@ const DesktopHome = dynamic(() => import("@/components/home/DesktopHome"), {
 
 const MobileHome = dynamic(() => import("@/components/home/MobileHome"), {
   loading: () => <LoadingScreen />,
+  ssr: false,
 });
 
 export default function Home() {
-  const { isMobile, isDesktop } = useIsMobile();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return <LoadingScreen />;
+  const { isDesktop } = useIsMobile();
 
   // Show MobileHome for mobile AND tablet (anything not desktop)
   if (!isDesktop) {

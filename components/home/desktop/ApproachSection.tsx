@@ -11,7 +11,7 @@ export default function ApproachSection() {
   const steps = [
     {
       number: "01",
-      title: "Discovery",
+      title: t("approach.steps.discovery.title"),
       subtitle: t("approach.steps.discovery.subtitle"),
       description: t("approach.steps.discovery.description"),
       color: "from-cyan-400 to-blue-500",
@@ -20,7 +20,7 @@ export default function ApproachSection() {
     },
     {
       number: "02",
-      title: "Strategy",
+      title: t("approach.steps.strategy.title"),
       subtitle: t("approach.steps.strategy.subtitle"),
       description: t("approach.steps.strategy.description"),
       color: "from-green-400 to-emerald-500",
@@ -29,7 +29,7 @@ export default function ApproachSection() {
     },
     {
       number: "03",
-      title: "Development",
+      title: t("approach.steps.development.title"),
       subtitle: t("approach.steps.development.subtitle"),
       description: t("approach.steps.development.description"),
       color: "from-purple-400 to-pink-500",

@@ -20,6 +20,8 @@ export const en: TranslationDictionary = {
   },
   hero: {
     badge: "7 Years of Experience | #1 Marketing & Technology Partner",
+    partnerBadge: "AI-First Technology Partner",
+    established: "EST. 2017",
     title1: "7 Years Together",
     title2: "Marketing",
     title3: "Technology",
@@ -30,6 +32,7 @@ export const en: TranslationDictionary = {
     subtitleTechnology: "Software Outsourcing",
     ctaPrimary: "Free Consultation",
     ctaSecondary: "Watch Introduction Video",
+    scrollHint: "Scroll",
     serviceCards: {
       marketing: {
         title: "Online Marketing",
@@ -137,6 +140,7 @@ export const en: TranslationDictionary = {
     }
   },
   partners: {
+    badge: "Trusted by",
     subtitle: "Our Partners",
     title1: "Trusted",
     title2: "Partners",
@@ -165,6 +169,11 @@ export const en: TranslationDictionary = {
         title: "Permanent Operation",
         description: "Permanent operation time, setup completed in 3-5 days"
       }
+    },
+    quickStats: {
+      trustedPartners: "Trusted partners",
+      diverseIndustries: "Diverse industries",
+      collaborationYears: "Years of collaboration"
     }
   },
   stats: {
@@ -241,6 +250,15 @@ export const en: TranslationDictionary = {
     badge: "Our Services",
     title: "Solutions",
     titleHighlight: "AI-First",
+    badges: {
+      marketing: "Hot",
+      tech: "AI-Powered"
+    },
+    stats: {
+      projects: "Projects",
+      satisfaction: "Satisfaction",
+      aiProjects: "AI Projects"
+    },
     marketing: {
       title: "AI Marketing",
       description: "Comprehensive Marketing solutions with AI to optimize campaigns, increase ROI and reduce advertising costs",
@@ -261,7 +279,8 @@ export const en: TranslationDictionary = {
         integration: "Built-in AI Integration"
       }
     },
-    exploreButton: "EXPLORE NOW"
+    exploreButton: "EXPLORE NOW",
+    exploreButtonShort: "Explore"
   },
   whyUs: {
     stats: {
@@ -277,14 +296,17 @@ export const en: TranslationDictionary = {
     titleHighlight: "Approach",
     steps: {
       discovery: {
+        title: "Discovery",
         subtitle: "Discovery",
         description: "Analyze needs & market"
       },
       strategy: {
+        title: "Strategy",
         subtitle: "Strategy",
         description: "Build plan & UI/UX design"
       },
       development: {
+        title: "Development",
         subtitle: "Development",
         description: "Coding & Deploy to production"
       }
@@ -311,6 +333,8 @@ export const en: TranslationDictionary = {
 
       fanpage: "Fanpage/Website Link (Optional)",
       fanpagePlaceholder: "https://facebook.com/yourpage",
+      budgetLabel: "Budget (Optional)",
+      budgetPlaceholder: "Select budget",
       service: "Service You Need",
       servicePlaceholder: "Select service type",
       specificService: "Select Specific Services",
@@ -326,7 +350,8 @@ export const en: TranslationDictionary = {
     },
     error: {
       title: "An Error Occurred",
-      tryAgain: "Try Again"
+      tryAgain: "Try Again",
+      genericMessage: "An error occurred. Please try again later."
     }
   },
   footerCta: {

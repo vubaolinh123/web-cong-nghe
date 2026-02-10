@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Expand, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Expand } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
 import { Container } from '../common';
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
 import ProjectModal from './ProjectModal';
-import { cn } from '@/lib/utils';
+import type { TechnologyPageTranslations } from '@/lib/i18n/pages/technology';
+import { useSectionActivity } from '@/hooks/useSectionActivity';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,15 +19,9 @@ import 'swiper/css/effect-coverflow';
 
 export default function CaseStudies() {
     const t = useTechnologyTranslations();
-    const [selectedProject, setSelectedProject] = useState<any>(null);
-
-    // Desktop Navigation Refs
-    const prevRef = useRef<HTMLButtonElement>(null);
-    const nextRef = useRef<HTMLButtonElement>(null);
-
-    // Mobile Navigation Refs
-    const mobilePrevRef = useRef<HTMLButtonElement>(null);
-    const mobileNextRef = useRef<HTMLButtonElement>(null);
+    const [selectedProject, setSelectedProject] = useState<TechnologyPageTranslations['caseStudies']['projects'][number] | null>(null);
+    const [desktopSwiper, setDesktopSwiper] = useState<SwiperType | null>(null);
+    const [mobileSwiper, setMobileSwiper] = useState<SwiperType | null>(null);
 
     // Data Selection
     // Mobile: Standard 5 items
@@ -36,8 +32,24 @@ export default function CaseStudies() {
         ? [...projects, { ...projects[0], id: `${projects[0].id}-loop` }]
         : [];
 
+    const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.25,
+    });
+
+    useEffect(() => {
+        const swipers = [desktopSwiper, mobileSwiper];
+        swipers.forEach((swiper) => {
+            if (!swiper || !swiper.autoplay) return;
+            if (isActive) {
+                swiper.autoplay.start();
+            } else {
+                swiper.autoplay.stop();
+            }
+        });
+    }, [desktopSwiper, mobileSwiper, isActive]);
+
     return (
-        <section className="relative py-16 sm:py-32 bg-slate-950/50 overflow-hidden" id="case-studies">
+        <section ref={sectionRef} className="relative py-16 sm:py-32 bg-slate-950/50 overflow-hidden" id="case-studies">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]" />
@@ -65,21 +77,19 @@ export default function CaseStudies() {
                             {t.caseStudies.subtitle}
                         </h2>
                         <p className="text-slate-400 text-lg max-w-xl mx-auto md:mx-0">
-                            Khám phá cách chúng tôi giúp doanh nghiệp chuyển đổi số thành công
+                            {t.caseStudies.description}
                         </p>
                     </motion.div>
 
                     {/* Desktop Navigation Buttons */}
                     <div className="hidden md:flex items-center gap-3">
                         <button
-                            ref={prevRef}
-                            className="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+                            className="ai-case-desktop-prev w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                         >
                             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                         </button>
                         <button
-                            ref={nextRef}
-                            className="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+                            className="ai-case-desktop-next w-12 h-12 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                         >
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
@@ -102,15 +112,10 @@ export default function CaseStudies() {
                             dynamicBullets: true,
                         }}
                         navigation={{
-                            prevEl: mobilePrevRef.current,
-                            nextEl: mobileNextRef.current,
+                            prevEl: '.ai-case-mobile-prev',
+                            nextEl: '.ai-case-mobile-next',
                         }}
-                        onBeforeInit={(swiper) => {
-                            // @ts-ignore
-                            swiper.params.navigation.prevEl = mobilePrevRef.current;
-                            // @ts-ignore
-                            swiper.params.navigation.nextEl = mobileNextRef.current;
-                        }}
+                        onSwiper={setMobileSwiper}
                         className="w-full !pb-12" // Padding bottom for pagination bullets
                     >
                         {projects.map((project, index) => (
@@ -160,17 +165,15 @@ export default function CaseStudies() {
                     {/* Visual Hint: Navigation Buttons underneath on Mobile */}
                     <div className="flex items-center justify-center gap-4 mt-2">
                         <button
-                            ref={mobilePrevRef}
-                            className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
+                            className="ai-case-mobile-prev w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
                         >
                             <ArrowLeft size={18} />
                         </button>
                         <span className="text-xs text-slate-500 font-medium uppercase tracking-widest">
-                            Lướt xem thêm
+                            {t.caseStudies.swipeHint}
                         </span>
                         <button
-                            ref={mobileNextRef}
-                            className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
+                            className="ai-case-mobile-next w-10 h-10 rounded-full border border-slate-700 bg-slate-800/80 text-slate-300 flex items-center justify-center active:scale-95 transition-transform"
                         >
                             <ArrowRight size={18} />
                         </button>
@@ -199,15 +202,10 @@ export default function CaseStudies() {
                             pauseOnMouseEnter: true
                         }}
                         navigation={{
-                            prevEl: prevRef.current,
-                            nextEl: nextRef.current,
+                            prevEl: '.ai-case-desktop-prev',
+                            nextEl: '.ai-case-desktop-next',
                         }}
-                        onBeforeInit={(swiper) => {
-                            // @ts-ignore
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            // @ts-ignore
-                            swiper.params.navigation.nextEl = nextRef.current;
-                        }}
+                        onSwiper={setDesktopSwiper}
                         loop={true}
                         spaceBetween={32}
                         breakpoints={{

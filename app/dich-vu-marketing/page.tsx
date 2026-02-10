@@ -1,14 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Header, BlogSection } from "@/components/common";
 import Hero from "@/components/marketing/Hero";
 import Introduction from "@/components/marketing/Introduction";
 import ServiceList from "@/components/marketing/ServiceList";
-import FeaturedCaseStudies from "@/components/marketing/FeaturedCaseStudies";
 
 import CTASection from "@/components/marketing/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+
+const FeaturedCaseStudies = dynamic(() => import("@/components/marketing/FeaturedCaseStudies"), {
+    ssr: false,
+});
 
 export default function MarketingServicesPage() {
     const { dictionary } = useLanguage();

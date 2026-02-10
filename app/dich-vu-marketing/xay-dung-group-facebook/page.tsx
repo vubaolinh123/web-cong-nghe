@@ -2,9 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
-import FloatingServicesNav from "@/components/common/FloatingServicesNav";
-import { useEffect } from "react";
 import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
+
+const FloatingServicesNav = dynamic(() => import("@/components/common/FloatingServicesNav"));
 
 // Dynamic imports
 const Hero = dynamic(() => import("@/components/marketing/group/Hero"), {
@@ -19,10 +19,6 @@ const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSect
 
 export default function GroupPage() {
     const t = useFacebookGroupTranslations();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <main className="min-h-screen bg-slate-950 font-sans">

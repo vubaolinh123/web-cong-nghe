@@ -20,6 +20,8 @@ export const vi: TranslationDictionary = {
   },
   hero: {
     badge: "Đội Ngũ 7 Năm Kinh Nghiệm | Đối Tác Marketing & Công Nghệ #1",
+    partnerBadge: "Đối Tác Công Nghệ AI-First",
+    established: "THÀNH LẬP 2017",
     title1: "7 Năm Đồng Hành",
     title2: "Marketing",
     title3: "Công Nghệ",
@@ -30,6 +32,7 @@ export const vi: TranslationDictionary = {
     subtitleTechnology: "Gia Công Phần Mềm",
     ctaPrimary: "Tư Vấn Miễn Phí",
     ctaSecondary: "Xem Video Giới Thiệu",
+    scrollHint: "Cuộn",
     serviceCards: {
       marketing: {
         title: "Marketing Online",
@@ -137,6 +140,7 @@ export const vi: TranslationDictionary = {
     }
   },
   partners: {
+    badge: "Được tin dùng bởi",
     subtitle: "Đối Tác Hợp Tác",
     title1: "Đối Tác",
     title2: "Tin Cậy",
@@ -165,6 +169,11 @@ export const vi: TranslationDictionary = {
         title: "Vận Hành Vĩnh Viễn",
         description: "Thời gian vận hành vĩnh viễn, setup hoàn thành trong 2 tháng"
       }
+    },
+    quickStats: {
+      trustedPartners: "Đối tác tin cậy",
+      diverseIndustries: "Ngành nghề đa dạng",
+      collaborationYears: "Năm hợp tác"
     }
   },
   stats: {
@@ -241,6 +250,15 @@ export const vi: TranslationDictionary = {
     badge: "Dịch Vụ Của Chúng Tôi",
     title: "Giải Pháp",
     titleHighlight: "AI-First",
+    badges: {
+      marketing: "Nổi bật",
+      tech: "Tích hợp AI"
+    },
+    stats: {
+      projects: "Dự án",
+      satisfaction: "Hài lòng",
+      aiProjects: "Dự án AI"
+    },
     marketing: {
       title: "AI Marketing",
       description: "Giải pháp Marketing toàn diện với AI hỗ trợ tối ưu chiến dịch, tăng ROI và tiết kiệm chi phí quảng cáo",
@@ -261,7 +279,8 @@ export const vi: TranslationDictionary = {
         integration: "Tích hợp AI sẵn có"
       }
     },
-    exploreButton: "KHÁM PHÁ NGAY"
+    exploreButton: "KHÁM PHÁ NGAY",
+    exploreButtonShort: "Khám Phá"
   },
   whyUs: {
     stats: {
@@ -277,14 +296,17 @@ export const vi: TranslationDictionary = {
     titleHighlight: "Approach",
     steps: {
       discovery: {
+        title: "Khám Phá",
         subtitle: "Khám Phá",
         description: "Phân tích nhu cầu & thị trường"
       },
       strategy: {
+        title: "Chiến Lược",
         subtitle: "Chiến Lược",
         description: "Xây dựng kế hoạch & thiết kế UI/UX"
       },
       development: {
+        title: "Phát Triển",
         subtitle: "Phát Triển",
         description: "Lập trình & Triển khai production"
       }
@@ -311,6 +333,8 @@ export const vi: TranslationDictionary = {
 
       fanpage: "Link Fanpage/Website (Tùy chọn)",
       fanpagePlaceholder: "https://facebook.com/yourpage",
+      budgetLabel: "Ngân sách (Tùy chọn)",
+      budgetPlaceholder: "Chọn ngân sách",
       service: "Dịch Vụ Bạn Cần",
       servicePlaceholder: "Chọn loại dịch vụ",
       specificService: "Chọn Dịch Vụ Cụ Thể",
@@ -326,7 +350,8 @@ export const vi: TranslationDictionary = {
     },
     error: {
       title: "Có Lỗi Xảy Ra",
-      tryAgain: "Thử Lại"
+      tryAgain: "Thử Lại",
+      genericMessage: "Đã có lỗi xảy ra. Vui lòng thử lại sau."
     }
   },
   footerCta: {

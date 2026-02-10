@@ -16,7 +16,7 @@ const SectionLoader = () => (
 // Dynamic imports - pointing to desktop folder
 const Hero = dynamic(() => import("./desktop/Hero"));
 const ServicesSection = dynamic(() => import("./desktop/ServicesSection"));
-const PartnerCarousel = dynamic(() => import("./desktop/PartnerCarousel"));
+const PartnerCarousel = dynamic(() => import("./desktop/PartnerCarousel"), { ssr: false });
 const WhyUsSection = dynamic(() => import("./desktop/WhyUsSection"));
 const ApproachSection = dynamic(() => import("./desktop/ApproachSection"));
 const ContactSection = dynamic(() => import("./desktop/ContactSection"));

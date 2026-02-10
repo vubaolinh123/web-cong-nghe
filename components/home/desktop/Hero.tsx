@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles, TrendingUp, Users, Zap, Power } from "lucide-react";
 import { Container, Button } from "../../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FloatingPaths } from "@/components/ui/background-paths";
 
 export default function Hero() {
   const { dictionary } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
+  const mouseBoundsRef = useRef({ width: 1, height: 1, left: 0, top: 0 });
+  const pointerRef = useRef({ clientX: 0, clientY: 0 });
+  const rafRef = useRef<number | null>(null);
 
   // Mouse Parallax Setup
   const mouseX = useMotionValue(0);
@@ -34,31 +38,66 @@ export default function Hero() {
   const contentX = useTransform(springX, [-0.5, 0.5], ["-15px", "15px"]);
   const contentY = useTransform(springY, [-0.5, 0.5], ["-15px", "15px"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const { width, height, left, top } = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - left) / width - 0.5;
-    const y = (e.clientY - top) / height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
+  useEffect(() => {
+    const section = heroRef.current;
+    if (!section) return;
 
-    cursorX.set(e.clientX - left);
-    cursorY.set(e.clientY - top);
+    const updateBounds = () => {
+      const rect = section.getBoundingClientRect();
+      mouseBoundsRef.current = {
+        width: rect.width || 1,
+        height: rect.height || 1,
+        left: rect.left,
+        top: rect.top,
+      };
+    };
+
+    updateBounds();
+    window.addEventListener("resize", updateBounds, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", updateBounds);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (shouldReduceMotion) return;
+
+    pointerRef.current = { clientX: e.clientX, clientY: e.clientY };
+    if (rafRef.current) return;
+
+    rafRef.current = requestAnimationFrame(() => {
+      const { width, height, left, top } = mouseBoundsRef.current;
+      const { clientX, clientY } = pointerRef.current;
+      const x = (clientX - left) / width - 0.5;
+      const y = (clientY - top) / height - 0.5;
+
+      mouseX.set(x);
+      mouseY.set(y);
+      cursorX.set(clientX - left);
+      cursorY.set(clientY - top);
+
+      rafRef.current = null;
+    });
   };
 
   const stats = [
-    { value: "500+", label: "Dự án hoàn thành", icon: TrendingUp },
-    { value: "98%", label: "Khách hàng hài lòng", icon: Users },
-    { value: "24/7", label: "Hỗ trợ tư vấn", icon: Zap },
+    { value: "500+", label: dictionary.homepageServices.stats.projects, icon: TrendingUp },
+    { value: "98%", label: dictionary.homepageServices.stats.satisfaction, icon: Users },
+    { value: "24/7", label: dictionary.hero.stats.support, icon: Zap },
   ];
 
   return (
     <section
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] cursor-none"
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] ${shouldReduceMotion ? "" : "cursor-none"}`}
     >
       {/* === CUSTOM CURSOR === */}
-      <motion.div
+      {!shouldReduceMotion && <motion.div
         style={{
           left: cursorXSpring,
           top: cursorYSpring,
@@ -69,7 +108,7 @@ export default function Hero() {
           <div className="w-8 h-8 rounded-full border border-cyan-400/80 shadow-[0_0_20px_rgba(34,211,238,0.5)] animate-spin-slow" />
           <div className="absolute inset-0 w-2 h-2 m-auto bg-white rounded-full shadow-[0_0_10px_white]" />
         </div>
-      </motion.div>
+      </motion.div>}
 
       {/* === BACKGROUND LAYERS === */}
 
@@ -78,7 +117,7 @@ export default function Hero() {
 
       {/* 2. BackgroundPaths - Animated SVG Network (Parallax) */}
       <motion.div
-        style={{ x: backgroundX, y: backgroundY }}
+        style={shouldReduceMotion ? undefined : { x: backgroundX, y: backgroundY }}
         className="absolute inset-0"
       >
         <FloatingPaths position={1} />
@@ -88,19 +127,19 @@ export default function Hero() {
       {/* 3. Glow Spheres for Depth */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? undefined : {
             opacity: [0.3, 0.5, 0.3],
             scale: [1, 1.1, 1],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={shouldReduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"
         />
         <motion.div
-          animate={{
+          animate={shouldReduceMotion ? undefined : {
             opacity: [0.2, 0.4, 0.2],
             scale: [1, 1.15, 1],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={shouldReduceMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[90px]"
         />
       </div>
@@ -111,7 +150,7 @@ export default function Hero() {
       {/* === MAIN CONTENT === */}
       <Container className="relative z-10 w-full">
         <motion.div
-          style={{ x: contentX, y: contentY }}
+          style={shouldReduceMotion ? undefined : { x: contentX, y: contentY }}
           className="max-w-4xl mx-auto text-center relative"
         >
           {/* Text now directly on background - no glass card */}
@@ -125,10 +164,10 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 text-cyan-400" />
             <span className="text-sm font-medium bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">
-              AI-First Technology Partner
+              {dictionary.hero.partnerBadge}
             </span>
             <div className="w-[1px] h-4 bg-cyan-500/30 mx-2" />
-            <span className="text-xs text-cyan-400/80 font-mono">EST. 2017</span>
+            <span className="text-xs text-cyan-400/80 font-mono">{dictionary.hero.established}</span>
           </motion.div>
 
           {/* Titles */}

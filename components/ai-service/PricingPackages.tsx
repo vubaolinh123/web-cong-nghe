@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ChevronDown, ChevronUp, Smartphone, Globe, Bot, Zap, ArrowRight, LayoutGrid } from "lucide-react";
+import { CheckCircle, ChevronDown, ChevronUp, Smartphone, Globe, Bot, Zap, ArrowRight } from "lucide-react";
 import { Container } from "../common";
 import { useState, useRef, useEffect } from "react";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
@@ -101,9 +101,9 @@ export default function PricingPackages() {
                     </div>
 
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                        <span className="text-white">Choose Your </span>
+                        <span className="text-white">{t.servicePricing.headingPrefix} </span>
                         <span className={`text-transparent bg-clip-text bg-gradient-to-r ${colors.bg}`}>
-                            Solution
+                            {t.servicePricing.headingHighlight}
                         </span>
                     </h2>
                     <p className="text-slate-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">

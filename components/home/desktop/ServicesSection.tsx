@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Megaphone, Code2, ArrowRight, CheckCircle, Star, ArrowUpRight, Sparkles, Zap, TrendingUp } from "lucide-react";
+import { Megaphone, Code2, ArrowRight, CheckCircle, Sparkles, Zap, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export default function ServicesSection() {
       bgGlow: "bg-green-500/20",
       borderColor: "border-green-500/50",
       href: "/dich-vu-marketing",
-      badge: "Hot",
+      badge: t("homepageServices.badges.marketing"),
       badgeIcon: TrendingUp,
       image: "/image/real/service_marketing.jpg",
       stats: { projects: "200+", satisfaction: "98%" },
@@ -41,7 +41,7 @@ export default function ServicesSection() {
       bgGlow: "bg-blue-500/20",
       borderColor: "border-cyan-500/50",
       href: "/dich-vu-cong-nghe",
-      badge: "AI-Powered",
+      badge: t("homepageServices.badges.tech"),
       badgeIcon: Zap,
       image: "/image/real/service_tech.jpg",
       stats: { projects: "50+", satisfaction: "99%" },
@@ -243,14 +243,14 @@ export default function ServicesSection() {
             >
               <div className="flex items-center gap-6">
                 <div className="text-center">
-                  <div className="text-xs text-slate-400 mb-1">Dự án</div>
+                  <div className="text-xs text-slate-400 mb-1">{t("homepageServices.stats.projects")}</div>
                   <div className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${services[activeService].color}`}>
                     {services[activeService].stats.projects}
                   </div>
                 </div>
                 <div className="w-px h-10 bg-white/20" />
                 <div className="text-center">
-                  <div className="text-xs text-slate-400 mb-1">Hài lòng</div>
+                  <div className="text-xs text-slate-400 mb-1">{t("homepageServices.stats.satisfaction")}</div>
                   <div className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${services[activeService].color}`}>
                     {services[activeService].stats.satisfaction}
                   </div>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { Sparkles, Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const partnerCategories = [
     {
@@ -84,7 +84,7 @@ export default function MobilePartner() {
                     >
                         <Sparkles className="w-3 h-3 text-blue-400" />
                         <span className="text-[10px] font-bold text-blue-400 tracking-wider uppercase">
-                            Được tin dùng bởi
+                            {t("partners.badge")}
                         </span>
                     </motion.div>
 
@@ -146,9 +146,9 @@ export default function MobilePartner() {
                     className="flex justify-center gap-8 mt-8"
                 >
                     {[
-                        { value: "20+", label: "Đối tác" },
-                        { value: "15+", label: "Ngành nghề" },
-                        { value: "5+", label: "Năm" },
+                        { value: "20+", label: t("partners.quickStats.trustedPartners") },
+                        { value: "15+", label: t("partners.quickStats.diverseIndustries") },
+                        { value: "5+", label: t("partners.quickStats.collaborationYears") },
                     ].map((stat, i) => (
                         <motion.div
                             key={i}

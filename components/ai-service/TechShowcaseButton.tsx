@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { Layers } from "lucide-react";
-import TechShowcaseModal from "./TechShowcaseModal";
+
+const TechShowcaseModal = dynamic(() => import("./TechShowcaseModal"), {
+    ssr: false,
+});
 
 export default function TechShowcaseButton() {
     const [isModalOpen, setIsModalOpen] = useState(false);

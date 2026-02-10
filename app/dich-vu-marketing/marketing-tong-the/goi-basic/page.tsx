@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
 import FloatingServicesNav from "@/components/common/FloatingServicesNav";
-import { useEffect } from "react";
 import { useMarketingBasicTranslations } from "@/lib/i18n/pages/marketing-basic";
 
 // Dynamic imports for code splitting
@@ -21,10 +20,6 @@ const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSect
 
 export default function BasicPackagePage() {
     const t = useMarketingBasicTranslations();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <>

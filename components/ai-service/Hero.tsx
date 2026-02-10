@@ -1,22 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Rocket } from "lucide-react";
 import { Container, Button } from "../common";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Spotlight } from "@/components/ui/spotlight";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 export default function Hero() {
     const t = useTechnologyTranslations();
-    const heroRef = useRef<HTMLElement>(null);
+    const shouldReduceMotion = useReducedMotion();
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const { ref: heroRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.3,
+    });
 
     const stats = [
         { value: t.hero.stats.projects.value, label: t.hero.stats.projects.label },
         { value: t.hero.stats.satisfaction.value, label: t.hero.stats.satisfaction.label },
         { value: t.hero.stats.efficiency.value, label: t.hero.stats.efficiency.label },
     ];
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (shouldReduceMotion || !isActive) {
+            video.pause();
+            return;
+        }
+
+        const playPromise = video.play();
+        if (playPromise) {
+            playPromise.catch(() => {
+                // Ignore autoplay interruptions
+            });
+        }
+    }, [isActive, shouldReduceMotion]);
 
     return (
         <section
@@ -39,10 +61,12 @@ export default function Hero() {
                 {/* Video Background */}
                 <div className="absolute inset-0 z-0">
                     <video
-                        autoPlay
+                        ref={videoRef}
+                        autoPlay={!shouldReduceMotion}
                         loop
                         muted
                         playsInline
+                        preload="metadata"
                         className="w-full h-full object-cover opacity-25 mix-blend-screen"
                     >
                         <source src="/video/technology-intro.mp4" type="video/mp4" />

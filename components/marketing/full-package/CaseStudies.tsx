@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useCallback, useMemo, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -9,6 +9,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, TrendingUp, Eye, Users, Award, Sparkles, Star, Zap } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -127,8 +128,42 @@ const featuredProjects: CaseStudyProject[] = [
 export default function CaseStudies() {
     const t = useMarketingFullPackageTranslations();
     const swiperRef = useRef<SwiperType | null>(null);
+    const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
+    const shouldReduceMotion = useReducedMotion();
+    const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.2,
+    });
+    const animationEnabled = isActive && !shouldReduceMotion;
+
+    const particles = useMemo(() => {
+        const amount = shouldReduceMotion ? 0 : 8;
+        return Array.from({ length: amount }, (_, index) => {
+            const left = ((index * 41) % 100) + 0.5;
+            const top = ((index * 61) % 100) + 0.5;
+            const duration = 3 + (index % 3);
+            const delay = (index % 4) * 0.4;
+
+            return {
+                id: `full-package-particle-${index}`,
+                left,
+                top,
+                duration,
+                delay,
+            };
+        });
+    }, [shouldReduceMotion]);
+
+    useEffect(() => {
+        if (!swiper || !swiper.autoplay) return;
+
+        if (animationEnabled) {
+            swiper.autoplay.start();
+        } else {
+            swiper.autoplay.stop();
+        }
+    }, [animationEnabled, swiper]);
 
     const handlePrev = useCallback(() => {
         if (!isAnimating) {
@@ -154,7 +189,7 @@ export default function CaseStudies() {
     const isVI = language === 'vi';
 
     return (
-        <section className="relative py-16 sm:py-20 overflow-hidden bg-slate-950">
+        <section ref={sectionRef} className="relative py-16 sm:py-20 overflow-hidden bg-slate-950">
             {/* === BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none">
                 {/* Base gradient */}
@@ -166,24 +201,24 @@ export default function CaseStudies() {
                     style={{
                         background: `radial-gradient(circle, ${catConfig.glowColor === 'blue' ? 'rgba(59,130,246,0.3)' : catConfig.glowColor === 'orange' ? 'rgba(249,115,22,0.3)' : catConfig.glowColor === 'green' ? 'rgba(34,197,94,0.3)' : 'rgba(132,204,22,0.3)'} 0%, transparent 70%)`,
                     }}
-                    animate={{
+                    animate={animationEnabled ? {
                         x: [0, 100, 0],
                         y: [0, -50, 0],
                         scale: [1, 1.2, 1],
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                    } : undefined}
+                    transition={animationEnabled ? { duration: 20, repeat: Infinity, ease: "easeInOut" } : undefined}
                 />
                 <motion.div
                     className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full opacity-20"
                     style={{
                         background: 'radial-gradient(circle, rgba(34,197,94,0.4) 0%, transparent 70%)',
                     }}
-                    animate={{
+                    animate={animationEnabled ? {
                         x: [0, -80, 0],
                         y: [0, 80, 0],
                         scale: [1, 1.3, 1],
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                    } : undefined}
+                    transition={animationEnabled ? { duration: 15, repeat: Infinity, ease: "easeInOut" } : undefined}
                 />
 
                 {/* Grid pattern overlay */}
@@ -194,23 +229,23 @@ export default function CaseStudies() {
                 <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-950 to-transparent" />
 
                 {/* Floating particles */}
-                {[...Array(15)].map((_, i) => (
+                {particles.map((particle) => (
                     <motion.div
-                        key={i}
+                        key={particle.id}
                         className="absolute w-1 h-1 rounded-full bg-green-400/30"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
+                            left: `${particle.left}%`,
+                            top: `${particle.top}%`,
                         }}
-                        animate={{
+                        animate={animationEnabled ? {
                             y: [0, -30, 0],
                             opacity: [0.3, 0.8, 0.3],
-                        }}
-                        transition={{
-                            duration: 3 + Math.random() * 2,
+                        } : { opacity: 0.3 }}
+                        transition={animationEnabled ? {
+                            duration: particle.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2,
-                        }}
+                            delay: particle.delay,
+                        } : undefined}
                     />
                 ))}
             </div>
@@ -226,8 +261,8 @@ export default function CaseStudies() {
                 >
                     <div className="flex items-center gap-4">
                         <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            animate={animationEnabled ? { rotate: 360 } : undefined}
+                            transition={animationEnabled ? { duration: 20, repeat: Infinity, ease: "linear" } : undefined}
                         >
                             <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-green-400" />
                         </motion.div>
@@ -239,8 +274,8 @@ export default function CaseStudies() {
                                 </span>
                                 <motion.span
                                     className="absolute -inset-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 blur-lg rounded-lg -z-10"
-                                    animate={{ opacity: [0.5, 1, 0.5] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
+                                    animate={animationEnabled ? { opacity: [0.5, 1, 0.5] } : undefined}
+                                    transition={animationEnabled ? { duration: 2, repeat: Infinity } : undefined}
                                 />
                             </span>
                         </h2>
@@ -256,12 +291,13 @@ export default function CaseStudies() {
                         loop={true}
                         speed={800}
                         autoplay={{
-                            delay: 7000,
+                            delay: shouldReduceMotion ? 0 : 7000,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
                         onSwiper={(swiper) => {
                             swiperRef.current = swiper;
+                            setSwiper(swiper);
                         }}
                         onSlideChange={(swiper) => {
                             setActiveIndex(swiper.realIndex);
@@ -347,8 +383,8 @@ export default function CaseStudies() {
                                                 {/* Glow effect behind image */}
                                                 <motion.div
                                                     className={`absolute -inset-4 bg-gradient-to-r ${projCatConfig.gradient} rounded-3xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500`}
-                                                    animate={{ scale: [1, 1.05, 1] }}
-                                                    transition={{ duration: 4, repeat: Infinity }}
+                                                    animate={animationEnabled ? { scale: [1, 1.05, 1] } : undefined}
+                                                    transition={animationEnabled ? { duration: 4, repeat: Infinity } : undefined}
                                                 />
 
                                                 {/* Image container */}
@@ -390,8 +426,8 @@ export default function CaseStudies() {
                                                     {/* Corner decoration */}
                                                     <div className="absolute top-3 right-3">
                                                         <motion.div
-                                                            animate={{ rotate: 360 }}
-                                                            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                                            animate={animationEnabled ? { rotate: 360 } : undefined}
+                                                            transition={animationEnabled ? { duration: 10, repeat: Infinity, ease: "linear" } : undefined}
                                                         >
                                                             <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-green-400/50" />
                                                         </motion.div>

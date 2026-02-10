@@ -97,8 +97,10 @@ export const vi: TechnologyPageTranslations = {
     caseStudies: {
         title: 'Dự Án Tiêu Biểu',
         subtitle: 'Kết quả thực tế từ khách hàng doanh nghiệp',
+        description: 'Khám phá cách chúng tôi giúp doanh nghiệp chuyển đổi số thành công',
         readMore: 'Xem chi tiết',
         viewProject: 'Ghé thăm website',
+        swipeHint: 'Lướt xem thêm',
         projects: projectsDataVi,
     },
     cta: {
@@ -134,6 +136,8 @@ export const vi: TechnologyPageTranslations = {
     servicePricing: {
         title: 'Bảng Giá',
         titleHighlight: 'Chi Tiết',
+        headingPrefix: 'Chọn',
+        headingHighlight: 'Giải Pháp Của Bạn',
         description: 'Lựa chọn dịch vụ phù hợp với nhu cầu và ngân sách của doanh nghiệp',
         ctaButton: 'Liên Hệ Tư Vấn',
         ctaButtonContact: 'Liên Hệ',

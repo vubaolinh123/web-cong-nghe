@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface FloatingPathsProps {
     position: number;
@@ -12,7 +12,10 @@ interface FloatingPathsProps {
  * Customized for dark tech/AI theme with Cyan/Blue tones.
  */
 export function FloatingPaths({ position, className = "" }: FloatingPathsProps) {
-    const paths = Array.from({ length: 36 }, (_, i) => ({
+    const shouldReduceMotion = useReducedMotion();
+    const pathCount = shouldReduceMotion ? 10 : 24;
+
+    const paths = Array.from({ length: pathCount }, (_, i) => ({
         id: i,
         d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position
             } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position
@@ -39,13 +42,13 @@ export function FloatingPaths({ position, className = "" }: FloatingPathsProps) 
                         strokeWidth={path.width}
                         strokeOpacity={0.25 + path.id * 0.025}
                         initial={{ pathLength: 0.3, opacity: 0.6 }}
-                        animate={{
+                        animate={shouldReduceMotion ? { pathLength: 1, opacity: 0.45 } : {
                             pathLength: 1,
                             opacity: [0.4, 0.8, 0.4],
                             pathOffset: [0, 1, 0],
                         }}
-                        transition={{
-                            duration: 20 + Math.random() * 10,
+                        transition={shouldReduceMotion ? { duration: 0.6, ease: "linear" } : {
+                            duration: 20 + path.id * 0.35,
                             repeat: Infinity,
                             ease: "linear",
                         }}

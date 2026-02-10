@@ -1,15 +1,22 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Header, BlogSection } from "@/components/common";
 import Hero from "@/components/ai-service/Hero";
 import Introduction from "@/components/ai-service/Introduction";
 import ITServicesIntro from "@/components/ai-service/ITServicesIntro";
-import PricingPackages from "@/components/ai-service/PricingPackages";
 import Commitments from "@/components/ai-service/Commitments";
-import CaseStudies from "@/components/ai-service/CaseStudies";
 import CTASection from "@/components/ai-service/CTASection";
 import { ContactSection, FooterSection } from "@/components/home";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
+
+const PricingPackages = dynamic(() => import("@/components/ai-service/PricingPackages"), {
+    ssr: false,
+});
+
+const CaseStudies = dynamic(() => import("@/components/ai-service/CaseStudies"), {
+    ssr: false,
+});
 
 export default function AiServicesPage() {
     const t = useTechnologyTranslations();

@@ -31,9 +31,9 @@ export default function MobileHero() {
     const { dictionary } = useLanguage();
 
     const stats = [
-        { value: "500+", label: "Dự án", icon: TrendingUp },
-        { value: "98%", label: "Hài lòng", icon: Users },
-        { value: "24/7", label: "Hỗ trợ", icon: Zap },
+        { value: "500+", label: dictionary.homepageServices.stats.projects, icon: TrendingUp },
+        { value: "98%", label: dictionary.homepageServices.stats.satisfaction, icon: Users },
+        { value: "24/7", label: dictionary.hero.stats.support, icon: Zap },
     ];
 
     return (
@@ -110,7 +110,7 @@ export default function MobileHero() {
                         <div className="relative flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0f1e] border border-cyan-500/30">
                             <Sparkles size={14} className="text-cyan-400 animate-pulse" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-white text-xs font-bold tracking-wider uppercase">
-                                AI-First Agency
+                                {dictionary.hero.partnerBadge}
                             </span>
                         </div>
                     </motion.div>
@@ -206,7 +206,7 @@ export default function MobileHero() {
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
                 style={{ animation: 'mobile-scroll-fade 3s ease-in-out infinite' }}
             >
-                <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-500/80 font-mono">Scroll</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-500/80 font-mono">{dictionary.hero.scrollHint}</div>
                 <div className="w-[1px] h-8 bg-gradient-to-b from-cyan-500 to-transparent" />
             </div>
         </section>

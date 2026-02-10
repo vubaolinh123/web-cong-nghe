@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useCallback, useMemo, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -9,6 +9,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Users, Eye, Heart, MessageCircle, TrendingUp, Share2, Sparkles, Star, Zap } from "lucide-react";
 import { Container } from "../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -144,11 +145,45 @@ const featuredProjects: CaseStudyProject[] = [
 ];
 
 export default function FeaturedCaseStudies() {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const isVI = language === 'vi';
+    const shouldReduceMotion = useReducedMotion();
     const swiperRef = useRef<SwiperType | null>(null);
+    const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
+    const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.2,
+    });
+    const animationEnabled = isActive && !shouldReduceMotion;
+
+    const particles = useMemo(() => {
+        const amount = shouldReduceMotion ? 0 : 10;
+        return Array.from({ length: amount }, (_, index) => {
+            const left = ((index * 37) % 100) + 0.25;
+            const top = ((index * 53) % 100) + 0.25;
+            const duration = 3 + (index % 3);
+            const delay = (index % 4) * 0.35;
+
+            return {
+                id: `particle-${index}`,
+                left,
+                top,
+                duration,
+                delay,
+            };
+        });
+    }, [shouldReduceMotion]);
+
+    useEffect(() => {
+        if (!swiper || !swiper.autoplay) return;
+
+        if (animationEnabled) {
+            swiper.autoplay.start();
+        } else {
+            swiper.autoplay.stop();
+        }
+    }, [animationEnabled, swiper]);
 
     const handlePrev = useCallback(() => {
         if (!isAnimating) {
@@ -170,7 +205,7 @@ export default function FeaturedCaseStudies() {
     const catConfig = categoryConfig[currentProject?.category || 'marketing'];
 
     return (
-        <section className="relative lg:min-h-screen flex items-center overflow-hidden py-12 sm:py-16 lg:py-0">
+        <section ref={sectionRef} className="relative lg:min-h-screen flex items-center overflow-hidden py-12 sm:py-16 lg:py-0">
             {/* === ANIMATED BACKGROUND === */}
             <div className="absolute inset-0">
                 {/* Base gradient */}
@@ -182,24 +217,24 @@ export default function FeaturedCaseStudies() {
                     style={{
                         background: `radial-gradient(circle, ${catConfig.glowColor === 'orange' ? 'rgba(249,115,22,0.3)' : catConfig.glowColor === 'cyan' ? 'rgba(6,182,212,0.3)' : catConfig.glowColor === 'purple' ? 'rgba(168,85,247,0.3)' : 'rgba(244,63,94,0.3)'} 0%, transparent 70%)`,
                     }}
-                    animate={{
+                    animate={animationEnabled ? {
                         x: [0, 100, 0],
                         y: [0, -50, 0],
                         scale: [1, 1.2, 1],
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                    } : undefined}
+                    transition={animationEnabled ? { duration: 20, repeat: Infinity, ease: "easeInOut" } : undefined}
                 />
                 <motion.div
                     className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full opacity-20"
                     style={{
                         background: 'radial-gradient(circle, rgba(34,197,94,0.4) 0%, transparent 70%)',
                     }}
-                    animate={{
+                    animate={animationEnabled ? {
                         x: [0, -80, 0],
                         y: [0, 80, 0],
                         scale: [1, 1.3, 1],
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                    } : undefined}
+                    transition={animationEnabled ? { duration: 15, repeat: Infinity, ease: "easeInOut" } : undefined}
                 />
 
                 {/* Grid pattern overlay */}
@@ -210,23 +245,23 @@ export default function FeaturedCaseStudies() {
                 <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-950 to-transparent" />
 
                 {/* Floating particles */}
-                {[...Array(20)].map((_, i) => (
+                {particles.map((particle) => (
                     <motion.div
-                        key={i}
+                        key={particle.id}
                         className="absolute w-1 h-1 rounded-full bg-green-400/30"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
+                            left: `${particle.left}%`,
+                            top: `${particle.top}%`,
                         }}
-                        animate={{
+                        animate={animationEnabled ? {
                             y: [0, -30, 0],
                             opacity: [0.3, 0.8, 0.3],
-                        }}
-                        transition={{
-                            duration: 3 + Math.random() * 2,
+                        } : { opacity: 0.3 }}
+                        transition={animationEnabled ? {
+                            duration: particle.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2,
-                        }}
+                            delay: particle.delay,
+                        } : undefined}
                     />
                 ))}
             </div>
@@ -242,21 +277,21 @@ export default function FeaturedCaseStudies() {
                 >
                     <div className="flex items-center gap-4">
                         <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            animate={animationEnabled ? { rotate: 360 } : undefined}
+                            transition={animationEnabled ? { duration: 20, repeat: Infinity, ease: "linear" } : undefined}
                         >
                             <Sparkles className="w-8 h-8 text-green-400" />
                         </motion.div>
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
-                            Success{" "}
+                            {t("caseStudies.title.prefix")}{" "}
                             <span className="relative inline-block">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 italic">
-                                    Stories
+                                    {t("caseStudies.title.highlight")}
                                 </span>
                                 <motion.span
                                     className="absolute -inset-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 blur-lg rounded-lg -z-10"
-                                    animate={{ opacity: [0.5, 1, 0.5] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
+                                    animate={animationEnabled ? { opacity: [0.5, 1, 0.5] } : undefined}
+                                    transition={animationEnabled ? { duration: 2, repeat: Infinity } : undefined}
                                 />
                             </span>
                         </h2>
@@ -266,7 +301,7 @@ export default function FeaturedCaseStudies() {
                         className="hidden lg:flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-semibold text-lg group"
                         whileHover={{ x: 5 }}
                     >
-                        {isVI ? 'Xem thêm' : 'See more'}
+                        {t("common.viewMore")}
                         <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </motion.a>
                 </motion.div>
@@ -280,12 +315,13 @@ export default function FeaturedCaseStudies() {
                         loop={true}
                         speed={800}
                         autoplay={{
-                            delay: 7000,
+                            delay: shouldReduceMotion ? 0 : 7000,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
                         onSwiper={(swiper) => {
                             swiperRef.current = swiper;
+                            setSwiper(swiper);
                         }}
                         onSlideChange={(swiper) => {
                             setActiveIndex(swiper.realIndex);
@@ -376,10 +412,10 @@ export default function FeaturedCaseStudies() {
                                                 {/* Glow effect behind image */}
                                                 <motion.div
                                                     className={`absolute -inset-4 bg-gradient-to-r ${projCatConfig.gradient} rounded-3xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500`}
-                                                    animate={{
+                                                    animate={animationEnabled ? {
                                                         scale: [1, 1.05, 1],
-                                                    }}
-                                                    transition={{ duration: 4, repeat: Infinity }}
+                                                    } : undefined}
+                                                    transition={animationEnabled ? { duration: 4, repeat: Infinity } : undefined}
                                                 />
 
                                                 {/* Image container */}
@@ -421,8 +457,8 @@ export default function FeaturedCaseStudies() {
                                                     {/* Corner decoration */}
                                                     <div className="absolute top-4 right-4">
                                                         <motion.div
-                                                            animate={{ rotate: 360 }}
-                                                            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                                            animate={animationEnabled ? { rotate: 360 } : undefined}
+                                                            transition={animationEnabled ? { duration: 10, repeat: Infinity, ease: "linear" } : undefined}
                                                         >
                                                             <Zap className="w-8 h-8 text-green-400/50" />
                                                         </motion.div>

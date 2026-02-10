@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ChevronRight, Megaphone, Code2 } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Megaphone, Code2, type LucideIcon } from "lucide-react";
 import Container from "./Container";
 import Button from "./Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -13,7 +13,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 interface ServiceItem {
   name: string;
   href: string;
-  icon: any; // using any for Lucide icon component type simplicity
+  icon: LucideIcon;
   description: string;
   color: string;
   children?: {
@@ -79,10 +79,18 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (ticking) return;
+
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+        ticking = false;
+      });
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

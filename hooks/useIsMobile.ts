@@ -29,6 +29,8 @@ export function useIsMobile(): DeviceType {
     });
 
     useEffect(() => {
+        let resizeTimer: ReturnType<typeof setTimeout> | null = null;
+
         const updateDeviceType = () => {
             const width = window.innerWidth;
             setDeviceType({
@@ -38,12 +40,25 @@ export function useIsMobile(): DeviceType {
             });
         };
 
+        const handleResize = () => {
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+
+            resizeTimer = setTimeout(updateDeviceType, 120);
+        };
+
         // Initial check
         updateDeviceType();
 
         // Listen for resize
-        window.addEventListener("resize", updateDeviceType);
-        return () => window.removeEventListener("resize", updateDeviceType);
+        window.addEventListener("resize", handleResize, { passive: true });
+        return () => {
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     return deviceType;

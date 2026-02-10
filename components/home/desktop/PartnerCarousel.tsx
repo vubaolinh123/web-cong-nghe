@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { Sparkles, Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 const partners = [
     // Tech & Media
@@ -35,9 +36,12 @@ const partners = [
 
 const PartnerCarousel = () => {
     const { t } = useLanguage();
+    const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
+        threshold: 0.2,
+    });
 
     return (
-        <section className="relative w-full min-h-screen flex flex-col justify-center bg-slate-950 overflow-hidden py-20 lg:py-0 lg:h-screen">
+        <section ref={sectionRef} className="relative w-full min-h-screen flex flex-col justify-center bg-slate-950 overflow-hidden py-20 lg:py-0 lg:h-screen">
             {/* === SIMPLE BACKGROUND === */}
             <div className="absolute inset-0 pointer-events-none">
                 {/* Radial gradient background */}
@@ -73,7 +77,7 @@ const PartnerCarousel = () => {
                     >
                         <Sparkles className="w-4 h-4 text-blue-400" />
                         <span className="text-sm font-bold text-blue-400 tracking-wider uppercase">
-                            Được tin dùng bởi
+                            {t("partners.badge")}
                         </span>
                     </motion.div>
 
@@ -98,7 +102,7 @@ const PartnerCarousel = () => {
                 {/* First Row - Moving Left */}
                 <motion.div
                     className="flex gap-8 sm:gap-12 items-center"
-                    animate={{ x: "-50%" }}
+                    animate={isActive ? { x: "-50%" } : { x: 0 }}
                     transition={{
                         duration: 35,
                         ease: "linear",
@@ -114,7 +118,7 @@ const PartnerCarousel = () => {
                 {/* Second Row - Moving Right */}
                 <motion.div
                     className="flex gap-8 sm:gap-12 items-center"
-                    animate={{ x: ["0%", "-50%"] }}
+                    animate={isActive ? { x: ["0%", "-50%"] } : { x: 0 }}
                     transition={{
                         duration: 40,
                         ease: "linear",
@@ -138,9 +142,9 @@ const PartnerCarousel = () => {
             >
                 <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
                     {[
-                        { value: "20+", label: "Đối tác tin cậy" },
-                        { value: "15+", label: "Ngành nghề đa dạng" },
-                        { value: "5+", label: "Năm hợp tác" },
+                        { value: "20+", label: t("partners.quickStats.trustedPartners") },
+                        { value: "15+", label: t("partners.quickStats.diverseIndustries") },
+                        { value: "5+", label: t("partners.quickStats.collaborationYears") },
                     ].map((stat, i) => (
                         <motion.div
                             key={i}

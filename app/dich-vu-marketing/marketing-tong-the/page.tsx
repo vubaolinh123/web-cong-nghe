@@ -1,10 +1,7 @@
-"use client";
-
 import dynamic from "next/dynamic";
 import { Header } from "@/components/common";
-import FloatingServicesNav from "@/components/common/FloatingServicesNav";
-import { useEffect } from "react";
-import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
+
+const FloatingServicesNav = dynamic(() => import("@/components/common/FloatingServicesNav"));
 
 // Dynamic imports with specific loading states
 const Hero = dynamic(() => import("@/components/marketing/full-package/Hero"), {
@@ -22,12 +19,6 @@ const DetailedPricing = dynamic(() => import("@/components/marketing/full-packag
 const FooterSection = dynamic(() => import("@/components/home/desktop/FooterSection"));
 
 export default function MarketingFullPackagePage() {
-    const t = useMarketingFullPackageTranslations();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <main className="min-h-screen bg-slate-950">
             <Header />

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Megaphone, Code2, ArrowRight, CheckCircle, Star, Zap, TrendingUp, Sparkles } from "lucide-react";
+import { Megaphone, Code2, ArrowRight, CheckCircle, Zap, TrendingUp, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import Image from "next/image";
@@ -19,10 +19,10 @@ export default function MobileServices() {
             color: "from-green-400 to-emerald-500",
             bgGlow: "bg-green-500/20",
             href: "/dich-vu-marketing",
-            badge: "Hot",
+            badge: t("homepageServices.badges.marketing"),
             badgeIcon: TrendingUp,
             image: "/image/real/service_marketing.jpg",
-            stats: { value: "200+", label: "Dự án" },
+            stats: { value: "200+", label: t("homepageServices.stats.projects") },
             features: [
                 t("homepageServices.marketing.features.ads"),
                 t("homepageServices.marketing.features.fanpage"),
@@ -38,10 +38,10 @@ export default function MobileServices() {
             color: "from-blue-400 to-cyan-500",
             bgGlow: "bg-cyan-500/20",
             href: "/dich-vu-cong-nghe",
-            badge: "AI-Powered",
+            badge: t("homepageServices.badges.tech"),
             badgeIcon: Zap,
             image: "/image/real/service_tech.jpg",
-            stats: { value: "50+", label: "Dự án AI" },
+            stats: { value: "50+", label: t("homepageServices.stats.aiProjects") },
             features: [
                 t("homepageServices.tech.features.automation"),
                 t("homepageServices.tech.features.chatbot"),
@@ -168,7 +168,7 @@ export default function MobileServices() {
                                         whileTap={{ scale: 0.97 }}
                                         className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r ${service.color} text-white font-bold text-sm shadow-lg`}
                                     >
-                                        <span>Khám Phá</span>
+                                        <span>{t("homepageServices.exploreButtonShort")}</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </motion.div>
                                 </Link>
