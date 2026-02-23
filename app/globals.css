@@ -378,6 +378,29 @@ html {
   animation: spotlight 2s ease 0.75s 1 forwards;
 }
 
+/* Route-scoped wider layout for /dich-vu-cong-nghe */
+.dvcn-page .max-w-7xl,
+.dvcn-page .max-w-6xl,
+.dvcn-page .dvcn-container {
+  max-width: min(80vw, 1520px);
+}
+
+@media (max-width: 1536px) {
+  .dvcn-page .max-w-7xl,
+  .dvcn-page .max-w-6xl,
+  .dvcn-page .dvcn-container {
+    max-width: min(84vw, 1320px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .dvcn-page .max-w-7xl,
+  .dvcn-page .max-w-6xl,
+  .dvcn-page .dvcn-container {
+    max-width: 100%;
+  }
+}
+
 /* Custom Cursor - Hide default cursor on desktop */
 @media (hover: hover) and (pointer: fine) {
   body {

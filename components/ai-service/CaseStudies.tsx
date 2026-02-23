@@ -27,10 +27,8 @@ export default function CaseStudies() {
     // Mobile: Standard 5 items
     const projects = t.caseStudies.projects || [];
 
-    // Desktop: 6 items (duplicate first item at end for visual balance as requested)
-    const desktopProjects = projects.length > 0
-        ? [...projects, { ...projects[0], id: `${projects[0].id}-loop` }]
-        : [];
+    // Desktop: same source list as mobile, no duplicate item
+    const desktopProjects = projects;
 
     const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
         threshold: 0.25,
@@ -56,7 +54,7 @@ export default function CaseStudies() {
                 <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
             </div>
 
-            <Container className="relative z-10 w-full">
+            <Container className="relative z-10 w-full dvcn-container">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-16 text-center md:text-left">
                     <motion.div

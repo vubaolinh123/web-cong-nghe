@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ChevronDown, ChevronUp, Smartphone, Globe, Bot, Zap, ArrowRight } from "lucide-react";
+import { CheckCircle, Smartphone, Globe, Bot, Zap, ArrowRight } from "lucide-react";
 import { Container } from "../common";
 import { useState, useRef, useEffect } from "react";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
@@ -50,19 +50,18 @@ const categoryColors = {
 export default function PricingPackages() {
     const t = useTechnologyTranslations();
     const [activeCategory, setActiveCategory] = useState<CategoryKey>('mobileApp');
-    const [expandedCards, setExpandedCards] = useState<{ [key: string]: boolean }>({});
     const tabsRef = useRef<HTMLDivElement>(null);
-
-    const toggleExpand = (cardId: string) => {
-        setExpandedCards(prev => ({
-            ...prev,
-            [cardId]: !prev[cardId]
-        }));
-    };
 
     const categories: CategoryKey[] = ['mobileApp', 'website', 'aiAgent', 'automation'];
     const currentCategory = t.servicePricing.categories[activeCategory];
     const colors = categoryColors[activeCategory];
+    const packageCount = currentCategory.packages.length;
+    const isThreeColumnLayout = packageCount >= 3;
+    const pricingGridClass = packageCount === 1
+        ? 'grid grid-cols-1 gap-5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto'
+        : packageCount === 2
+            ? 'grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8'
+            : 'grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 sm:gap-6 lg:gap-8';
 
     // Scroll active tab into view on mobile
     useEffect(() => {
@@ -83,7 +82,7 @@ export default function PricingPackages() {
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
             </div>
 
-            <Container className="relative z-10">
+            <Container className="relative z-10 dvcn-container">
                 {/* Header with Professional Spacing */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -114,6 +113,7 @@ export default function PricingPackages() {
                 {/* Centered Professional Tabs */}
                 <div className="flex justify-center mb-12 sm:mb-16">
                     <div
+                        ref={tabsRef}
                         className="p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-2xl relative inline-flex flex-wrap sm:flex-nowrap justify-center gap-1 sm:gap-0"
                     >
                         {categories.map((categoryKey) => {
@@ -125,6 +125,7 @@ export default function PricingPackages() {
                                 <button
                                     key={categoryKey}
                                     onClick={() => setActiveCategory(categoryKey)}
+                                    data-active={isActive}
                                     className={cn(
                                         "relative px-4 sm:px-8 py-3 rounded-xl flex items-center gap-2.5 transition-all duration-500",
                                         "text-sm sm:text-base font-medium z-10",
@@ -152,6 +153,10 @@ export default function PricingPackages() {
                     </div>
                 </div>
 
+                <p className="text-center text-sm sm:text-base text-slate-500 mb-10 sm:mb-12">
+                    Các Gói Dịch Vụ
+                </p>
+
                 {/* Content Area */}
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -169,16 +174,22 @@ export default function PricingPackages() {
                                 {activeCategory === 'aiAgent' && <Bot strokeWidth={1} className="w-16 h-16 sm:w-20 sm:h-20 mx-auto opacity-80" />}
                                 {activeCategory === 'automation' && <Zap strokeWidth={1} className="w-16 h-16 sm:w-20 sm:h-20 mx-auto opacity-80" />}
                             </span>
-                            <h3 className="text-xl sm:text-2xl text-slate-300 font-medium">
+                            {currentCategory.heading && (
+                                <p className="text-sm sm:text-base font-semibold tracking-wide text-slate-400 mb-3 uppercase">
+                                    {currentCategory.heading}
+                                </p>
+                            )}
+                            <h3 className="text-xl sm:text-2xl text-slate-300 font-medium leading-relaxed break-words">
                                 {currentCategory.description}
                             </h3>
                         </div>
 
-                        {/* Cards Grid - 2 cols mobile, 4 cols desktop */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                        {/* Cards Grid */}
+                        <div className={pricingGridClass}>
                             {currentCategory.packages.map((pkg, index) => {
-                                const cardId = `${activeCategory}-${index}`;
-                                const isExpanded = expandedCards[cardId];
+                                const normalizedPrice = pkg.price.toLowerCase();
+                                const isContactPrice = normalizedPrice.includes('liên hệ') || normalizedPrice.includes('contact');
+                                const isLastCardCentered = packageCount === 4 && index === packageCount - 1 && isThreeColumnLayout;
 
                                 return (
                                     <motion.div
@@ -187,7 +198,8 @@ export default function PricingPackages() {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.4, delay: index * 0.1 }}
                                         className={cn(
-                                            "group relative flex flex-col h-full rounded-2xl sm:rounded-3xl transition-all duration-300 hover:transform hover:-translate-y-1",
+                                            "group relative flex flex-col h-full rounded-2xl sm:rounded-3xl transition-all duration-300 hover:transform hover:-translate-y-1 min-w-0",
+                                            isLastCardCentered && "2xl:col-start-2",
                                             pkg.highlighted
                                                 ? `bg-slate-900/80 border-2 ${colors.border} shadow-2xl ${colors.glow}`
                                                 : "bg-slate-900/40 border border-slate-800 hover:bg-slate-900/60"
@@ -198,14 +210,14 @@ export default function PricingPackages() {
                                             <div className={cn("absolute inset-0 opacity-20 bg-gradient-to-b rounded-2xl pointer-events-none", colors.bg)} />
                                         )}
 
-                                        <div className="p-3 sm:p-6 lg:p-8 flex flex-col h-full relative z-10">
+                                        <div className="p-4 sm:p-6 lg:p-8 flex flex-col h-full relative z-10">
                                             {/* Package Header */}
                                             <div className="mb-4 sm:mb-6">
-                                                <h4 className={cn("text-base sm:text-xl font-bold mb-2 break-words", colors.text)}>
+                                                <h4 className={cn("text-lg sm:text-xl font-bold mb-2 break-words leading-tight", colors.text)}>
                                                     {pkg.name}
                                                 </h4>
                                                 <div className="h-1 w-8 sm:w-12 rounded-full bg-slate-700/50 mb-2 sm:mb-3" />
-                                                <p className="text-xs sm:text-base text-slate-400 min-h-[32px] sm:min-h-[48px] line-clamp-2 leading-relaxed">
+                                                <p className="text-sm sm:text-base text-slate-400 leading-relaxed break-words">
                                                     {pkg.subtitle}
                                                 </p>
                                             </div>
@@ -224,18 +236,19 @@ export default function PricingPackages() {
                                             </div>
 
                                             {/* Features List */}
-                                            <div className="flex-grow space-y-4 mb-8">
-                                                {pkg.features.slice(0, isExpanded ? pkg.features.length : 3).map((feature, idx) => (
+                                            <div className="flex-grow space-y-3 mb-8 min-w-0">
+                                                {pkg.features.map((feature, idx) => (
                                                     <motion.div
                                                         key={idx}
-                                                        initial={isExpanded && idx >= 3 ? { opacity: 0, height: 0 } : false}
-                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        initial={{ opacity: 0, y: 8 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ delay: idx * 0.04 }}
                                                         className="flex items-start gap-3"
                                                     >
                                                         <div className={cn("mt-1 p-0.5 rounded-full bg-slate-800/80 shrink-0", colors.text)}>
                                                             <CheckCircle className="w-4 h-4 sm:w-4 sm:h-4" strokeWidth={3} />
                                                         </div>
-                                                        <span className="text-sm sm:text-base text-slate-300 leading-snug">
+                                                        <span className="text-sm sm:text-[15px] text-slate-300 leading-relaxed break-words">
                                                             {feature}
                                                         </span>
                                                     </motion.div>
@@ -244,26 +257,6 @@ export default function PricingPackages() {
 
                                             {/* Action Buttons */}
                                             <div className="mt-auto space-y-3">
-                                                {/* Expand Button */}
-                                                {pkg.features.length > 3 && (
-                                                    <button
-                                                        onClick={() => toggleExpand(cardId)}
-                                                        className="w-full flex items-center justify-center gap-2 py-2 text-sm text-slate-500 hover:text-slate-300 transition-colors font-medium"
-                                                    >
-                                                        {isExpanded ? (
-                                                            <>
-                                                                {t.servicePricing.collapseButton}
-                                                                <ChevronUp size={16} />
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                {t.servicePricing.expandButton}
-                                                                <ChevronDown size={16} />
-                                                            </>
-                                                        )}
-                                                    </button>
-                                                )}
-
                                                 {/* CTA Button */}
                                                 <a href="https://zalo.me/0584503333" target="_blank" rel="noopener noreferrer" className="block w-full">
                                                     <button
@@ -274,7 +267,7 @@ export default function PricingPackages() {
                                                                 : "bg-slate-800 text-white hover:bg-slate-700"
                                                         )}
                                                     >
-                                                        {pkg.price === 'Liên hệ' || pkg.price === 'Contact'
+                                                        {isContactPrice
                                                             ? t.servicePricing.ctaButtonContact
                                                             : t.servicePricing.ctaButton}
                                                         <ArrowRight size={16} />
@@ -286,6 +279,14 @@ export default function PricingPackages() {
                                 );
                             })}
                         </div>
+
+                        {currentCategory.note && (
+                            <div className="mt-8 sm:mt-10 rounded-2xl border border-slate-800 bg-slate-900/40 p-4 sm:p-6">
+                                <p className="text-sm sm:text-base text-slate-300 leading-relaxed break-words">
+                                    {currentCategory.note}
+                                </p>
+                            </div>
+                        )}
                     </motion.div>
                 </AnimatePresence>
             </Container>

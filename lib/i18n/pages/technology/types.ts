@@ -122,7 +122,9 @@ export type TechnologyPageTranslations = {
         categories: {
             mobileApp: {
                 icon: string;
+                heading?: string;
                 description: string;
+                note?: string;
                 packages: Array<{
                     name: string;
                     price: string;
@@ -134,7 +136,9 @@ export type TechnologyPageTranslations = {
             };
             website: {
                 icon: string;
+                heading?: string;
                 description: string;
+                note?: string;
                 packages: Array<{
                     name: string;
                     price: string;
@@ -146,7 +150,9 @@ export type TechnologyPageTranslations = {
             };
             aiAgent: {
                 icon: string;
+                heading?: string;
                 description: string;
+                note?: string;
                 packages: Array<{
                     name: string;
                     price: string;
@@ -158,7 +164,9 @@ export type TechnologyPageTranslations = {
             };
             automation: {
                 icon: string;
+                heading?: string;
                 description: string;
+                note?: string;
                 packages: Array<{
                     name: string;
                     price: string;

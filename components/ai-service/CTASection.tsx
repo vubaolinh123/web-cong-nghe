@@ -12,7 +12,7 @@ export default function CTASection() {
             {/* Background gradient/glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl opacity-50" />
 
-            <Container className="relative z-10">
+            <Container className="relative z-10 dvcn-container">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

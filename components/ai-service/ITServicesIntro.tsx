@@ -68,7 +68,7 @@ export default function ITServicesIntro() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
             </div>
 
-            <Container className="relative z-10">
+            <Container className="relative z-10 dvcn-container">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

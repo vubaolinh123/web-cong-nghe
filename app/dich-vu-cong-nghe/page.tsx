@@ -22,7 +22,7 @@ export default function AiServicesPage() {
     const t = useTechnologyTranslations();
 
     return (
-        <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
+        <main className="dvcn-page bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
             <Header />
 
             {/* Hero Section */}

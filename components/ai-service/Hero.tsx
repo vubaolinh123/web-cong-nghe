@@ -98,7 +98,7 @@ export default function Hero() {
             </div>
 
             {/* === CONTENT === */}
-            <Container className="relative z-20 pt-24 sm:pt-0">
+            <Container className="relative z-20 pt-24 sm:pt-0 dvcn-container">
                 <div className="max-w-5xl mx-auto text-center">
                     {/* Badge with Pulse */}
                     <motion.div

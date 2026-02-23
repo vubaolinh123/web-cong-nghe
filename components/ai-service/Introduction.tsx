@@ -48,7 +48,7 @@ export default function Introduction() {
             </div>
 
             {/* === CONTENT === */}
-            <Container className="relative z-10">
+            <Container className="relative z-10 dvcn-container">
                 <div className="max-w-4xl mx-auto">
                     {/* Section Label with Animated Line */}
                     <motion.div
