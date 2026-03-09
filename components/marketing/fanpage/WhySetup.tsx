@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
 export default function WhySetup() {
@@ -27,10 +28,12 @@ export default function WhySetup() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <img
+                        <Image
                             src="/image/fanpage_growth_real.jpg"
                             alt="Growth Chart"
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
+                            loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent" />
                         <div className="absolute bottom-6 left-6 right-6">

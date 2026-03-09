@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Users, Rocket, Target } from "lucide-react";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
@@ -45,10 +46,13 @@ export default function Benefits() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                 >
-                    <img
+                    <Image
                         src="/image/fanpage_viral_real.jpg"
                         alt="Viral Marketing Banner"
+                        width={900}
+                        height={500}
                         className="w-full object-cover max-h-[500px]"
+                        loading="lazy"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/50 to-transparent flex items-center p-8 md:p-16">

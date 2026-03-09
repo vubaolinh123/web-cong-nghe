@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowUpRight, UserCircle2 } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -24,10 +25,13 @@ export default function MarketingStrategy() {
                         className="relative"
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/10 to-transparent blur-2xl rounded-full" />
-                        <img
+                        <Image
                             src="/image/real/marketing_strategy.jpg"
                             alt="Reverse Sales Funnel Growth"
+                            width={700}
+                            height={500}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-yellow-500/20 hover:shadow-yellow-500/20 transition-shadow duration-500"
+                            loading="lazy"
                         />
                     </motion.div>
 
@@ -88,10 +92,13 @@ export default function MarketingStrategy() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <img
+                            <Image
                                 src="/image/real/target_audience.jpg"
                                 alt="Target Audience Persona AI"
+                                width={700}
+                                height={500}
                                 className="w-full rounded-2xl shadow-2xl border border-slate-600/50 hover:border-cyan-500/50 transition-colors duration-500"
+                                loading="lazy"
                             />
                         </motion.div>
                     </div>

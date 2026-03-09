@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ShieldCheck, UserCheck, Settings, Users2 } from "lucide-react";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
@@ -59,10 +60,13 @@ export default function Experience() {
                         transition={{ duration: 0.6 }}
                     >
                         <div className="absolute inset-0 bg-green-500/10 rounded-full blur-[80px]" />
-                        <img
+                        <Image
                             src="/image/fanpage_audit_real.jpg"
                             alt="Fanpage Audit Secure"
+                            width={700}
+                            height={600}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-green-500/20"
+                            loading="lazy"
                         />
                     </motion.div>
 

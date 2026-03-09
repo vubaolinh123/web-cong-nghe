@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { TrendingUp, ShieldCheck, Target, Zap } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -28,10 +29,13 @@ export default function Benefits() {
                         className="relative"
                     >
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 blur-3xl rounded-full" />
-                        <img
+                        <Image
                             src="/image/real/growth_success.jpg"
                             alt="Growth Success"
+                            width={700}
+                            height={500}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-blue-500/30"
+                            loading="lazy"
                         />
                     </motion.div>
 

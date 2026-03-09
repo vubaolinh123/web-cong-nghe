@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles, Users, Play } from "lucide-react";
 import { useFacebookGroupTranslations } from "@/lib/i18n/pages/facebook-group";
 
@@ -12,10 +13,12 @@ export default function Hero() {
         <section className="relative min-h-[90vh] flex items-center justify-center bg-slate-950 overflow-hidden pt-32">
             {/* Background Image/Overlay */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/image/group/hero.jpg"
                     alt="Group Community Network"
-                    className="w-full h-full object-cover opacity-30"
+                    fill
+                    className="object-cover opacity-30"
+                    loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-transparent to-slate-950/90" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
 
 const benefitColors = [
@@ -43,10 +44,13 @@ export default function TiktokBenefits() {
                             <div className="w-full md:w-1/2 flex justify-center">
                                 <div className="relative w-full max-w-[280px] sm:max-w-[400px] aspect-[4/3]">
                                     <div className={`absolute inset-0 bg-gradient-to-r ${item.color} blur-[50px] opacity-20`} />
-                                    <img
+                                    <Image
                                         src={item.img}
                                         alt={item.title}
-                                        className="w-full h-full object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                                        fill
+                                        className="object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                                        sizes="(max-width: 640px) 280px, 400px"
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>

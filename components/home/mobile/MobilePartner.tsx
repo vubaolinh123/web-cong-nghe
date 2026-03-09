@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { Sparkles } from "lucide-react";
 
@@ -186,12 +187,14 @@ function PartnerItem({ partner, color, delay }: { partner: { name: string; logo:
             <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl`} />
 
             {!imgError ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                     src={partner.logo}
                     alt={partner.name}
-                    className="w-full h-full object-contain relative z-10"
+                    fill
+                    className="object-contain relative z-10"
+                    sizes="64px"
                     onError={() => setImgError(true)}
+                    loading="lazy"
                 />
             ) : (
                 <span className={`text-transparent bg-clip-text bg-gradient-to-r ${color} font-bold text-[10px] text-center leading-tight relative z-10`}>

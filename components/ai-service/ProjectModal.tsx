@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Info, FileText, Sparkles, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 interface ProjectInfo {
     productName: string;
@@ -112,13 +113,13 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                                 <div className="absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-600">
                                     {project.image ? (
                                         // eslint-disable-next-line @next/next/no-img-element
-                                        <img
+                                        <Image
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-full object-cover opacity-80"
-                                            onError={(e) => {
-                                                e.currentTarget.src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop';
-                                            }}
+                                            fill
+                                            className="object-cover opacity-80"
+                                            sizes="(max-width: 768px) 100vw, 80vw"
+                                            loading="lazy"
                                         />
                                     ) : (
                                         <div className="text-4xl">🖼️</div>
@@ -197,12 +198,15 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                                     <>
                                         <div className="h-px w-full bg-slate-800" />
                                         <div className="rounded-2xl overflow-hidden border border-slate-700/50 shadow-lg">
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img
-                                                src={project.detailImage}
-                                                alt={project.detailImageCaption || 'Project Detail Image'}
-                                                className="w-full h-auto object-cover"
-                                            />
+                                             {/* eslint-disable-next-line @next/next/no-img-element */}
+                                             <Image
+                                                 src={project.detailImage}
+                                                 alt={project.detailImageCaption || 'Project Detail Image'}
+                                                 width={900}
+                                                 height={600}
+                                                 className="w-full h-auto object-cover"
+                                                 loading="lazy"
+                                             />
                                             <div className="bg-slate-900/50 p-3 border-t border-slate-800 text-center">
                                                 <span className="text-sm text-slate-400 font-medium">{project.detailImageCaption}</span>
                                             </div>

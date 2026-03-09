@@ -1,17 +1,21 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Shield, Clock, Wrench, Award } from "lucide-react";
 import { Container } from "../common";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 export default function Commitments() {
     const t = useTechnologyTranslations();
+    const sectionRef = useRef<HTMLElement>(null);
+    const { isActive } = useSectionActivity(sectionRef, { threshold: 0.15 });
 
     const commitmentIcons = [Shield, Clock, Wrench];
 
     return (
-        <section className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
+        <section ref={sectionRef} className="relative py-16 sm:py-24 bg-slate-950 overflow-hidden">
             {/* Simple Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 {/* Static Gradient Orb */}
@@ -84,9 +88,9 @@ export default function Commitments() {
                                     style={{
                                         backgroundSize: "200% 200%"
                                     }}
-                                    animate={{
+                                    animate={isActive ? {
                                         backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                                    }}
+                                    } : undefined}
                                     transition={{
                                         duration: 10,
                                         repeat: Infinity,
@@ -101,9 +105,9 @@ export default function Commitments() {
                                 <div className="relative w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                                     <motion.div
                                         className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30"
-                                        animate={{
+                                        animate={isActive ? {
                                             rotate: [0, 360],
-                                        }}
+                                        } : undefined}
                                         transition={{
                                             duration: 20,
                                             repeat: Infinity,
@@ -134,9 +138,9 @@ export default function Commitments() {
                                 >
                                     <motion.div
                                         className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 rotate-45 translate-x-16 -translate-y-16"
-                                        animate={{
+                                        animate={isActive ? {
                                             rotate: [45, 405],
-                                        }}
+                                        } : undefined}
                                         transition={{
                                             duration: 8,
                                             repeat: Infinity,
@@ -151,9 +155,9 @@ export default function Commitments() {
                                     style={{
                                         background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent)",
                                     }}
-                                    animate={{
+                                    animate={isActive ? {
                                         backgroundPosition: ["0% 0%", "200% 0%"],
-                                    }}
+                                    } : undefined}
                                     transition={{
                                         duration: 3,
                                         repeat: Infinity,
@@ -176,7 +180,7 @@ export default function Commitments() {
                 >
                     <div className="relative z-10 flex items-center justify-center gap-3">
                         <motion.div
-                            animate={{ rotate: [0, 360] }}
+                            animate={isActive ? { rotate: [0, 360] } : undefined}
                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         >
                             <Award className="w-8 h-8 text-cyan-400" />
@@ -189,9 +193,9 @@ export default function Commitments() {
                     {/* Animated Background */}
                     <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent"
-                        animate={{
+                        animate={isActive ? {
                             x: ["-100%", "100%"],
-                        }}
+                        } : undefined}
                         transition={{
                             duration: 3,
                             repeat: Infinity,

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { Sparkles } from "lucide-react";
 import { useSectionActivity } from "@/hooks/useSectionActivity";
@@ -110,7 +111,7 @@ const PartnerCarousel = () => {
                     }}
                     style={{ width: "fit-content" }}
                 >
-                    {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
+                    {[...partners, ...partners].map((partner, index) => (
                         <PartnerItem key={`row1-${index}-${partner.name}`} partner={partner} />
                     ))}
                 </motion.div>
@@ -126,7 +127,7 @@ const PartnerCarousel = () => {
                     }}
                     style={{ width: "fit-content" }}
                 >
-                    {[...partners.slice().reverse(), ...partners.slice().reverse(), ...partners.slice().reverse(), ...partners.slice().reverse()].map((partner, index) => (
+                    {[...partners.slice().reverse(), ...partners.slice().reverse()].map((partner, index) => (
                         <PartnerItem key={`row2-${index}-${partner.name}`} partner={partner} />
                     ))}
                 </motion.div>
@@ -180,12 +181,14 @@ const PartnerItem = ({ partner }: { partner: { name: string, logo: string } }) =
                 <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
 
                 {!imgError ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                         src={partner.logo}
                         alt={partner.name}
+                        width={128}
+                        height={128}
                         className="w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 relative z-10"
                         onError={() => setImgError(true)}
+                        loading="lazy"
                     />
                 ) : (
                     <span className="text-cyan-400 font-bold text-xl text-center leading-tight relative z-10">

@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Expand } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import Image from 'next/image';
 import { Container } from '../common';
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
 import ProjectModal from './ProjectModal';
@@ -124,13 +125,13 @@ export default function CaseStudies() {
                                     {/* Image */}
                                     <div className="relative aspect-[4/3] w-full overflow-hidden">
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img
+                                        <Image
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-full object-contain bg-slate-900"
-                                            onError={(e) => {
-                                                e.currentTarget.src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop';
-                                            }}
+                                            fill
+                                            className="object-contain bg-slate-900"
+                                            sizes="(max-width: 640px) 100vw, 50vw"
+                                            loading="lazy"
                                         />
                                         <div className="absolute top-3 left-3">
                                             <span className="px-2.5 py-1 rounded-full bg-slate-950/70 backdrop-blur border border-slate-700 text-[10px] font-bold text-white uppercase tracking-wider shadow-lg">
@@ -229,13 +230,13 @@ export default function CaseStudies() {
                                         <div className="absolute inset-0 flex items-center justify-center bg-slate-800 text-slate-600">
                                             {project.image ? (
                                                 // eslint-disable-next-line @next/next/no-img-element
-                                                <img
+                                                <Image
                                                     src={project.image}
                                                     alt={project.title}
-                                                    className="w-full h-full object-contain bg-slate-900 transition-transform duration-700 group-hover:scale-105"
-                                                    onError={(e) => {
-                                                        e.currentTarget.src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop';
-                                                    }}
+                                                    fill
+                                                    className="object-contain bg-slate-900 transition-transform duration-700 group-hover:scale-105"
+                                                    sizes="(max-width: 1024px) 100vw, 450px"
+                                                    loading="lazy"
                                                 />
                                             ) : (
                                                 <span className="text-4xl">📷</span>

@@ -6,6 +6,7 @@ import { Container } from "../common";
 import { useRef } from "react";
 import { useTechnologyTranslations } from "@/lib/i18n/pages/technology";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 
 export default function ITServicesIntro() {
@@ -55,6 +56,7 @@ export default function ITServicesIntro() {
         },
     ];
     const containerRef = useRef<HTMLElement>(null);
+    const { isActive } = useSectionActivity(containerRef, { threshold: 0.2 });
 
     return (
         <section ref={containerRef} className="py-16 sm:py-24 bg-slate-950 relative overflow-hidden">
@@ -99,9 +101,9 @@ export default function ITServicesIntro() {
                         {t.itServicesIntro.title}{" "}
                         <motion.span
                             className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"
-                            animate={{
+                            animate={isActive ? {
                                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                            }}
+                            } : undefined}
                             transition={{
                                 duration: 5,
                                 repeat: Infinity,
@@ -116,9 +118,9 @@ export default function ITServicesIntro() {
                         {language === 'vi' ? 'đến' : 'to'}{" "}
                         <motion.span
                             className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
-                            animate={{
+                            animate={isActive ? {
                                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                            }}
+                            } : undefined}
                             transition={{
                                 duration: 5,
                                 repeat: Infinity,
@@ -159,9 +161,9 @@ export default function ITServicesIntro() {
                             {/* Animated Gradient Background */}
                             <motion.div
                                 className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                                animate={{
+                                animate={isActive ? {
                                     backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                                }}
+                                } : undefined}
                                 transition={{
                                     duration: 10,
                                     repeat: Infinity,
@@ -179,9 +181,9 @@ export default function ITServicesIntro() {
                             <div className={`relative w-14 h-14 rounded-xl ${service.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                                 <motion.div
                                     className={`absolute inset-0 rounded-xl bg-gradient-to-br ${service.color} opacity-20 group-hover:opacity-40 transition-opacity`}
-                                    animate={{
+                                    animate={isActive ? {
                                         rotate: [0, 360],
-                                    }}
+                                    } : undefined}
                                     transition={{
                                         duration: 20,
                                         repeat: Infinity,
@@ -208,7 +210,7 @@ export default function ITServicesIntro() {
                             >
                                 <span>{language === 'vi' ? 'Tìm hiểu thêm' : 'Learn more'}</span>
                                 <motion.div
-                                    animate={{ x: [0, 5, 0] }}
+                                     animate={isActive ? { x: [0, 5, 0] } : undefined}
                                     transition={{ duration: 1.5, repeat: Infinity }}
                                 >
                                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -222,9 +224,9 @@ export default function ITServicesIntro() {
                             >
                                 <motion.div
                                     className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-20 rotate-45 translate-x-16 -translate-y-16`}
-                                    animate={{
+                                    animate={isActive ? {
                                         rotate: [45, 405],
-                                    }}
+                                    } : undefined}
                                     transition={{
                                         duration: 8,
                                         repeat: Infinity,
@@ -240,9 +242,9 @@ export default function ITServicesIntro() {
                                     background: `linear-gradient(90deg, transparent, ${service.glowColor === 'cyan' ? 'rgba(6,182,212,0.3)' : service.glowColor === 'blue' ? 'rgba(59,130,246,0.3)' : service.glowColor === 'green' ? 'rgba(16,185,129,0.3)' : 'rgba(168,85,247,0.3)'}, transparent)`,
                                     opacity: 0,
                                 }}
-                                animate={{
+                                animate={isActive ? {
                                     backgroundPosition: ["0% 0%", "200% 0%"],
-                                }}
+                                } : undefined}
                                 transition={{
                                     duration: 3,
                                     repeat: Infinity,

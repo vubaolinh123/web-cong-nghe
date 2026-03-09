@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { useMarketingBasicTranslations } from "@/lib/i18n/pages/marketing-basic";
 
@@ -19,10 +20,13 @@ export default function GroupService() {
                         className="relative"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-[60px]" />
-                        <img
+                        <Image
                             src="/image/basic_group.png"
                             alt="Facebook Group"
+                            width={500}
+                            height={500}
                             className="w-full max-w-md mx-auto relative z-10 drop-shadow-2xl rounded-2xl"
+                            loading="lazy"
                         />
                     </motion.div>
 

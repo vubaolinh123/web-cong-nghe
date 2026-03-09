@@ -7,11 +7,13 @@ import { Container, Button } from "../../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useEffect, useRef } from "react";
 import { FloatingPaths } from "@/components/ui/background-paths";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 export default function Hero() {
   const { dictionary } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
+  const { isActive } = useSectionActivity(heroRef, { threshold: 0.3 });
   const mouseBoundsRef = useRef({ width: 1, height: 1, left: 0, top: 0 });
   const pointerRef = useRef({ clientX: 0, clientY: 0 });
   const rafRef = useRef<number | null>(null);
@@ -127,19 +129,19 @@ export default function Hero() {
       {/* 3. Glow Spheres for Depth */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={shouldReduceMotion ? undefined : {
+          animate={shouldReduceMotion || !isActive ? undefined : {
             opacity: [0.3, 0.5, 0.3],
             scale: [1, 1.1, 1],
           }}
-          transition={shouldReduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={shouldReduceMotion || !isActive ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"
         />
         <motion.div
-          animate={shouldReduceMotion ? undefined : {
+          animate={shouldReduceMotion || !isActive ? undefined : {
             opacity: [0.2, 0.4, 0.2],
             scale: [1, 1.15, 1],
           }}
-          transition={shouldReduceMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={shouldReduceMotion || !isActive ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[90px]"
         />
       </div>
@@ -218,7 +220,7 @@ export default function Hero() {
                 {/* Button Content */}
                 <div className="relative flex items-center gap-3">
                   <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <div className="absolute inset-0 rounded-full animate-spin-slow bg-gradient-to-tr from-transparent via-white/50 to-transparent" />
+                    <div className={`absolute inset-0 rounded-full ${isActive ? "animate-spin-slow" : ""} bg-gradient-to-tr from-transparent via-white/50 to-transparent`} />
                     <Power size={16} className="text-white relative z-10" />
                   </div>
                   <span className="text-lg font-medium tracking-wide text-cyan-100 group-hover:text-white transition-colors">

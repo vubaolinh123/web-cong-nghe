@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
 const stageColors = [
@@ -57,10 +58,13 @@ export default function SalesFunnel() {
                         className="relative group"
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-green-500/20 to-blue-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity duration-1000" />
-                        <img
+                        <Image
                             src="/image/real/sales_funnel.jpg"
                             alt="3D Sales Funnel Visualization"
+                            width={700}
+                            height={600}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-slate-700/50 hover:scale-105 transition-transform duration-700"
+                            loading="lazy"
                         />
                         <div className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 bg-slate-900/80 backdrop-blur-md p-4 rounded-xl border border-slate-700">
                             <p className="text-white text-sm md:text-base font-medium text-center">

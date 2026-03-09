@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Search, Share2, Mail, Globe, Users, MessageCircle } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -68,10 +69,13 @@ export default function TrafficSources() {
                         className="order-1 lg:order-2 relative"
                     >
                         <div className="absolute inset-0 bg-orange-500/10 blur-[100px] rounded-full" />
-                        <img
+                        <Image
                             src="/image/real/traffic_sources.jpg"
                             alt="Traffic Sources Network"
+                            width={700}
+                            height={500}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-orange-500/20"
+                            loading="lazy"
                         />
                     </motion.div>
                 </div>

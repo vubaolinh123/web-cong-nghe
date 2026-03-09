@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { useMarketingPremiumTranslations } from "@/lib/i18n/pages/marketing-premium";
 
@@ -43,10 +44,13 @@ export default function TikTokService() {
                         className="relative order-1 lg:order-2"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-[60px]" />
-                        <img
+                        <Image
                             src="/image/basic_tiktok.png"
                             alt="TikTok Marketing"
+                            width={500}
+                            height={500}
                             className="w-full max-w-md mx-auto relative z-10 drop-shadow-2xl rounded-2xl"
+                            loading="lazy"
                         />
                     </motion.div>
                 </div>

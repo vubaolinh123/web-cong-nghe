@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useFanpageTranslations } from "@/lib/i18n/pages/fanpage";
 
 export default function Hero() {
@@ -10,10 +11,12 @@ export default function Hero() {
         <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-slate-950">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/image/fanpage_hero.png"
                     alt="Global Fanpage Connection"
-                    className="w-full h-full object-cover opacity-60"
+                    fill
+                    className="object-cover opacity-60"
+                    loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-transparent to-slate-950" />
             </div>

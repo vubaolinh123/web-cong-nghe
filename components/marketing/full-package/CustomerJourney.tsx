@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
 const stepColors = [
@@ -62,10 +63,13 @@ export default function CustomerJourney() {
                         className="relative"
                     >
                         <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full" />
-                        <img
+                        <Image
                             src="/image/real/customer_journey.jpg"
                             alt="Customer Journey Visualization"
+                            width={700}
+                            height={500}
                             className="relative z-10 w-full rounded-2xl shadow-2xl border border-slate-700/50 hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
                         />
                     </motion.div>
                 </div>

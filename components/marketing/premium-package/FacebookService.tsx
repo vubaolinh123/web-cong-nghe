@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { useMarketingPremiumTranslations } from "@/lib/i18n/pages/marketing-premium";
 
@@ -19,10 +20,13 @@ export default function FacebookService() {
                         className="relative"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-[60px]" />
-                        <img
+                        <Image
                             src="/image/basic_facebook.png"
                             alt="Facebook Marketing"
+                            width={500}
+                            height={500}
                             className="w-full max-w-md mx-auto relative z-10 drop-shadow-2xl rounded-2xl"
+                            loading="lazy"
                         />
                     </motion.div>
 

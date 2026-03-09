@@ -86,8 +86,9 @@ html {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5); }
+  /* Use opacity instead of box-shadow to avoid paint cost */
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 @keyframes gradient-shift {
@@ -476,14 +477,14 @@ html {
 }
 
 .center-zoom-swiper .swiper-slide {
-  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
   opacity: 0.5;
   filter: brightness(0.7);
   overflow: visible;
 }
 
 .center-zoom-swiper .swiper-slide .slide-content {
-  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
   transform: scale(0.85);
 }
 
@@ -531,5 +532,27 @@ html {
   /* Active slide - must be LAST to override others */
   .center-zoom-swiper .swiper-slide-active .slide-content {
     transform: scale(1.25) !important;
+  }
+}
+
+/* ===== REDUCED MOTION: disable all custom infinite animations ===== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-orb-pulse,
+  .animate-orb-pulse-delayed,
+  .animate-slow-rotate,
+  .animate-particle-float,
+  .animate-grid-flow,
+  .animate-spin-slow,
+  .animate-gradient-text,
+  .animate-ping {
+    animation: none !important;
+  }
+
+  /* Stop framer-motion infinite transitions */
+  * {
+    transition-duration: 0.01ms !important;
   }
 }

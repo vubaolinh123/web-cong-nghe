@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useTiktokShopTranslations } from "@/lib/i18n/pages/tiktok-shop";
 
 export default function Hero() {
@@ -61,10 +62,12 @@ export default function Hero() {
                     >
                         <div className="relative w-full max-w-[500px] aspect-square">
                             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-pink-500/20 rounded-full blur-[60px] animate-pulse" />
-                            <img
+                            <Image
                                 src="/image/tiktok_hero.png"
                                 alt="TikTok Shop Growth"
-                                className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] animate-float relative z-10"
+                                fill
+                                className="object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] animate-float relative z-10"
+                                loading="lazy"
                             />
                         </div>
                     </motion.div>

@@ -108,7 +108,7 @@ export default function Hero() {
                         className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-cyan-500/40 backdrop-blur-xl mb-8 shadow-[0_0_30px_rgba(6,182,212,0.3)]"
                     >
                         <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                            <span className={`${isActive ? "animate-ping" : ""} absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75`}></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-gradient-to-r from-cyan-400 to-blue-500"></span>
                         </span>
                         <span className="text-sm font-bold bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent tracking-wide uppercase">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CheckCircle2, PenTool, Smartphone } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -42,10 +43,13 @@ export default function ServiceDetails() {
                             >
                                 <div className="relative rounded-2xl overflow-hidden border border-slate-700 group">
                                     <div className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                                    <img
+                                    <Image
                                         src={item.image}
                                         alt={item.title}
+                                        width={600}
+                                        height={400}
                                         className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                        loading="lazy"
                                     />
                                 </div>
                             </motion.div>

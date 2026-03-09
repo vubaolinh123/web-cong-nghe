@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, ChevronDown, Sparkles } from "lucide-react";
 import { useMarketingFullPackageTranslations } from "@/lib/i18n/pages/marketing-full-package";
 
@@ -12,10 +13,12 @@ export default function Hero() {
         <section className="relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden">
             {/* Background Image - Full screen with better visibility */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/image/marketing_hero_new.png"
                     alt="Marketing Hero"
-                    className="w-full h-full object-cover opacity-50 md:opacity-40"
+                    fill
+                    className="object-cover opacity-50 md:opacity-40"
+                    loading="lazy"
                 />
                 {/* Gradient overlays for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/40" />
