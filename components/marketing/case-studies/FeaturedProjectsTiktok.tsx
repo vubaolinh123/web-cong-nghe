@@ -79,9 +79,13 @@ export default function FeaturedProjectsTiktok({ setSelectedImage }: FeaturedPro
                         1024: { slidesPerView: 3, spaceBetween: 32 },
                     }}
                     freeMode={true}
-                    autoplay={{ delay: 1, disableOnInteraction: false }}
+                    grabCursor={true}
+                    autoplay={{ delay: 1, disableOnInteraction: true }}
                     loop={true}
                     speed={3000}
+                    onTouchEnd={(swiper) => {
+                        setTimeout(() => swiper.autoplay.start(), 100);
+                    }}
                     className="continuous-swiper !pb-12"
                 >
                     {tiktokProjects.map((project, index) => (

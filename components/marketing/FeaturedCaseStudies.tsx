@@ -10,6 +10,7 @@ import { ChevronLeft, ChevronRight, Users, Eye, Heart, MessageCircle, TrendingUp
 import { Container } from "../common";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useSectionActivity } from "@/hooks/useSectionActivity";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -148,6 +149,7 @@ export default function FeaturedCaseStudies() {
     const { language, t } = useLanguage();
     const isVI = language === 'vi';
     const shouldReduceMotion = useReducedMotion();
+    const { isMobile } = useIsMobile();
     const swiperRef = useRef<SwiperType | null>(null);
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -155,7 +157,13 @@ export default function FeaturedCaseStudies() {
     const { ref: sectionRef, isActive } = useSectionActivity<HTMLElement>(undefined, {
         threshold: 0.2,
     });
-    const animationEnabled = isActive && !shouldReduceMotion;
+
+    // On mobile, disable all continuous animations to avoid competing with user interaction
+    const animationEnabled = isActive && !shouldReduceMotion && !isMobile;
+
+    // Faster slide speed on mobile for snappier feel
+    const slideSpeed = isMobile ? 450 : 800;
+    const animatingTimeout = isMobile ? 450 : 800;
 
     const particles = useMemo(() => {
         const amount = shouldReduceMotion ? 0 : 10;
@@ -189,17 +197,17 @@ export default function FeaturedCaseStudies() {
         if (!isAnimating) {
             setIsAnimating(true);
             swiperRef.current?.slidePrev();
-            setTimeout(() => setIsAnimating(false), 800);
+            setTimeout(() => setIsAnimating(false), animatingTimeout);
         }
-    }, [isAnimating]);
+    }, [isAnimating, animatingTimeout]);
 
     const handleNext = useCallback(() => {
         if (!isAnimating) {
             setIsAnimating(true);
             swiperRef.current?.slideNext();
-            setTimeout(() => setIsAnimating(false), 800);
+            setTimeout(() => setIsAnimating(false), animatingTimeout);
         }
-    }, [isAnimating]);
+    }, [isAnimating, animatingTimeout]);
 
     const currentProject = featuredProjects[activeIndex];
     const catConfig = categoryConfig[currentProject?.category || 'marketing'];
@@ -313,7 +321,7 @@ export default function FeaturedCaseStudies() {
                         spaceBetween={0}
                         slidesPerView={1}
                         loop={true}
-                        speed={800}
+                        speed={slideSpeed}
                         autoplay={{
                             delay: shouldReduceMotion ? 0 : 7000,
                             disableOnInteraction: false,
@@ -482,39 +490,35 @@ export default function FeaturedCaseStudies() {
                         {/* Slide indicators - center on mobile */}
                         <div className="flex items-center gap-2 mr-auto lg:mr-0">
                             {featuredProjects.map((_, idx) => (
-                                <motion.button
+                                <button
                                     key={idx}
                                     onClick={() => swiperRef.current?.slideToLoop(idx)}
-                                    className={`rounded-full transition-all duration-500 ${activeIndex === idx
+                                    className={`rounded-full transition-all duration-300 active:scale-90 ${activeIndex === idx
                                         ? 'w-10 h-3 bg-gradient-to-r from-green-400 to-emerald-400'
                                         : 'w-3 h-3 bg-slate-600 hover:bg-slate-500'
                                         }`}
-                                    whileHover={{ scale: 1.2 }}
                                     aria-label={`Go to slide ${idx + 1}`}
                                 />
                             ))}
                         </div>
 
-                        {/* Nav buttons */}
+                        {/* Nav buttons — use CSS active:scale instead of framer-motion whileTap
+                            for instant GPU-composited response on mobile */}
                         <div className="flex gap-3">
-                            <motion.button
+                            <button
                                 onClick={handlePrev}
-                                className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-slate-600 bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center transition-all duration-300 hover:border-green-500 group backdrop-blur-sm"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
+                                className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-slate-600 bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center transition-all duration-300 hover:border-green-500 group backdrop-blur-sm active:scale-95"
                                 aria-label="Previous slide"
                             >
                                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 group-hover:text-green-400 transition-colors" />
-                            </motion.button>
-                            <motion.button
+                            </button>
+                            <button
                                 onClick={handleNext}
-                                className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-slate-600 bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center transition-all duration-300 hover:border-green-500 group backdrop-blur-sm"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
+                                className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-slate-600 bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center transition-all duration-300 hover:border-green-500 group backdrop-blur-sm active:scale-95"
                                 aria-label="Next slide"
                             >
                                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 group-hover:text-green-400 transition-colors" />
-                            </motion.button>
+                            </button>
                         </div>
                     </motion.div>
                 </div>

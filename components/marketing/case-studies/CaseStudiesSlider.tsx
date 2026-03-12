@@ -51,9 +51,14 @@ export default function CaseStudiesSlider({
                             1024: { slidesPerView: 3, spaceBetween: 48 },
                         }}
                         freeMode={true}
-                        autoplay={{ delay: 1, disableOnInteraction: false }}
+                        grabCursor={true}
+                        autoplay={{ delay: 1, disableOnInteraction: true }}
                         loop={true}
                         speed={3000}
+                        onTouchEnd={(swiper) => {
+                            // Let freeMode momentum settle before resuming autoplay
+                            setTimeout(() => swiper.autoplay.start(), 100);
+                        }}
                         className="continuous-swiper !pb-12"
                     >
                         {activeCategoryData.caseStudies.map((study) => (
