@@ -51,6 +51,7 @@ export default function PricingPackages() {
     const t = useTechnologyTranslations();
     const [activeCategory, setActiveCategory] = useState<CategoryKey>('mobileApp');
     const tabsRef = useRef<HTMLDivElement>(null);
+    const hasMountedRef = useRef(false);
 
     const categories: CategoryKey[] = ['mobileApp', 'website', 'aiAgent', 'automation'];
     const currentCategory = t.servicePricing.categories[activeCategory];
@@ -63,8 +64,13 @@ export default function PricingPackages() {
             ? 'grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8'
             : 'grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 sm:gap-6 lg:gap-8';
 
-    // Scroll active tab into view on mobile
+    // Scroll active tab into view when user switches tabs (skip on initial mount
+    // to prevent page from jumping to the pricing section on navigation).
     useEffect(() => {
+        if (!hasMountedRef.current) {
+            hasMountedRef.current = true;
+            return;
+        }
         if (tabsRef.current) {
             const activeTab = tabsRef.current.querySelector('[data-active="true"]');
             if (activeTab) {
