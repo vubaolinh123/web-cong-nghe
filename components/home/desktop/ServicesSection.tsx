@@ -212,7 +212,7 @@ export default function ServicesSection() {
                   scale: 1,
                   rotate: 0
                 }}
-                exit={{ opacity: 0, scale: 0.8, rotate: 5, filter: "blur(10px)" }}
+                exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
                 transition={{
                   opacity: { duration: 0.4 },
                   scale: { duration: 0.4 },

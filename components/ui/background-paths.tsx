@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useSectionActivity } from "@/hooks/useSectionActivity";
 
 interface FloatingPathsProps {
     position: number;
@@ -8,12 +10,16 @@ interface FloatingPathsProps {
 }
 
 /**
- * Animated SVG paths creating a flowing digital network effect.
- * Customized for dark tech/AI theme with Cyan/Blue tones.
+ * Lightweight animated SVG path network.
+ * Reduced from 24 → 8 paths and pauses animation when scrolled out of view.
  */
 export function FloatingPaths({ position, className = "" }: FloatingPathsProps) {
     const shouldReduceMotion = useReducedMotion();
-    const pathCount = shouldReduceMotion ? 10 : 24;
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { isActive } = useSectionActivity(containerRef, { threshold: 0.01 });
+
+    // 8 paths instead of 24 — 3× fewer compositing layers
+    const pathCount = shouldReduceMotion ? 4 : 8;
 
     const paths = Array.from({ length: pathCount }, (_, i) => ({
         id: i,
@@ -21,12 +27,11 @@ export function FloatingPaths({ position, className = "" }: FloatingPathsProps) 
             } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position
             } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position
             } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        // Gradient from deep blue to cyan
-        width: 0.5 + i * 0.03,
+        width: 0.5 + i * 0.06,
     }));
 
     return (
-        <div className={`absolute inset-0 pointer-events-none ${className}`}>
+        <div ref={containerRef} className={`absolute inset-0 pointer-events-none ${className}`}>
             <svg
                 className="w-full h-full"
                 viewBox="0 0 696 316"
@@ -38,28 +43,37 @@ export function FloatingPaths({ position, className = "" }: FloatingPathsProps) 
                     <motion.path
                         key={path.id}
                         d={path.d}
-                        stroke={`url(#gradient-${path.id})`}
+                        stroke={`url(#gradient-fp-${path.id})`}
                         strokeWidth={path.width}
-                        strokeOpacity={0.25 + path.id * 0.025}
+                        strokeOpacity={0.25 + path.id * 0.04}
                         initial={{ pathLength: 0.3, opacity: 0.6 }}
-                        animate={shouldReduceMotion ? { pathLength: 1, opacity: 0.45 } : {
-                            pathLength: 1,
-                            opacity: [0.4, 0.8, 0.4],
-                            pathOffset: [0, 1, 0],
-                        }}
-                        transition={shouldReduceMotion ? { duration: 0.6, ease: "linear" } : {
-                            duration: 20 + path.id * 0.35,
-                            repeat: Infinity,
-                            ease: "linear",
-                        }}
+                        animate={
+                            shouldReduceMotion
+                                ? { pathLength: 1, opacity: 0.45 }
+                                : isActive
+                                ? {
+                                      pathLength: 1,
+                                      opacity: [0.4, 0.75, 0.4],
+                                      pathOffset: [0, 1, 0],
+                                  }
+                                : { opacity: 0.4 }   // pause when off-screen
+                        }
+                        transition={
+                            shouldReduceMotion
+                                ? { duration: 0.6, ease: "linear" }
+                                : {
+                                      duration: 25 + path.id * 0.5,
+                                      repeat: Infinity,
+                                      ease: "linear",
+                                  }
+                        }
                     />
                 ))}
-                {/* Gradient definitions for each path */}
                 <defs>
                     {paths.map((path) => (
                         <linearGradient
-                            key={`gradient-${path.id}`}
-                            id={`gradient-${path.id}`}
+                            key={`gradient-fp-${path.id}`}
+                            id={`gradient-fp-${path.id}`}
                             x1="0%"
                             y1="0%"
                             x2="100%"
@@ -67,17 +81,17 @@ export function FloatingPaths({ position, className = "" }: FloatingPathsProps) 
                         >
                             <stop
                                 offset="0%"
-                                stopColor={path.id % 2 === 0 ? "#3b82f6" : "#06b6d4"} // blue-500 / cyan-500
+                                stopColor={path.id % 2 === 0 ? "#3b82f6" : "#06b6d4"}
                                 stopOpacity={0.6}
                             />
                             <stop
                                 offset="50%"
-                                stopColor={path.id % 3 === 0 ? "#8b5cf6" : "#22d3ee"} // violet-500 / cyan-400
+                                stopColor={path.id % 3 === 0 ? "#8b5cf6" : "#22d3ee"}
                                 stopOpacity={0.8}
                             />
                             <stop
                                 offset="100%"
-                                stopColor={path.id % 2 === 0 ? "#06b6d4" : "#3b82f6"} // cyan-500 / blue-500
+                                stopColor={path.id % 2 === 0 ? "#06b6d4" : "#3b82f6"}
                                 stopOpacity={0.6}
                             />
                         </linearGradient>
@@ -90,7 +104,6 @@ export function FloatingPaths({ position, className = "" }: FloatingPathsProps) 
 
 /**
  * Full background component with dual floating paths.
- * Use this as a complete background layer.
  */
 export function BackgroundPaths({ className = "" }: { className?: string }) {
     return (

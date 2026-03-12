@@ -426,14 +426,14 @@ html {
   /* Alternative for background-position if needed, but transform is performant */
 }
 
-/* Better grid flow for background image */
+/* Grid flow — GPU-friendly transform instead of background-position repaint */
 @keyframes grid-scroll {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 40px; }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
 }
 
 .animate-grid-flow {
-  animation: grid-scroll 2s linear infinite;
+  animation: grid-scroll 3s linear infinite;
 }
 
 @keyframes spin-custom {
@@ -453,7 +453,7 @@ html {
 
 .animate-gradient-text {
   background-size: 200% auto;
-  animation: gradient-text-flow 3s linear infinite;
+  animation: gradient-text-flow 6s linear infinite;
 }
 
 /* === PRODUCT SHOWCASE MODAL - CENTER ZOOM EFFECT === */
