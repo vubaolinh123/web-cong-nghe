@@ -100,13 +100,10 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-slate-900/95 backdrop-blur-md shadow-lg shadow-black/10"
-        : "bg-slate-900/70 backdrop-blur-sm"
+        ? "bg-slate-900/[0.97] shadow-lg shadow-black/10"
+        : "bg-slate-900/80"
         }`}
     >
       <Container>
@@ -116,7 +113,6 @@ export default function Header() {
             href="/"
             aria-label="ASI EVEREST - Trang chủ"
             className="flex items-center gap-4"
-            whileHover={{ scale: 1.02 }}
           >
             {/* Logo Image - Large and Prominent */}
             <Image
@@ -412,6 +408,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
